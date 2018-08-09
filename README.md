@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/awesome-ninja-admins/blob/master/doc/img/sysadmin_interview_questions.png"
+    <img src="https://github.com/trimstray/sysadmin-interview-questions/blob/master/doc/img/sysadmin_interview_questions_preview.png"
         alt="Master">
 </p>
 
@@ -10,7 +10,7 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/sysadmin_interview_questions/tree/master">
+  <a href="https://github.com/trimstray/sysadmin-interview-questions/tree/master">
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true"
         alt="Branch">
   </a>
@@ -23,7 +23,7 @@
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/sysadmin_interview_questions/graphs/contributors">
+  <a href="https://github.com/trimstray/sysadmin-interview-questions/graphs/contributors">
     contributors
   </a>
 </div>
