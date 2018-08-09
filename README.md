@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/sysadmin_interview_questions/blob/master/doc/img/sysadmin_interview_questions_preview.png"
+    <img src="https://github.com/trimstray/awesome-ninja-admins/blob/master/doc/img/sysadmin_interview_questions.png"
         alt="Master">
 </p>
 
