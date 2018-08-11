@@ -617,6 +617,20 @@ Hard limit is the maximum allowed to a user, set by the superuser or root. This 
 
 </details>
 
+<details>
+<summary><b>Create a file with 100000 lines with random values.</b></summary><br>
+
+For example:
+
+```bash
+for i in $(seq 1 100000) ; do
+  rand=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+  echo "$rand" >> /path/to/file
+done
+```
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -816,6 +830,25 @@ When <code>/sbin/nologin</code> is set as the shell, if user with that shell log
 <code>/bin/false</code> is just a binary that immediately exits, returning false, when it's called, so when someone who has false as shell logs in, they're immediately logged out when false exits. Setting the shell to <code>/bin/true</code> has the same effect of not allowing someone to log in but false is probably used as a convention over true since it's much better at conveying the concept that person doesn't have a shell.
 
 nologin is the more user-friendly option, with a customizable message given to the user trying to log in, so you would theoretically want to use that; but both nologin and false will have the same end result of someone not having a shell and not being able to ssh in.
+
+</details>
+
+<details>
+<summary><b>How to read a file line by line and assigning the value to a variable.</b></summary><br>
+
+For example:
+
+```bash
+while IFS='' read -r line || [[ -n "$line" ]] ; do
+  echo "Text read from file: $line"
+done < "/path/to/filename"
+```
+
+Explanation:
+
+- <code>IFS=''</code> (or <code>IFS=</code>) prevents leading/trailing whitespace from being trimmed.
+- <code>-r</code> prevents backslash escapes from being interpreted.
+- <code>|| [[ -n $line ]]</code> prevents the last line from being ignored if it doesn't end with a <code>\n</code> (since  read returns a non-zero exit code when it encounters EOF).
 
 </details>
 
