@@ -35,7 +35,6 @@
 ## Table of Contents
 
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Introduction](#introduction)
   * [Junior Sysadmin](#junior-sysadmin)
   * [Regular Sysadmin](#regular-sysadmin)
   * [Senior Sysadmin](#senior-sysadmin)
@@ -44,13 +43,9 @@
 
 ## <a name="general-knowledge">General Knowledge</a>
 
-### :diamond_shape_with_a_dot_inside: <a name="introduction">Introduction</a>
-
-0 Questions
-
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-25 Questions.
+29 Questions.
 
 ###### System Questions
 
@@ -344,7 +339,7 @@ Telnet uses most insecure method for communication. It sends data across the net
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-28 Questions.
+31 Questions.
 
 ###### System Questions
 
@@ -573,6 +568,13 @@ Is a process that has completed execution (via the <b>exit</b> system call) but 
 </details>
 
 <details>
+<summary><b>What is strace command in Linux?</b></summary><br>
+
+strace is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+
+</details>
+
+<details>
 <summary><b>Which algorithms are supported in passwd file?</b></summary><br>
 
 The algorithms supported are MD5, Blowfish, SHA256 and SHA512.
@@ -631,6 +633,76 @@ done
 
 </details>
 
+<details>
+<summary><b>How to run script as another user without password?</b></summary><br>
+
+For example (with <code>visudo</code> command):
+
+```bash
+user1 ALL=(user2) NOPASSWD: /opt/scripts/bin/generate.sh
+```
+
+The command paths must be absolute! Then call <code>sudo -u user2 /opt/scripts/bin/generate.sh</code> from a user1 shell.
+
+</details>
+
+<details>
+<summary><b>How to check if running as root in a bash script?</b></summary><br>
+
+In a bash script, you have several ways to check if the running user is root.
+
+As a warning, do not check if a user is root by using the root username. Nothing guarantees that the user with ID 0 is called root. It's a very strong convention that is broadly followed but anybody could rename the superuser another name.
+
+I think the best way when using bash is to use $EUID because $UID could be changed and not reflect the real user running the script.
+
+```bash
+if (( $EUID != 0 )); then
+  echo "Please run as root"
+  exit
+fi
+```
+</details>
+
+<details>
+<summary><b>How to <code>git clone</code> including submodules?</b></summary><br>
+
+For example:
+
+```bash
+# With -j8 - performance optimization
+git clone --recurse-submodules -j8 git://github.com/foo/bar.git
+
+# For already cloned repos or older Git versions
+git clone git://github.com/foo/bar.git
+cd bar
+git submodule update --init --recursive
+```
+
+</details>
+
+<details>
+<summary><b>Is there a way to redirect output to a file and have it display on stdout?</b></summary><br>
+
+The command you want is named tee:
+
+`foo | tee output.file`
+
+For example, if you only care about stdout:
+
+`ls -a | tee output.file`
+
+If you want to include stderr, do:
+
+`program [arguments...] 2>&1 | tee outfile`
+
+`2>&1` redirects channel 2 (stderr/standard error) into channel 1 (stdout/standard output), such that both is written as stdout. It is also directed to the given output file as of the tee command.
+
+Furthermore, if you want to append to the log file, use tee -a as:
+
+`program [arguments...] 2>&1 | tee -a outfile`
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -647,7 +719,7 @@ Use the <code>netstat -tapn</code> or <code>lsof -i</code>.
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-22 Questions.
+27 Questions.
 
 ###### System Questions
 
@@ -748,24 +820,17 @@ It provides a layer between applications and actual authentication mechanism. It
 </details>
 
 <details>
-<summary><b>What is strace command in Linux?</b></summary><br>
-
-strace is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
-
-</details>
-
-<details>
 <summary><b>How do you run command every time a file is modified?</b></summary><br>
 
 For example:<br>
 
-<code>
+```bash
 while inotifywait -e close_write filename ; do
 
   echo "changed" >> /var/log/changed
 
 done
-</code><br><br>
+```
 
 </details>
 
@@ -797,6 +862,20 @@ In Unix and Unix-like operating systems, kill is a command used to send a signal
 - Processes that are in the blocked state will not die until they wake up again.<br>
 - The init process is special: It does not get signals that it does not want to handle, and thus it can ignore SIGKILL. An exception from this exception is while init is ptraced on Linux.<br>
 - An uninterruptibly sleeping process may not terminate (and free its resources) even when sent SIGKILL. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem.
+
+</details>
+
+<details>
+<summary><b>Present and explain the correct process path using the kill command.</b></summary><br>
+
+Speaking of killing processes never use <code>kill -9/SIGKILL</code> unless absolutely mandatory. This kill can cause problems because of its brute force.
+
+Always try to use the following simple procedure:
+
+- first, send <b>SIGTERM</b> (<code>kill -15</code>) signal first which tells the process to shutdown and is generally accepted as the signal to use when shutting down cleanly (but remember that this signal can be ignored).
+- next try to send <b>SIGHUP</b> (<code>kill -1</code>) signal which is commonly used to tell a process to shutdown and restart, this signal can also be caught and ignored by a process.
+
+The far majority of the time, this is all you need - and is much cleaner.
 
 </details>
 
@@ -852,6 +931,55 @@ Explanation:
 
 </details>
 
+<details>
+<summary><b>How to rebuild Initial Ramdisk Image in Debian/CentOS?</b></summary><br>
+
+Debian GNU/Linux:
+
+```bash
+update-initramfs -m -k all
+update-grub
+```
+
+CentOS Linux:
+
+```bash
+dracut -f
+grub2-mkconfig -o /boot/grub/grub.cfg
+```
+
+</details>
+
+<details>
+<summary><b>What does "CPU jumps" mean?</b></summary><br>
+
+An OS is a very busy thing, particularly so when you have it doing something (and even when you aren't). And when we are looking at an active enterprise environment, something is always going on.
+
+Most of this activity is "bursty", meaning processes are typically quiescent with short periods of intense activity. This is certainly true of any type of network-based activity (e.g. processing PHP requests), but also applies to OS maintenance (e.g. file system maintenance, page reclamation, disk I/O requests).
+
+If you take a situation where you have a lot of such bursty processes, you get a very irregular and spiky CPU usage plot.
+
+As "500 - Internal Server Error" says, the high number of context switches are going to make the situation even worse.
+
+</details>
+
+<details>
+<summary><b>How does strace connect to an already running process?</b></summary><br>
+
+`strace -p <PID>` - to attach a process to strace.
+
+`strace -e trace=read,write -p <PID>` - by this you can also trace a process/program for an event, like read and write (in this example). So here it will print all such events that include read and write system calls by the process.
+
+Other such examples
+
+- `-e trace= network` - trace all the network related system calls.
+- `-e trace=signal` - trace all signal related system calls.
+- `-e trace=ipc` - trace all IPC related system calls.
+- `-e trace=desc` - trace all file descriptor related system calls.
+- `-e trace=memory` - trace all memory mapping related system calls.
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -871,8 +999,133 @@ or more violently:<br>
 
 </details>
 
+<details>
+<summary><b>How to testing connection to remote host (with and without SNI)?</b></summary><br>
+
+With <b>OpenSSL</b>:
+
+```bash
+# Testing connection to remote host (with SNI support)
+echo | openssl s_client -showcerts -servername google.com -connect google.com:443
+# Testing connection to remote host (without SNI support)
+echo | openssl s_client -connect google.com:443 -showcerts
+```
+
+With <b>GnuTLS</b>:
+
+```bash
+# Testing connection to remote host (with SNI support)
+gnutls-cli -p 443 google.com
+# Testing connection to remote host (without SNI support)
+gnutls-cli --disable-sni -p 443 google.com
+```
+
+</details>
+
+<details>
+<summary><b>How are cookies passed in the HTTP protocol?</b></summary><br>
+
+The server sends the following in its response header to set a cookie field:
+
+`Set-Cookie:name=value`
+
+If there is a cookie set, then the browser sends the following in its request header:
+
+`Cookie:name=value`
+
+</details>
+
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: Guru Sysadmin
 
-0 Questions.
+3 Questions.
+
+<details>
+<summary><b>Why do We need mktemp command?</b></summary><br>
+
+<code>mktemp</code> randomizes the name. It is very important from the security point of view.
+
+Just imagine that you do something like:
+
+```bash
+echo "random_string" > /tmp/temp-file
+```
+
+in your root-running script. And someone (who has read your script) does
+
+```bash
+ln -s /etc/passwd /tmp/temp-file
+```
+
+The <code>mktemp</code> command could help you in this situation:
+
+```bash
+TEMP=$(mktemp /tmp/temp-file.XXXXXXXX)
+echo "random_string" > ${TEMP}
+```
+
+Now this <code>ln /etc/passwd</code> attack will not work.
+
+</details>
+
+<details>
+<summary><b>Use sysfs virtual filesystem to testing connection on all interfaces (without loopback).</b></summary><br>
+
+For example:
+
+```bash
+#!/usr/bin/bash
+
+for iface in $(ls /sys/class/net/ | grep -v lo) ; do
+
+  if [[ $(cat /sys/class/net/$iface/carrier) = 1 ]] ; then state=1 ; fi
+
+done
+
+if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
+```
+
+</details>
+
+<details>
+<summary><b>Explain Varnish Cache SHM Log (pooling mechanism).</b></summary><br>
+
+Every poll is recorded in the shared memory log as follows:
+
+```
+0 Backend_health - b0 Still healthy 4--X-S-RH 9 8 10 0.029291 0.030875 HTTP/1.1 200 Ok
+```
+
+The fields are:
+
+- 0 - Constant
+- Backend_health - Log record tag
+- '-' client/backend indication (XXX: wrong! should be 'b')
+- b0 - Name of backend (XXX: needs qualifier)
+- two words indicating state:
+  - "Still healthy"
+  - "Still sick"
+  - "Back healthy"
+  - "Went sick"
+
+Notice that the second word indicates present state, and the first word == "Still" indicates unchanged state.
+
+- 4--X-S-RH - Flags indicating how the latest poll went
+  - 4 - IPv4 connection established
+  - 6 - IPv6 connection established
+  - x - Request transmit failed
+  - X - Request transmit succeeded
+  - s - TCP socket shutdown failed
+  - S - TCP socket shutdown succeeded
+  - r - Read response failed
+  - R - Read response succeeded
+  - H - Happy with result
+- 9 - Number of good polls in the last .window polls
+- 8 - .threshold (see above)
+- 10 - .window (see above)
+- 0.029291 - Response time this poll or zero if it failed
+- 0.030875 - Exponential average (r=4) of responsetime for good polls.
+- HTTP/1.1 200 Ok - The HTTP response from the backend.
+
+</details>
