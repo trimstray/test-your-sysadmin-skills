@@ -98,6 +98,17 @@ Linux is a Unix clone. But if you consider Portable Operating System Interface (
 </details>
 
 <details>
+<summary><b>What is Linux and also explain the basic components of this?</b></summary><br>
+
+Linux operating system is consist of 3 components which are as below:<br>
+
+- <b>Kernel</b>: Linux is a monolithic kernel that is free and open source <br>software that is responsible for managing hardware resources for the users.
+- <b>System Library</b>: System Library plays a vital role because application programs access Kernels feature using system library.<br>
+- <b>System Utility</b>: System Utility performs specific and individual level tasks.
+
+</details>
+
+<details>
 <summary><b>What do you understand by CLI?</b></summary><br>
 
 CLI is an acronym for Command Line Interface. We have to provide the information to the computer so that it can perform the function accordingly. In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
@@ -142,6 +153,13 @@ Unix-like operating systems identify a user within the kernel by a value called 
 </details>
 
 <details>
+<summary><b>Which command is used to review boot messages?</b></summary><br>
+
+<code>dmesg</code> command is used to review boot messages. This command will display system messages contained in the kernel ring buffer. We can use this command immediately after booting to see boot messages. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
+
+</details>
+
+<details>
 <summary><b>What is the swap space?</b></summary><br>
 
 Swap space is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory.
@@ -152,6 +170,13 @@ Swap space is used when the amount of physical memory (RAM) is full. If the syst
 <summary><b>How to check memory stats and CPU stats?</b></summary><br>
 
 Using <code>free</code> and <code>vmstat</code> command we can display the physical and virtual memory statistics respectively. With the help of <code>sar</code> command we see the CPU utilization & other stats.
+
+</details>
+
+<details>
+<summary><b>What is load average?</b></summary><br>
+
+Is the average system load calculated over a given period of time of 1, 5 and 15 minutes. Lower numbers are better. Higher numbers represent a problem or an overloaded machine.
 
 </details>
 
@@ -317,17 +342,6 @@ Telnet uses most insecure method for communication. It sends data across the net
 ###### System Questions
 
 <details>
-<summary><b>What is Linux and also explain the basic components of Linux?</b></summary><br>
-
-Linux operating system is consist of 3 components which are as below:<br>
-
-- <b>Kernel</b>: Linux is a monolithic kernel that is free and open source <br>software that is responsible for managing hardware resources for the users.
-- <b>System Library</b>: System Library plays a vital role because application programs access Kernels feature using system library.<br>
-- <b>System Utility</b>: System Utility performs specific and individual level tasks.
-
-</details>
-
-<details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
 
 <b>BIOS</b>: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.<br>
@@ -341,13 +355,6 @@ Linux operating system is consist of 3 components which are as below:<br>
 <b>Init</b>: Init checks the file <code>/etc/inittab</code> and decides the run level. There are seven-run levels available from 0-6. It will identify the default init level and will load the program.<br>
 
 <b>Runlevel programs</b>: As per your default settings for the run level, the system will execute the programs.
-
-</details>
-
-<details>
-<summary><b>Which command is used to review boot messages?</b></summary><br>
-
-dmesg command is used to review boot messages. This command will display system messages contained in the kernel ring buffer. We can use this command immediately after booting to see boot messages. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
 
 </details>
 
@@ -368,13 +375,6 @@ By default all scripts are saved in this file. This is the standard system log f
 Since <b>/proc</b> contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.<br>
 
 Virtual files such as <b>/proc/interrupts</b>, <b>/proc/meminfo</b>, <b>/proc/mounts</b> and <b>/proc/partitions</b> provide an up-to-the-moment glimpse of the system’s hardware. Others: <b>/proc/filesystems</b> file and the <b>/proc/sys/</b> directory provide system configuration information and interfaces.
-
-</details>
-
-<details>
-<summary><b>What is load average?</b></summary><br>
-
-Is the average system load calculated over a given period of time of 1, 5 and 15 minutes. Lower numbers are better. Higher numbers represent a problem or an overloaded machine.
 
 </details>
 
