@@ -273,7 +273,7 @@ Using the <code>kill</code> command followed by pid terminates that process. You
 </details>
 
 <details>
-<summary><b>What is the difference between "rm" and "rm -r"?</b></summary><br>
+<summary><b>What is the difference between "rm" and "rm -rf"?</b></summary><br>
 
 <code>rm</code> removes files and <code>-rf</code> are to options:<br>
 
