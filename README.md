@@ -229,6 +229,13 @@ find /opt/data -type f -exec chmod 644 {} \;
 </details>
 
 <details>
+<summary><b>What is redirection?</b></summary><br>
+
+It’s a fairly simple process, allowing you to direct data from one output to another. You can also use it to direct an output as an input to another process.
+
+</details>
+
+<details>
 <summary><b>What is grep command?</b></summary><br>
 
 <code>grep</code> searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.<br>
@@ -436,6 +443,13 @@ To change the run level we have to edit the file <b>/etc/inittab</b> and change 
 </details>
 
 <details>
+<summary><b>How to add & change the Kernel parameters?</b></summary><br>
+
+To set the kernel parameters in UNIX-like, first edit the file <code>/etc/sysctl.conf</code> after making the changes save the file and run the command <code>sysctl -p</code>, this command will make the changes permanently without rebooting the machine.
+
+</details>
+
+<details>
 <summary><b>What is the difference between ext2, ext3 and ext4 file systems?</b></summary>
 <br>
 
@@ -559,13 +573,6 @@ Is a process that has completed execution (via the <b>exit</b> system call) but 
 </details>
 
 <details>
-<summary><b>What is redirection?</b></summary><br>
-
-It’s a fairly simple process, allowing you to direct data from one output to another. You can also use it to direct an output as an input to another process.
-
-</details>
-
-<details>
 <summary><b>Which algorithms are supported in passwd file?</b></summary><br>
 
 The algorithms supported are MD5, Blowfish, SHA256 and SHA512.
@@ -636,13 +643,6 @@ Use the <code>netstat -tapn</code> or <code>lsof -i</code>.
 - <b>Microkernel</b>: This type of kernel only manages CPU, memory, and IPC. This kind of kernel provides portability, small memory footprint and also security.<br>
 - <b>Monolithic Kernel</b>: Linux is a monolithic kernel. So, this type of kernel provides file management, system server calls, also manages CPU, IPC as well as device drivers. It provides easier access to the process to communicate and as there is not any queue for processor time, so processes react faster.<br>
 - <b>Hybrid Kernel</b>: In this type of kernels, programmers can select what they want to run in user mode and what in supervisor mode. So, this kernel provides more flexibility than any other kernel but it can have some latency problems.
-
-</details>
-
-<details>
-<summary><b>How to add & change the Kernel parameters?</b></summary><br>
-
-To set the kernel parameters in UNIX-like, first edit the file <code>/etc/sysctl.conf</code> after making the changes save the file and run the command <code>sysctl -p</code>, this command will make the changes permanently without rebooting the machine.
 
 </details>
 
