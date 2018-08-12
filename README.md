@@ -35,11 +35,11 @@
 ## Table of Contents
 
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 30 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 41 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 40 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 39 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 48 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 48 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 7 questions.
+  * [Guru Sysadmin](#guru-sysadmin) - 8 questions.
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -257,7 +257,7 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 </details>
 
 <details>
-<summary><b>What is the difference between "rm" and "rm -rf"?</b></summary><br>
+<summary><b>What is the difference between <code>rm</code> and <code>rm -rf</code>?</b></summary><br>
 
 <code>rm</code> removes files and <code>-rf</code> are to options:<br>
 
@@ -291,6 +291,42 @@ rsync -av --progress --delete dir1/ dir2
 - <code>--delete</code> - delete extraneous files from dest dirs
 - <code>-v, --verbose</code> - verbose mode (increase verbosity)
 - <code>--progress</code> - show progress during transfer
+
+</details>
+
+<details>
+<summary><b>How to quickly backup a file?</b></summary><br>
+
+```bash
+cp filename{,.orig}
+```
+
+</details>
+
+<details>
+<summary><b>How to find all files larger than 20M?</b></summary><br>
+
+```bash
+find / -type f -size +20M
+```
+
+</details>
+
+<details>
+<summary><b>Why do we use <code>su -</code> and not just <code>su</code>?</b></summary><br>
+
+<code>su -</code> invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
+
+<code>su</code> just switches the user, providing a normal shell with an environment nearly the same as with the old user.
+
+</details>
+
+<details>
+<summary><b>How to find files that have been modified on your system in the past 60 minutes?</b></summary><br>
+
+```bash
+find / -mmin 60 -type f
+```
 
 </details>
 
@@ -336,6 +372,18 @@ Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip r
 </details>
 
 <details>
+<summary><b>How to resolves the domain name (using external dns server) with CLI commands?</b></summary><br>
+
+```bash
+# with host command:
+host domain.com 8.8.8.8
+# with dig command:
+dig @9.9.9.9 google.com
+```
+
+</details>
+
+<details>
 <summary><b>Why should you avoid telnet to administer a system remotely?</b></summary><br>
 
 Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool. In the case of Telnet, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a Telnet login session.
@@ -346,6 +394,46 @@ Telnet uses most insecure method for communication. It sends data across the net
 <summary><b>What is the difference between wget and curl?</b></summary><br>
 
 The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
+
+</details>
+
+<details>
+<summary><b>What is a packet filter and how does it work?</b></summary><br>
+
+Packet filtering is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
+
+</details>
+
+<details>
+<summary><b>What is a proxy and how does it work?</b></summary><br>
+
+A proxy server is a dedicated computer or a software system running on a computer that acts as an intermediary between an endpoint device, such as a computer, and another server from which a user or client is requesting a service.
+
+</details>
+
+<details>
+<summary><b>What is the difference between a router and a gateway? What is the default gateway?</b></summary><br>
+
+Routers and Gateways are used to regulate network traffic between two or more separate networks. Gateways regulate traffic between two dissimilar networks, while routers regulate traffic between similar networks.
+
+A default gateway serves as an access point or IP router that a networked computer uses to send information to a computer in another network or the internet. Default simply means that this gateway is used by default, unless an application specifies another gateway.
+
+A gateway is a node (router) in a computer network, a key stopping point for data on its way to or from other networks. Thanks to gateways, we are able to communicate and send data back and forth.
+
+</details>
+
+<details>
+<summary><b>What are the DNS records? Explain of most common records.</b></summary><br>
+
+DNS records are basically mapping files that tell the DNS server which IP address each domain is associated with, and how to handle requests sent to each domain. Some DNS records syntax that are commonly used in nearly all DNS record configurations are A, AAAA, CNAME, MX, PTR, NS, SOA, SRV, TXT, and NAPTR.
+
+- <b>SOA</b> - A Start Of Authority
+- <b>A</b> - Address Mapping records
+- <b>AAAA</b> - IP Version 6 Address records
+- <b>CNAME</b> - Canonical Name records
+- <b>MX</b> - Mail exchanger record
+- <b>NS</b> - Name Server records
+- <b>PTR</b> - Reverse-lookup Pointer records
 
 </details>
 
@@ -790,12 +878,60 @@ dpkg -i --force-confmiss mysql-common.deb
 
 </details>
 
+<details>
+<summary><b>How reload shell without exit?</b></summary><br>
+
+The best way is: `exec $SHELL -l`
+
+</details>
+
+<details>
+<summary><b>How to exit without saving shell history?</b></summary><br>
+
+```bash
+kill -9 $$
+unset HISTFILE && exit
+```
+
+</details>
+
 ###### Network Questions
+
+<details>
+<summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
+
+<b>Handshaking</b> begins when one device sends a message to another device indicating that it wants to establish a communications channel. The two devices then send several messages back and forth that enable them to agree on a communications protocol.
+
+A <b>three-way handshake</b> is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange SYN and ACK (SYN, SYN-ACK, ACK) packets before actual data communication begins.
+
+</details>
+
+<details>
+<summary><b>Why is UDP faster than TCP?</b></summary><br>
+
+UDP is faster than TCP, and the simple reason is because its nonexistent acknowledge packet (ACK) that permits a continuous packet stream, instead of TCP that acknowledges a set of packets, calculated by using the TCP window size and round-trip time (RTT).
+
+</details>
+
+<details>
+<summary><b>What is NAT? What is it used for?</b></summary><br>
+
+It enables private IP networks that use unregistered IP addresses to connect to the Internet. NAT operates on a router, usually connecting two networks together, and translates the private (not globally unique) addresses in the internal network into legal addresses, before packets are forwarded to another network.
+
+Workstations or other computers requiring special access outside the network can be assigned specific external IPs using NAT, allowing them to communicate with computers and applications that require a unique public IP address. NAT is also a very important aspect of firewall security.
+
+</details>
 
 <details>
 <summary><b>How to check which ports are listening in my Linux Server?</b></summary><br>
 
-Use the <code>netstat -tapn</code> or <code>lsof -i</code>.
+Use the:
+
+- <code>lsof -i</code>
+- <code>ss -l</code>
+- <code>netstat -atn</code> - for tcp
+- <code>netstat -aun</code> - for udp
+- <code>netstat -tulapn</code>
 
 </details>
 
@@ -896,6 +1032,27 @@ CSPs on the other hand set a policy of what content can run on the current site.
 
 </details>
 
+<details>
+<summary><b>Explain four types of responses from firewall when scanning with Nmap.</b></summary><br>
+
+There might be four types of responses:
+
+- <b>Open port</b> - few ports in the case of the firewall
+- <b>Closed port</b> - most ports are closed because of the firewall
+- <b>Filtered</b> - Nmap is not sure whether the port is open or not
+- <b>Unfiltered</b> - Nmap can access the port but is still confused about the open status of the port
+
+</details>
+
+<details>
+<summary><b>Analyse web server log and show only 5xx http codes.</b></summary><br>
+
+```bash
+tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
+```
+
+</details>
+
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
 ###### System Questions
@@ -982,8 +1139,10 @@ Interrupt handler is the function that the kernel runs for a specific interrupt.
 For example:<br>
 
 ```bash
-cat >> /path/to/file << __EOF__
-How to Use the VI Editor.
+# cat  >filename ... - overwrite file
+# cat >>filename ... - append to file
+cat > filename << __EOF__
+data data data
 __EOF__
 ```
 
@@ -1222,11 +1381,43 @@ sed 's/^[ \t]+//g' < input > output
 </details>
 
 <details>
-<summary><b>Getting Too many Open files error for Postgres. How to resolve it?</b></summary><br>
+<summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
 
 Fixed the issue by reducing <code>max_files_per_process</code> eg. to 200 from default 1000. This parameter is in <code>postgresql.conf</code> file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
 Usually people start to edit <code>/etc/security/limits.conf</code> file, but forget that this file only apply to the actively logged in users through the pam system.
+
+</details>
+
+<details>
+<summary><b>In what circumstance can <code>df</code> and <code>du</code> disagree on available disk space? How do you solve it?</b></summary><br>
+
+Solution 1:
+
+Check for files on located under mount points. Frequently if you mount a directory (say a sambafs) onto a filesystem that already had a file or directories under it, you lose the ability to see those files, but they're still consuming space on the underlying disk.
+
+I've had file copies while in single user mode dump files into directories that I couldn't see except in single usermode (due to other directory systems being mounted on top of them).
+
+Solution 2:
+
+On the other hand <code>df -h</code> and <code>du -sh</code> could mismatched by about 50% of the hard disk size. This was caused by eg. apache (httpd) keeping large log files in memory which had been deleted from disk.
+
+This was tracked down by running <code>lsof | grep "/var" | grep deleted</code> where <code>/var</code> was the partition I needed to clean up.
+
+The output showed lines like this:
+
+```
+httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
+```
+
+The situation was then resolved by restarting apache (<code>service httpd restart</code>) and cleared of disk space, by allowing the locks on deleted files to be cleared.
+
+</details>
+
+<details>
+<summary><b>What is the difference between encryption and hashing?</b></summary><br>
+
+<b>Hashing</b>: Finally, hashing is a form of cryptographic security which differs from <b>encryption</b>. Whereas <b>encryption</b> is a two step process used to first encrypt and then decrypt a message, <b>hashing</b> condenses a message into an irreversible fixed-length value, or hash.
 
 </details>
 
@@ -1312,6 +1503,53 @@ cgset -r cpu.shares=512 cpulimited
 cgexec -g cpu:cpulimited COMMAND_1
 cgexec -g cpu:cpulimited COMMAND_2
 cgexec -g cpu:cpulimited COMMAND_3
+```
+
+</details>
+
+<details>
+<summary><b>How mount a temporary ram partition?</b></summary><br>
+
+```bash
+# -t - filesystem type
+# -o - mount options
+mount -t tmpfs tmpfs /mnt -o size=64M
+```
+
+</details>
+
+<details>
+<summary><b>How to kills a process that is locking a file?</b></summary><br>
+
+```bash
+fuser -k filename
+```
+
+</details>
+
+<details>
+<summary><b>How to restore permission for <code>/bin/chmod</code>?</b></summary><br>
+
+```bash
+# 1:
+cp /bin/ls chmod.01
+cp /bin/chmod chmod.01
+./chmod.01 700 file
+
+# 2:
+/bin/busybox chmod 0700 /bin/chmod
+
+# 3:
+setfacl --set u::rwx,g::---,o::--- /bin/chmod
+```
+
+</details>
+
+<details>
+<summary><b>How to checking whether the private key and the certificate match?</b></summary><br>
+
+```bash
+(openssl rsa -noout -modulus -in private.key | openssl md5 ; openssl x509 -noout -modulus -in certificate.crt | openssl md5) | uniq
 ```
 
 </details>
@@ -1452,11 +1690,68 @@ So any site can make a request to your site on behalf of their visitors and proc
 
 </details>
 
+<details>
+<summary><b>Create a single-use TCP or UDP proxy with Netcat.</b></summary><br>
+
+```bash
+### TCP -> TCP
+nc -l -p 2000 -c "nc [ip|hostname] 3000"
+
+### TCP -> UDP
+nc -l -p 2000 -c "nc -u [ip|hostname] 3000"
+
+### UDP -> UDP
+nc -l -u -p 2000 -c "nc -u [ip|hostname] 3000"
+
+### UDP -> TCP
+nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
+```
+
+</details>
+
+<details>
+<summary><b>Explain 3 techniques for Avoiding Firewalls with Nmap.</b></summary><br>
+
+1. Use Decoy addresses
+
+```
+# Generates a random number of decoys.
+nmap -D RND:10 [target]
+# Manually specify the IP addresses of the decoys.
+nmap -D decoy1,decoy2,decoy3
+```
+
+In this type of scan you can instruct Nmap to spoof packets from other hosts.In the firewall logs it will be not only our IP address but also and the IP addresses of the decoys so it will be much harder to determine from which system the scan started.
+
+2. Source port number specification
+
+```
+nmap --source-port 53 [target]
+```
+
+A common error that many administrators are doing when configuring firewalls is to set up a rule to allow all incoming traffic that comes from a specific port number.The <code>--source-port</code> option of Nmap can be used to exploit this misconfiguration.Common ports that you can use for this type of scan are: 20, 53 and 67.
+
+3. Append Random Data
+
+```
+nmap --data-length 25 [target]
+```
+
+Many firewalls are inspecting packets by looking at their size in order to identify a potential port scan.This is because many scanners are sending packets that have specific size.In order to avoid that kind of detection you can use the command <code>--data-length</code> to add additional data and to send packets with different size than the default.
+
+4. TCP ACK Scan
+
+```
+nmap -sA [target]
+```
+
+It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
+
+</details>
+
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: Guru Sysadmin
-
-3 Questions.
 
 <details>
 <summary><b>Why do We need mktemp command?</b></summary><br>
@@ -1573,6 +1868,18 @@ HTTP Status code 307 or 308 should be used instead of 301 because it changes the
 Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
 
 If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
+
+</details>
+
+<details>
+<summary><b>How to testing remote connection to port with <code>dev</code> subsystem?</b></summary><br>
+
+```bash
+# <proto - set protocol (tcp/udp)
+# <host> - set remote host
+# <port> - set destination port
+timeout 1 bash -c "</dev/<proto>/<host>/<port>" >/dev/null 2>&1 ; echo $?
+```
 
 </details>
 
