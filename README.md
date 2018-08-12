@@ -35,10 +35,10 @@
 ## Table of Contents
 
 - <b>[Introduction](#introduction)</b>
-  * [Simple Questions](#simple-questions) - 6 questions.
+  * [Simple Questions](#simple-questions) - 8 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 39 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 48 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 43 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 49 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 48 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 8 questions.
@@ -55,7 +55,7 @@ The specific answer depends on the situation/person.
 </details>
 
 <details>
-<summary><b>What excites or interests you about administration?</b></summary><br>
+<summary><b>What excites or interests you about IT Administration?</b></summary><br>
 
 The specific answer depends on the situation/person.
 
@@ -76,6 +76,13 @@ The specific answer depends on the situation/person.
 </details>
 
 <details>
+<summary><b>Do you contribute to any Open Source projects?</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
 <summary><b>Tell me about the biggest mistake you've made.</b></summary><br>
 
 The specific answer depends on the situation/person.
@@ -84,6 +91,13 @@ The specific answer depends on the situation/person.
 
 <details>
 <summary><b>Tell me about your favorite UNIX-like system.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>Tell me about how do you manage your knowledge database (e.g. wikis).</b></summary><br>
 
 The specific answer depends on the situation/person.
 
@@ -255,13 +269,13 @@ Linux passwords are stored in the <b>/etc/shadow</b> file. They are salted and t
 <details>
 <summary><b>How do you change directory and subdirectory with file permissions in Linux/UNIX?</b></summary><br>
 
-To change all the directories eg. to 755 (drwxr-xr-x):<br>
+To change all the directories e.g. to 755 (drwxr-xr-x):<br>
 
 <code>
 find /opt/data -type d -exec chmod 755 {} \;
 </code><br><br>
 
-To change all the files eg. to 644 (-rw-r--r--):<br>
+To change all the files e.g. to 644 (-rw-r--r--):<br>
 
 <code>
 find /opt/data -type f -exec chmod 644 {} \;
@@ -420,6 +434,15 @@ Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip r
 </details>
 
 <details>
+<summary><b>What are 127.0.0.1 and localhost?</b></summary><br>
+
+127.0.0.1 is the loopback Internet protocol (IP) address also referred to as the "localhost". The address is used to establish an IP connection to the same machine or computer being used by the end-user.
+
+localhost resolves to the IP address 127.0.0.1, which is the most commonly used IPv4 loopback address, and to the IPv6 loopback address ::1. The name localhost is also a reserved top-level domain name, set aside to avoid confusion with the definition as a hostname.
+
+</details>
+
+<details>
 <summary><b>How to resolves the domain name (using external dns server) with CLI commands?</b></summary><br>
 
 ```bash
@@ -485,6 +508,13 @@ DNS records are basically mapping files that tell the DNS server which IP addres
 
 </details>
 
+<details>
+<summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
+
+Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 – or a subnet mask of 255.255.255.224.
+
+</details>
+
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
 ###### System Questions
@@ -544,7 +574,7 @@ Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious 
 
 On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask. The umask command is used to set this mask, or to show you its current value.<br>
 
-Permanently change (set eg. <code>umask 02</code>):<br>
+Permanently change (set e.g. <code>umask 02</code>):<br>
 
 - <b>~/.profile</b><br>
 - <b>~/.bashrc</b><br>
@@ -918,7 +948,7 @@ SELECT pg_reload_conf();
 <details>
 <summary><b>How to restore config file in Debian GNU/Linux?</b></summary><br>
 
-Will recreate any missing configuration files, eg. <code>/etc/mysql/my.cnf</code> in your case:
+Will recreate any missing configuration files, e.g. <code>/etc/mysql/my.cnf</code> in your case:
 
 ```
 dpkg -i --force-confmiss mysql-common.deb
@@ -967,6 +997,13 @@ UDP is faster than TCP, and the simple reason is because its nonexistent acknowl
 It enables private IP networks that use unregistered IP addresses to connect to the Internet. NAT operates on a router, usually connecting two networks together, and translates the private (not globally unique) addresses in the internal network into legal addresses, before packets are forwarded to another network.
 
 Workstations or other computers requiring special access outside the network can be assigned specific external IPs using NAT, allowing them to communicate with computers and applications that require a unique public IP address. NAT is also a very important aspect of firewall security.
+
+</details>
+
+<details>
+<summary><b>What's the purpose of Spanning Tree?</b></summary><br>
+
+This protocol operates at layer 2 of the OSI model with the purpose of preventing loops on the network. Without STP, a redundant switch deployment would create broadcast storms that cripple even the most robust networks. There are several iterations based on the original IEEE 802.1D standard; each operates slightly different than the others while largely accomplishing the same loop-free goal.
 
 </details>
 
@@ -1066,6 +1103,15 @@ sub vcl_recv {
 </details>
 
 <details>
+<summary><b>Analyse web server log and show only 5xx http codes.</b></summary><br>
+
+```bash
+tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
+```
+
+</details>
+
+<details>
 <summary><b>What is the difference between CORS and CSPs?</b></summary><br>
 
 CORS allows the Same Origin Policy to be relaxed for a domain.
@@ -1089,15 +1135,6 @@ There might be four types of responses:
 - <b>Closed port</b> - most ports are closed because of the firewall
 - <b>Filtered</b> - Nmap is not sure whether the port is open or not
 - <b>Unfiltered</b> - Nmap can access the port but is still confused about the open status of the port
-
-</details>
-
-<details>
-<summary><b>Analyse web server log and show only 5xx http codes.</b></summary><br>
-
-```bash
-tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
-```
 
 </details>
 
@@ -1431,7 +1468,7 @@ sed 's/^[ \t]+//g' < input > output
 <details>
 <summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
 
-Fixed the issue by reducing <code>max_files_per_process</code> eg. to 200 from default 1000. This parameter is in <code>postgresql.conf</code> file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
+Fixed the issue by reducing <code>max_files_per_process</code> e.g. to 200 from default 1000. This parameter is in <code>postgresql.conf</code> file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
 Usually people start to edit <code>/etc/security/limits.conf</code> file, but forget that this file only apply to the actively logged in users through the pam system.
 
@@ -1448,7 +1485,7 @@ I've had file copies while in single user mode dump files into directories that 
 
 Solution 2:
 
-On the other hand <code>df -h</code> and <code>du -sh</code> could mismatched by about 50% of the hard disk size. This was caused by eg. apache (httpd) keeping large log files in memory which had been deleted from disk.
+On the other hand <code>df -h</code> and <code>du -sh</code> could mismatched by about 50% of the hard disk size. This was caused by e.g. apache (httpd) keeping large log files in memory which had been deleted from disk.
 
 This was tracked down by running <code>lsof | grep "/var" | grep deleted</code> where <code>/var</code> was the partition I needed to clean up.
 
@@ -1717,13 +1754,13 @@ Key differences with HTTP/1.1:
 
 When sent by the origin server:
 
-<code>max-age=0</code> simply tells caches (and user agents) the response is stale from the get-go and so they SHOULD revalidate the response (eg. with the If-Not-Modified header) before using a cached copy, whereas, <code>no-cache</code> tells them they MUST revalidate before using a cached copy.
+<code>max-age=0</code> simply tells caches (and user agents) the response is stale from the get-go and so they SHOULD revalidate the response (e.g. with the If-Not-Modified header) before using a cached copy, whereas, <code>no-cache</code> tells them they MUST revalidate before using a cached copy.
 
 In other words, caches may sometimes choose to use a stale response (although I believe they have to then add a Warning header), but <code>no-cache</code> says they're not allowed to use a stale response no matter what. Maybe you'd want the SHOULD-revalidate behavior when baseball stats are generated in a page, but you'd want the MUST-revalidate behavior when you've generated the response to an e-commerce purchase.
 
 When sent by the user agent:
 
-If a user agent sends a request with <code>Cache-Control: max-age=0</code> (aka. "end-to-end revalidation"), then each cache along the way will revalidate its cache entry (eg. with the If-Not-Modified header) all the way to the origin server. If the reply is then 304 (Not Modified), the cached entity can be used.
+If a user agent sends a request with <code>Cache-Control: max-age=0</code> (aka. "end-to-end revalidation"), then each cache along the way will revalidate its cache entry (e.g. with the If-Not-Modified header) all the way to the origin server. If the reply is then 304 (Not Modified), the cached entity can be used.
 
 On the other hand, sending a request with <code>Cache-Control: no-cache</code> (aka. "end-to-end reload") doesn't revalidate and the server MUST NOT use a cached copy when responding.
 
