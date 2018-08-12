@@ -37,11 +37,11 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 8 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 43 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 50 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 48 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 44 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 56 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 52 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 8 questions.
+  * [Guru Sysadmin](#guru-sysadmin) - 9 questions.
 
 ## <a name="general-knowledge">Introduction</a>
 
