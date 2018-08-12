@@ -34,12 +34,60 @@
 
 ## Table of Contents
 
+- <b>[Introduction](#introduction)</b>
+  * [Simple Questions](#simple-questions) - 6 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 39 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 48 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 48 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 8 questions.
+
+## <a name="general-knowledge">Introduction</a>
+
+### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
+
+<details>
+<summary><b>What did you learn this week?</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>What excites or interests you about administration?</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>What is a recent technical challenge you experienced and how did you solve it?</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>Tell me about the last major project you finished.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>Tell me about the biggest mistake you've made.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>Tell me about your favorite UNIX-like system.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -987,7 +1035,7 @@ pfctl -t badhosts -T delete 1.2.3.4
 </details>
 
 <details>
-<summary><b>How to disable Cache for specific domain in Varnish?</b></summary><br>
+<summary><b>How to disable cache for specific domain in Varnish?</b></summary><br>
 
 For example:
 
