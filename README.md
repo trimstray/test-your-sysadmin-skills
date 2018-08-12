@@ -38,7 +38,7 @@
   * [Simple Questions](#simple-questions) - 8 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 43 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 49 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 50 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 48 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 8 questions.
@@ -427,6 +427,43 @@ find / -mmin 60 -type f
 </details>
 
 <details>
+<summary><b>What happens when you type maps.google.com in your browser and press return?</b></summary><br>
+
+1. You type example.com into the address bar of your browser.
+2. The browser checks the cache for a DNS record to find the corresponding IP address of maps.google.com.
+
+- first, it checks the browser cache. The browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
+- second, the browser checks the OS cache. If it is not found in the browser cache, the browser would make a system call to your underlying computer OS to fetch the record since the OS also maintains a cache of DNS records.
+- third, it checks the router cache. If it’s not found on your computer, the browser would communicate with the router that maintains its’ own cache of DNS records.
+- fourth, it checks the ISP cache. If all steps fail, the browser would move on to the ISP. Your ISP maintains its’ own DNS server which includes a cache of DNS records which the browser would check with the last hope of finding your requested URL.
+
+3.  If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts maps.google.com.
+
+- the purpose of a DNS query is to search multiple DNS servers on the internet until it finds the correct IP address for the website. This type of search is called a recursive search since the search will continue repeatedly from DNS server to DNS server until it either finds the IP address we need or returns an error response saying it was unable to find it.
+- for maps.google.com, first, the DNS recursor will contact the root name server. The root name server will redirect it to .com domain name server. .com name server will redirect it to google.com name server. google.com name server will find the matching IP address for maps.google.com in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
+
+4.  Browser initiates a TCP connection with the server.
+
+- once the browser receives the correct IP address it will build a connection with the server that matches IP address to transfer information. Browsers use internet protocols to build such connections.
+- in order to transfer data packets between your computer(client) and the server, it is important to have a TCP connection established. This connection is established using a process called the TCP/IP three-way handshake.
+
+5. The browser sends an HTTP request to the web server.
+
+- this request will also contain additional information such as browser identification (User-Agent header), types of requests that it will accept (Accept header), and connection headers asking it to keep the TCP connection alive for additional requests. It will also pass information taken from cookies the browser has in store for this domain.
+
+6. The server handles the request and sends back a response.
+
+- the server contains a web server (i.e Apache, IIS) which receives the request from the browser and passes it to a request handler to read and generate a response.
+
+7. The server sends out an HTTP response.
+
+- the server response contains the web page you requested as well as the status code, compression type (Content-Encoding), how to cache the page (Cache-Control), any cookies to set, privacy information, etc.
+
+8. The browser displays the HTML content (for HTML responses which is the most common).
+
+</details>
+
+<details>
 <summary><b>How to check default route and routing table?</b></summary><br>
 
 Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip route show</code> we can see the default route and routing tables.
@@ -512,6 +549,33 @@ DNS records are basically mapping files that tell the DNS server which IP addres
 <summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
 
 Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 – or a subnet mask of 255.255.255.224.
+
+</details>
+
+###### Devops Questions
+
+<details>
+<summary><b>What is Version control?</b></summary><br>
+
+It is a system that records changes to a file or set of files over time so that you can recall specific versions later. Version control systems consist of a central shared repository where teammates can commit changes to a file or set of file. Then you can mention the uses of version control.
+
+Version control allows you to:
+
+- revert files back to a previous state
+- revert the entire project back to a previous state
+- compare changes over time
+- see who last modified something that might be causing a problem
+- who introduced an issue and when
+
+</details>
+
+<details>
+<summary><b>Explain some basic Git commands?</b></summary><br>
+
+- <code>git init</code> - create a new local repository
+- <code>git commit -m "message"</code> - commit changes to head
+- <code>git status</code> - list the files you've added with <code>git add</code> and also commit any files you've changed since then
+- <code>git push origin master</code> - send changes to the master branch of your remote repository
 
 </details>
 
@@ -705,7 +769,7 @@ xfs_growfs mountpoint_for_/dev/vgroup/lvolume
 </details>
 
 <details>
-<summary><b>Describe a process to create partition, lvm and filesystem.</b></summary><br>
+<summary><b>Describe a process to create partition, lvm partition and filesystem.</b></summary><br>
 
 1. Create partition<br>
 
@@ -973,6 +1037,39 @@ unset HISTFILE && exit
 
 </details>
 
+<details>
+<summary><b>How do I find all files containing specific string?</b></summary><br>
+
+For example use <code>fgrep</code>:
+
+```bash
+fgrep * -R "string"
+```
+
+or:
+
+```bash
+grep -insr "pattern" *
+```
+
+- <code>-i</code> ignore case distinctions in both the PATTERN and the input files
+- <code>-n</code>  prefix each line of output with the 1-based line number within its input file
+- <code>-s</code> suppress error messages about nonexistent or unreadable files.
+- <code>-r</code> read all files under each directory, recursively.
+
+</details>
+
+<details>
+<summary><b>How to find out the dynamic libraries executables loads when run?</b></summary><br>
+
+You can do this with <code>ldd</code> command:
+
+```bash
+ldd /bin/ls
+```
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -1138,7 +1235,91 @@ There might be four types of responses:
 
 </details>
 
+###### Devops Questions
+
+<details>
+<summary><b>Which are the top DevOps tools? Which tools have you worked on?</b></summary><br>
+
+The most popular DevOps tools are mentioned below:
+
+- <b>Git</b> : Version Control System tool
+- <b>Jenkins</b> : Continuous Integration tool
+- <b>Selenium</b> : Continuous Testing tool
+- <b>Puppet</b>, <b>Chef</b>, <b>Ansible</b> : Configuration Management and Deployment tools
+- <b>Nagios</b> : Continuous Monitoring tool
+- <b>Docker</b> : Containerization tool
+
+</details>
+
+<details>
+<summary><b>How do all these tools work together?</b></summary><br>
+
+The most popular DevOps tools are mentioned below:
+
+- Developers develop the code and this source code is managed by Version Control System tools like Git etc.
+- Developers send this code to the Git repository and any changes made in the code is committed to this Repository.
+- Jenkins pulls this code from the repository using the Git plugin and build it using tools like Ant or Maven.
+- Configuration management tools like puppet deploys & provisions testing environment and then Jenkins releases this code on the test environment on which testing is done using tools like selenium.
+- Once the code is tested, Jenkins send it for deployment on the production server (even production server is provisioned & maintained by tools like puppet).
+- After deployment It is continuously monitored by tools like Nagios.
+- Docker containers provides testing environment to test the build features.
+
+</details>
+
+<details>
+<summary><b>What are playbooks in Ansible?</b></summary><br>
+
+Playbooks are Ansible’s configuration, deployment, and orchestration language.
+
+They can describe a policy you want your remote systems to enforce, or a set of steps in a general IT process. Playbooks are designed to be human-readable and are developed in a basic text language.
+
+At a basic level, playbooks can be used to manage configurations of and deployments to remote machines.
+
+</details>
+
+<details>
+<summary><b>What is NRPE (Nagios Remote Plugin Executor) in Nagios?</b></summary><br>
+
+The NRPE addon is designed to allow you to execute Nagios plugins on remote Linux/Unix machines. The main reason for doing this is to allow Nagios to monitor "local" resources (like CPU load, memory usage, etc.) on remote machines.
+
+Since these public resources are not usually exposed to external machines, an agent like NRPE must be installed on the remote Linux/Unix machines.
+
+</details>
+
+<details>
+<summary><b>What is the difference between Active and Passive check in Nagios?</b></summary><br>
+
+The major difference between Active and Passive checks is that Active checks are initiated and performed by Nagios, while passive checks are performed by external applications.
+
+Passive checks are useful for monitoring services that are:
+
+- asynchronous in nature and cannot be monitored effectively by polling their status on a regularly scheduled basis.
+- located behind a firewall and cannot be checked actively from the monitoring host.
+
+The main features of Actives checks are as follows:
+
+- active checks are initiated by the Nagios process.
+- active checks are run on a regularly scheduled basis.
+
+</details>
+
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
+
+###### Introduction Questions
+
+<details>
+<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>Tell me how code gets deployed in your current production.</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
 
 ###### System Questions
 
@@ -1639,6 +1820,172 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 
 </details>
 
+<details>
+<summary><b>How profile app in Linux environment?</b></summary><br>
+
+> Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
+
+1. You can use <code>top</code> in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
+
+```bash
+top -b -p `pidof a.out`
+```
+
+or
+
+```bash
+top -b -p `pidof a.out` -n 100
+```
+
+2. You can use ps (for instance in a shell script):
+
+```bash
+ps --format pid,pcpu,cputime,etime,size,vsz,cmd -p `pidof a.out`
+```
+
+> I need some means of recording the performance of an application on a Linux machine.
+
+1. To record performance data:
+
+```bash
+perf record -p `pidof a.out`
+```
+
+or to record for 10 secs:
+
+```bash
+perf record -p `pidof a.out` sleep 10
+```
+
+or to record with call graph ():
+
+```bash
+perf record -g -p `pidof a.out`
+```
+
+2) To analyze the recorded data
+
+```bash
+perf report --stdio
+perf report --stdio --sort=dso -g none
+perf report --stdio -g none
+perf report --stdio -g
+```
+
+<b>This is an example of profiling a test program</b>
+
+1. I run my test program (c++):
+
+```bash
+./my_test 100000000
+```
+
+2. Then I record performance data of a running process:
+
+```bash
+perf record -g  -p `pidof my_test` -o ./my_test.perf.data sleep 30
+```
+
+3. Then I analyze load per module:
+
+```bash
+perf report --stdio -g none --sort comm,dso -i ./my_test.perf.data
+
+# Overhead  Command                 Shared Object
+# ........  .......  ............................
+#
+    70.06%  my_test  my_test
+    28.33%  my_test  libtcmalloc_minimal.so.0.1.0
+     1.61%  my_test  [kernel.kallsyms]
+```
+
+4. Then load per function is analyzed:
+
+```bash
+perf report --stdio -g none -i ./my_test.perf.data | c++filt
+
+# Overhead  Command                 Shared Object                       Symbol
+# ........  .......  ............................  ...........................
+#
+    29.30%  my_test  my_test                       [.] f2(long)
+    29.14%  my_test  my_test                       [.] f1(long)
+    15.17%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator new(unsigned long)
+    13.16%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator delete(void*)
+     9.44%  my_test  my_test                       [.] process_request(long)
+     1.01%  my_test  my_test                       [.] operator delete(void*)@plt
+     0.97%  my_test  my_test                       [.] operator new(unsigned long)@plt
+     0.20%  my_test  my_test                       [.] main
+     0.19%  my_test  [kernel.kallsyms]             [k] apic_timer_interrupt
+     0.16%  my_test  [kernel.kallsyms]             [k] _spin_lock
+     0.13%  my_test  [kernel.kallsyms]             [k] native_write_msr_safe
+
+  ...
+```
+
+5. Then call chains are analyzed:
+
+```bash
+perf report --stdio -g graph -i ./my_test.perf.data | c++filt
+
+# Overhead  Command                 Shared Object                       Symbol
+# ........  .......  ............................  ...........................
+#
+    29.30%  my_test  my_test                       [.] f2(long)
+            |
+            --- f2(long)
+               |
+                --29.01%-- process_request(long)
+                          main
+                          __libc_start_main
+
+    29.14%  my_test  my_test                       [.] f1(long)
+            |
+            --- f1(long)
+               |
+               |--15.05%-- process_request(long)
+               |          main
+               |          __libc_start_main
+               |
+                --13.79%-- f2(long)
+                          process_request(long)
+                          main
+                          __libc_start_main
+
+  ...
+```
+
+So at this point you know where your program spends time.
+
+Also the simple way to do app profile is to use the <code>pstack</code> utility or <code>lsstack</code>.
+
+Other tool is Valgrind. So this is what I recommend. Run program first:
+
+```bash
+valgrind --tool=callgrind --dump-instr=yes -v --instr-atstart=no ./binary > tmp
+```
+
+Now when it works and we want to start profiling we should run in another window:
+
+```bash
+callgrind_control -i on
+```
+
+This turns profiling on. To turn it off and stop whole task we might use:
+
+```bash
+callgrind_control -k
+```
+
+Now we have some files named callgrind.out.* in current directory. To see profiling results use:
+
+```bash
+kcachegrind callgrind.out.*
+```
+
+I recommend in next window to click on "Self" column header, otherwise it shows that "main()" is most time consuming task.
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -1731,6 +2078,17 @@ ssh -L 1234:remote2:22 -p 45678 user1@remote1
 # Then, use the tunnel to copy the file directly from remote2
 scp -P 1234 user2@localhost:file .
 ```
+
+</details>
+
+<details>
+<summary><b>How can you reduce load time of a dynamic website?</b></summary><br>
+
+- webpage optimization
+- cached web pages
+- quality web hosting
+- compressed text files
+- apache/nginx tuning
 
 </details>
 
@@ -1831,6 +2189,35 @@ nmap -sA [target]
 ```
 
 It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
+
+</details>
+
+###### Devops Questions
+
+<details>
+<summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
+
+Flapping occurs when a service or host changes state too frequently, this causes lot of problem and recovery notifications.
+
+Once you have defined Flapping, explain how Nagios detects Flapping. Whenever Nagios checks the status of a host or service, it will check to see if it has started or stopped flapping.
+
+Nagios follows the below given procedure to do that:
+
+- storing the results of the last 21 checks of the host or service analyzing the historical check results and determine where state changes/transitions occur
+- using the state transitions to determine a percent state change value (a measure of change) for the host or service
+- comparing the percent state change value against low and high flapping thresholds
+
+</details>
+
+<details>
+<summary><b>What are the advantages that Containerization provides over virtualization?</b></summary><br>
+
+Below are the advantages of containerization over virtualization:
+
+- containers provide real-time provisioning and scalability but VMs provide slow provisioning
+- containers are lightweight when compared to VMs
+- VMs have limited performance when compared to containers
+- containers have better resource utilization compared to VMs
 
 </details>
 
@@ -2053,5 +2440,26 @@ location / {
 
 }
 ```
+
+</details>
+
+<details>
+<summary><b>Explain <code>:(){ :|:& };:</code> and how stop this code if you are already logged into a system?</b></summary><br>
+
+It's a fork bomb.
+
+- <code>:()</code> - this defines the function. ":"" is the function name and the empty parenthesis shows that it will not accept any arguments
+- <code>{ }</code> - these characters shows the beginning and end of function definition
+- <code>:|:</code> - it loads a copy of the function ":: into memory and pipe its output to another copy of the ":" function, which has to be loaded into memory
+- <code>&</code> - this will make the process as a background process, so that the child processes will not get killed eventhough the parent gets auto-killed
+- <code>:</code> - final ":" will execute the function again and hence the chain reaction begins
+
+The best way to protect a multi-user system is to use PAM to limit the number of processes a user can use. We know the biggest problem with a fork bomb is the fact it takes up so many processes.
+
+So we have two ways of attempting to fix this, if you are already logged into the system:
+- execute a SIGSTOP command to stop the process: <code>killall -STOP -u user1</code>
+- if you can't run at the command line you will have to use <code>exec</code> to force it to run (due to processes all being used): <code>exec killall -STOP -u user1</code>
+
+With fork bombs your best method for this is preventing from being to big of an issue in the first place.
 
 </details>
