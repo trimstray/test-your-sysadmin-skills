@@ -37,9 +37,9 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 10 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 45 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 46 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 60 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 60 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 62 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -111,7 +111,7 @@ The specific answer depends on the situation/person.
 </details>
 
 <details>
-<summary><b>What are your daily news checks? Also information security news?</b></summary><br>
+<summary><b>What are your daily news checks? Also information security news.</b></summary><br>
 
 The specific answer depends on the situation/person.
 
@@ -509,6 +509,18 @@ localhost resolves to the IP address <code>127.0.0.1</code>, which is the most c
 host domain.com 8.8.8.8
 # with dig command:
 dig @9.9.9.9 google.com
+```
+
+</details>
+
+<details>
+<summary><b>How to testing port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
+
+```bash
+# with telnet command:
+telnet code42.example.com 5432
+# with nc (netcat) command:
+nc -vz code42.example.com 5432
 ```
 
 </details>
@@ -2143,6 +2155,25 @@ I recommend in next window to click on "Self" column header, otherwise it shows 
 
 </details>
 
+
+<details>
+<summary><b>What is the easiest, safest and most portable way to remove <code>-rf</code> directory entry?</b></summary><br>
+
+They're effective but not optimally portable:
+
+- <code>rm -- -fr</code>
+- <code>perl -le 'unlink("-fr");'</code>
+
+People who go on about shell command line quoting and character escaping are almost as dangerous as those who simply don't even recognize why a file name like that poses any problem at all.
+
+The most portable solution:
+
+```bash
+rm ./-fr
+```
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -2346,6 +2377,26 @@ nmap -sA [target]
 ```
 
 It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
+
+</details>
+
+<details>
+<summary><b>What does a Tcpdump do? How to capture only incoming traffic to your interface?</b></summary><br>
+
+<code>tcpdump</code> is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
+
+<code>tcpdump</code> puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
+
+If you want to view only packets that come to your interface you should:
+
+- <code>-Q in</code> - for Linux <code>tcpdump</code> version
+- <code>-D in</code> - for BSD <code>tcpdump</code> version
+
+Both params set send/receive direction direction for which packets should be captured.
+
+```bash
+tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
+```
 
 </details>
 
