@@ -38,8 +38,8 @@
   * [Simple Questions](#simple-questions) - 10 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 46 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 60 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 62 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 62 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 64 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -657,6 +657,17 @@ Security misconfiguration is a vulnerability when a device/application/network i
 </details>
 
 <details>
+<summary><b>What is this UID 0 <code>toor</code> account? Have I been compromised?</b></summary><br>
+
+<code>toor</code> is an "alternative" superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
+
+This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in <code>/usr/local/bin</code> which, by default, resides on a different file system. If root's shell is located in <code>/usr/local/bin</code> and the file system containing <code>/usr/local/bin</code>) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
+
+Some people use toor for day-to-day root tasks with a non-standard shell, leaving root, with a standard shell, for single-user mode or emergencies. By default, a user cannot log in using toor as it does not have a password, so log in as root and set a password for toor before using it to login.
+
+</details>
+
+<details>
 <summary><b>What is the name and path of the main system log?</b></summary><br>
 
 By default, the main system log is <b>/var/log/messages</b>. This file contains all the messages and the script written by the user.
@@ -730,6 +741,19 @@ A Sticky bit is a permission bit that is set on a file or a directory that lets 
 <summary><b>How to change the default run level in Linux?</b></summary><br>
 
 To change the run level we have to edit the file <b>/etc/inittab</b> and change initdefault entry (<code>id:5:initdefault</code>:). Using <code>init</code> command we change the run level temporary like <code>init 3</code>, this command will move the system in runlevl 3.
+
+</details>
+
+<details>
+<summary><b>I have forgotten the root password! What do I do in BSD?</b></summary><br>
+
+Restart the system, type <code>boot -s</code> at the <code>Boot:</code> prompt to enter single-user mode.
+
+At the question about the shell to use, hit Enter which will display a # prompt.
+
+Enter <code>mount -urw /</code> to remount the root file system read/write, then run <code>mount -a</code> to remount all the file systems.
+
+Run <code>passwd root</code> to change the root password then run <code>exit</code> to continue booting.
 
 </details>
 
@@ -1461,6 +1485,15 @@ Environment variable <code>LD_LIBRARY_PATH</code> is a colon-separated set of di
 </details>
 
 <details>
+<summary><b>Describe start-up configuration files and directory in BSD systems.</b></summary><br>
+
+In BSD the primary start-up configuration file is <code>/etc/defaults/rc.conf</code>. System startup scripts such as <code>/etc/rc</code> and <code>/etc/rc.d</code> just include this file.
+
+If you want to add other programs to system startup you need to change <code>/etc/rc.conf</code> file instead of <code>/etc/defaults/rc.conf</code>.
+
+</details>
+
+<details>
 <summary><b>What does Sar provides and at which location Sar logs are stored?</b></summary><br>
 
 Sar collect, report or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.
@@ -1492,7 +1525,7 @@ There are some system calls used in Linux for process management. These are as f
 </details>
 
 <details>
-<summary><b>Explain interrupts in Linux and also explain interrupt handlers.</b></summary><br>
+<summary><b>Explain interrupts and interrupt handlers in Linux.</b></summary><br>
 
 Interrupts means the processor is transferred temporarily to another program or function. When that program is completed, the processor will be given back to that program to complete the task.
 
@@ -1631,6 +1664,20 @@ When <code>/sbin/nologin</code> is set as the shell, if user with that shell log
 <code>/bin/false</code> is just a binary that immediately exits, returning false, when it's called, so when someone who has false as shell logs in, they're immediately logged out when false exits. Setting the shell to <code>/bin/true</code> has the same effect of not allowing someone to log in but false is probably used as a convention over true since it's much better at conveying the concept that person doesn't have a shell.
 
 nologin is the more user-friendly option, with a customizable message given to the user trying to log in, so you would theoretically want to use that; but both nologin and false will have the same end result of someone not having a shell and not being able to ssh in.
+
+</details>
+
+<details>
+<summary><b>What is the meaning of the error <code>maxproc limit exceeded by uid %i ...</code> in FreeBSD?
+</b></summary><br>
+
+The FreeBSD kernel will only allow a certain number of processes to exist at one time. The number is based on the <code>kern.maxusers</code> variable.
+
+<code>kern.maxusers</code> also affects various other in-kernel limits, such as network buffers. If the machine is heavily loaded, increase <code>kern.maxusers</code>. This will increase these other system limits in addition to the maximum number of processes.
+
+To adjust the <code>kern.maxusers</code> value, see the File/Process Limits section of the Handbook. While that section refers to open files, the same limits apply to processes.
+
+If the machine is lightly loaded but running a very large number of processes, adjust the <code>kern.maxproc</code> tunable by defining it in <code>/boot/loader.conf</code>.
 
 </details>
 
