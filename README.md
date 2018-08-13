@@ -39,7 +39,7 @@
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 44 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 57 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 56 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 58 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
@@ -1689,6 +1689,23 @@ sed 's/^[ \t]+//g' < input > output
 </details>
 
 <details>
+<summary><b>How to enforce authorization methods in SSH?</b></summary><br>
+
+Force login with a password:
+
+```bash
+ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no user@remote_host
+```
+
+Force login using the key:
+
+```bash
+ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i id_rsa user@remote_host
+```
+
+</details>
+
+<details>
 <summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
 
 Fixed the issue by reducing <code>max_files_per_process</code> e.g. to 200 from default 1000. This parameter is in <code>postgresql.conf</code> file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
@@ -1850,6 +1867,14 @@ cp /bin/chmod chmod.01
 # 3:
 setfacl --set u::rwx,g::---,o::--- /bin/chmod
 ```
+
+</details>
+
+<details>
+<summary><b><code>grub></code> vs <code>grub-rescue></code>. Explain.</b></summary><br>
+
+- <code>grub></code> - this is the mode to which it passes if you find everything you need to run the system in addition to the configuration file. With this mode, we have access to most (if not all) modules and commands. This mode can be called from the menu by pressing the 'c' key
+- <code>grub-rescue></code> - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory <code>/boot/grub/i386-pc</code>), if its contents are damaged or if no normal module is found, contains only basic commands
 
 </details>
 
@@ -2386,13 +2411,21 @@ Notice that the second word indicates present state, and the first word == "Stil
 You just need to write a Nginx rewrite rule with HTTP status code <b>307</b> or <b>308</b>:
 
 ```bash
-location ~ ^/de/api/(?<method>.*)$ {
+location / {
+    proxy_pass              http://localhost:80;
+    client_max_body_size    10m;
+}
+
+location /api {
+    # HTTP 307 only for POST method.
     if ($request_method = POST) {
-        return 307 http://www.example.com/api/$method$is_args$args;
+        return 307 https://api.example.com?request_uri;
     }
 
-    # You can keep this for non-POST requests
-    rewrite ^/de/api/(.*) http://www.example.com/api/$1 redirect;
+    # You can keep this for non-POST requests.
+    rewrite ^ https://api.example.com?request_uri permanent;
+
+    client_max_body_size    10m;
 }
 ```
 
