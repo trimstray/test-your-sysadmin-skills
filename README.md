@@ -39,7 +39,7 @@
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 44 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 57 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 55 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 56 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
@@ -125,14 +125,14 @@ The specific answer depends on the situation/person.
 <details>
 <summary><b>What is the difference between Linux and UNIX?</b></summary><br>
 
-UNIX - Only big companies are allowed to use the UNIX copyright and name. IBM AIX, Sun Solaris, and HP-UX all are UNIX operating systems. Most UNIX operating systems are commercial in nature.<br>
+<b>UNIX</b> - only big companies are allowed to use the UNIX copyright and name. IBM AIX, Sun Solaris, and HP-UX all are UNIX operating systems. Most UNIX operating systems are commercial in nature.<br>
 
 - UNIX operating systems are considered as a complete OS as everything come from a single vendor.<br>
 - Most UNIX like operating systems are not free.<br>
 - UNIX operating systems comes with its own firewall products.<br>
 - UNIX supports file systems like jfs, gpfs (AIX), jfs, gpfs (HP-UX), jfs, gpfs (Solaris).<br>
 
-Linux is a Unix clone. But if you consider Portable Operating System Interface (POSIX) standards then Linux can be considered as UNIX.<br>
+<b>Linux</b> is a Unix clone. But if you consider Portable Operating System Interface (POSIX) standards then Linux can be considered as UNIX.<br>
 
 - Linux is Free. You can download it from the Internet or redistribute it under GNU licenses.<br>
 - All Linux distributions include GUI system, GNU utilities, installation & management tools, GNU c/c++ Compilers, Editors (vi), and various applications like OpenOffice, Firefox.<br>
@@ -166,7 +166,7 @@ Linux operating system is consist of 3 components which are as below:<br>
 <details>
 <summary><b>What do you understand by CLI?</b></summary><br>
 
-CLI is an acronym for Command Line Interface. We have to provide the information to the computer so that it can perform the function accordingly. In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
+<b>CLI</b> is an acronym for Command Line Interface. We have to provide the information to the computer so that it can perform the function accordingly. In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
 
 </details>
 
@@ -189,14 +189,24 @@ Also called login name, logon name, sign-in name, sign-on name. a unique sequenc
 <details>
 <summary><b>Describe the root account in Unix-like systems.</b></summary><br>
 
-The root account is like a systems administrator account, and allows you full control of the system. Root always has a UID of zero.
+The <b>root</b> account is like a systems administrator account, and allows you full control of the system (is the most privileged account on a Unix system). The "root" account has no security restrictions imposed upon it. This means it is easy to perform administrative duties without hassle. Root always has a UID of zero.
 
 </details>
 
 <details>
 <summary><b>How do you find who is logged in?</b></summary><br>
 
-Use this command to find who logged in: <code>w</code>.
+For more information, including each login of a username, the terminal users are attached to, the date and time that login began, and possibly the computer from which they are making the connection, enter:
+
+```bash
+who
+```
+
+For extensive information, including username, terminal, IP number of the source computer, the time the login began, any idle time, process CPU cycles, job CPU cycles, and the currently running command, enter:
+
+```bash
+w
+```
 
 </details>
 
@@ -331,12 +341,10 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 <details>
 <summary><b>How do you list contents of archive.tgz and extract only one file?</b></summary><br>
 
-<code>
+```bash
 tar tf archive.tgz
-</code><br>
-<code>
 tar xf archive.tgz filename
-</code><br>
+```
 
 </details>
 
@@ -427,20 +435,20 @@ find / -mmin 60 -type f
 </details>
 
 <details>
-<summary><b>What happens when you type maps.google.com in your browser and press return?</b></summary><br>
+<summary><b>What happens when you type api.example.com in your browser and press return?</b></summary><br>
 
-1. You type example.com into the address bar of your browser.
-2. The browser checks the cache for a DNS record to find the corresponding IP address of maps.google.com.
+1. You type api.example.com into the address bar of your browser.
+2. The browser checks the cache for a DNS record to find the corresponding IP address of api.example.com.
 
 - first, it checks the browser cache. The browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
 - second, the browser checks the OS cache. If it is not found in the browser cache, the browser would make a system call to your underlying computer OS to fetch the record since the OS also maintains a cache of DNS records.
 - third, it checks the router cache. If it’s not found on your computer, the browser would communicate with the router that maintains its’ own cache of DNS records.
 - fourth, it checks the ISP cache. If all steps fail, the browser would move on to the ISP. Your ISP maintains its’ own DNS server which includes a cache of DNS records which the browser would check with the last hope of finding your requested URL.
 
-3.  If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts maps.google.com.
+3.  If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts api.example.com.
 
 - the purpose of a DNS query is to search multiple DNS servers on the internet until it finds the correct IP address for the website. This type of search is called a recursive search since the search will continue repeatedly from DNS server to DNS server until it either finds the IP address we need or returns an error response saying it was unable to find it.
-- for maps.google.com, first, the DNS recursor will contact the root name server. The root name server will redirect it to .com domain name server. .com name server will redirect it to google.com name server. google.com name server will find the matching IP address for maps.google.com in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
+- for api.example.com, first, the DNS recursor will contact the root name server. The root name server will redirect it to .com domain name server. .com name server will redirect it to google.com name server. google.com name server will find the matching IP address for api.example.com in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
 
 4.  Browser initiates a TCP connection with the server.
 
@@ -473,9 +481,9 @@ Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip r
 <details>
 <summary><b>What are 127.0.0.1 and localhost?</b></summary><br>
 
-127.0.0.1 is the loopback Internet protocol (IP) address also referred to as the "localhost". The address is used to establish an IP connection to the same machine or computer being used by the end-user.
+<code>127.0.0.1</code> is the loopback Internet protocol (IP) address also referred to as the "localhost". The address is used to establish an IP connection to the same machine or computer being used by the end-user.
 
-localhost resolves to the IP address 127.0.0.1, which is the most commonly used IPv4 loopback address, and to the IPv6 loopback address ::1. The name localhost is also a reserved top-level domain name, set aside to avoid confusion with the definition as a hostname.
+localhost resolves to the IP address <code>127.0.0.1</code>, which is the most commonly used IPv4 loopback address, and to the IPv6 loopback address <code>::1</code>. The name localhost is also a reserved top-level domain name, set aside to avoid confusion with the definition as a hostname.
 
 </details>
 
@@ -494,12 +502,14 @@ dig @9.9.9.9 google.com
 <details>
 <summary><b>Why should you avoid telnet to administer a system remotely?</b></summary><br>
 
-Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool. In the case of Telnet, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a Telnet login session.
+Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
+
+In the case of Telnet, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a Telnet login session.
 
 </details>
 
 <details>
-<summary><b>What is the difference between wget and curl?</b></summary><br>
+<summary><b>What is the difference between <code>wget</code> and <code>curl</code>?</b></summary><br>
 
 The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
 
@@ -548,14 +558,14 @@ DNS records are basically mapping files that tell the DNS server which IP addres
 <details>
 <summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
 
-Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 – or a subnet mask of 255.255.255.224.
+Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 - or a subnet mask of <code>255.255.255.224</code>.
 
 </details>
 
 ###### Devops Questions
 
 <details>
-<summary><b>What is Version control?</b></summary><br>
+<summary><b>What is Version Control?</b></summary><br>
 
 It is a system that records changes to a file or set of files over time so that you can recall specific versions later. Version control systems consist of a central shared repository where teammates can commit changes to a file or set of file. Then you can mention the uses of version control.
 
@@ -610,13 +620,13 @@ By default all scripts are saved in this file. This is the standard system log f
 </details>
 
 <details>
-<summary><b>Explain /proc filesystem.</b></summary><br>
+<summary><b>Explain <code>/proc</code> filesystem.</b></summary><br>
 
-<b>/proc</b> is a virtual file system that provides detailed information about kernel, hardware and running processes.
+<code>/proc</code> is a virtual file system that provides detailed information about kernel, hardware and running processes.
 
-Since <b>/proc</b> contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.<br>
+Since <code>/proc</code> contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.<br>
 
-Virtual files such as <b>/proc/interrupts</b>, <b>/proc/meminfo</b>, <b>/proc/mounts</b> and <b>/proc/partitions</b> provide an up-to-the-moment glimpse of the system’s hardware. Others: <b>/proc/filesystems</b> file and the <b>/proc/sys/</b> directory provide system configuration information and interfaces.
+Virtual files such as <code>/proc/interrupts</code>, <code>/proc/meminfo</code>, <code>/proc/mounts</code> and <code>/proc/partitions</code> provide an up-to-the-moment glimpse of the system’s hardware. Others: <code>/proc/filesystems</code> file and the <code>/proc/sys/</code> directory provide system configuration information and interfaces.
 
 </details>
 
@@ -744,52 +754,56 @@ A Unix file is "stored" in two different parts of the disk - the data blocks and
 
 Use the <code>lvextend</code> command for resize LVM partition.<br>
 
-- extending the size by 500MB:<br>
-<code>
-lvextend -L +500M /dev/vgroup/lvolume
-</code><br><br>
+- extending the size by 500MB:
 
-- extending all available free space:<br>
-<code>
+```bash
+lvextend -L +500M /dev/vgroup/lvolume
+```
+
+- extending all available free space:
+
+```bash
 lvextend -l +100%FREE /dev/vgroup/lvolume
-</code><br><br>
+```
 
 and `resize2fs` or `xfs_growfs` to resize filesystem:<br>
 
-- for ext filesystems:<br>
-<code>
-resize2fs /dev/vgroup/lvolume
-</code><br><br>
+- for ext filesystems:
 
-- for xfs filesystem:<br>
-<code>
+```bash
+resize2fs /dev/vgroup/lvolume
+```
+
+- for xfs filesystem:
+
+```bash
 xfs_growfs mountpoint_for_/dev/vgroup/lvolume
-</code><br><br>
+```
 
 </details>
 
 <details>
 <summary><b>Describe a process to create partition, lvm partition and filesystem.</b></summary><br>
 
-1. Create partition<br>
+1. Create partition
 
-<code>
+```bash
 fdisk /dev/sdb
-</code><br><br>
+```
 
-2. Create LVM<br>
+2. Create LVM
 
-<code>
+```bash
 pvcreate /dev/sdb1
 vgcreate vg0 /dev/sdb1
 lvcreate --name datastore --size 50G vg0
-</code><br><br>
+```
 
-3. Create filesystem<br>
+3. Create filesystem
 
-<code>
+```bash
 mkfs -t xfs /dev/mapper/vg0-datastore
-</code><br>
+```
 
 </details>
 
@@ -827,7 +841,7 @@ You may sometimes see entries marked <b>Z</b> (or <b>H</b> under Linux) in the <
 <details>
 <summary><b>What is strace command in Linux?</b></summary><br>
 
-strace is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+<code>strace</code> is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
 
 </details>
 
@@ -848,7 +862,7 @@ Key-based authentication is a kind of authentication that may be used as an alte
 <details>
 <summary><b>Which utility is used to make automate rotation of a log?</b></summary><br>
 
-Logrotate command is used to make automate rotation of log. It allows automatic rotation, compression, removal, and mailing of log files.
+<code>logrotate</code> command is used to make automate rotation of log. It allows automatic rotation, compression, removal, and mailing of log files.
 
 </details>
 
@@ -986,6 +1000,15 @@ A "root" authority is a certificate issuer that parties choose to trust (explici
 </details>
 
 <details>
+<summary><b>Should the root certificate go on the server?</b></summary><br>
+
+Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
+
+If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
+
+</details>
+
+<details>
 <summary><b>How to reloading PostgreSQL after configuration changes?</b></summary><br>
 
 Solution 1:
@@ -1067,15 +1090,6 @@ You can do this with <code>ldd</code> command:
 ```bash
 ldd /bin/ls
 ```
-
-</details>
-
-<details>
-<summary><b>Should the root certificate go on the server?</b></summary><br>
-
-Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
-
-If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
 
 </details>
 
@@ -1344,7 +1358,7 @@ The specific answer depends on the situation/person.
 <details>
 <summary><b>What is LD_LIBRARY_PATH?</b></summary><br>
 
-Environment variable LD_LIBRARY_PATH is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
+Environment variable <code>LD_LIBRARY_PATH</code> is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
 
 </details>
 
@@ -1356,7 +1370,7 @@ Environment variable LD_LIBRARY_PATH is a colon-separated set of directories whe
 </details>
 
 <details>
-<summary><b>Explain all the fields in the /etc/passwd file.</b></summary><br>
+<summary><b>Explain all the fields in the <code>/etc/passwd</code> file.</b></summary><br>
 
 - <b>Username</b>: First field is the username that contains the username which is 1 to 32 length characters.<br>
 - <b>Password</b>: This field does not show the actual password as the password is encrypted. Here, x character shows that password is encrypted that is located in <code>/etc/shadow</code> file.<br>
@@ -1364,7 +1378,7 @@ Environment variable LD_LIBRARY_PATH is a colon-separated set of directories whe
 - <b>Group ID (GID)</b>: This field specifies the name of the group to which the user belongs. The group information is also stored in a file <code>/etc/group</code>.<br>
 - <b>User ID Info</b>: Here you can add comments and you can add any extra information related to the users like full name, contact number, etc.<br>
 - <b>Home directory</b>: This field provides the path where the user is directed after the login. For example, <code>/home/smith</code>.<br>
-- <b>Command/shell</b>: This field provides the path of a command/shell and denotes that user has access to this shell i.e. /bin/bash.
+- <b>Command/shell</b>: This field provides the path of a command/shell and denotes that user has access to this shell i.e. <code>/bin/bash</code>.
 
 </details>
 
@@ -1409,7 +1423,7 @@ Interrupt handler is the function that the kernel runs for a specific interrupt.
 </details>
 
 <details>
-<summary><b>How can we edit a file without opening in Linux?</b></summary><br>
+<summary><b>How can we edit a file without opening it?</b></summary><br>
 
 For example:<br>
 
@@ -1426,7 +1440,7 @@ __EOF__
 <details>
 <summary><b>What fields are stored in an inode?</b></summary><br>
 
-Within a POSIX system, a file has the following attributes[9] which may be retrieved by the stat system call:
+Within a POSIX system, a file has the following attributes which may be retrieved by the stat system call:
 
 - <b>Device ID</b> (this identifies the device containing the file; that is, the scope of uniqueness of the serial number).
 File serial numbers
@@ -1479,7 +1493,7 @@ An "s" in the first position means that the SETUID (or SUID) bit was set (the GU
 </details>
 
 <details>
-<summary><b>What does a kill command do?</b></summary><br>
+<summary><b>What does a <code>kill</code> command do?</b></summary><br>
 
 In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
 
@@ -1496,7 +1510,7 @@ In Unix and Unix-like operating systems, kill is a command used to send a signal
 </details>
 
 <details>
-<summary><b>Present and explain the correct process path using the kill command.</b></summary><br>
+<summary><b>Present and explain the correct process path using the <code>kill</code> command.</b></summary><br>
 
 Speaking of killing processes never use <code>kill -9/SIGKILL</code> unless absolutely mandatory. This kill can cause problems because of its brute force.
 
@@ -1510,9 +1524,9 @@ The far majority of the time, this is all you need - and is much cleaner.
 </details>
 
 <details>
-<summary><b>What was getfacl and setfacl commands do?</b></summary><br>
+<summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
 
-The command "setfacl" refers to Set File Access Control Lists and "getfacl" refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
+The command <code>setfacl</code> refers to Set File Access Control Lists and <code>getfacl</code> refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
 
 </details>
 
@@ -1531,7 +1545,7 @@ The process table entry (aka process control block) contains a table, the file d
 </details>
 
 <details>
-<summary><b>What's the difference between /sbin/nologin, /bin/false and /bin/true?
+<summary><b>What's the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
 </b></summary><br>
 
 When <code>/sbin/nologin</code> is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available.'
@@ -1594,7 +1608,7 @@ As "500 - Internal Server Error" says, the high number of context switches are g
 </details>
 
 <details>
-<summary><b>How does strace connect to an already running process?</b></summary><br>
+<summary><b>How does <code>strace</code> connect to an already running process?</b></summary><br>
 
 `strace -p <PID>` - to attach a process to strace.
 
@@ -1729,7 +1743,7 @@ The situation was then resolved by restarting apache (<code>service httpd restar
 
 These will track all commands run by root (euid=0). Why two rules? The execve syscall must be tracked in both 32 and 64 bit code.
 
-2. To get rid of auid=4294967295 messages in logs, add audit=1 to the kernel's cmdline (by editing <code>/etc/default/grub</code>)
+2. To get rid of <code>auid=4294967295</code> messages in logs, add <code>audit=1</code> to the kernel's cmdline (by editing <code>/etc/default/grub</code>)
 
 3. Place the line
 
@@ -1844,6 +1858,30 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 
 ```bash
 (openssl rsa -noout -modulus -in private.key | openssl md5 ; openssl x509 -noout -modulus -in certificate.crt | openssl md5) | uniq
+```
+
+</details>
+
+<details>
+<summary><b>How to create user without useradd command in Linux?</b></summary><br>
+
+1. Add an entry of user details in <code>/etc/passwd</code>
+
+```bash
+# username:password:UID:GID:Comments:Home_Directory:Login Shell
+user:x:501:501:test user:/home/user:/bin/bash
+```
+
+2. You will have to create a group with same name in <code>/etc/group</code>
+
+```bash
+user:x:501:
+```
+
+3. Assign a password to the user
+
+```bash
+passwd user
 ```
 
 </details>
@@ -2034,7 +2072,7 @@ or more violently:<br>
 </details>
 
 <details>
-<summary><b>How to testing connection to remote host (with and without SNI)?</b></summary><br>
+<summary><b>How to testing connection with OpenSSL to remote host (with and without SNI)?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
@@ -2084,23 +2122,23 @@ But we have some good tools for testing this.
 </details>
 
 <details>
-<summary><b>How to run scp with a second remote host?</b></summary><br>
+<summary><b>How to run <code>scp</code> with a second remote host?</b></summary><br>
 
 With <b>ssh</b>:
 
-```
+```bash
 ssh user1@remote1 'ssh user2@remote2 "cat file"' > file
 ```
 
 With <b>tar</b> (with compression):
 
-```
+```bash
 ssh user1@remote1 'ssh user2@remote2 "cd path2; tar cj file"' | tar xj
 ```
 
 With <b>ssh</b> and port forwarding tunnel:
 
-```
+```bash
 # First, open the tunnel
 ssh -L 1234:remote2:22 -p 45678 user1@remote1
 # Then, use the tunnel to copy the file directly from remote2
@@ -2185,7 +2223,7 @@ nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
 
 1. Use Decoy addresses
 
-```
+```bash
 # Generates a random number of decoys.
 nmap -D RND:10 [target]
 # Manually specify the IP addresses of the decoys.
@@ -2196,7 +2234,7 @@ In this type of scan you can instruct Nmap to spoof packets from other hosts.In 
 
 2. Source port number specification
 
-```
+```bash
 nmap --source-port 53 [target]
 ```
 
@@ -2204,7 +2242,7 @@ A common error that many administrators are doing when configuring firewalls is 
 
 3. Append Random Data
 
-```
+```bash
 nmap --data-length 25 [target]
 ```
 
@@ -2212,7 +2250,7 @@ Many firewalls are inspecting packets by looking at their size in order to ident
 
 4. TCP ACK Scan
 
-```
+```bash
 nmap -sA [target]
 ```
 
@@ -2238,7 +2276,7 @@ Nagios follows the below given procedure to do that:
 </details>
 
 <details>
-<summary><b>What are the advantages that Containerization provides over virtualization?</b></summary><br>
+<summary><b>What are the advantages that Containerization provides over Virtualization?</b></summary><br>
 
 Below are the advantages of containerization over virtualization:
 
@@ -2251,10 +2289,10 @@ Below are the advantages of containerization over virtualization:
 
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
-### :diamond_shape_with_a_dot_inside: Guru Sysadmin
+### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
 
 <details>
-<summary><b>Why do we need mktemp command?</b></summary><br>
+<summary><b>Why do we need <code>mktemp</code> command? Present an example of use.</b></summary><br>
 
 <code>mktemp</code> randomizes the name. It is very important from the security point of view.
 
@@ -2305,7 +2343,7 @@ if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 
 Every poll is recorded in the shared memory log as follows:
 
-```
+```bash
 0 Backend_health - b0 Still healthy 4--X-S-RH 9 8 10 0.029291 0.030875 HTTP/1.1 200 Ok
 ```
 
@@ -2394,7 +2432,7 @@ cURL supports formatted output for the details of the request (see the cURL manp
 
 2. Make a request:
 
-```
+```bash
 curl -w "@curl-format.txt" -o /dev/null -s "http://example.com/"
 ```
 
@@ -2410,9 +2448,9 @@ What this does:
 <details>
 <summary><b>Is there a way to allow multiple cross-domains using the Access-Control-Allow-Origin header in Nginx?</b></summary><br>
 
-For Nginx users to allow CORS for multiple domains. To match a list of domain and subdomain this regex make it ease to work with fonts:
+To match a list of domain and subdomain this regex make it ease to work with fonts:
 
-```
+```bash
 location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
    if ( $http_origin ~* (https?://(.+\.)?(domain1|domain2|domain3)\.(?:me|co|com)$) ) {
       add_header "Access-Control-Allow-Origin" "$http_origin";
@@ -2422,7 +2460,7 @@ location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
 
 More sligtly configuration:
 
-```
+```bash
 location / {
 
     if ($http_origin ~* (^https?://([^/]+\.)*(domainone|domaintwo)\.com$)) {
@@ -2536,25 +2574,102 @@ You can also obtain this list by parsing the output of lsof, but it isn't simple
 </details>
 
 <details>
-<summary><b>How to create user without useradd command in Linux?</b></summary><br>
+<summary><b>How to install Linux system on disk, where other Linux exist and running?</b></summary><br>
 
-1. Add an entry of user details in <code>/etc/passwd</code>
+It is possible that the question should be: "<i>System installation from the level and in place of already other system working</i>".
+
+On the example of the Debian GNU/Linux distribution.
+
+1. Creating a working directory and downloading the system using the debootstrap tool.
 
 ```bash
-# username:password:UID:GID:Comments:Home_Directory:Login Shell
-user:x:501:501:test user:/home/user:/bin/bash
+_working_directory="/mnt/system"
+mkdir $_working_directory
+debootstrap --verbose --arch amd64 {wheezy|jessie} . http://ftp.en.debian.org/debian
 ```
 
-2. You will have to create a group with same name in <code>/etc/group</code>
+2. Mounting sub-systems: <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code>.
 
 ```bash
-user:x:501:
+for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
 ```
 
-3. Assign a password to the user
+3. Copy system backup for restore.
 
 ```bash
-passwd user
+cp system_backup_22012015.tgz $_working_directory/mnt
+```
+
+However, it is better not to waste space and do it in a different way (assuming that the copy is in <code>/mnt/backup</code>):
+
+```bash
+_backup_directory="${_working_directory}/mnt/backup"
+mkdir $_backup_directory && mount --bind /mnt/backup $_backup_directory
+```
+
+4. Chroot to "new" system.
+
+```bash
+chroot $_working_directory /bin/bash
+```
+
+5. Updating information about mounted devices.
+
+```bash
+grep -v rootfs /proc/mounts > /etc/mtab
+```
+
+6. In the "new" system, the next thing to do is mount the disk on which the "old" system is located (e.g. <code>/dev/sda1</code>).
+
+```bash
+_working_directory="/mnt/old_system"
+_backup_directory="/mnt/backup"
+mkdir $_working_directory && mount /dev/sda1 $_working_directory
+```
+
+7. Remove all files of the old system.
+
+```bash
+for i in $(ls | awk '!(/proc/ || /dev/ || /sys/ || /mnt/)') ; do rm -fr $i ; done
+```
+
+8. The next step is to restore the system from a backup.
+
+```bash
+tar xzvfp $_backup_directory/system_backup_22012015.tgz -C $_working_directory
+```
+
+9. And mount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> in a new working directory.
+
+```bash
+for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
+```
+
+10. Install and update grub configuration.
+
+```bash
+chroot $_working_directory /bin/bash -c "grub-install --no-floppy --root-directory=/ /dev/sda"
+chroot $_working_directory /bin/bash -c "update-grub"
+```
+
+11. Unmount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> filesystems.
+
+```bash
+cd
+grep $_working_directory /proc/mounts | cut -f2 -d " " | sort -r | xargs umount -n
+```
+
+None of the available commands, i.e. <code>halt</code>, <code>shutdown</code> or <code>reboot</code>, will work. You need to reload the system configuration - to do this, use the <b>kernel debugger</b> (without the 'b' option):
+
+```bash
+echo 1 > /proc/sys/kernel/sysrq
+echo reisu > /proc/sysrq-trigger
+```
+
+Of course, it is recommended to fully restart the machine in order to completely load the current system. To do this:
+
+```bash
+sync ; reboot -f
 ```
 
 </details>
