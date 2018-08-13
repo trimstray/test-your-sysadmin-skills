@@ -35,13 +35,13 @@
 ## Table of Contents
 
 - <b>[Introduction](#introduction)</b>
-  * [Simple Questions](#simple-questions) - 8 questions.
+  * [Simple Questions](#simple-questions) - 10 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 44 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 57 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 58 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 45 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 60 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 60 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
+  * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
 ## <a name="general-knowledge">Introduction</a>
 
@@ -83,6 +83,13 @@ The specific answer depends on the situation/person.
 </details>
 
 <details>
+<summary><b>What personal achievement are you most proud of?</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
 <summary><b>Tell me about the biggest mistake you've made.</b></summary><br>
 
 The specific answer depends on the situation/person.
@@ -98,6 +105,13 @@ The specific answer depends on the situation/person.
 
 <details>
 <summary><b>Tell me about how do you manage your knowledge database (e.g. wikis).</b></summary><br>
+
+The specific answer depends on the situation/person.
+
+</details>
+
+<details>
+<summary><b>What are your daily news checks? Also information security news?</b></summary><br>
 
 The specific answer depends on the situation/person.
 
@@ -562,6 +576,17 @@ Whether you have a standard /24 VLAN for end users, a /30 for point-to-point lin
 
 </details>
 
+<details>
+<summary><b>Various response codes from a web application?</b></summary><br>
+
+- <b>1xx</b> - Informational responses - communicates transfer protocol-level information
+- <b>2xx</b> - Success - indicates that the client’s request was accepted successfully
+- <b>3xx</b> - Redirection - indicates that the client must take some additional action in order to complete their request
+- <b>4xx</b> - Client side error - this category of error status codes points the finger at clients
+- <b>5xx</b> - Server side error - the server takes responsibility for these error status codes
+
+</details>
+
 ###### Devops Questions
 
 <details>
@@ -586,6 +611,15 @@ Version control allows you to:
 - <code>git commit -m "message"</code> - commit changes to head
 - <code>git status</code> - list the files you've added with <code>git add</code> and also commit any files you've changed since then
 - <code>git push origin master</code> - send changes to the master branch of your remote repository
+
+</details>
+
+###### Cyber Security Questions
+
+<details>
+<summary><b>What is a Security Misconfiguration?</b></summary><br>
+
+Security misconfiguration is a vulnerability when a device/application/network is configured in a way which can be exploited by an attacker to take advantage of it. This can be as simple as leaving the default username/password unchanged or too simple for device accounts etc.
 
 </details>
 
@@ -1323,6 +1357,38 @@ The main features of Actives checks are as follows:
 
 - active checks are initiated by the Nagios process.
 - active checks are run on a regularly scheduled basis.
+
+</details>
+
+###### Cyber Security Questions
+
+<details>
+<summary><b>What is XSS, how will you mitigate it?</b></summary><br>
+
+<b>Cross Site Scripting</b> is a JavaScript vulnerability in the web applications. The easiest way to explain this is a case when a user enters a script in the client side input fields and that input gets processed without getting validated. This leads to untrusted data getting saved and executed on the client side.
+
+Countermeasures of XSS are input validation, implementing a CSP (Content security policy) etc.
+
+</details>
+
+<details>
+<summary><b>HIDS vs NIDS and which one is better and why?</b></summary><br>
+
+<b>HIDS</b> is host intrusion detection system and <b>NIDS</b> is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. HIDS is placed on each host whereas NIDS is placed in the network. For an enterprise, NIDS is preferred as HIDS is difficult to manage, plus it consumes processing power of the host as well.
+
+</details>
+
+<details>
+<summary><b>What is compliance?</b></summary><br>
+
+Abiding by a set of standards set by a government/Independent party/organisation. E.g. An industry which stores, processes or transmits Payment related information needs to be complied with PCI DSS (Payment card Industry Data Security Standard). Other compliance examples can be an organisation complying with its own policies.
+
+</details>
+
+<details>
+<summary><b>What is a WAF and what are its types?</b></summary><br>
+
+<b>WAF</b> stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. WAF can be either a box type or cloud based.
 
 </details>
 
@@ -2312,6 +2378,54 @@ Below are the advantages of containerization over virtualization:
 
 </details>
 
+###### Cyber Security Questions
+
+<details>
+<summary><b>What is CSRF?</b></summary><br>
+
+<b>Cross Site Request Forgery</b> is a web application vulnerability in which the server does not check whether the request came from a trusted client or not. The request is just processed directly. It can be further followed by the ways to detect this, examples and countermeasures.
+
+</details>
+
+<details>
+<summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
+
+As <b>security policy</b> defines the security objectives and the security framework of an organisation. A <b>process</b> is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. <b>Guidelines</b> are recommendations which can be customised and used in the creation of procedures.
+
+</details>
+
+<details>
+<summary><b>What is a false positive and false negative in case of IDS?</b></summary><br>
+
+When the device generated an alert for an intrusion which has actually not happened: this is <b>false positive</b> and if the device has not generated any alert and the intrusion has actually happened, this is the case of a <b>false negative</b>.
+
+</details>
+
+<details>
+<summary><b>5 quick points on Web server hardening?</b></summary><br>
+
+Web server hardening is filtering of unnecessary services running on various ports and removal of default test scripts from the servers. Although web server hardening is a lot more than this and usually organisations have a customised checklist for hardening the servers. Any server getting created has to be hardened and hardening has to be re-confirmed on a yearly basis. Even the hardening checklist has to be reviewed on a yearly basis for new add-ons.
+
+Example:
+
+- if machine is a new install, protect it from hostile network traffic, until the operating system is installed and hardened
+- create a separate partition with the <code>nodev</code>, <code>nosuid</code>, and <code>noexec</code> options set for <code>/tmp</code>
+- create separate partitions for <code>/var</code>, <code>/var/log</code>, <code>/var/log/audit</code>, and <code>/home</code>
+- enable randomized virtual memory region placement
+- remove legacy services (e.g., telnet-server; rsh, rlogin, rcp; ypserv, ypbind; tftp, tftp-server; talk, talk-server).
+- limit connections to services running on the host to authorized users of the service via firewalls and other access control technologies
+- disable source routed packet acceptance
+- enable TCP/SYN cookies
+- disable SSH root login
+- install and configure AIDE
+- install and configure OSsec HIDS
+- configure SELinux
+- all administrator or root access must be logged
+- integrity checking of system accounts, group memberships, and their associated privileges should be enabled and tested
+- set password creation requirements
+
+</details>
+
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
@@ -2607,7 +2721,7 @@ You can also obtain this list by parsing the output of lsof, but it isn't simple
 </details>
 
 <details>
-<summary><b>How to install Linux system on disk, where other Linux exist and running?</b></summary><br>
+<summary><b>How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
 
 It is possible that the question should be: "<i>System installation from the level and in place of already other system working</i>".
 
@@ -2703,6 +2817,127 @@ Of course, it is recommended to fully restart the machine in order to completely
 
 ```bash
 sync ; reboot -f
+```
+
+</details>
+
+<details>
+<summary><b>How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
+
+Major distribution kernels set the default value of <code>/proc/sys/vm/overcommit_memory</code> to zero, which means that processes can request more memory than is currently free in the system.
+
+If memory is exhaustively used up by processes, to the extent which can possibly threaten the stability of the system, then the <b>OOM killer</b> comes into the picture.
+
+NOTE: It is the task of the OOM Killer to continue killing processes until enough memory is freed for the smooth functioning of the rest of the process that the Kernel is attempting to run.
+
+The OOM Killer has to select the best process(es) to kill. Best here refers to that process which will free up the maximum memory upon killing and is also the least important to the system.
+
+The primary goal is to kill the least number of processes that minimizes the damage done and at the same time maximizing the amount of memory freed.
+
+To facilitate this, the kernel maintains an <code>oom_score</code> for each of the processes. You can see the oom_score of each of the processes in the /proc filesystem under the pid directory.
+
+```bash
+cat /proc/10292/oom_score
+```
+
+The higher the value of <code>oom_score</code> of any process, the higher is its likelihood of getting killed by the OOM Killer in an out-of-memory situation.
+
+If you want to create a special control group containing the list of processes which should be the first to receive the OOM killer's attention, create a directory under <code>/mnt/oom-killer</code> to represent it:
+
+```bash
+mkdir lambs
+```
+
+Set <code>oom.priority</code> to a value high enough:
+
+```bash
+echo 256 > /mnt/oom-killer/lambs/oom.priority
+```
+
+<code>oom.priority</code> is a 64-bit unsigned integer, and can have a maximum value an nsigned 64-bit number can hold. While scanning for the process to be killed, the OOM-killer selects a process from the list of tasks with the highest <code>oom.priority</code> value.
+
+Add the PID of the process to be added to the list of tasks:
+
+```bash
+echo <pid> > /mnt/oom-killer/lambs/tasks
+```
+
+To create a list of processes, which will not be killed by the OOM-killer, make a directory to contain the processes:
+
+```bash
+mkdir invincibles
+```
+
+Setting <code>oom.priority</code> to zero makes all the process in this cgroup to be excluded from the list of target processes to be killed.
+
+```bash
+echo 0 > /mnt/oom-killer/invincibles/oom.priority
+```
+
+To add more processes to this group, add the pid of the task to the list of tasks in the invincible group:
+
+```bash
+echo <pid> > /mnt/oom-killer/invincibles/tasks
+```
+
+</details>
+
+<details>
+<summary><b>What are salted hashes? Generate the password with salt for the <code>/etc/shadow</code> file.</b></summary><br>
+
+<b>Salt</b> at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
+
+For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
+
+The encrypted passwords in <code>/etc/shadow</code> file are stored in the following format:
+
+```bash
+$ID$SALT$ENCRYPTED
+```
+
+The <code>$ID</code> indicates the type of encryption, the <code>$SALT</code> is a random (up to 16 characters) string and <code>$ENCRYPTED</code> is a password’s hash.
+
+<table style="width:100%">
+  <tr>
+    <th>Hash Type</th>
+    <th>ID</th>
+    <th>Hash Length</th>
+  </tr>
+  <tr>
+    <td>MD5</td>
+    <td>$1</td>
+    <td>22 characters</td>
+  </tr>
+  <tr>
+    <td>SHA-256</td>
+    <td>$5</td>
+    <td>43 characters</td>
+  </tr>
+  <tr>
+    <td>SHA-512</td>
+    <td>$6</td>
+    <td>86 characters</td>
+  </tr>
+</table>
+
+Use the below commands from the Linux shell to generate hashed password for <code>/etc/shadow</code> with the random salt:
+
+- Generate <b>MD5</b> password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$1\$%s\$' % randomsalt)"
+```
+
+- Generate <b>SHA-256</b> password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$5\$%s\$' % randomsalt)"
+```
+
+- Generate <b>SHA-512</b> password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
 ```
 
 </details>
