@@ -5,7 +5,7 @@
 
 <br>
 
-<h4 align="center">Sysadmin Interview Questions and Answers 2018 Edition (work in progress).</h4>
+<p align="center">"<i>A great Admin doesn't need to know everything, but they should be able to come up with amazing solutions to impossible projects.</i>" - cwheeler33 (ServerFault)</p>
 
 <br>
 
@@ -38,10 +38,10 @@
   * [Simple Questions](#simple-questions) - 8 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 44 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 56 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 52 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 57 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 55 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 9 questions.
+  * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
 ## <a name="general-knowledge">Introduction</a>
 
@@ -731,7 +731,7 @@ There are three types of journaling available in ext3/ext4 file systems:
 </details>
 
 <details>
-<summary><b>What is an Inode?</b></summary><br>
+<summary><b>What is an inode?</b></summary><br>
 
 An inode is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.<br>
 
@@ -1070,6 +1070,15 @@ ldd /bin/ls
 
 </details>
 
+<details>
+<summary><b>Should the root certificate go on the server?</b></summary><br>
+
+Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
+
+If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -1369,7 +1378,7 @@ By default log files of Sar command is located at <code>/var/log/sa/sadd</code> 
 </details>
 
 <details>
-<summary><b>How to scan newly assigned luns on linux box without rebooting?</b></summary><br>
+<summary><b>How to scan newly assigned luns on Linux box without rebooting?</b></summary><br>
 
 Run the command: <code>echo "---" >/sys/class/scsi_host/hostX/scan</code>.
 
@@ -1411,6 +1420,25 @@ cat > filename << __EOF__
 data data data
 __EOF__
 ```
+
+</details>
+
+<details>
+<summary><b>What fields are stored in an inode?</b></summary><br>
+
+Within a POSIX system, a file has the following attributes[9] which may be retrieved by the stat system call:
+
+- <b>Device ID</b> (this identifies the device containing the file; that is, the scope of uniqueness of the serial number).
+File serial numbers
+- The <b>file mode</b> which determines the file type and how the file's owner, its group, and others can access the file
+- A <b>link count</b> telling how many hard links point to the inode
+- The <b>User ID</b> of the file's owner
+- The <b>Group ID</b> of the file
+- The <b>device ID</b> of the file if it is a device file.
+- The <b>size of the file</b> in bytes
+- <b>Timestamps</b> telling when the inode itself was last modified (ctime, inode change time), the file content last modified (mtime, modification time), and last accessed (atime, access time)
+- The preferred <b>I/O block size</b>
+- The <b>number of blocks</b> allocated to this file
 
 </details>
 
@@ -1719,7 +1747,7 @@ Let's login and run some commands:
 $ id -u
 1000
 $ sudo ls /
-bin  boot  data  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  scratch  selinux  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
+bin  boot  data  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  scratch  seLinux  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
 $ sudo su -
 # ls /etc
 [...]
@@ -2226,7 +2254,7 @@ Below are the advantages of containerization over virtualization:
 ### :diamond_shape_with_a_dot_inside: Guru Sysadmin
 
 <details>
-<summary><b>Why do We need mktemp command?</b></summary><br>
+<summary><b>Why do we need mktemp command?</b></summary><br>
 
 <code>mktemp</code> randomizes the name. It is very important from the security point of view.
 
@@ -2331,15 +2359,6 @@ location ~ ^/de/api/(?<method>.*)$ {
 ```
 
 HTTP Status code 307 or 308 should be used instead of 301 because it changes the request method from POST to GET.
-
-</details>
-
-<details>
-<summary><b>Should the root certificate go on the server?</b></summary><br>
-
-Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
-
-If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
 
 </details>
 
@@ -2461,5 +2480,81 @@ So we have two ways of attempting to fix this, if you are already logged into th
 - if you can't run at the command line you will have to use <code>exec</code> to force it to run (due to processes all being used): <code>exec killall -STOP -u user1</code>
 
 With fork bombs your best method for this is preventing from being to big of an issue in the first place.
+
+</details>
+
+<details>
+<summary><b>How to recover deleted file held open by Apache?</b></summary><br>
+
+If a file has been deleted but is still open, that means the file still exists in the filesystem (it has an inode) but has a hard link count of 0. Since there is no link to the file, you cannot open it by name. There is no facility to open a file by inode either.
+
+Linux exposes open files through special symbolic links under <code>/proc</code>. These links are called <code>/proc/12345/fd/42</code> where 12345 is the PID of a process and 42 is the number of a file descriptor in that process. A program running as the same user as that process can access the file (the read/write/execute permissions are the same you had as when the file was deleted).
+
+The name under which the file was opened is still visible in the target of the symbolic link: if the file was <code>/var/log/apache/foo.log</code>, then the target of the link is <code>/var/log/apache/foo.log (deleted)</code>.
+
+Thus you can recover the content of an open deleted file given the PID of a process that has it open and the descriptor that it's opened on like this:
+
+```bash
+recover_open_deleted_file () {
+  old_name=$(readlink "$1")
+  case "$old_name" in
+    *' (deleted)')
+      old_name=${old_name%' (deleted)'}
+      if [ -e "$old_name" ]; then
+        new_name=$(TMPDIR=${old_name%/*} mktemp)
+        echo "$oldname has been replaced, recovering content to $new_name"
+      else
+        new_name="$old_name"
+      fi
+      cat <"$1" >"$new_name";;
+    *) echo "File is not deleted, doing nothing";;
+  esac
+}
+recover_open_deleted_file "/proc/$pid/fd/$fd"
+```
+
+If you only know the process ID but not the descriptor, you can recover all files with:
+
+```bash
+for x in /proc/$pid/fd/* ; do
+  recover_open_deleted_file "$x"
+done
+```
+
+If you don't know the process ID either, you can search among all processes:
+
+```bash
+for x in /proc/[1-9]*/fd/* ; do
+  case $(readlink "$x") in
+    /var/log/apache/*) recover_open_deleted_file "$x";;
+  esac
+done
+```
+
+You can also obtain this list by parsing the output of lsof, but it isn't simpler nor more reliable nor more portable (this is Linux-specific anyhow).
+
+</details>
+
+<details>
+<summary><b>How to create user without useradd command in Linux?</b></summary><br>
+
+1. Add an entry of user details in <code>/etc/passwd</code>
+
+```bash
+# username:password:UID:GID:Comments:Home_Directory:Login Shell
+user:x:501:501:test user:/home/user:/bin/bash
+```
+
+2. You will have to create a group with same name in <code>/etc/group</code>
+
+```bash
+user:x:501:
+```
+
+3. Assign a password to the user
+
+```bash
+passwd user
+```
 
 </details>
