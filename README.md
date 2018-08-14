@@ -37,7 +37,7 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 10 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 46 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 45 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 62 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 64 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
@@ -194,13 +194,6 @@ I also like ZSH shell because is much much more customizable than BASH. It has g
 </details>
 
 <details>
-<summary><b>What is the user ID?</b></summary><br>
-
-Also called login name, logon name, sign-in name, sign-on name. a unique sequence of characters used to identify a user and allow access to a computer system, computer network, or online account. the part of an email address before the @ sign.
-
-</details>
-
-<details>
 <summary><b>Describe the root account in Unix-like systems.</b></summary><br>
 
 The <b>root</b> account is like a systems administrator account, and allows you full control of the system (is the most privileged account on a Unix system). The "root" account has no security restrictions imposed upon it. This means it is easy to perform administrative duties without hassle. Root always has a UID of zero.
@@ -227,7 +220,7 @@ w
 <details>
 <summary><b>What is the UID and GID?</b></summary><br>
 
-Unix-like operating systems identify a user within the kernel by a value called a user identifier, often abbreviated to user ID or UID. The UID, along with the group identifier (GID) and other access control criteria, is used to determine which system resources a user can access.
+UID and GID are numeric identifiers for users and groups. Unix-like operating systems identify a user within the kernel by a value called a user identifier, often abbreviated to user ID or UID. The UID, along with the group identifier (GID) and other access control criteria, is used to determine which system resources a user can access.
 
 </details>
 
