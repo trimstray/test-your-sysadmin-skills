@@ -1527,7 +1527,7 @@ Interrupt handler is the function that the kernel runs for a specific interrupt.
 </details>
 
 <details>
-<summary><b>How can we edit a file without opening it?</b></summary><br>
+<summary><b>How can we modify a file without invoking a text editor?</b></summary><br>
 
 For example:<br>
 
