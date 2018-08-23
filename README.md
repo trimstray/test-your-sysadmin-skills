@@ -250,7 +250,14 @@ Using <code>free</code> and <code>vmstat</code> command we can display the physi
 <details>
 <summary><b>What is load average?</b></summary><br>
 
-Is the average system load calculated over a given period of time of 1, 5 and 15 minutes. Lower numbers are better. Higher numbers represent a problem or an overloaded machine.
+Linux load averages are "system load averages" that show the running thread (task) demand on the system as an average number of running plus waiting threads. This measures demand, which can be greater than what the system is currently processing. Most tools show three averages, for 1, 5, and 15 minutes.
+
+Some interpretations:
+
+- If the averages are 0.0, then your system is idle.
+- If the 1 minute average is higher than the 5 or 15 minute averages, then load is increasing.
+- If the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing.
+- If they are higher than your CPU count, then you might have a performance problem (it depends).
 
 </details>
 
