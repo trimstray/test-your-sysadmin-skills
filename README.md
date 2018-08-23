@@ -32,6 +32,8 @@
 
 ****
 
+  > This project contains sample questions/answers that can be used during an interview or exam.
+
 ## Table of Contents
 
 - <b>[Introduction](#introduction)</b>
