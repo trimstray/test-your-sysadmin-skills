@@ -50,7 +50,7 @@
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
 
 - <b>What did you learn this week?</b><br>
-- <b>What excites or interests you about Sysadmins World?</b><br>
+- <b>What excites or interests you about SysAdmins World?</b><br>
 - <b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
 - <b>Tell me about the last major project you finished.</b><br>
 - <b>Do you contribute to any Open Source projects?</b><br>
@@ -71,7 +71,7 @@
 - <b>What is an incremental backup?</b><br>
 - <b>What are the main reasons for keeping old log files?</b><br>
 - <b>How do SSH keys work?</b><br>
-- <b>Why would you want to mount your computers in a rack?</b><br>
+- <b>Why would you want to mount servers in a rack?</b><br>
 - <b>How to running commands in the background?</b><br>
 - <b>What is a process?</b><br>
 
