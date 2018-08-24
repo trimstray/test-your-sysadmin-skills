@@ -39,9 +39,9 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 10 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 45 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 62 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 64 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 53 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 76 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 71 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -50,7 +50,7 @@
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
 
 - <b>What did you learn this week?</b><br>
-- <b>What excites or interests you about IT Administration?</b><br>
+- <b>What excites or interests you about Sysadmins World?</b><br>
 - <b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
 - <b>Tell me about the last major project you finished.</b><br>
 - <b>Do you contribute to any Open Source projects?</b><br>
@@ -1131,7 +1131,7 @@ ldd /bin/ls
 
 - <b>Configure a virtual interface on your workstation.</b><br>
 - <b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
-- <b>Server A Can’t Talk to Server B. Describe possible reasons in a few steps.</b><br>
+- <b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b><br>
 - <b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
 - <b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
 
