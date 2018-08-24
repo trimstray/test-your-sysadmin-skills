@@ -49,16 +49,16 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
 
-<b>What did you learn this week?</b><br>
-<b>What excites or interests you about IT Administration?</b><br>
-<b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
-<b>Tell me about the last major project you finished.</b><br>
-<b>Do you contribute to any Open Source projects?</b><br>
-<b>What personal achievement are you most proud of?</b><br>
-<b>Tell me about the biggest mistake you've made.</b><br>
-<b>Tell me about your favorite UNIX-like system.</b><br>
-<b>Tell me about how do you manage your knowledge database (e.g. wikis).</b><br>
-<b>What are your daily news checks? Also information security news.</b><br>
+- <b>What did you learn this week?</b><br>
+- <b>What excites or interests you about IT Administration?</b><br>
+- <b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
+- <b>Tell me about the last major project you finished.</b><br>
+- <b>Do you contribute to any Open Source projects?</b><br>
+- <b>What personal achievement are you most proud of?</b><br>
+- <b>Tell me about the biggest mistake you've made.</b><br>
+- <b>Tell me about your favorite UNIX-like system.</b><br>
+- <b>Tell me about how do you manage your knowledge database (e.g. wikis).</b><br>
+- <b>What are your daily news checks? Also information security news.</b><br>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -66,14 +66,14 @@
 
 ###### System Questions
 
-<b>How is a user’s default group determined? How would you change it?</b><br>
-<b>What is RAID? What is RAID0, RAID1, RAID5, RAID10?</b><br>
-<b>What is an incremental backup?</b><br>
-<b>What are the main reasons for keeping old log files?</b><br>
-<b>How Do SSH keys work?</b><br>
-<b>Why would you want to mount your computers in a rack?</b><br>
-<b>How to running commands in the background?</b><br>
-<b>What is a process?</b><br>
+- <b>How is a user’s default group determined? How would you change it?</b><br>
+- <b>What is RAID? What is RAID0, RAID1, RAID5, RAID10?</b><br>
+- <b>What is an incremental backup?</b><br>
+- <b>What are the main reasons for keeping old log files?</b><br>
+- <b>How do SSH keys work?</b><br>
+- <b>Why would you want to mount your computers in a rack?</b><br>
+- <b>How to running commands in the background?</b><br>
+- <b>What is a process?</b><br>
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
@@ -591,17 +591,17 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ###### System Questions
 
-<b>Write a simple bash script (or pair of scripts) to backup and restore
+- <b>Write a simple bash script (or pair of scripts) to backup and restore
 your system.</b><br>
-<b>Explain the concept of run levels.</b><br>
-<b>What steps will be taken by init when you run `telinit 1` from run level 3? What will be the final result of the command?</b><br>
-<b>what is the purpose of a process’s effective UID?</b><br>
-<b>How would you recognize a process that is hogging resources?</b><br>
-<b>Explain the differences among the following umask values: 077, 027,
+- <b>Explain the concept of run levels.</b><br>
+- <b>What steps will be taken by init when you run `telinit 1` from run level 3? What will be the final result of the command?</b><br>
+- <b>what is the purpose of a process’s effective UID?</b><br>
+- <b>How would you recognize a process that is hogging resources?</b><br>
+- <b>Explain the differences among the following umask values: 077, 027,
 022, and 755.</b><br>
-<b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
-<b>What is a thread?</b><br>
-<b>Explain 4-5 processor metrics.</b><br>
+- <b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
+- <b>What is a thread?</b><br>
+- <b>Explain 4-5 processor metrics.</b><br>
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
@@ -1129,11 +1129,11 @@ ldd /bin/ls
 
 ###### Network Questions
 
-<b>Configure a virtual interface on your workstation.</b><br>
-<b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
-<b>Server A Can’t Talk to Server B. Describe possible reasons in a few steps.</b><br>
-<b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
-<b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
+- <b>Configure a virtual interface on your workstation.</b><br>
+- <b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
+- <b>Server A Can’t Talk to Server B. Describe possible reasons in a few steps.</b><br>
+- <b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
+- <b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
 
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
@@ -1402,13 +1402,13 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ###### Introduction Questions
 
-<b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
-<b>Tell me how code gets deployed in your current production.</b><br>
+- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
+- <b>Tell me how code gets deployed in your current production.</b><br>
 
 ###### System Questions
 
-<b>Can’t mount the root file system. Why?</b><br>
-<b>What principles to follow for successful system performance tuning?</b><br>
+- <b>Can’t mount the root file system. Why?</b><br>
+- <b>What principles to follow for successful system performance tuning?</b><br>
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2185,11 +2185,11 @@ rm ./-fr
 
 ###### Network Questions
 
-<b>Create SPF records for your site to help control spam.</b><br>
-<b>What is the difference between an authoritative and a nonauthorita-
+- <b>Create SPF records for your site to help control spam.</b><br>
+- <b>What is the difference between an authoritative and a nonauthorita-
 tive answer to a DNS query?</b><br>
-<b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use?</b><br>
-<b>Use tcpdump to capture FTP traffic for both active and passive FTP
+- <b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use?</b><br>
+- <b>Use tcpdump to capture FTP traffic for both active and passive FTP
 sessions.</b><br>
 
 <details>
@@ -2447,7 +2447,7 @@ Below are the advantages of containerization over virtualization:
 
 ###### Cyber Security Questions
 
-<b>What is OWASP Application Security Verification Standard? Explain in a few points.</b><br>
+- <b>What is OWASP Application Security Verification Standard? Explain in a few points.</b><br>
 
 <details>
 <summary><b>What is CSRF?</b></summary><br>
