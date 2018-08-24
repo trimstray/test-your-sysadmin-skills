@@ -49,81 +49,31 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
 
-<details>
-<summary><b>What did you learn this week?</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>What excites or interests you about IT Administration?</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>What is a recent technical challenge you experienced and how did you solve it?</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Tell me about the last major project you finished.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Do you contribute to any Open Source projects?</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>What personal achievement are you most proud of?</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Tell me about the biggest mistake you've made.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Tell me about your favorite UNIX-like system.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Tell me about how do you manage your knowledge database (e.g. wikis).</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>What are your daily news checks? Also information security news.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
+<b>What did you learn this week?</b><br>
+<b>What excites or interests you about IT Administration?</b><br>
+<b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
+<b>Tell me about the last major project you finished.</b><br>
+<b>Do you contribute to any Open Source projects?</b><br>
+<b>What personal achievement are you most proud of?</b><br>
+<b>Tell me about the biggest mistake you've made.</b><br>
+<b>Tell me about your favorite UNIX-like system.</b><br>
+<b>Tell me about how do you manage your knowledge database (e.g. wikis).</b><br>
+<b>What are your daily news checks? Also information security news.</b><br>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
 ###### System Questions
+
+<b>How is a user’s default group determined? How would you change it?</b><br>
+<b>What is RAID? What is RAID0, RAID1, RAID5, RAID10?</b><br>
+<b>What is an incremental backup?</b><br>
+<b>What are the main reasons for keeping old log files?</b><br>
+<b>How Do SSH keys work?</b><br>
+<b>Why would you want to mount your computers in a rack?</b><br>
+<b>How to running commands in the background?</b><br>
+<b>What is a process?</b><br>
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
@@ -569,7 +519,7 @@ A gateway is a node (router) in a computer network, a key stopping point for dat
 </details>
 
 <details>
-<summary><b>What are the DNS records? Explain of most common records.</b></summary><br>
+<summary><b>Explain the function of each of the following DNS records: SOA, PTR, A, MX, and CNAME.</b></summary><br>
 
 DNS records are basically mapping files that tell the DNS server which IP address each domain is associated with, and how to handle requests sent to each domain. Some DNS records syntax that are commonly used in nearly all DNS record configurations are A, AAAA, CNAME, MX, PTR, NS, SOA, SRV, TXT, and NAPTR.
 
@@ -640,6 +590,18 @@ Security misconfiguration is a vulnerability when a device/application/network i
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
 ###### System Questions
+
+<b>Write a simple bash script (or pair of scripts) to backup and restore
+your system.</b><br>
+<b>Explain the concept of run levels.</b><br>
+<b>What steps will be taken by init when you run `telinit 1` from run level 3? What will be the final result of the command?</b><br>
+<b>what is the purpose of a process’s effective UID?</b><br>
+<b>How would you recognize a process that is hogging resources?</b><br>
+<b>Explain the differences among the following umask values: 077, 027,
+022, and 755.</b><br>
+<b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
+<b>What is a thread?</b><br>
+<b>Explain 4-5 processor metrics.</b><br>
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
@@ -1167,6 +1129,12 @@ ldd /bin/ls
 
 ###### Network Questions
 
+<b>Configure a virtual interface on your workstation.</b><br>
+<b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
+<b>Server A Can’t Talk to Server B. Describe possible reasons in a few steps.</b><br>
+<b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
+<b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
+
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
 
@@ -1434,21 +1402,13 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ###### Introduction Questions
 
-<details>
-<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
-
-<details>
-<summary><b>Tell me how code gets deployed in your current production.</b></summary><br>
-
-The specific answer depends on the situation/person.
-
-</details>
+<b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
+<b>Tell me how code gets deployed in your current production.</b><br>
 
 ###### System Questions
+
+<b>Can’t mount the root file system. Why?</b><br>
+<b>What principles to follow for successful system performance tuning?</b><br>
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2225,6 +2185,13 @@ rm ./-fr
 
 ###### Network Questions
 
+<b>Create SPF records for your site to help control spam.</b><br>
+<b>What is the difference between an authoritative and a nonauthorita-
+tive answer to a DNS query?</b><br>
+<b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use?</b><br>
+<b>Use tcpdump to capture FTP traffic for both active and passive FTP
+sessions.</b><br>
+
 <details>
 <summary><b>How do you kill program using one port in Linux?</b></summary><br>
 
@@ -2479,6 +2446,8 @@ Below are the advantages of containerization over virtualization:
 </details>
 
 ###### Cyber Security Questions
+
+<b>What is OWASP Application Security Verification Standard? Explain in a few points.</b><br>
 
 <details>
 <summary><b>What is CSRF?</b></summary><br>
