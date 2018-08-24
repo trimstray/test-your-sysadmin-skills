@@ -68,6 +68,8 @@
 
 ###### System Questions
 
+**Interview**:
+
 - <b>How is a user’s default group determined? How would you change it?</b><br>
 - <b>What is RAID? What is RAID0, RAID1, RAID5, RAID10?</b><br>
 - <b>What is an incremental backup?</b><br>
@@ -76,6 +78,8 @@
 - <b>Why would you want to mount servers in a rack?</b><br>
 - <b>How to running commands in the background?</b><br>
 - <b>What is a process?</b><br>
+
+**Exam**:
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
@@ -370,6 +374,8 @@ find / -mmin 60 -type f
 
 ###### Network Questions
 
+**Exam**:
+
 <details>
 <summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
 
@@ -555,6 +561,8 @@ Whether you have a standard /24 VLAN for end users, a /30 for point-to-point lin
 
 ###### Devops Questions
 
+**Exam**:
+
 <details>
 <summary><b>What is Version Control?</b></summary><br>
 
@@ -582,6 +590,8 @@ Version control allows you to:
 
 ###### Cyber Security Questions
 
+**Exam**:
+
 <details>
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
 
@@ -592,6 +602,8 @@ Security misconfiguration is a vulnerability when a device/application/network i
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
 ###### System Questions
+
+**Interview**:
 
 - <b>Write a simple bash script (or pair of scripts) to backup and restore
 your system.</b><br>
@@ -605,6 +617,8 @@ your system.</b><br>
 - <b>What is a thread?</b><br>
 - <b>Explain 4-5 processor metrics.</b><br>
 - <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><b>
+
+**Exam**:
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
@@ -1132,11 +1146,15 @@ ldd /bin/ls
 
 ###### Network Questions
 
+**Interview**:
+
 - <b>Configure a virtual interface on your workstation.</b><br>
 - <b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
 - <b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b><br>
 - <b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
 - <b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
+
+**Exam**:
 
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
@@ -1303,6 +1321,8 @@ There might be four types of responses:
 
 ###### Devops Questions
 
+**Exam**:
+
 <details>
 <summary><b>Which are the top DevOps tools? Which tools have you worked on?</b></summary><br>
 
@@ -1371,6 +1391,8 @@ The main features of Actives checks are as follows:
 
 ###### Cyber Security Questions
 
+**Exam**:
+
 <details>
 <summary><b>What is XSS, how will you mitigate it?</b></summary><br>
 
@@ -1405,13 +1427,19 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ###### Introduction Questions
 
+**Interview**:
+
 - <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
 - <b>Tell me how code gets deployed in your current production.</b><br>
 
 ###### System Questions
 
+**Interview**:
+
 - <b>Can’t mount the root file system. Why?</b><br>
 - <b>What principles to follow for successful system performance tuning?</b><br>
+
+**Exam**:
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2188,6 +2216,8 @@ rm ./-fr
 
 ###### Network Questions
 
+**Interview**:
+
 - <b>Create SPF records for your site to help control spam.</b><br>
 - <b>What is the difference between an authoritative and a nonauthorita-
 tive answer to a DNS query?</b><br>
@@ -2197,7 +2227,8 @@ sessions.</b><br>
 - <b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b><br>
 - <b>What are hits, misses, and hit-for-pass in Varnish Cache?</b><br>
 - <b>What's a reasonable TTL for cached content given the following parameters?</b><br>
--
+
+**Exam**:
 
 <details>
 <summary><b>How do you kill program using one port in Linux?</b></summary><br>
@@ -2425,6 +2456,8 @@ tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
 
 ###### Devops Questions
 
+**Exam**:
+
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
 
@@ -2454,7 +2487,11 @@ Below are the advantages of containerization over virtualization:
 
 ###### Cyber Security Questions
 
+**Interview**:
+
 - <b>What is OWASP Application Security Verification Standard? Explain in a few points.</b><br>
+
+**Exam**:
 
 <details>
 <summary><b>What is CSRF?</b></summary><br>
