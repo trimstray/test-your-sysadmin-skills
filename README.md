@@ -7,6 +7,8 @@
 
 <p align="center">"<i>A great Admin doesn't need to know everything, but they should be able to come up with amazing solutions to impossible projects.</i>" - cwheeler33 (ServerFault)</p>
 
+<p align="center">"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</p>
+
 <br>
 
 <p align="center">
@@ -32,7 +34,7 @@
 
 ****
 
-  > This project contains sample questions/answers that can be used during an interview or exam.
+  > This project contains sample questions/answers that can be used during an interview or exam. I created it for people moving on different levels of skills and knowledge. **I am waiting for your advice, tips and recommendations!**
 
 ## Table of Contents
 
@@ -193,7 +195,7 @@ Swap space is used when the amount of physical memory (RAM) is full. If the syst
 <details>
 <summary><b>How to check memory stats and CPU stats?</b></summary><br>
 
-Using <code>free</code> and <code>vmstat</code> command we can display the physical and virtual memory statistics respectively. With the help of <code>sar</code> command we see the CPU utilization & other stats.
+You'd use `top/htop` for both. Using <code>free</code> and <code>vmstat</code> command we can display the physical and virtual memory statistics respectively. With the help of <code>sar</code> command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
 
 </details>
 
@@ -349,7 +351,7 @@ find / -type f -size +20M
 </details>
 
 <details>
-<summary><b>Why do we use <code>su -</code> and not just <code>su</code>?</b></summary><br>
+<summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
 <code>su -</code> invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
 
@@ -602,6 +604,7 @@ your system.</b><br>
 - <b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
 - <b>What is a thread?</b><br>
 - <b>Explain 4-5 processor metrics.</b><br>
+- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><b>
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
@@ -1496,7 +1499,7 @@ Interrupt handler is the function that the kernel runs for a specific interrupt.
 </details>
 
 <details>
-<summary><b>How can we modify a file without invoking a text editor?</b></summary><br>
+<summary><b>How could you modify a text file without invoking a text editor?</b></summary><br>
 
 For example:<br>
 
@@ -2191,6 +2194,10 @@ tive answer to a DNS query?</b><br>
 - <b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use?</b><br>
 - <b>Use tcpdump to capture FTP traffic for both active and passive FTP
 sessions.</b><br>
+- <b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b><br>
+- <b>What are hits, misses, and hit-for-pass in Varnish Cache?</b><br>
+- <b>What's a reasonable TTL for cached content given the following parameters?</b><br>
+-
 
 <details>
 <summary><b>How do you kill program using one port in Linux?</b></summary><br>
