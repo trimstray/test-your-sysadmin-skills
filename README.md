@@ -36,7 +36,7 @@
 
 This project contains examples of test questions and answers that can be used during an interview or exam for the position of the System Administrator (mainly). It is intended mainly for people working with *nix systems.
 
-`**I am waiting for your advice, tips and recommendations!**``
+`**I am waiting for your advice, tips and recommendations!**`
 
 ## Table of Contents
 
