@@ -34,7 +34,9 @@
 
 ****
 
-  > This project contains sample questions/answers that can be used during an interview or exam. I created it for people moving on different levels of skills and knowledge. **I am waiting for your advice, tips and recommendations!**
+This project contains examples of questions/answers that can be used during an interview or exam for the position of the System Administrator (mainly). It is intended mainly for people working with *nix systems.
+
+Questions and answers relate to important and interesting topics related to the world of * nix systems. They can and even should be changed if necessary! **I am waiting for your advice, tips and recommendations.**
 
 ## Table of Contents
 
