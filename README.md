@@ -609,7 +609,7 @@ your system.</b><br>
 - <b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
 - <b>What is a thread?</b><br>
 - <b>Explain 4-5 processor metrics.</b><br>
-- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><b>
+- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
