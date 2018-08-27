@@ -34,14 +34,14 @@
 
 ****
 
-This project contains examples of test questions and answers that can be used during an interview or exam for the position of the System Administrator (mainly). It is intended mainly for people working with *nix systems.
+This project contains examples of test questions and answers that can be used during an interview or exam for the position of the System Administrator. It is intended mainly for people working with *nix systems.
 
 `I am waiting for your advice, tips and recommendations!`
 
 ## Table of Contents
 
 - <b>[Introduction](#introduction)</b>
-  * [Simple Questions](#simple-questions) - 10 questions.
+  * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 53 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 76 questions.
@@ -78,7 +78,20 @@ This project contains examples of test questions and answers that can be used du
 - <b>How do SSH keys work?</b><br>
 - <b>Why would you want to mount servers in a rack?</b><br>
 - <b>How to running commands in the background?</b><br>
-- <b>What is a process?</b><br>
+- <b>How the Linux kernel creates, manages and deletes the processes in the system?</b><br>
+
+<details>
+<summary><b>What are the Linux Distribution names?</b></summary><br>
+
+- Redhat Enterprise Linux<br>
+- Fedora Linux<br>
+- CentOS Linux<br>
+- Debian Linux<br>
+- Ubuntu Linux<br>
+- Suse Enterprise Linux<br>
+- Slackware Linux
+
+</details>
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
