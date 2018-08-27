@@ -499,11 +499,18 @@ Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip r
 </details>
 
 <details>
-<summary><b>What are 127.0.0.1 and localhost?</b></summary><br>
+<summary><b>What is the difference between 127.0.0.1 and localhost</b></summary><br>
 
-<code>127.0.0.1</code> is the loopback Internet protocol (IP) address also referred to as the "localhost". The address is used to establish an IP connection to the same machine or computer being used by the end-user.
+Well, the most likely difference is that you still have to do an actual lookup of localhost somewhere.
 
-localhost resolves to the IP address <code>127.0.0.1</code>, which is the most commonly used IPv4 loopback address, and to the IPv6 loopback address <code>::1</code>. The name localhost is also a reserved top-level domain name, set aside to avoid confusion with the definition as a hostname.
+If you use <code>127.0.0.1</code>, then (intelligent) software will just turn that directly into an IP address and use it. Some implementations of <code>gethostbyname</code> will detect the dotted format (and presumably the equivalent IPv6 format) and not do a lookup at all.
+
+Otherwise, the name has to be resolved. And there's no guarantee that your hosts file will actually be used for that resolution (first, or at all) so <code>localhost</code> may become a totally different IP address.
+
+By that I mean that, on some systems, a local hosts file can be bypassed. The <code>host.conf</code> file controls this on Linux (and many other Unices).
+
+If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have).
+Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take <code>127.0.0.1</code>.
 
 </details>
 
