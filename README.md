@@ -34,11 +34,11 @@
 
 ****
 
-This project contains **examples** of test questions and answers that can be used during an interview or exam for the position of the System Administrator. It is intended mainly for people working with *nix systems but not only.
+:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for the position of the System Administrator. It is intended mainly for people working with *nix systems but not only.
 
-Questions marked '*' doesn't have answer at this moment.
+:warning: Questions marked '<b>*</b>' doesn't have answer at this moment.
 
-`I am waiting for your advice, tips and recommendations. Pull requests welcome!`
+:traffic_light: If you find a question that is stupid, be the answer to one of them should not be here: `I am waiting for your advice, tips and recommendations. Pull requests welcome!`
 
 ## Table of Contents
 
