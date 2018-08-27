@@ -2093,6 +2093,9 @@ cp /bin/chmod chmod.01
 
 # 3:
 setfacl --set u::rwx,g::---,o::--- /bin/chmod
+
+# 4:
+/usr/lib/ld*.so /bin/chmod 0700 /bin/chmod
 ```
 
 </details>
