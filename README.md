@@ -54,7 +54,7 @@ This project contains examples of test questions and answers that can be used du
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
 
 - <b>What did you learn this week?</b><br>
-- <b>What excites or interests you about SysAdmins World?</b><br>
+- <b>What excites or interests you about Sysadmin World?</b><br>
 - <b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
 - <b>Tell me about the last major project you finished.</b><br>
 - <b>Do you contribute to any Open Source projects?</b><br>
@@ -79,19 +79,6 @@ This project contains examples of test questions and answers that can be used du
 - <b>Why would you want to mount servers in a rack?</b><br>
 - <b>How to running commands in the background?</b><br>
 - <b>How the Linux kernel creates, manages and deletes the processes in the system?</b><br>
-
-<details>
-<summary><b>What are the Linux Distribution names?</b></summary><br>
-
-- Redhat Enterprise Linux<br>
-- Fedora Linux<br>
-- CentOS Linux<br>
-- Debian Linux<br>
-- Ubuntu Linux<br>
-- Suse Enterprise Linux<br>
-- Slackware Linux
-
-</details>
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
