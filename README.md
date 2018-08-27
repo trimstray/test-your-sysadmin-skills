@@ -36,6 +36,8 @@
 
 This project contains examples of test questions and answers that can be used during an interview or exam for the position of the System Administrator. It is intended mainly for people working with *nix systems.
 
+Questions marked '*' doesn't have answer at this moment.
+
 `I am waiting for your advice, tips and recommendations!`
 
 ## Table of Contents
@@ -43,9 +45,9 @@ This project contains examples of test questions and answers that can be used du
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 53 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 76 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 71 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 55 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 72 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -70,15 +72,6 @@ This project contains examples of test questions and answers that can be used du
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
 ###### System Questions
-
-- <b>How is a user’s default group determined? How would you change it?</b><br>
-- <b>What is RAID? What is RAID0, RAID1, RAID5, RAID10?</b><br>
-- <b>What is an incremental backup?</b><br>
-- <b>What are the main reasons for keeping old log files?</b><br>
-- <b>How do SSH keys work?</b><br>
-- <b>Why would you want to mount servers in a rack?</b><br>
-- <b>How to running commands in the background?</b><br>
-- <b>How the Linux kernel creates, manages and deletes the processes in the system?</b><br>
 
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
@@ -171,6 +164,13 @@ For extensive information, including username, terminal, IP number of the source
 ```bash
 w
 ```
+
+<details>
+<summary><b>How to running commands in the background? *</b></summary><br>
+
+To be completed.
+
+</details>
 
 </details>
 
@@ -371,9 +371,56 @@ find / -mmin 60 -type f
 
 </details>
 
+<details>
+<summary><b>How do SSH keys work? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What are the main reasons for keeping old log files? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is an incremental backup? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID10? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>How is a user’s default group determined? How would you change it? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Why would you want to mount servers in a rack? *</b></summary><br>
+
+To be completed.
+
+</details>
+
 ###### Network Questions
 
-<b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve the issue?</b><br>
+<details>
+<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? *</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
@@ -598,19 +645,6 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ###### System Questions
 
-- <b>Write a simple bash script (or pair of scripts) to backup and restore
-your system.</b><br>
-- <b>Explain the concept of run levels.</b><br>
-- <b>What steps will be taken by init when you run `telinit 1` from run level 3? What will be the final result of the command?</b><br>
-- <b>What is the purpose of a process’s effective UID?</b><br>
-- <b>How would you recognize a process that is hogging resources?</b><br>
-- <b>Explain the differences among the following umask values: 077, 027,
-022, and 755.</b><br>
-- <b>Think of three tasks that might need to be run periodically. What are the tasks and why?</b><br>
-- <b>What is a thread?</b><br>
-- <b>Explain 4-5 processor metrics.</b><br>
-- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
-
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
 
@@ -673,6 +707,20 @@ Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious 
 </details>
 
 <details>
+<summary><b>How the Linux kernel creates, manages and deletes the processes in the system? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>How would you recognize a process that is hogging resources? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>What is umask? How to set it permanently for a user?</b></summary><br>
 
 On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask. The umask command is used to set this mask, or to show you its current value.<br>
@@ -683,6 +731,14 @@ Permanently change (set e.g. <code>umask 02</code>):<br>
 - <b>~/.bashrc</b><br>
 - <b>~/.zshrc</b><br>
 - <b>~/.cshrc</b>
+
+</details>
+
+<details>
+<summary><b>Explain the differences among the following umask values: 077, 027,
+022, and 755. *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -713,6 +769,13 @@ A Sticky bit is a permission bit that is set on a file or a directory that lets 
 <summary><b>How to change the default run level in Linux?</b></summary><br>
 
 To change the run level we have to edit the file <b>/etc/inittab</b> and change initdefault entry (<code>id:5:initdefault</code>:). Using <code>init</code> command we change the run level temporary like <code>init 3</code>, this command will move the system in runlevl 3.
+
+</details>
+
+<details>
+<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -977,23 +1040,6 @@ fi
 </details>
 
 <details>
-<summary><b>How to <code>git clone</code> including submodules?</b></summary><br>
-
-For example:
-
-```bash
-# With -j8 - performance optimization
-git clone --recurse-submodules -j8 git://github.com/foo/bar.git
-
-# For already cloned repos or older Git versions
-git clone git://github.com/foo/bar.git
-cd bar
-git submodule update --init --recursive
-```
-
-</details>
-
-<details>
 <summary><b>Is there a way to redirect output to a file and have it display on stdout?</b></summary><br>
 
 The command you want is named tee:
@@ -1020,8 +1066,6 @@ Furthermore, if you want to append to the log file, use tee -a as:
 <summary><b>What is the preferred Bash shebang?</b></summary><br>
 
 You should use <code>#!/usr/bin/env bash</code> for portability: different *nixes put bash in different places, and using <code>/usr/bin/env</code> is a workaround to run the first bash found on the PATH.
-
-</details>
 
 </details>
 
@@ -1137,11 +1181,41 @@ ldd /bin/ls
 
 ###### Network Questions
 
-- <b>Configure a virtual interface on your workstation.</b><br>
-- <b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms.</b><br>
-- <b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b><br>
-- <b>List examples of network troubleshooting tools that can degrade during DNS issues.</b><br>
-- <b>Why won’t the hostnames resolve on your server? Resolve this problem.</b><br>
+<details>
+<summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>List examples of network troubleshooting tools that can degrade during DNS issues. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Why won’t the hostnames resolve on your server? Resolve this problem. *</b></summary><br>
+
+To be completed.
+
+</details>
+
 
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
@@ -1374,6 +1448,23 @@ The main features of Actives checks are as follows:
 
 </details>
 
+<details>
+<summary><b>How to <code>git clone</code> including submodules?</b></summary><br>
+
+For example:
+
+```bash
+# With -j8 - performance optimization
+git clone --recurse-submodules -j8 git://github.com/foo/bar.git
+
+# For already cloned repos or older Git versions
+git clone git://github.com/foo/bar.git
+cd bar
+git submodule update --init --recursive
+```
+
+</details>
+
 ###### Cyber Security Questions
 
 <details>
@@ -1410,13 +1501,21 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ###### Introduction Questions
 
-- <b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant.</b><br>
-- <b>Tell me how code gets deployed in your current production.</b><br>
+<details>
+<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Tell me how code gets deployed in your current production. *</b></summary><br>
+
+To be completed.
+
+</details>
 
 ###### System Questions
-
-- <b>Can’t mount the root file system. Why?</b><br>
-- <b>What principles to follow for successful system performance tuning?</b><br>
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -1451,6 +1550,13 @@ Environment variable <code>LD_LIBRARY_PATH</code> is a colon-separated set of di
 - <b>User ID Info</b>: Here you can add comments and you can add any extra information related to the users like full name, contact number, etc.<br>
 - <b>Home directory</b>: This field provides the path where the user is directed after the login. For example, <code>/home/smith</code>.<br>
 - <b>Command/shell</b>: This field provides the path of a command/shell and denotes that user has access to this shell i.e. <code>/bin/bash</code>.
+
+</details>
+
+<details>
+<summary><b>What principles to follow for successful system performance tuning? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -1491,6 +1597,20 @@ There are some system calls used in Linux for process management. These are as f
 - <code>Getpid()</code>: It is used to find the unique process ID<br>
 - <code>Getppid()</code>: It is used to check the parent process ID<br>
 - <code>Nice()</code>: It is used to bias the currently running process property
+
+</details>
+
+<details>
+<summary><b>Can’t mount the root file system. Why? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is the purpose of a process’s effective UID? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -2191,17 +2311,65 @@ rm ./-fr
 
 </details>
 
+<details>
+<summary><b>Write a simple bash script (or pair of scripts) to backup and restore your system. *</b></summary><br>
+
+To be completed.
+
+</details>
+
 ###### Network Questions
 
-- <b>Create SPF records for your site to help control spam.</b><br>
-- <b>What is the difference between an authoritative and a nonauthorita-
-tive answer to a DNS query?</b><br>
-- <b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use?</b><br>
-- <b>Use tcpdump to capture FTP traffic for both active and passive FTP
-sessions.</b><br>
-- <b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b><br>
-- <b>What are hits, misses, and hit-for-pass in Varnish Cache?</b><br>
-- <b>What's a reasonable TTL for cached content given the following parameters?</b><br>
+<details>
+<summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is the difference between an authoritative and a nonauthorita-
+tive answer to a DNS query? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Use tcpdump to capture FTP traffic for both active and passive FTP
+sessions. *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What are hits, misses, and hit-for-pass in Varnish Cache? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What's a reasonable TTL for cached content given the following parameters? *</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>How do you kill program using one port in Linux?</b></summary><br>
@@ -2458,7 +2626,12 @@ Below are the advantages of containerization over virtualization:
 
 ###### Cyber Security Questions
 
-- <b>What is OWASP Application Security Verification Standard? Explain in a few points.</b><br>
+<details>
+<summary><b>What is OWASP Application Security Verification Standard? Explain in a few points. *</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>What is CSRF?</b></summary><br>
