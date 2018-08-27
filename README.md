@@ -512,6 +512,9 @@ By that I mean that, on some systems, a local hosts file can be bypassed. The <c
 If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have).
 Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take <code>127.0.0.1</code>.
 
+- **[https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
+- **[https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
+
 </details>
 
 <details>
