@@ -2388,6 +2388,12 @@ To be completed.
 
 A hit is a request which is successfully served from the cache, a miss is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the hit-for-pass comes in when Varnish Cache realizes that one of the objects it has requested is uncachable and will result in a pass.
 
+Useful resources:
+
+- [VCL rules for hits](https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html#vcl-vcl-hit)
+- [VCL rules for hit-for-pass](https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html#hit-for-pass)
+- [Example of the use](https://book.varnish-software.com/4.0/chapters/VCL_Basics.html#vcl-backend-response)
+
 </details>
 
 <details>
