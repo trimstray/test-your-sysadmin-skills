@@ -78,12 +78,13 @@
 <details>
 <summary><b>What are the Linux Distribution names?</b></summary><br>
 
-- Redhat Enterprise Linux<br>
-- Fedora Linux<br>
-- CentOS Linux<br>
-- Debian Linux<br>
-- Ubuntu Linux<br>
-- Suse Enterprise Linux<br>
+- Red Hat Enterprise Linux
+- Fedora
+- CentOS
+- Debian
+- Ubuntu
+- SUSE Linux Enterprise Server (SLES)
+- SUSE Linux Enterprise Desktop (SLED)
 - Slackware Linux
 
 </details>
