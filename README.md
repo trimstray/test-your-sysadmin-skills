@@ -85,7 +85,7 @@
 - Ubuntu
 - SUSE Linux Enterprise Server (SLES)
 - SUSE Linux Enterprise Desktop (SLED)
-- Slackware Linux
+- Slackware
 
 </details>
 
