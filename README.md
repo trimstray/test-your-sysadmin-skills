@@ -34,9 +34,11 @@
 
 ****
 
-:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for the position of the System Administrator. It is intended mainly for people working with *nix systems but not only.
+:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for the position of the **\*nix System Administrator** (but not only).
 
 :warning: Questions marked '<b>*</b>' doesn't have answer at this moment.
+
+:bangbang: The answers are only examples and do not exhaust the whole topic.
 
 :traffic_light: If you find a question that is stupid, be the answer to one of them should not be here: `I am waiting for your advice, tips and recommendations. Pull requests welcome!`
 
@@ -87,7 +89,9 @@
 </details>
 
 <details>
-<summary><b>What is the difference between Linux and UNIX?</b></summary><br>
+<summary><b>What is the difference between GNU/Linux and UNIX?</b></summary><br>
+
+Example answer:
 
 <b>UNIX</b> - only big companies are allowed to use the UNIX copyright and name. IBM AIX, Sun Solaris, and HP-UX all are UNIX operating systems. Most UNIX operating systems are commercial in nature.<br>
 
@@ -96,12 +100,18 @@
 - UNIX operating systems comes with its own firewall products.<br>
 - UNIX supports file systems like jfs, gpfs (AIX), jfs, gpfs (HP-UX), jfs, gpfs (Solaris).<br>
 
-<b>Linux</b> is a Unix clone. But if you consider Portable Operating System Interface (POSIX) standards then Linux can be considered as UNIX.<br>
+<b>GNU/Linux</b> is a Unix clone. But if you consider Portable Operating System Interface (POSIX) standards then Linux can be considered as UNIX.<br>
 
+- Linux is a Kernel. However, some people argue that Linux is the name of the OS and The Linux kernel is part of the Linux OS.<br>
 - Linux is Free. You can download it from the Internet or redistribute it under GNU licenses.<br>
 - All Linux distributions include GUI system, GNU utilities, installation & management tools, GNU c/c++ Compilers, Editors (vi), and various applications like OpenOffice, Firefox.<br>
 - Linux comes with open source Netfilter and IPTables based firewall tool to protect your server and desktop from the crackers and hackers.<br>
 - By default, Linux supports and use ext3 or ext4 file systems.
+
+Useful resources:
+
+- [The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)
+- [Is It Linux or GNU/Linux?](https://www.linuxjournal.com/content/it-linux-or-gnulinux)
 
 </details>
 
@@ -512,10 +522,10 @@ By that I mean that, on some systems, a local hosts file can be bypassed. The <c
 If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have).
 Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take <code>127.0.0.1</code>.
 
-Reference:
+Useful resources:
 
-- **[what-is-the-difference-between-127-0-0-1-and-localhost](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
-- **[localhost-vs-127-0-0-1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
+- **[What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
+- **[localhost vs. 127.0.0.1(https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
 
 </details>
 
