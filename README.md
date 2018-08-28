@@ -2383,9 +2383,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What are hits, misses, and hit-for-pass in Varnish Cache? *</b></summary><br>
+<summary><b>What are hits, misses, and hit-for-pass in Varnish Cache?</b></summary><br>
 
-To be completed.
+A hit is a request which is successfully served from the cache, a miss is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the hit-for-pass comes in when Varnish Cache realizes that one of the objects it has requested is uncachable and will result in a pass.
 
 </details>
 
