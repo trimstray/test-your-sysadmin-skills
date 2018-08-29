@@ -717,7 +717,7 @@ Virtual files such as <code>/proc/interrupts</code>, <code>/proc/meminfo</code>,
 </details>
 
 <details>
-<summary><b>Why when load is 1.00 on one-core machine is not ideal?</b></summary><br>
+<summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
 
 The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70:<br>
 
