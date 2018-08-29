@@ -2855,14 +2855,27 @@ HTTP Status code 307 or 308 should be used instead of 301 because it changes the
 </details>
 
 <details>
-<summary><b>How to test remote connection to port with <code>dev</code> subsystem?</b></summary><br>
+<summary><b>Developer reports a problem with connectivity to the remote service. Use <code>/dev</code> for troubleshooting.</b></summary><br>
 
 ```bash
-# <proto - set protocol (tcp/udp)
 # <host> - set remote host
 # <port> - set destination port
-timeout 1 bash -c "</dev/<proto>/<host>/<port>" >/dev/null 2>&1 ; echo $?
+
+# 1
+timeout 1 bash -c "</dev/tcp/<host>/<port>" >/dev/null 2>&1 ; echo $?
+
+# 2
+timeout 1 bash -c 'cat < /dev/null > </dev/tcp/<host>/<port>' ; echo $?
+
+# 2
+&> echo > "</dev/tcp/<host>/<port>"
 ```
+
+Useful resources:
+
+- [Advanced Bash-Scripting Guide - /dev](http://www.tldp.org/LDP/abs/html/devref1.html#DEVTCP)
+- [/dev/tcp as a weapon](https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/)
+- [Test from shell script if remote TCP port is open](https://stackoverflow.com/questions/4922943/test-from-shell-script-if-remote-tcp-port-is-open)
 
 </details>
 
