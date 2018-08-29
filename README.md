@@ -47,7 +47,7 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 55 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 72 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
@@ -57,17 +57,17 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
-- <b>What did you learn this week?</b><br>
-- <b>What excites or interests you about Sysadmin World?</b><br>
-- <b>What is a recent technical challenge you experienced and how did you solve it?</b><br>
-- <b>Tell me about the last major project you finished.</b><br>
-- <b>Do you contribute to any Open Source projects?</b><br>
-- <b>Describe setup of your homelab.</b><br>
-- <b>What personal achievement are you most proud of?</b><br>
-- <b>Tell me about the biggest mistake you've made.</b><br>
-- <b>Tell me about your favorite UNIX-like system.</b><br>
-- <b>Tell me about how do you manage your knowledge database (e.g. wikis).</b><br>
-- <b>What are your daily news checks? Also information security news.</b><br>
+- <b>What did you learn this week?</b>
+- <b>What excites or interests you about Sysadmin world?</b>
+- <b>What is a recent technical challenge you experienced and how did you solve it?</b>
+- <b>Tell me about the last major project you finished.</b>
+- <b>Do you contribute to any open source project?</b>
+- <b>Describe setup of your homelab.</b>
+- <b>What personal achievement are you most proud of?</b>
+- <b>Tell me about the biggest mistake you've made.</b>
+- <b>Tell me about your favorite UNIX-like system.</b>
+- <b>Tell me about how do you manage your knowledge database (e.g. wikis).</b>
+- <b>What are your daily news checks? Also information security news.</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -87,77 +87,74 @@
 - SUSE Linux Enterprise Desktop (SLED)
 - Slackware
 
+Useful resources:
+
+- [List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+
 </details>
 
 <details>
-<summary><b>What is the difference between GNU/Linux and UNIX?</b></summary><br>
+<summary><b>What is the difference between Unix, Linux, BSD and GNU?</b></summary><br>
 
-Example answer:
+GNU isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So GNU tools are basically open versions of tools that already existed but were redone to conform to principals of open software. GNU/Linux is a mesh of those tools and the Linux kernel to form a complete OS, but there are other "GNU"s. GNU/Hurd for example.
 
-<b>UNIX</b> - only big companies are allowed to use the UNIX copyright and name. IBM AIX, Sun Solaris, and HP-UX all are UNIX operating systems. Most UNIX operating systems are commercial in nature.<br>
+Unix and BSD are "older" implementations of POSIX that are various levels of "closed source". Unix is usually totally closed source, but there are as many flavors of Unix as there are Linux if not more. BSD is not usually considered "open" by some people but in truth it is a lot more open then anything else that existed. It's licensing also allowed for commercial use with far fewer restrictions as the more "open" licenses allowed.
 
-- UNIX operating systems are considered as a complete OS as everything come from a single vendor.<br>
-- Most UNIX like operating systems are not free.<br>
-- UNIX operating systems comes with its own firewall products.<br>
-- UNIX supports file systems like jfs, gpfs (AIX), jfs, gpfs (HP-UX), jfs, gpfs (Solaris).<br>
+Linux is the new comer. Strictly speaking it's "just a kernel", however, in general it's thought of as a full OS when combined with GNU Tools and a bunch of other things.
 
-<b>GNU/Linux</b> is a Unix clone. But if you consider Portable Operating System Interface (POSIX) standards then Linux can be considered as UNIX.<br>
+The main governing difference is ideals. Unix, Linux, and BSD have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
 
-- Linux is a Kernel. However, some people argue that Linux is the name of the OS and The Linux kernel is part of the Linux OS.<br>
-- Linux is Free. You can download it from the Internet or redistribute it under GNU licenses.<br>
-- All Linux distributions include GUI system, GNU utilities, installation & management tools, GNU c/c++ Compilers, Editors (vi), and various applications like OpenOffice, Firefox.<br>
-- Linux comes with open source Netfilter and IPTables based firewall tool to protect your server and desktop from the crackers and hackers.<br>
-- By default, Linux supports and use ext3 or ext4 file systems.
+For more info I suggest your read a brief article on the creation of GNU, OSS, Linux, BSD, and UNIX. They will be slanted towards their individual ideas, but when you read though you will get a good idea of the differences.
 
 Useful resources:
 
+- [What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)
 - [The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)
-- [Is It Linux or GNU/Linux?](https://www.linuxjournal.com/content/it-linux-or-gnulinux)
-
-</details>
-
-<details>
-<summary><b>What are some common things between Linux and UNIX?</b></summary><br>
-
-- GUI, file, and windows managers (KDE, Gnome)<br>
-- Shells (ksh, csh, bash)<br>
-- Various office applications such as OpenOffice.org<br>
-- Development tools like perl, php, python, GNU c/c++ compilers<br>
-- Posix interface<br>
-
-</details>
-
-<details>
-<summary><b>What is Linux and also explain the basic components of this?</b></summary><br>
-
-Linux operating system is consist of 3 components which are as below:<br>
-
-- <b>Kernel</b>: Linux is a monolithic kernel that is free and open source <br>software that is responsible for managing hardware resources for the users.
-- <b>System Library</b>: System Library plays a vital role because application programs access Kernels feature using system library.<br>
-- <b>System Utility</b>: System Utility performs specific and individual level tasks.
 
 </details>
 
 <details>
 <summary><b>What do you understand by CLI?</b></summary><br>
 
-<b>CLI</b> is an acronym for Command Line Interface. We have to provide the information to the computer so that it can perform the function accordingly. In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
+<b>CLI</b> is an acronym for Command Line Interface or Command Language Interpreter. The command line is the most powerful way to control your system/computer.
+
+In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
+
+Useful resources:
+
+- [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
 
 </details>
 
 <details>
 <summary><b>What is your favourite shell and why?</b></summary><br>
 
-BASH as my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (<code>>></code>, <code><< 2>&1</code>, <code>2></code>, <code>1></code>, etc) is similar to C++ which makes it click even easier in my mind.<br>
+BASH as my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (<code>>></code>, <code><< 2>&1</code>, <code>2></code>, <code>1></code>, etc) is similar to C++ which makes it click even easier in my mind.
 
 I also like ZSH shell because is much much more customizable than BASH. It has great Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on alien steroids, loadable modules and more.
+
+Useful resources:
+
+- [Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)
 
 </details>
 
 <details>
-<summary><b>Describe the root account in Unix-like systems.</b></summary><br>
+<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
 
-The <b>root</b> account is like a systems administrator account, and allows you full control of the system (is the most privileged account on a Unix system). The "root" account has no security restrictions imposed upon it. This means it is easy to perform administrative duties without hassle. Root always has a UID of zero.
+Running as root is bad because:
+
+- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
+
+- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+
+- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
+
+- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
+
+Useful resources:
+
+- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
 
 </details>
 
