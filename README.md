@@ -174,7 +174,7 @@ w
 ```
 
 <details>
-<summary><b>How to running commands in the background? *</b></summary><br>
+<summary><b>How to run commands in the background? *</b></summary><br>
 
 To be completed.
 
@@ -523,7 +523,7 @@ Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain S
 Useful resources:
 
 - **[What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
-- **[localhost vs. 127.0.0.1(https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
+- **[localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
 
 </details>
 
@@ -540,7 +540,7 @@ dig @9.9.9.9 google.com
 </details>
 
 <details>
-<summary><b>How to testing port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
+<summary><b>How to test port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
 
 ```bash
 # with telnet command:
@@ -714,7 +714,7 @@ Virtual files such as <code>/proc/interrupts</code>, <code>/proc/meminfo</code>,
 </details>
 
 <details>
-<summary><b>Why when load is 1.00 on one-core machine is not ideal?</b></summary><br>
+<summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
 
 The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70:<br>
 
@@ -935,7 +935,7 @@ mkfs -t xfs /dev/mapper/vg0-datastore
 <details>
 <summary><b>What is the advantage of executing the running processes in the background? How can you do that?</b></summary><br>
 
-The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character '&' at the end of the command.
+The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
 
 </details>
 
@@ -1115,7 +1115,7 @@ If the client does not have the root in their trust store, then it won't trust t
 </details>
 
 <details>
-<summary><b>How to reloading PostgreSQL after configuration changes?</b></summary><br>
+<summary><b>How to reload PostgreSQL after configuration changes?</b></summary><br>
 
 Solution 1:
 
@@ -2039,7 +2039,7 @@ Of course this can still flood the buffer cache and cause freezes while the syst
 </details>
 
 <details>
-<summary><b>How to limiting processes to not exceed more than X% of CPU usage?</b></summary><br>
+<summary><b>How to limit processes to not exceed more than X% of CPU usage?</b></summary><br>
 
 - <b>nice/renice</b>
 
@@ -2117,7 +2117,7 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 </details>
 
 <details>
-<summary><b>How to checking whether the private key and the certificate match?</b></summary><br>
+<summary><b>How to check whether the private key and the certificate match?</b></summary><br>
 
 ```bash
 (openssl rsa -noout -modulus -in private.key | openssl md5 ; openssl x509 -noout -modulus -in certificate.crt | openssl md5) | uniq
@@ -2418,7 +2418,7 @@ or more violently:<br>
 </details>
 
 <details>
-<summary><b>How to testing connection with OpenSSL to remote host (with and without SNI)?</b></summary><br>
+<summary><b>How to test connection with OpenSSL to remote host (with and without SNI)?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
@@ -2741,7 +2741,7 @@ Now this <code>ln /etc/passwd</code> attack will not work.
 </details>
 
 <details>
-<summary><b>Use sysfs virtual filesystem to testing connection on all interfaces (without loopback).</b></summary><br>
+<summary><b>Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
 
 For example:
 
@@ -2830,7 +2830,7 @@ HTTP Status code 307 or 308 should be used instead of 301 because it changes the
 </details>
 
 <details>
-<summary><b>How to testing remote connection to port with <code>dev</code> subsystem?</b></summary><br>
+<summary><b>How to test remote connection to port with <code>dev</code> subsystem?</b></summary><br>
 
 ```bash
 # <proto - set protocol (tcp/udp)
