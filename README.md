@@ -76,7 +76,7 @@
 ###### System Questions
 
 <details>
-<summary><b>What are the Linux Distribution names?</b></summary><br>
+<summary><b>Give examples of some Linux distribution names.</b></summary><br>
 
 - Red Hat Enterprise Linux
 - Fedora
