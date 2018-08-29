@@ -55,7 +55,7 @@
 
 ## <a name="general-knowledge">Introduction</a>
 
-### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Simple Questions</a>
+### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
 - <b>What did you learn this week?</b><br>
 - <b>What excites or interests you about Sysadmin World?</b><br>
