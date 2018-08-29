@@ -313,7 +313,7 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 <details>
 <summary><b>What is the difference between <code>rm</code> and <code>rm -rf</code>?</b></summary><br>
 
-<code>rm</code> removes files and <code>-rf</code> are to options:<br>
+<code>rm</code> removes files and <code>-rf</code> are two options:<br>
 
 - <code>-r</code> remove directories and their contents recursively<br>
 - <code>-f</code> ignore nonexistent files, never prompt
