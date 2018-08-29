@@ -526,7 +526,7 @@ Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain S
 Useful resources:
 
 - **[What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
-- **[localhost vs. 127.0.0.1(https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
+- **[localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
 
 </details>
 
