@@ -938,7 +938,7 @@ mkfs -t xfs /dev/mapper/vg0-datastore
 <details>
 <summary><b>What is the advantage of executing the running processes in the background? How can you do that?</b></summary><br>
 
-The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character '&' at the end of the command.
+The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
 
 </details>
 
