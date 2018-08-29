@@ -183,9 +183,34 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the UID and GID?</b></summary><br>
+<summary><b>What does it mean actually when effective user is root, but real user id is still your name?</b></summary><br>
 
-UID and GID are numeric identifiers for users and groups. Unix-like operating systems identify a user within the kernel by a value called a user identifier, often abbreviated to user ID or UID. The UID, along with the group identifier (GID) and other access control criteria, is used to determine which system resources a user can access.
+The real user id is who you really are (the one who owns the process), and the effective user id is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
+
+When you log in, the login shell sets both the real and effective user id to the same value (your real user id) as supplied by the password file.
+
+Now, it also happens that you execute a setuid program, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf. How does this work?
+
+After executing the setuid program, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
+
+Let's use the case of passwd:
+
+```bash
+-rwsr-xr-x 1 root root 45396 may 25  2012 /usr/bin/passwd
+```
+
+When user2 wants to change their password, they execute `/usr/bin/passwd`.
+
+The **RUID** will be user2 but the **EUID** of that process will be root.
+
+user2 can use passwd to change only their own password because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
+
+It's neccesary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
+
+Useful resources:
+
+- [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+- [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
 
 </details>
 
