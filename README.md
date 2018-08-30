@@ -420,7 +420,7 @@ An incremental backup is a type of backup that only copies files that have chang
 </details>
 
 <details>
-<summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID10? </b></summary><br>
+<summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID6, RAID10? </b></summary><br>
 
 A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
 - <b>RAID0</b>: Also known as disk <b>striping</b>, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
@@ -566,6 +566,8 @@ Useful resources:
 host domain.com 8.8.8.8
 # with dig command:
 dig @9.9.9.9 google.com
+# with nslookup command:
+nslookup domain.com 8.8.8.8
 ```
 
 </details>
