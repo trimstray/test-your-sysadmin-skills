@@ -141,25 +141,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
-
-Running as root is bad because:
-
-- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
-
-- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
-
-- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
-
-- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
-
-Useful resources:
-
-- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
-
-</details>
-
-<details>
 <summary><b>How do you find who is logged in?</b></summary><br>
 
 For more information, including each login of a username, the terminal users are attached to, the date and time that login began, and possibly the computer from which they are making the connection, enter:
@@ -212,6 +193,25 @@ Useful resources:
 
 - [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
 - [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+
+</details>
+
+<details>
+<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
+
+Running as root is bad because:
+
+- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
+
+- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+
+- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
+
+- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
+
+Useful resources:
+
+- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
 
 </details>
 
@@ -453,7 +453,6 @@ A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is use
 <details>
 <summary><b>Why would you want to mount servers in a rack? </b></summary><br>
 
-- Protecting Hardware
 - Protecting Hardware
 - Organized Workspace
 - Better Power Management
