@@ -49,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 72 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 73 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -406,15 +406,6 @@ find / -mmin 60 -type f
 </details>
 
 <details>
-<summary><b>How do SSH keys work? </b></summary><br>
-
-SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
-An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
-The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
-
-</details>
-
-<details>
 <summary><b>What are the main reasons for keeping old log files? </b></summary><br>
 
 They are essential to investigate issue on the system.
@@ -603,6 +594,15 @@ In the case of Telnet, these include the passing of login credentials in plain t
 <summary><b>What is the difference between <code>wget</code> and <code>curl</code>?</b></summary><br>
 
 The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
+
+</details>
+
+<details>
+<summary><b>How do SSH keys work?</b></summary><br>
+
+SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
+An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
+The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
 
 </details>
 
@@ -1129,15 +1129,6 @@ You should use <code>#!/usr/bin/env bash</code> for portability: different *nixe
 </details>
 
 <details>
-<summary><b>How to get fingerprint from SSH key?</b></summary><br>
-
-```
-ssh-keygen -lf ~/.ssh/id_rsa.pub
-```
-
-</details>
-
-<details>
 <summary><b>What is root certificate and intermediate certificate?</b></summary><br>
 
 A "root" authority is a certificate issuer that parties choose to trust (explicitly). It is usually self-signed (self-issued) and very highly protected. An intermediate authority is a certificate issuer that has itself been issued by a root or another higher level intermediate authority.
@@ -1322,6 +1313,15 @@ Use the:
 </details>
 
 <details>
+<summary><b>How to get fingerprint from SSH key?</b></summary><br>
+
+```
+ssh-keygen -lf ~/.ssh/id_rsa.pub
+```
+
+</details>
+
+<details>
 <summary><b>How to send an HTTP request using Telnet?</b></summary><br>
 
 For example:
@@ -1409,6 +1409,38 @@ sub vcl_recv {
 ```bash
 tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
 ```
+
+</details>
+
+<details>
+<summary><b>Developer uses private key on the server to deploy app through ssh. Why it is incorrect behavior and what is the better (but not ideal) solution in such situations?</b></summary><br>
+
+You have the private key for your personal account. The server needs your public key so that it can verify that your private key for the account you are trying to use is authorized.
+
+The whole point with private keys is that they are private, meaning only you have your private key. If someone takes over your private key, it will be able to impersonate you any time he wants.
+
+A better solutions is the use of ssh key forwarding. An essence, you need to create a `~/.ssh/config` file, if it doesn't exist. Then, add the hosts (either domain name or IP address in the file and set `ForwardAgent yes`). Example:
+
+```bash
+Host git.example.com
+    User john
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.git.example.com
+    ForwardAgent yes
+```
+
+Your remote server must allow SSH agent forwarding on inbound connections and your local `ssh-agent` must be running.
+
+Forwarding an ssh agent carries its own security risk. If someone on the remote machine can gain access to your forwarded ssh agent connection, they can still make use of your keys. However, this is better than storing keys on remote machines: the attacker can only use the ssh agent connection, not the key itself. Thus, only while you're logged into the remote machine can they do anything. If you store the key on the remote machine, they can make a copy of it and use it whenever they want.
+
+If you use ssh keys remember about passphrases which is strongly recommended to reduce risk of keys accidentally leaking.
+
+Useful resources:
+
+- [How to forward local keypair in a SSH session?](https://stackoverflow.com/questions/12257968/how-to-forward-local-keypair-in-a-ssh-session)
+- [Using SSH agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/)
+- [SSH Agent Forwarding considered harmful](https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/)
+- [Security Consideration while using ssh-agent](https://www.commandprompt.com/blog/security_considerations_while_using_ssh-agent/)
 
 </details>
 
