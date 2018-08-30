@@ -436,7 +436,7 @@ A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is use
 
 <code>useradd -m -g initial_group username</code>
 
-<b>-g/--gid</b>
+<b>-g/--gid:</b>
   defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in /etc/login.defs. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
 
 
@@ -776,9 +776,16 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How would you recognize a process that is hogging resources? *</b></summary><br>
+<summary><b>How would you recognize a process that is hogging resources? </b></summary><br>
 
-To be completed.
+<b><code>top</code></b> works reasonably well, as long as you look at the right numbers. 
+- <b>M</b> Sorts by current resident memory usage
+- <b>T</b> Sorts by total ( or cummulaative) CPU usage
+- <b>p</b> Sorts by current CPU usage (this is the default refresh)
+- <b>?</b> Displays a usage summary for all top commands
+
+This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
+
 
 </details>
 
@@ -797,10 +804,45 @@ Permanently change (set e.g. <code>umask 02</code>):<br>
 </details>
 
 <details>
-<summary><b>Explain the differences among the following umask values: 077, 027,
-022, and 755. *</b></summary><br>
+<summary><b>Explain the differences among the following umask values: 000, 002, 022, 027, 077 and 277.</b></summary><br>
 
-To be completed.
+<table style="width:100%">
+  <tr>
+    <th>Umask</th>
+    <th>FIle result</th>
+    <th>Directory result</th>
+  </tr>
+  <tr>
+    <td>000</td>
+    <td>666 rw- rw- rw-</td>
+    <td>777 rwx rwx rwx</td>
+  </tr>
+ <tr>
+    <td>002</td>
+    <td>664 rw- rw- r--</td>
+    <td>775 rwx rwx r-x</td>
+  </tr>
+  <tr>
+    <td>022</td>
+    <td>644 rw- r-- r--</td>
+    <td>755 rwx r-x r-x</td>
+  </tr>
+<tr>
+    <td>027</td>
+    <td>640 rw- r-- ---</td>
+    <td>750 rwx r-x ---</td>
+  </tr>
+<tr>
+    <td>077</td>
+    <td>600 rw---- ---</td>
+    <td>700 rwx --- ---</td>
+  </tr>
+<tr>
+    <td>277</td>
+    <td>400 r-- --- ---</td>
+    <td>500 r-x --- ---</td>
+  </tr>
+</table>
 
 </details>
 
