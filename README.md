@@ -566,6 +566,8 @@ Useful resources:
 host domain.com 8.8.8.8
 # with dig command:
 dig @9.9.9.9 google.com
+# with Windows Command Prompt
+nslookup domain.com 8.8.8.8
 ```
 
 </details>
