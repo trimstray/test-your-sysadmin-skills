@@ -9,7 +9,7 @@
 
 <p align="center">"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</p>
 
-<br>
+<br>大撒大撒
 
 <p align="center">
   <a href="https://github.com/trimstray/sysadmin-test-questions/tree/master">
