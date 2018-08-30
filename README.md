@@ -1055,15 +1055,12 @@ Hard limit is the maximum allowed to a user, set by the superuser or root. This 
 </details>
 
 <details>
-<summary><b>Create a file with 100000 lines with random values.</b></summary><br>
+<summary><b>Create a file with 100 lines with random values.</b></summary><br>
 
 For example:
 
 ```bash
-for i in $(seq 1 100000) ; do
-  rand=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-  echo "$rand" >> /path/to/file
-done
+cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 100 > /path/to/file
 ```
 
 </details>
