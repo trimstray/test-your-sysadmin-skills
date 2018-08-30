@@ -30,6 +30,7 @@
   </a>
 </div>
 
+
 <br>
 
 ****
@@ -48,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 72 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 73 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -140,25 +141,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
-
-Running as root is bad because:
-
-- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
-
-- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
-
-- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
-
-- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
-
-Useful resources:
-
-- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
-
-</details>
-
-<details>
 <summary><b>How do you find who is logged in?</b></summary><br>
 
 For more information, including each login of a username, the terminal users are attached to, the date and time that login began, and possibly the computer from which they are making the connection, enter:
@@ -211,6 +193,25 @@ Useful resources:
 
 - [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
 - [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+
+</details>
+
+<details>
+<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
+
+Running as root is bad because:
+
+- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
+
+- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+
+- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
+
+- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
+
+Useful resources:
+
+- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
 
 </details>
 
@@ -405,53 +406,58 @@ find / -mmin 60 -type f
 </details>
 
 <details>
-<summary><b>How do SSH keys work? *</b></summary><br>
+<summary><b>What are the main reasons for keeping old log files? </b></summary><br>
 
-To be completed.
-
-</details>
-
-<details>
-<summary><b>What are the main reasons for keeping old log files? *</b></summary><br>
-
-To be completed.
+They are essential to investigate issue on the system.
 
 </details>
 
 <details>
-<summary><b>What is an incremental backup? *</b></summary><br>
+<summary><b>What is an incremental backup? </b></summary><br>
 
-To be completed.
-
-</details>
-
-<details>
-<summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID10? *</b></summary><br>
-
-To be completed.
+An incremental backup is a type of backup that only copies files that have changed since the previous backup.
 
 </details>
 
 <details>
-<summary><b>How is a user’s default group determined? How would you change it? *</b></summary><br>
+<summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID6, RAID10? </b></summary><br>
 
-To be completed.
+A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
+- <b>RAID0</b>: Also known as disk <b>striping</b>, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
+- <b>RAID1</b>: A popular disk subsystem that increases safety by writing the same data on two drives. Called "<b>mirroring</b>," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one.
+- <b>RAID5</b>: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost. 
+- <b>RAID6</b>: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations.
+- <b>RAID10</b>: Also known as <b>RAID 1+0</b>, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets.
 
 </details>
 
 <details>
-<summary><b>Why would you want to mount servers in a rack? *</b></summary><br>
+<summary><b>How is a user’s default group determined? How would you change it? </b></summary><br>
 
-To be completed.
+<code>useradd -m -g initial_group username</code>
+
+<b>-g/--gid:</b>
+  defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in /etc/login.defs. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
+
+
+</details>
+
+<details>
+<summary><b>Why would you want to mount servers in a rack? </b></summary><br>
+
+- Protecting Hardware
+- Organized Workspace
+- Better Power Management
+- Cleaner Environment
 
 </details>
 
 ###### Network Questions
 
 <details>
-<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? *</b></summary><br>
+<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? </b></summary><br>
 
-To be completed.
+I would connect to my web server via telnet to investigate the log files and resolve the issue regarding to the logs.
 
 </details>
 
@@ -589,6 +595,15 @@ In the case of Telnet, these include the passing of login credentials in plain t
 <summary><b>What is the difference between <code>wget</code> and <code>curl</code>?</b></summary><br>
 
 The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
+
+</details>
+
+<details>
+<summary><b>How do SSH keys work?</b></summary><br>
+
+SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
+An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
+The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
 
 </details>
 
@@ -759,9 +774,16 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How would you recognize a process that is hogging resources? *</b></summary><br>
+<summary><b>How would you recognize a process that is hogging resources? </b></summary><br>
 
-To be completed.
+<b><code>top</code></b> works reasonably well, as long as you look at the right numbers. 
+- <b>M</b> Sorts by current resident memory usage
+- <b>T</b> Sorts by total ( or cummulaative) CPU usage
+- <b>p</b> Sorts by current CPU usage (this is the default refresh)
+- <b>?</b> Displays a usage summary for all top commands
+
+This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
+
 
 </details>
 
@@ -780,10 +802,45 @@ Permanently change (set e.g. <code>umask 02</code>):<br>
 </details>
 
 <details>
-<summary><b>Explain the differences among the following umask values: 077, 027,
-022, and 755. *</b></summary><br>
+<summary><b>Explain the differences among the following umask values: 000, 002, 022, 027, 077 and 277.</b></summary><br>
 
-To be completed.
+<table style="width:100%">
+  <tr>
+    <th>Umask</th>
+    <th>FIle result</th>
+    <th>Directory result</th>
+  </tr>
+  <tr>
+    <td>000</td>
+    <td>666 rw- rw- rw-</td>
+    <td>777 rwx rwx rwx</td>
+  </tr>
+ <tr>
+    <td>002</td>
+    <td>664 rw- rw- r--</td>
+    <td>775 rwx rwx r-x</td>
+  </tr>
+  <tr>
+    <td>022</td>
+    <td>644 rw- r-- r--</td>
+    <td>755 rwx r-x r-x</td>
+  </tr>
+<tr>
+    <td>027</td>
+    <td>640 rw- r-- ---</td>
+    <td>750 rwx r-x ---</td>
+  </tr>
+<tr>
+    <td>077</td>
+    <td>600 rw---- ---</td>
+    <td>700 rwx --- ---</td>
+  </tr>
+<tr>
+    <td>277</td>
+    <td>400 r-- --- ---</td>
+    <td>500 r-x --- ---</td>
+  </tr>
+</table>
 
 </details>
 
@@ -1041,15 +1098,12 @@ Hard limit is the maximum allowed to a user, set by the superuser or root. This 
 </details>
 
 <details>
-<summary><b>Create a file with 100000 lines with random values.</b></summary><br>
+<summary><b>Create a file with 100 lines with random values.</b></summary><br>
 
 For example:
 
 ```bash
-for i in $(seq 1 100000) ; do
-  rand=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-  echo "$rand" >> /path/to/file
-done
+cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 100 > /path/to/file
 ```
 
 </details>
@@ -1111,15 +1165,6 @@ Furthermore, if you want to append to the log file, use tee -a as:
 <summary><b>What is the preferred Bash shebang?</b></summary><br>
 
 You should use <code>#!/usr/bin/env bash</code> for portability: different *nixes put bash in different places, and using <code>/usr/bin/env</code> is a workaround to run the first bash found on the PATH.
-
-</details>
-
-<details>
-<summary><b>How to get fingerprint from SSH key?</b></summary><br>
-
-```
-ssh-keygen -lf ~/.ssh/id_rsa.pub
-```
 
 </details>
 
@@ -1308,6 +1353,15 @@ Use the:
 </details>
 
 <details>
+<summary><b>How to get fingerprint from SSH key?</b></summary><br>
+
+```
+ssh-keygen -lf ~/.ssh/id_rsa.pub
+```
+
+</details>
+
+<details>
 <summary><b>How to send an HTTP request using Telnet?</b></summary><br>
 
 For example:
@@ -1395,6 +1449,38 @@ sub vcl_recv {
 ```bash
 tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
 ```
+
+</details>
+
+<details>
+<summary><b>Developer uses private key on the server to deploy app through ssh. Why it is incorrect behavior and what is the better (but not ideal) solution in such situations?</b></summary><br>
+
+You have the private key for your personal account. The server needs your public key so that it can verify that your private key for the account you are trying to use is authorized.
+
+The whole point with private keys is that they are private, meaning only you have your private key. If someone takes over your private key, it will be able to impersonate you any time he wants.
+
+A better solutions is the use of ssh key forwarding. An essence, you need to create a `~/.ssh/config` file, if it doesn't exist. Then, add the hosts (either domain name or IP address in the file and set `ForwardAgent yes`). Example:
+
+```bash
+Host git.example.com
+    User john
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.git.example.com
+    ForwardAgent yes
+```
+
+Your remote server must allow SSH agent forwarding on inbound connections and your local `ssh-agent` must be running.
+
+Forwarding an ssh agent carries its own security risk. If someone on the remote machine can gain access to your forwarded ssh agent connection, they can still make use of your keys. However, this is better than storing keys on remote machines: the attacker can only use the ssh agent connection, not the key itself. Thus, only while you're logged into the remote machine can they do anything. If you store the key on the remote machine, they can make a copy of it and use it whenever they want.
+
+If you use ssh keys remember about passphrases which is strongly recommended to reduce risk of keys accidentally leaking.
+
+Useful resources:
+
+- [How to forward local keypair in a SSH session?](https://stackoverflow.com/questions/12257968/how-to-forward-local-keypair-in-a-ssh-session)
+- [Using SSH agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/)
+- [SSH Agent Forwarding considered harmful](https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/)
+- [Security Consideration while using ssh-agent](https://www.commandprompt.com/blog/security_considerations_while_using_ssh-agent/)
 
 </details>
 
