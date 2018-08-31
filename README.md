@@ -35,13 +35,13 @@
 
 ****
 
-:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for the position of the **\*nix System Administrator** (but not only).
+:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
-:warning: Questions marked '<b>*</b>' doesn't have answer at this moment.
+:warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
 
 :bangbang: The answers are only examples and do not exhaust the whole topic.
 
-:traffic_light: If you find a question that is stupid, be the answer to one of them should not be here: `I am waiting for your advice, tips and recommendations. Pull requests welcome!`
+:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; please make a pull request! Feedback and advice is welcome.
 
 ## Table of Contents
 
@@ -59,16 +59,16 @@
 ### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
 - <b>What did you learn this week?</b>
-- <b>What excites or interests you about Sysadmin world?</b>
+- <b>What excites or interests you about the Sysadmin world?</b>
 - <b>What is a recent technical challenge you experienced and how did you solve it?</b>
 - <b>Tell me about the last major project you finished.</b>
-- <b>Do you contribute to any open source project?</b>
-- <b>Describe setup of your homelab.</b>
+- <b>Do you contribute to any open source projects?</b>
+- <b>Describe the setup of your homelab.</b>
 - <b>What personal achievement are you most proud of?</b>
 - <b>Tell me about the biggest mistake you've made.</b>
 - <b>Tell me about your favorite UNIX-like system.</b>
-- <b>Tell me about how do you manage your knowledge database (e.g. wikis).</b>
-- <b>What are your daily news checks? Also information security news.</b>
+- <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
+- <b>What news sources do you check daily? (Sysadmin or security-related)</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -77,7 +77,7 @@
 ###### System Questions
 
 <details>
-<summary><b>Give examples of some Linux distribution names.</b></summary><br>
+<summary><b>Give some examples of Linux distribution names.</b></summary><br>
 
 - Red Hat Enterprise Linux
 - Fedora
@@ -95,17 +95,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between Unix, Linux, BSD and GNU?</b></summary><br>
+<summary><b>What are the differences between Unix, Linux, BSD and GNU?</b></summary><br>
 
-GNU isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So GNU tools are basically open versions of tools that already existed but were redone to conform to principals of open software. GNU/Linux is a mesh of those tools and the Linux kernel to form a complete OS, but there are other "GNU"s. GNU/Hurd for example.
+GNU isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So GNU tools are basically open versions of tools that already existed, but were reimplemented to conform to principals of open software. GNU/Linux is a mesh of those tools and the Linux kernel to form a complete OS, but there are other "GNU"s, e.g. GNU/Hurd.
 
-Unix and BSD are "older" implementations of POSIX that are various levels of "closed source". Unix is usually totally closed source, but there are as many flavors of Unix as there are Linux if not more. BSD is not usually considered "open" by some people but in truth it is a lot more open then anything else that existed. It's licensing also allowed for commercial use with far fewer restrictions as the more "open" licenses allowed.
+Unix and BSD are "older" implementations of POSIX that are various levels of "closed source". Unix is usually totally closed source, but there are as many flavors of Unix as there are Linux (if not more). BSD is not usually considered "open", but it was considered to be very open when it was released. Its licensing also allowed for commercial use with far fewer restrictions than the more "open" licenses of the time allowed.
 
-Linux is the new comer. Strictly speaking it's "just a kernel", however, in general it's thought of as a full OS when combined with GNU Tools and a bunch of other things.
+Linux is the newest of the four. Strictly speaking, it's "just a kernel"; however, in general, it's thought of as a full OS when combined with GNU Tools and several other core components.
 
-The main governing difference is ideals. Unix, Linux, and BSD have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
+The main governing differences between these are their ideals. Unix, Linux, and BSD have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
 
-For more info I suggest your read a brief article on the creation of GNU, OSS, Linux, BSD, and UNIX. They will be slanted towards their individual ideas, but when you read though you will get a good idea of the differences.
+For more info I suggest your read a brief article on the creation of GNU, OSS, Linux, BSD, and UNIX. They will be slanted towards their individual ideas, but those articles should give you a better idea of the differences.
 
 Useful resources:
 
@@ -115,11 +115,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What do you understand by CLI?</b></summary><br>
+<summary><b>What is a CLI?</b></summary><br>
 
-<b>CLI</b> is an acronym for Command Line Interface or Command Language Interpreter. The command line is the most powerful way to control your system/computer.
+<b>CLI</b> is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
-In Linux, CLI is the interface that provides the user an interface so that user can type the commands and it complete the tasks. CLI is very easy to use, but it should be typed very precisely.
+In Linux, CLI is the interface by which a user can type commands for the system to execute. The CLI is very powerful, but is not very error-tolerant.
 
 Useful resources:
 
@@ -130,9 +130,9 @@ Useful resources:
 <details>
 <summary><b>What is your favourite shell and why?</b></summary><br>
 
-BASH as my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (<code>>></code>, <code><< 2>&1</code>, <code>2></code>, <code>1></code>, etc) is similar to C++ which makes it click even easier in my mind.
+BASH is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (<code>>></code>, <code><< 2>&1</code>, <code>2></code>, <code>1></code>, etc) is similar to C++ which makes it easier for me to recognize.
 
-I also like ZSH shell because is much much more customizable than BASH. It has great Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on alien steroids, loadable modules and more.
+I also like the ZSH shell, because is much more customizable than BASH. It has the Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on steroids, loadable modules and more.
 
 Useful resources:
 
@@ -141,9 +141,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you find who is logged in?</b></summary><br>
+<summary><b>How do you get a list of logged-in users?</b></summary><br>
 
-For more information, including each login of a username, the terminal users are attached to, the date and time that login began, and possibly the computer from which they are making the connection, enter:
+For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
 
 ```bash
 who
@@ -156,7 +156,7 @@ w
 ```
 
 <details>
-<summary><b>How to run commands in the background? *</b></summary><br>
+<summary><b>How do you run commands in the background? *</b></summary><br>
 
 To be completed.
 
@@ -165,15 +165,15 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What does it mean actually when effective user is root, but real user id is still your name?</b></summary><br>
+<summary><b>What does it mean when the effective user is "root", but the real user ID is still your name?</b></summary><br>
 
-The real user id is who you really are (the one who owns the process), and the effective user id is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
+The real user ID is who you really are (the user who owns the process), and the effective user ID is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
 
-When you log in, the login shell sets both the real and effective user id to the same value (your real user id) as supplied by the password file.
+When you log in, the login shell sets both the real and effective user ID to the same value (your real user id) as supplied by the password file.
 
-Now, it also happens that you execute a setuid program, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf. How does this work?
+If, for instance, you execute setuid, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf:
 
-After executing the setuid program, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
+After executing setuid, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
 
 Let's use the case of passwd:
 
@@ -185,7 +185,7 @@ When user2 wants to change their password, they execute `/usr/bin/passwd`.
 
 The **RUID** will be user2 but the **EUID** of that process will be root.
 
-user2 can use passwd to change only their own password because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
+user2 can use only passwd to change their own password, because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
 
 It's neccesary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
 
@@ -197,17 +197,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Your friend (also admin) running all tasks as root user. Why it's a bad idea?</b></summary><br>
+<summary><b>Another admin is running all commands as root. Why is this a bad idea?</b></summary><br>
 
-Running as root is bad because:
+Running everything as root is bad because:
 
-- **Stupidity**: nothing prevents you from doing something stupid. If you try to change the system in anyway that could be harmful you need to do sudo which pretty much guarantees a pause while you are entering the password for you to realize that you are about to make a possible big/costly change.
+- **Stupidity**: nothing prevents you from making a careless mistake. If you try to change the system in any potentially harmful way, you need to use sudo, which ensures a pause (while you're entering the password) to ensure that you aren't about to make a mistake.
 
-- **Security**: it has been mentioned already quite a few times in this question but basically it's the same thing, harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+- **Security**: harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
 
-- **You don't really need it**: if you need to run several commands as root and you are annoyed by having to enter your password several times when `sudo` has expired all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "comand1 | command2"`.
+- **You don't really need it**: if you need to run several commands as root, and you're annoyed by having to enter your password several times when `sudo` has expired, all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "command1 | command2"`.
 
-- **You can always use it in the recovery console**: the recovery console allows you to try and recover from doing something stupid or fixing a problem caused by an app (which you still had to run as `sudo`) Ubuntu doesn't have a password for the root account in this case but you can search online for changing that, this will make it harder for anyone that has physical access to your box to be able to do harm.
+- **You can always use it in the recovery console**: the recovery console allows you to recover from a major mistake, or fix a problem caused by an app (which you still had to run as `sudo`). Ubuntu doesn't have a password for the root account in this case, but you can search online for changing that - this will make it harder for anyone that has physical access to your box to be able to do harm.
 
 Useful resources:
 
@@ -218,7 +218,7 @@ Useful resources:
 <details>
 <summary><b>Which command is used to review boot messages?</b></summary><br>
 
-<code>dmesg</code> command is used to review boot messages. This command will display system messages contained in the kernel ring buffer. We can use this command immediately after booting to see boot messages. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
+<code>dmesg</code> is used to review boot messages. This command will display system messages contained in the kernel ring buffer. We can use this command immediately after booting to see boot messages. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
 
 </details>
 
@@ -425,7 +425,7 @@ An incremental backup is a type of backup that only copies files that have chang
 A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
 - <b>RAID0</b>: Also known as disk <b>striping</b>, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
 - <b>RAID1</b>: A popular disk subsystem that increases safety by writing the same data on two drives. Called "<b>mirroring</b>," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one.
-- <b>RAID5</b>: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost. 
+- <b>RAID5</b>: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost.
 - <b>RAID6</b>: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations.
 - <b>RAID10</b>: Also known as <b>RAID 1+0</b>, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets.
 
@@ -778,7 +778,7 @@ To be completed.
 <details>
 <summary><b>How would you recognize a process that is hogging resources? </b></summary><br>
 
-<b><code>top</code></b> works reasonably well, as long as you look at the right numbers. 
+<b><code>top</code></b> works reasonably well, as long as you look at the right numbers.
 - <b>M</b> Sorts by current resident memory usage
 - <b>T</b> Sorts by total ( or cummulaative) CPU usage
 - <b>p</b> Sorts by current CPU usage (this is the default refresh)
