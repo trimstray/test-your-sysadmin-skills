@@ -400,7 +400,7 @@ find / -type f -size +20M
 <summary><b>How to find files that have been modified on your system in the past 60 minutes?</b></summary><br>
 
 ```bash
-find / -mmin 60 -type f
+find / -mmin -60 -type f
 ```
 
 </details>
