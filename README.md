@@ -3060,9 +3060,9 @@ location / {
 
 It's a fork bomb.
 
-- <code>:()</code> - this defines the function. ":"" is the function name and the empty parenthesis shows that it will not accept any arguments
+- <code>:()</code> - this defines the function. ":" is the function name and the empty parenthesis shows that it will not accept any arguments
 - <code>{ }</code> - these characters shows the beginning and end of function definition
-- <code>:|:</code> - it loads a copy of the function ":: into memory and pipe its output to another copy of the ":" function, which has to be loaded into memory
+- <code>:|:</code> - it loads a copy of the function ":" into memory and pipe its output to another copy of the ":" function, which has to be loaded into memory
 - <code>&</code> - this will make the process as a background process, so that the child processes will not get killed eventhough the parent gets auto-killed
 - <code>:</code> - final ":" will execute the function again and hence the chain reaction begins
 
