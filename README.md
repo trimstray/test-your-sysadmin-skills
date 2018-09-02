@@ -457,7 +457,7 @@ A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is use
 <details>
 <summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? </b></summary><br>
 
-I would connect to my web server via telnet to investigate the log files and resolve the issue regarding to the logs.
+I would connect to my web server via ssh to investigate the log files and resolve the issue regarding to the logs.
 
 </details>
 
