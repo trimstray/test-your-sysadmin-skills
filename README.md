@@ -155,12 +155,47 @@ For extensive information, including username, terminal, IP number of the source
 w
 ```
 
-<details>
-<summary><b>How do you run commands in the background? *</b></summary><br>
 
-To be completed.
 
 </details>
+<details>
+<summary><b>How do you run commands in the background? </b></summary><br>
+
+You can run command in background by appending ```&``` after the command you want to run
+
+For example if you want to download something in background, you can
+
+```bash
+wget https://url-to-download.com/download.tar.gz &
+```
+when you run the above command you get the following output
+```bash
+[1] 2203
+```
+here 1 is the serial number of job and 2203 is PID of the job
+
+
+You can see the jobs running in background using the following command
+```bash
+jobs
+```
+
+When you execute job in background it give you a PID of job,
+you can kill the job running in background using the following command.
+```bash
+kill PID
+```
+replace the PID with the PID of the job
+
+If you have only one job running you can bring it to foreground using
+```bash
+fg
+```
+If you have multiple jobs running in background you can bring any job in foreground using
+```bash
+fg %#
+```
+replace the ```#``` with serial number of the job
 
 </details>
 
