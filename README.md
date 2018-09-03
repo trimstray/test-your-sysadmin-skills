@@ -146,14 +146,27 @@ Useful resources:
 For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
 
 ```bash
+# It uses /var/run/utmp and /var/log/wtmp files to get the details.
 who
 ```
 
 For extensive information, including username, terminal, IP number of the source computer, the time the login began, any idle time, process CPU cycles, job CPU cycles, and the currently running command, enter:
 
 ```bash
+# It uses /var/run/utmp, and their processes /proc.
 w
 ```
+
+Also important for displays a list of last logged in users, enter:
+
+```bash
+# It uses /var/log/wtmp.
+last
+```
+
+Useful resources:
+
+- [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
 
 <details>
 <summary><b>How do you run commands in the background? *</b></summary><br>
