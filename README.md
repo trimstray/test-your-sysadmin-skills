@@ -2469,9 +2469,12 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy? *</b></summary><br>
+<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b></summary><br>
 
-To be completed.
+It depends. Varnish is a cache server, so its purpose is to cache contents and to act as a reverse proxy, to speed up retrieval of data and to lessen the load on the webserver.
+Varnish can be also configured as a load-balancer for multiple web servers, but if we use just one Varnish server, this will become our single point of failure on our infrastructure.
+
+A better solution to ensure load-balancing or redundacy will be a cluster of at least two Varnish istances, in active-active mode or active-passive mode.
 
 </details>
 
