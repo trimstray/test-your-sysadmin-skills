@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/sysadmin-test-questions/blob/master/doc/img/sysadmin_preview.png"
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/sysadmin_preview.png"
         alt="Master">
 </p>
 
@@ -12,7 +12,7 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/sysadmin-test-questions/tree/master">
+  <a href="https://github.com/trimstray/test-your-sysadmin-skills/tree/master">
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true"
         alt="Branch">
   </a>
@@ -25,7 +25,7 @@
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/sysadmin-test-questions/graphs/contributors">
+  <a href="https://github.com/trimstray/test-your-sysadmin-skills/graphs/contributors">
     contributors
   </a>
 </div>
