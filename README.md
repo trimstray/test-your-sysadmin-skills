@@ -2477,8 +2477,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the difference between an authoritative and a nonauthorita-
-tive answer to a DNS query? *</b></summary><br>
+<summary><b>What is the difference between an authoritative and a nonauthorita-tive answer to a DNS query? *</b></summary><br>
 
 To be completed.
 
