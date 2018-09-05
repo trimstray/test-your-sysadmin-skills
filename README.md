@@ -509,37 +509,7 @@ I would connect to my web server via ssh to investigate the log files and resolv
 <details>
 <summary><b>What happens when you type api.example.com in your browser and press return?</b></summary><br>
 
-1. You type api.example.com into the address bar of your browser.
-2. The browser checks the cache for a DNS record to find the corresponding IP address of api.example.com.
-
-- first, it checks the browser cache. The browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
-- second, the browser checks the OS cache. If it is not found in the browser cache, the browser would make a system call to your underlying computer OS to fetch the record since the OS also maintains a cache of DNS records.
-- third, it checks the router cache. If it’s not found on your computer, the browser would communicate with the router that maintains its’ own cache of DNS records.
-- fourth, it checks the ISP cache. If all steps fail, the browser would move on to the ISP. Your ISP maintains its’ own DNS server which includes a cache of DNS records which the browser would check with the last hope of finding your requested URL.
-
-3.  If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts api.example.com.
-
-- the purpose of a DNS query is to search multiple DNS servers on the internet until it finds the correct IP address for the website. This type of search is called a recursive search since the search will continue repeatedly from DNS server to DNS server until it either finds the IP address we need or returns an error response saying it was unable to find it.
-- for api.example.com, first, the DNS recursor will contact the root name server. The root name server will redirect it to .com domain name server. .com name server will redirect it to google.com name server. google.com name server will find the matching IP address for api.example.com in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
-
-4.  Browser initiates a TCP connection with the server.
-
-- once the browser receives the correct IP address it will build a connection with the server that matches IP address to transfer information. Browsers use internet protocols to build such connections.
-- in order to transfer data packets between your computer(client) and the server, it is important to have a TCP connection established. This connection is established using a process called the TCP/IP three-way handshake.
-
-5. The browser sends an HTTP request to the web server.
-
-- this request will also contain additional information such as browser identification (User-Agent header), types of requests that it will accept (Accept header), and connection headers asking it to keep the TCP connection alive for additional requests. It will also pass information taken from cookies the browser has in store for this domain.
-
-6. The server handles the request and sends back a response.
-
-- the server contains a web server (i.e Apache, IIS) which receives the request from the browser and passes it to a request handler to read and generate a response.
-
-7. The server sends out an HTTP response.
-
-- the server response contains the web page you requested as well as the status code, compression type (Content-Encoding), how to cache the page (Cache-Control), any cookies to set, privacy information, etc.
-
-8. The browser displays the HTML content (for HTML responses which is the most common).
+The browser has it's own DNS cache. When this cache fails, it simply asks the OS to resolve the domain. The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers. The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router. In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
 
 </details>
 
