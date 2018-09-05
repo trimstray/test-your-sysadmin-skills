@@ -1271,9 +1271,13 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps. *</b></summary><br>
+<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b></summary><br>
 
-To be completed.
+To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
+1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
+2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
+3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+4. Physical Layer: Are the servers connected to a network? Are packets being lost?
 
 </details>
 
