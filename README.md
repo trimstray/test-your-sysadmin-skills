@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/sysadmin-test-questions/blob/master/doc/img/sysadmin_preview.png"
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/sysadmin_preview.png"
         alt="Master">
 </p>
 
@@ -12,7 +12,7 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/sysadmin-test-questions/tree/master">
+  <a href="https://github.com/trimstray/test-your-sysadmin-skills/tree/master">
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true"
         alt="Branch">
   </a>
@@ -25,7 +25,7 @@
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/sysadmin-test-questions/graphs/contributors">
+  <a href="https://github.com/trimstray/test-your-sysadmin-skills/graphs/contributors">
     contributors
   </a>
 </div>
@@ -146,56 +146,78 @@ Useful resources:
 For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
 
 ```bash
+# It uses /var/run/utmp and /var/log/wtmp files to get the details.
 who
 ```
 
 For extensive information, including username, terminal, IP number of the source computer, the time the login began, any idle time, process CPU cycles, job CPU cycles, and the currently running command, enter:
 
 ```bash
+# It uses /var/run/utmp, and their processes /proc.
 w
 ```
 
+Also important for displays a list of last logged in users, enter:
 
+```bash
+# It uses /var/log/wtmp.
+last
+```
+
+Useful resources:
+
+- [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
 
 </details>
+
 <details>
-<summary><b>How do you run commands in the background? </b></summary><br>
+<summary><b>How do you run commands in the background?</b></summary><br>
 
-You can run command in background by appending ```&``` after the command you want to run
-
-For example if you want to download something in background, you can
+You can run command in background by appending ```&``` after the command you want to run. For example if you want to download something in background, you can:
 
 ```bash
 wget https://url-to-download.com/download.tar.gz &
 ```
-when you run the above command you get the following output
+
+When you run the above command you get the following output:
+
 ```bash
 [1] 2203
 ```
-here 1 is the serial number of job and 2203 is PID of the job
+
+Here 1 is the serial number of job and 2203 is PID of the job.
 
 
-You can see the jobs running in background using the following command
+You can see the jobs running in background using the following command:
+
 ```bash
 jobs
 ```
 
-When you execute job in background it give you a PID of job,
-you can kill the job running in background using the following command.
+When you execute job in background it give you a PID of job, you can kill the job running in background using the following command:
+
 ```bash
 kill PID
 ```
-replace the PID with the PID of the job
 
-If you have only one job running you can bring it to foreground using
+Replace the PID with the PID of the job. If you have only one job running you can bring it to foreground using:
+
 ```bash
 fg
 ```
-If you have multiple jobs running in background you can bring any job in foreground using
+
+If you have multiple jobs running in background you can bring any job in foreground using:
+
 ```bash
 fg %#
 ```
-replace the ```#``` with serial number of the job
+
+Replace the ```#``` with serial number of the job.
+
+Useful resources:
+
+- [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
+- [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
 
 </details>
 
@@ -492,7 +514,7 @@ A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is use
 <details>
 <summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? </b></summary><br>
 
-I would connect to my web server via telnet to investigate the log files and resolve the issue regarding to the logs.
+I would connect to my web server via ssh to investigate the log files and resolve the issue regarding to the logs.
 
 </details>
 
@@ -531,37 +553,7 @@ I would connect to my web server via telnet to investigate the log files and res
 <details>
 <summary><b>What happens when you type api.example.com in your browser and press return?</b></summary><br>
 
-1. You type api.example.com into the address bar of your browser.
-2. The browser checks the cache for a DNS record to find the corresponding IP address of api.example.com.
-
-- first, it checks the browser cache. The browser maintains a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
-- second, the browser checks the OS cache. If it is not found in the browser cache, the browser would make a system call to your underlying computer OS to fetch the record since the OS also maintains a cache of DNS records.
-- third, it checks the router cache. If it’s not found on your computer, the browser would communicate with the router that maintains its’ own cache of DNS records.
-- fourth, it checks the ISP cache. If all steps fail, the browser would move on to the ISP. Your ISP maintains its’ own DNS server which includes a cache of DNS records which the browser would check with the last hope of finding your requested URL.
-
-3.  If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts api.example.com.
-
-- the purpose of a DNS query is to search multiple DNS servers on the internet until it finds the correct IP address for the website. This type of search is called a recursive search since the search will continue repeatedly from DNS server to DNS server until it either finds the IP address we need or returns an error response saying it was unable to find it.
-- for api.example.com, first, the DNS recursor will contact the root name server. The root name server will redirect it to .com domain name server. .com name server will redirect it to google.com name server. google.com name server will find the matching IP address for api.example.com in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
-
-4.  Browser initiates a TCP connection with the server.
-
-- once the browser receives the correct IP address it will build a connection with the server that matches IP address to transfer information. Browsers use internet protocols to build such connections.
-- in order to transfer data packets between your computer(client) and the server, it is important to have a TCP connection established. This connection is established using a process called the TCP/IP three-way handshake.
-
-5. The browser sends an HTTP request to the web server.
-
-- this request will also contain additional information such as browser identification (User-Agent header), types of requests that it will accept (Accept header), and connection headers asking it to keep the TCP connection alive for additional requests. It will also pass information taken from cookies the browser has in store for this domain.
-
-6. The server handles the request and sends back a response.
-
-- the server contains a web server (i.e Apache, IIS) which receives the request from the browser and passes it to a request handler to read and generate a response.
-
-7. The server sends out an HTTP response.
-
-- the server response contains the web page you requested as well as the status code, compression type (Content-Encoding), how to cache the page (Cache-Control), any cookies to set, privacy information, etc.
-
-8. The browser displays the HTML content (for HTML responses which is the most common).
+The browser has it's own DNS cache. When this cache fails, it simply asks the OS to resolve the domain. The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers. The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router. In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
 
 </details>
 
@@ -1323,9 +1315,13 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps. *</b></summary><br>
+<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b></summary><br>
 
-To be completed.
+To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
+1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
+2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
+3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+4. Physical Layer: Are the servers connected to a network? Are packets being lost?
 
 </details>
 
@@ -2499,8 +2495,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the difference between an authoritative and a nonauthorita-
-tive answer to a DNS query? *</b></summary><br>
+<summary><b>What is the difference between an authoritative and a nonauthorita-tive answer to a DNS query? *</b></summary><br>
 
 To be completed.
 
@@ -2522,9 +2517,12 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy? *</b></summary><br>
+<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b></summary><br>
 
-To be completed.
+It depends. Varnish is a cache server, so its purpose is to cache contents and to act as a reverse proxy, to speed up retrieval of data and to lessen the load on the webserver.
+Varnish can be also configured as a load-balancer for multiple web servers, but if we use just one Varnish server, this will become our single point of failure on our infrastructure.
+
+A better solution to ensure load-balancing or redundacy will be a cluster of at least two Varnish istances, in active-active mode or active-passive mode.
 
 </details>
 
