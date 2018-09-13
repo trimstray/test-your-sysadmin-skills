@@ -2510,9 +2510,12 @@ To be completed.
 
 <details>
 <summary><b>Use tcpdump to capture FTP traffic for both active and passive FTP
-sessions. *</b></summary><br>
+sessions.</b></summary><br>
 
-To be completed.
+```bash
+tcpdump '(port ftp or ftp-data)'
+```
+
 
 </details>
 
