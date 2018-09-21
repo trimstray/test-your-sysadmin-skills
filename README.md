@@ -68,7 +68,7 @@
 - <b>Tell me about the biggest mistake you've made.</b>
 - <b>Tell me about your favorite UNIX-like system.</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
-- <b>What news sources do you check daily? (Sysadmin or security-related)</b>
+- <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
