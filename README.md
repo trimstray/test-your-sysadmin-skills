@@ -49,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 73 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 74 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -1192,7 +1192,58 @@ You may sometimes see entries marked <b>Z</b> (or <b>H</b> under Linux) in the <
 <details>
 <summary><b>What is strace command in Linux?</b></summary><br>
 
-<code>strace</code> is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+`strace` is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+
+</details>
+
+<details>
+<summary><b>What are segmentation faults (segfaults), and how can I identify what's causing them?</b></summary><br>
+
+A segmentation fault (aka segfault) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
+
+Program memory is divided into different segments:
+
+- a text segment for program instructions
+- a data segment for variables and arrays defined at compile time
+- a stack segment for temporary (or automatic) variables defined in subroutines and functions
+- a heap segment for variables allocated during runtime by functions, such as `malloc` (in C)
+
+In practice, segfaults are almost always due to trying to read or write a non-existent array element, not properly defining a pointer before using it, or (in C programs) accidentally using a variable's value as an address. Thus, when Process A reads memory location 0x877, it reads information residing at a different physical location in RAM than when Process B reads its own 0x877.
+
+All modern operating systems support and use segmentation, and so all can produce a segmentation fault.
+
+Segmentation fault can also occur under following circumstances:
+
+- a buggy program/command, which can be only fixed by applying patch
+- it can also appear when you try to access an array beyond the end of an array under C programming
+- inside a chrooted jail this can occur when critical shared libs, config file or `/dev/` entry missing
+- sometime hardware or faulty memory or driver can also create problem
+- maintain suggested environment for all computer equipment (overheating can also generate this problem)
+
+To debug this kind of error try one or all of the following techniques:
+
+- enable core files: `$ ulimit -c unlimited`
+- reproduce the crash: `$ ./<program>`
+- debug crash with gdb: `$ gdb <program> [core file]`
+- or run `LD_PRELOAD=...path-to.../libSegFault.so <program>` to get a report with backtrace, loaded libs, etc
+
+Also:
+
+- make sure correct hardware installed and configured
+- always apply all patches and use updated system
+- make sure all dependencies installed inside jail
+- turn on core dumping for supported services such as Apache
+- use `strace` which is a useful diagnostic, instructional, and debugging tool
+
+Sometimes segmentation faults are not caused by bugs in the program but are caused instead by system memory limits being set too low. Usually it is the limit on stack size that causes this kind of problem (stack overflows). To check memory limits, use the `ulimit` command in bash.
+
+Useful resources:
+
+- [What are segmentation faults (segfaults), and how can I identify what's causing them? (original)](https://kb.iu.edu/d/aqsj)
+- [What is a segmentation fault on Linux?](https://stackoverflow.com/questions/3200526/what-is-a-segmentation-fault-on-linux)
+- [Segmentation fault when calling a recursive bash function](https://unix.stackexchange.com/questions/296641/segmentation-fault-when-calling-a-recursive-bash-function)
+- [Troubleshooting Segmentation Violations/Faults](http://web.mit.edu/10.001/Web/Tips/tips_on_segmentation.html)
+- [Can one use libSegFault.so to get backtraces for SIGABRT?](https://stackoverflow.com/questions/18706496/can-one-use-libsegfault-so-to-get-backtraces-for-sigabrt)
 
 </details>
 
