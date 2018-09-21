@@ -90,7 +90,7 @@
 
 Useful resources:
 
-- **[List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)**
+- [List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
 
 </details>
 
@@ -109,8 +109,8 @@ For more info I suggest your read a brief article on the creation of GNU, OSS, L
 
 Useful resources:
 
-- **[What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)**
-- **[The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)**
+- [What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)
+- [The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)
 
 </details>
 
@@ -123,7 +123,7 @@ In Linux, CLI is the interface by which a user can type commands for the system 
 
 Useful resources:
 
-- **[Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)**
+- [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
 
 </details>
 
@@ -136,7 +136,7 @@ I also like the ZSH shell, because is much more customizable than BASH. It has t
 
 Useful resources:
 
-- **[Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)**
+- [Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)
 
 </details>
 
@@ -166,7 +166,7 @@ last
 
 Useful resources:
 
-- **[4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)**
+- [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
 
 </details>
 
@@ -216,8 +216,8 @@ Replace the ```#``` with serial number of the job.
 
 Useful resources:
 
-- **[How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)**
-- **[Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)**
+- [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
+- [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
 
 </details>
 
@@ -248,8 +248,8 @@ It's neccesary that the **EUID** becomes root in the case of passwd because the 
 
 Useful resources:
 
-- **[Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)**
-- **[What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)**
+- [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+- [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
 
 </details>
 
@@ -268,7 +268,7 @@ Running everything as root is bad because:
 
 Useful resources:
 
-- **[Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)**
+- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
 
 </details>
 
@@ -298,9 +298,9 @@ Boot issues/errors calls for a system administrator to look into certain importa
 
 Useful resources:
 
-- **[How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)**
-- **[Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)**
-- **[How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)**
+- [How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
+- [Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)
+- [How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)
 
 </details>
 
@@ -334,11 +334,11 @@ done | sort -k 2 -n -r | less
 
 Useful resources:
 
-- **[Linux ate my ram!](https://www.linuxatemyram.com/)**
-- **[How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)**
-- **[8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)**
-- **[What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)**
-- **[How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)**
+- [Linux ate my ram!](https://www.linuxatemyram.com/)
+- [How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)
+- [8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)
+- [What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)
+- [How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)
 
 </details>
 
@@ -349,8 +349,8 @@ You'd use `top/htop` for both. Using `free` and `vmstat` command we can display 
 
 Useful resources:
 
-- **[How do I Find Out Linux CPU Utilization?](https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html)**
-- **[16 Linux server monitoring commands you really need to know](https://www.hpe.com/us/en/insights/articles/16-linux-server-monitoring-commands-you-really-need-to-know-1703.html)**
+- [How do I Find Out Linux CPU Utilization?](https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html)
+- [16 Linux server monitoring commands you really need to know](https://www.hpe.com/us/en/insights/articles/16-linux-server-monitoring-commands-you-really-need-to-know-1703.html)
 
 </details>
 
@@ -368,7 +368,7 @@ Some interpretations:
 
 Useful resources:
 
-- **[Linux Load Averages: Solving the Mystery (original)](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html)**
+- [Linux Load Averages: Solving the Mystery (original)](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html)
 
 </details>
 
@@ -455,8 +455,8 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 
 Useful resources:
 
-- **[POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)**
-- **[Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)**
+- [POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)
+- [Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)
 
 </details>
 
@@ -470,7 +470,7 @@ Useful resources:
 
 Useful resources:
 
-- **[What is the difference between `rm -r` and `rm -f`?](https://superuser.com/questions/1126206/what-is-the-difference-between-rm-r-and-rm-f)**
+- [What is the difference between `rm -r` and `rm -f`?](https://superuser.com/questions/1126206/what-is-the-difference-between-rm-r-and-rm-f)
 
 </details>
 
@@ -563,7 +563,7 @@ By collecting and analyzing logs, you can understand what transpires within your
 
 Useful resources:
 
-- **[How long do you keep log files?](https://serverfault.com/questions/135365/how-long-do-you-keep-log-files)**
+- [How long do you keep log files?](https://serverfault.com/questions/135365/how-long-do-you-keep-log-files)
 
 </details>
 
@@ -586,7 +586,7 @@ A **RAID** (Redundant Array of Inexpensive Disks) is a technology that is used t
 
 Useful resources:
 
-- **[RAID](https://www.prepressure.com/library/technology/raid)**
+- [RAID](https://www.prepressure.com/library/technology/raid)
 
 </details>
 
@@ -665,9 +665,9 @@ In the event the router has it's own DNS servers, it may have it's own cache oth
 
 Useful resources:
 
-- **[What happens when...](https://github.com/alex/what-happens-when)**
-- **[DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)**
-- **[Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)**
+- [What happens when...](https://github.com/alex/what-happens-when)
+- [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
+- [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
 
 </details>
 
@@ -693,8 +693,8 @@ If you use a unix domain socket it'll be slightly faster than using TCP/IP (beca
 
 Useful resources:
 
-- **[What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)**
-- **[localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)**
+- [What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)
+- [localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)
 
 </details>
 
