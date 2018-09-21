@@ -628,10 +628,12 @@ The main differences are: wget's major strong side compared to curl is its abili
 </details>
 
 <details>
-<summary><b>How do SSH keys work?</b></summary><br>
+<summary><b>How do SSH work?</b></summary><br>
 
 SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
+
 An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
+
 The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
 
 </details>
