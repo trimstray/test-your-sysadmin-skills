@@ -254,7 +254,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Another admin is running all commands as root. Why is this a bad idea?</b></summary><br>
+<summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
 
 Running everything as root is bad because:
 
@@ -298,16 +298,47 @@ Boot issues/errors calls for a system administrator to look into certain importa
 
 Useful resources:
 
-- [How to view all boot messages in Linux after booting?](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
+- [How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
 - [Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)
 - [How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)
 
 </details>
 
 <details>
-<summary><b>What is the swap space?</b></summary><br>
+<summary><b>Swap usage too high. What are the reasons for this and how to resolve swapping problems?</b></summary><br>
 
-Swap space is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory.
+**Swap** space is a restricted amount of physical memory that is allocated for use by the operating system when available memory has been fully utilized. It is memory management that involves swapping sections of memory to and from physical storage.
+
+If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory.
+
+Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing swappiness to 1 might not be a wise decision. Setting swappiness to 1 does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
+
+- **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks arn't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
+
+- **Adding more RAM** - the real solution is to add more memory. There's no substitute for RAM, and if you have enough memory, you'll swap less.
+
+For monitoring swap space usage:
+
+- `cat /proc/swaps` - to see total and used swap size
+- `grep SwapTotal /proc/meminfo` - to show total swap space
+- `free` - to display the amount of free and used system memory (also swap)
+- `vmstat` - to check swapping statistics
+- `top`/`htop`- to check swap space usage
+- `atop` - to show is that your system is overcommitting memory
+- or use one-liner shell command to list all applications with how much swap space search is using in kilobytes:
+```bash
+for _fd in /proc/*/status ; do
+  awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $_fd
+done | sort -k 2 -n -r | less
+```
+
+Useful resources:
+
+- [Linux ate my ram!](https://www.linuxatemyram.com/)
+- [How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)
+- [8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)
+- [What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)
+- [How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)
 
 </details>
 
