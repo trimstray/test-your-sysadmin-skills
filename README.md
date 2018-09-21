@@ -90,7 +90,7 @@
 
 Useful resources:
 
-- [List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+- **[List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)**
 
 </details>
 
@@ -109,34 +109,34 @@ For more info I suggest your read a brief article on the creation of GNU, OSS, L
 
 Useful resources:
 
-- [What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)
-- [The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)
+- **[What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)**
+- **[The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)**
 
 </details>
 
 <details>
 <summary><b>What is a CLI?</b></summary><br>
 
-<b>CLI</b> is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
+**CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
 In Linux, CLI is the interface by which a user can type commands for the system to execute. The CLI is very powerful, but is not very error-tolerant.
 
 Useful resources:
 
-- [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
+- **[Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)**
 
 </details>
 
 <details>
 <summary><b>What is your favourite shell and why?</b></summary><br>
 
-BASH is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (<code>>></code>, <code><< 2>&1</code>, <code>2></code>, <code>1></code>, etc) is similar to C++ which makes it easier for me to recognize.
+BASH is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (`>>`, `<< 2>&1`, `2>`, `1>`, etc) is similar to C++ which makes it easier for me to recognize.
 
 I also like the ZSH shell, because is much more customizable than BASH. It has the Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on steroids, loadable modules and more.
 
 Useful resources:
 
-- [Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)
+- **[Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)**
 
 </details>
 
@@ -166,7 +166,7 @@ last
 
 Useful resources:
 
-- [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
+- **[4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)**
 
 </details>
 
@@ -216,8 +216,8 @@ Replace the ```#``` with serial number of the job.
 
 Useful resources:
 
-- [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
-- [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
+- **[How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)**
+- **[Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)**
 
 </details>
 
@@ -248,8 +248,8 @@ It's neccesary that the **EUID** becomes root in the case of passwd because the 
 
 Useful resources:
 
-- [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
-- [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+- **[Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)**
+- **[What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)**
 
 </details>
 
@@ -268,7 +268,7 @@ Running everything as root is bad because:
 
 Useful resources:
 
-- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
+- **[Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)**
 
 </details>
 
@@ -298,9 +298,9 @@ Boot issues/errors calls for a system administrator to look into certain importa
 
 Useful resources:
 
-- [How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
-- [Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)
-- [How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)
+- **[How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)**
+- **[Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)**
+- **[How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)**
 
 </details>
 
@@ -334,18 +334,23 @@ done | sort -k 2 -n -r | less
 
 Useful resources:
 
-- [Linux ate my ram!](https://www.linuxatemyram.com/)
-- [How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)
-- [8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)
-- [What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)
-- [How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)
+- **[Linux ate my ram!](https://www.linuxatemyram.com/)**
+- **[How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)**
+- **[8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)**
+- **[What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)**
+- **[How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)**
 
 </details>
 
 <details>
 <summary><b>How to check memory stats and CPU stats?</b></summary><br>
 
-You'd use `top/htop` for both. Using <code>free</code> and <code>vmstat</code> command we can display the physical and virtual memory statistics respectively. With the help of <code>sar</code> command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
+You'd use `top/htop` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
+
+Useful resources:
+
+- **[How do I Find Out Linux CPU Utilization?](https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html)**
+- **[16 Linux server monitoring commands you really need to know](https://www.hpe.com/us/en/insights/articles/16-linux-server-monitoring-commands-you-really-need-to-know-1703.html)**
 
 </details>
 
@@ -361,13 +366,17 @@ Some interpretations:
 - If the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing.
 - If they are higher than your CPU count, then you might have a performance problem (it depends).
 
+Useful resources:
+
+- **[Linux Load Averages: Solving the Mystery (original)](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html)**
+
 </details>
 
 <details>
 <summary><b>How to create partition and filesystem?</b></summary><br>
 
-1) <code>fdisk</code> or <code>gparted</code> - create a new partition<br>
-2) <code>mkfs</code> - create a new filesystem
+1) `fdisk` or `gparted` - create a new partition
+2) `mkfs` - create a new filesystem
 
 </details>
 
@@ -381,33 +390,33 @@ Journaling has a dedicated area in the file system, where all the changes are tr
 <details>
 <summary><b>What are the kinds of permissions under Unix-like?</b></summary><br>
 
-- <b>Read</b>: users can read the files or list the directory<br>
-- <b>Write</b>: users may write to the file or add new files to the directory<br>
-- <b>Execute</b>: users may run the file or lookup a specific file within a directory
+- **Read**: users can read the files or list the directory
+- **Write**: users may write to the file or add new files to the directory
+- **Execute**: users may run the file or lookup a specific file within a directory
 
 </details>
 
 <details>
 <summary><b>Where is password file located in Linux?</b></summary><br>
 
-Linux passwords are stored in the <b>/etc/shadow</b> file. They are salted and the algorithm being used depends on the particular distribution and is configurable.
+Linux passwords are stored in the **/etc/shadow** file. They are salted and the algorithm being used depends on the particular distribution and is configurable.
 
 </details>
 
 <details>
 <summary><b>How do you change directory and subdirectory with file permissions in Linux/UNIX?</b></summary><br>
 
-To change all the directories e.g. to 755 (drwxr-xr-x):<br>
+To change all the directories e.g. to 755 (drwxr-xr-x):
 
-<code>
+```bash
 find /opt/data -type d -exec chmod 755 {} \;
-</code><br><br>
+```
 
-To change all the files e.g. to 644 (-rw-r--r--):<br>
+To change all the files e.g. to 644 (-rw-r--r--):
 
-<code>
+```bash
 find /opt/data -type f -exec chmod 644 {} \;
-</code><br><br>
+```
 
 </details>
 
@@ -421,38 +430,47 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 <details>
 <summary><b>What is grep command?</b></summary><br>
 
-<code>grep</code> searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.<br>
+`grep` searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.
 
 </details>
 
 <details>
 <summary><b>Explain file content commands along with the description.</b></summary><br>
 
-- <b>head</b>: to check the starting of a file.<br>
-- <b>tail</b>: to check the ending of the file. It is the reverse of head command.<br>
-- <b>cat</b>: used to view, create, concatenate the files.<br>
-- <b>more</b>: used to display the text in the terminal window in pager form.<br>
-- <b>less</b>: used to view the text in the backward direction and also provides single line movement.
+- `head`: to check the starting of a file.
+- `tail`: to check the ending of the file. It is the reverse of head command.
+- `cat`: used to view, create, concatenate the files.
+- `more`: used to display the text in the terminal window in pager form.
+- `less`: used to view the text in the backward direction and also provides single line movement.
 
 </details>
 
 <details>
 <summary><b>Explain SIGHUP, SIGINT, SIGKILL and SIGTERM Posix signals.</b></summary><br>
 
-- <b>SIGHUP</b> - the SIGHUP signal is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.<br>
-- <b>SIGINT</b> - the SIGINT signal is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing Ctrl+C, but on some systems, the "delete" character or "break" key can be used.<br>
-- <b>SIGKILL</b> - the SIGKILL signal is sent to a process to cause it to terminate immediately (kill). In contrast to SIGTERM and SIGINT, this signal cannot be caught or ignored, and the receiving process cannot perform any clean-up upon receiving this signal.<br>
-- <b>SIGTERM</b> - the SIGTERM signal is sent to a process to request its termination. Unlike the SIGKILL signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. SIGINT is nearly identical to SIGTERM.
+- **SIGHUP** - is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.
+- **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing Ctrl+C, but on some systems, the "delete" character or "break" key can be used.
+- **SIGKILL** - is sent to a process to cause it to terminate immediately (kill). In contrast to SIGTERM and SIGINT, this signal cannot be caught or ignored, and the receiving process cannot perform any clean-up upon receiving this signal.
+- **SIGTERM** - is sent to a process to request its termination. Unlike the SIGKILL signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. SIGINT is nearly identical to SIGTERM.
+
+Useful resources:
+
+- **[POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)**
+- **[Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)**
 
 </details>
 
 <details>
 <summary><b>What is the difference between <code>rm</code> and <code>rm -rf</code>?</b></summary><br>
 
-<code>rm</code> removes files and <code>-rf</code> are two options:<br>
+`rm` only deletes the named files (and not directories). With `-rf` as you say:
 
-- <code>-r</code> remove directories and their contents recursively<br>
-- <code>-f</code> ignore nonexistent files, never prompt
+- `-r`, `-R`, `--recursive` recursively deletes content of a directory, including hidden files and sub directories
+- `-f`, `--force` ignore nonexistent files, never prompt
+
+Useful resources:
+
+- **[What is the difference between `rm -r` and `rm -f`?](https://superuser.com/questions/1126206/what-is-the-difference-between-rm-r-and-rm-f)**
 
 </details>
 
@@ -475,10 +493,10 @@ To sync the contents of dir1 to dir2 on the same system, type:
 rsync -av --progress --delete dir1/ dir2
 ```
 
-- <code>-a, --archive</code> - archive mode
-- <code>--delete</code> - delete extraneous files from dest dirs
-- <code>-v, --verbose</code> - verbose mode (increase verbosity)
-- <code>--progress</code> - show progress during transfer
+- `-a`, `--archive` - archive mode
+- `--delete` - delete extraneous files from dest dirs
+- `-v`, `--verbose` - verbose mode (increase verbosity)
+- `--progress` - show progress during transfer
 
 </details>
 
@@ -503,9 +521,9 @@ find / -type f -size +20M
 <details>
 <summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
-<code>su -</code> invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
+`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
 
-<code>su</code> just switches the user, providing a normal shell with an environment nearly the same as with the old user.
+`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user.
 
 </details>
 
@@ -519,14 +537,38 @@ find / -mmin -60 -type f
 </details>
 
 <details>
-<summary><b>What are the main reasons for keeping old log files? </b></summary><br>
+<summary><b>What are the main reasons for keeping old log files?</b></summary><br>
 
-They are essential to investigate issue on the system.
+They are essential to investigate issues on the system. Log management is absolutely critical for IT security.
+
+Servers, firewalls, and other IT equipment keep log files that record important events and transactions. This information can provide important clues about hostile activity affecting your network from within and without. Log data can also provide information for identifying and troubleshooting equipment problems including configuration problems and hardware failure.
+
+It’s your server’s record of who’s come to your site, when, and exactly what they looked at. It’s incredibly detailed, showing:
+
+- where folks came from
+- what browser they were using
+- exactly which files they looked at
+- how long it took to load each file
+- and a whole bunch of other nerdy stuff
+
+Factors to consider:
+
+- legal requirements for retention or destruction
+- company policies for retention and destruction
+- how long the logs are useful
+- what questions you're hoping to answer from the logs
+- how much space they take up
+
+By collecting and analyzing logs, you can understand what transpires within your network. Each log file contains many pieces of information that can be invaluable, especially if you know how to read them and analyze them.
+
+Useful resources:
+
+- **[How long do you keep log files?](https://serverfault.com/questions/135365/how-long-do-you-keep-log-files)**
 
 </details>
 
 <details>
-<summary><b>What is an incremental backup? </b></summary><br>
+<summary><b>What is an incremental backup?</b></summary><br>
 
 An incremental backup is a type of backup that only copies files that have changed since the previous backup.
 
@@ -535,28 +577,32 @@ An incremental backup is a type of backup that only copies files that have chang
 <details>
 <summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID6, RAID10? </b></summary><br>
 
-A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
-- <b>RAID0</b>: Also known as disk <b>striping</b>, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
-- <b>RAID1</b>: A popular disk subsystem that increases safety by writing the same data on two drives. Called "<b>mirroring</b>," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one.
-- <b>RAID5</b>: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost.
-- <b>RAID6</b>: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations.
-- <b>RAID10</b>: Also known as <b>RAID 1+0</b>, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets.
+A **RAID** (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
+- **RAID0**: Also known as disk **striping**, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
+- **RAID1**: A popular disk subsystem that increases safety by writing the same data on two drives. Called "**mirroring**," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one.
+- **RAID5**: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost.
+- **RAID6**: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations.
+- **RAID10**: Also known as **RAID 1+0**, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets.
+
+Useful resources:
+
+- **[RAID](https://www.prepressure.com/library/technology/raid)**
 
 </details>
 
 <details>
 <summary><b>How is a user’s default group determined? How would you change it? </b></summary><br>
 
-<code>useradd -m -g initial_group username</code>
+```bash
+useradd -m -g initial_group username
+```
 
-<b>-g/--gid:</b>
-  defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in /etc/login.defs. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
-
+`-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
 
 </details>
 
 <details>
-<summary><b>Why would you want to mount servers in a rack? </b></summary><br>
+<summary><b>Why would you want to mount servers in a rack?</b></summary><br>
 
 - Protecting Hardware
 - Organized Workspace
@@ -568,7 +614,7 @@ A <b>RAID</b> (Redundant Array of Inexpensive Disks) is a technology that is use
 ###### Network Questions
 
 <details>
-<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it? </b></summary><br>
+<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it?</b></summary><br>
 
 I would connect to my web server via ssh to investigate the log files and resolve the issue regarding to the logs.
 
@@ -607,16 +653,28 @@ I would connect to my web server via ssh to investigate the log files and resolv
 </details>
 
 <details>
-<summary><b>What happens when you type api.example.com in your browser and press return?</b></summary><br>
+<summary><b>What types of cache working when you type api.example.com in your browser and press return?</b></summary><br>
 
-The browser has it's own DNS cache. When this cache fails, it simply asks the OS to resolve the domain. The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers. The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router. In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
+Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
+
+The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
+
+The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router.
+
+In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
+
+Useful resources:
+
+- **[What happens when...](https://github.com/alex/what-happens-when)**
+- **[DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)**
+- **[Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)**
 
 </details>
 
 <details>
 <summary><b>How to check default route and routing table?</b></summary><br>
 
-Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip route show</code> we can see the default route and routing tables.
+Using the commands `netstat -nr`, `route -n` or `ip route show` we can see the default route and routing tables.
 
 </details>
 
@@ -625,14 +683,13 @@ Using the commands <code>netstat -nr</code>, <code>route -n</code> or <code>ip r
 
 Well, the most likely difference is that you still have to do an actual lookup of localhost somewhere.
 
-If you use <code>127.0.0.1</code>, then (intelligent) software will just turn that directly into an IP address and use it. Some implementations of <code>gethostbyname</code> will detect the dotted format (and presumably the equivalent IPv6 format) and not do a lookup at all.
+If you use `127.0.0.1`, then (intelligent) software will just turn that directly into an IP address and use it. Some implementations of `gethostbyname` will detect the dotted format (and presumably the equivalent IPv6 format) and not do a lookup at all.
 
-Otherwise, the name has to be resolved. And there's no guarantee that your hosts file will actually be used for that resolution (first, or at all) so <code>localhost</code> may become a totally different IP address.
+Otherwise, the name has to be resolved. And there's no guarantee that your hosts file will actually be used for that resolution (first, or at all) so `localhost` may become a totally different IP address.
 
-By that I mean that, on some systems, a local hosts file can be bypassed. The <code>host.conf</code> file controls this on Linux (and many other Unices).
+By that I mean that, on some systems, a local hosts file can be bypassed. The **host.conf** file controls this on Linux (and many other Unices).
 
-If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have).
-Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take <code>127.0.0.1</code>.
+If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have). Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take `127.0.0.1`.
 
 Useful resources:
 
@@ -724,20 +781,20 @@ A gateway is a node (router) in a computer network, a key stopping point for dat
 
 DNS records are basically mapping files that tell the DNS server which IP address each domain is associated with, and how to handle requests sent to each domain. Some DNS records syntax that are commonly used in nearly all DNS record configurations are A, AAAA, CNAME, MX, PTR, NS, SOA, SRV, TXT, and NAPTR.
 
-- <b>SOA</b> - A Start Of Authority
-- <b>A</b> - Address Mapping records
-- <b>AAAA</b> - IP Version 6 Address records
-- <b>CNAME</b> - Canonical Name records
-- <b>MX</b> - Mail exchanger record
-- <b>NS</b> - Name Server records
-- <b>PTR</b> - Reverse-lookup Pointer records
+- **SOA** - A Start Of Authority
+- **A** - Address Mapping records
+- **AAAA** - IP Version 6 Address records
+- **CNAME** - Canonical Name records
+- **MX** - Mail exchanger record
+- **NS** - Name Server records
+- **PTR** - Reverse-lookup Pointer records
 
 </details>
 
 <details>
 <summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
 
-Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 - or a subnet mask of <code>255.255.255.224</code>.
+Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 - or a subnet mask of `255.255.255.224`.
 
 </details>
 
