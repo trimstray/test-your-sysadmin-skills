@@ -1304,17 +1304,27 @@ Is a process that has completed execution (via the <b>exit</b> system call) but 
 <details>
 <summary><b>What if <code>kill -9</code> does not work?</b></summary><br>
 
-<code>kill -9</code> (SIGKILL) always works, provided you have the permission to kill the process. Basically either the process must be started by you and not be setuid or setgid, or you must be root. There is one exception: even root cannot send a fatal signal to PID 1 (the init process).
+`kill -9` (`SIGKILL`) always works, provided you have the permission to kill the process. Basically either the process must be started by you and not be setuid or setgid, or you must be root. There is one exception: even root cannot send a fatal signal to PID 1 (the init process).
 
-However <code>kill -9</code> is not guaranteed to work immediately. All signals, including SIGKILL, are delivered asynchronously: the kernel may take its time to deliver them. Usually, delivering a signal takes at most a few microseconds, just the time it takes for the target to get a time slice. However, if the target has blocked the signal, the signal will be queued until the target unblocks it.
+However `kill -9` is not guaranteed to work immediately. All signals, including `SIGKILL`, are delivered asynchronously: the kernel may take its time to deliver them. Usually, delivering a signal takes at most a few microseconds, just the time it takes for the target to get a time slice. However, if the target has blocked the signal, the signal will be queued until the target unblocks it.
 
-Normally, processes cannot block SIGKILL. But kernel code can, and processes execute kernel code when they call system calls.
+Normally, processes cannot block `SIGKILL`. But kernel code can, and processes execute kernel code when they call system calls.
 
-A process blocked in a system call is in uninterruptible sleep. The <code>ps</code> or <code>top</code> command will (on most unices) show it in state <b>D</b>.
+A process blocked in a system call is in uninterruptible sleep. The `ps` or `top` command will (on most unices) show it in state **D**.
+
+To remove a **D** State Process, since it is uninterruptible, only a machine reboot can solve the problem in case its not automatically handled by the system.
+
+Usually there is a very few chance that a process stays in **D** State for long. And if it does then there is something not properly being handled in the system. This can be a potential bug as well.
 
 A classical case of long uninterruptible sleep is processes accessing files over NFS when the server is not responding; modern implementations tend not to impose uninterruptible sleep (e.g. under Linux, the intr mount option allows a signal to interrupt NFS file accesses).
 
-You may sometimes see entries marked <b>Z</b> (or <b>H</b> under Linux) in the <code>ps</code> or <code>top</code> output. These are technically not processes, they are zombie processes, which are nothing more than an entry in the process table, kept around so that the parent process can be notified of the death of its child. They will go away when the parent process pays attention (or dies).
+You may sometimes see entries marked **Z** (or **H** under Linux) in the `ps` or `top` output. These are technically not processes, they are zombie processes, which are nothing more than an entry in the process table, kept around so that the parent process can be notified of the death of its child. They will go away when the parent process pays attention (or dies).
+
+Useful resources:
+
+- [What if `kill -9` does not work? (original)](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
+- [How to kill a process in Linux if `kill -9` has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
+- [When should I not `kill -9` a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
 
 </details>
 
