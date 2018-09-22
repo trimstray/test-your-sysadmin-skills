@@ -50,7 +50,7 @@
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 79 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -315,7 +315,7 @@ find /opt/data -type f -exec chmod 644 {} \;
 
 It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. **/bin**, where the commands (including bash) reside.
 
-One way to begin debugging your bash script would be to start a subshell with the `-x` option:
+One way to begin debugging your bash script or command would be to start a subshell with the `-x` option:
 
 ```bash
 bash --login -x
@@ -640,8 +640,10 @@ Useful resources:
 ```bash
 # with host command:
 host domain.com 8.8.8.8
+
 # with dig command:
 dig @9.9.9.9 google.com
+
 # with nslookup command:
 nslookup domain.com 8.8.8.8
 ```
@@ -654,6 +656,7 @@ nslookup domain.com 8.8.8.8
 ```bash
 # with telnet command:
 telnet code42.example.com 5432
+
 # with nc (netcat) command:
 nc -vz code42.example.com 5432
 ```
@@ -2177,6 +2180,21 @@ Always try to use the following simple procedure:
 - next try to send <b>SIGHUP</b> (<code>kill -1</code>) signal which is commonly used to tell a process to shutdown and restart, this signal can also be caught and ignored by a process.
 
 The far majority of the time, this is all you need - and is much cleaner.
+
+</details>
+
+<details>
+<summary><b>Difference between `nohup`, `disown` and `&`. What happens when using all together?</b></summary><br>
+
+- `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
+- `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a `SIGHUP`. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
+- `nohup` disconnects the process from the terminal, redirects its output to **nohup.out** and shields it from `SIGHUP`. One of the effects (the naming one) is that the process won't receive any sent `SIGHUP`. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful)
+
+If you use all three together, the process is running in the background, is removed from the shell's job control and is effectively disconnected from the terminal.
+
+Useful resources:
+
+- [Difference between nohup, disown and & (original)](https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and)
 
 </details>
 
