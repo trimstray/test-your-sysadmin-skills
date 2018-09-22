@@ -48,7 +48,7 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 47 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
@@ -307,6 +307,39 @@ To change all the files e.g. to 644 (-rw-r--r--):
 ```bash
 find /opt/data -type f -exec chmod 644 {} \;
 ```
+
+</details>
+
+<details>
+<summary><b>Every command fails with "command not found". How to trace the source of the error and resolve it?</b></summary><br>
+
+It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. **/bin**, where the commands (including bash) reside.
+
+One way to begin debugging your bash script would be to start a subshell with the `-x` option:
+
+```bash
+bash --login -x
+```
+
+This will show you every command, and its arguments, which is executed when starting that shell.
+
+Also very helpful is show `PATH` variable values:
+
+```bash
+echo $PATH
+```
+
+If you run this:
+
+```bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+```
+
+most commands should start working - and then you can edit **~/.bash_profile** instead of **~/.bashrc** and fix whatever is resetting `PATH` there. Default `PATH` variable values for **root** and other users is in **/etc/profile** file.
+
+Useful resource:
+
+- [How to correctly add a path to PATH?](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path)
 
 </details>
 
