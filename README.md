@@ -48,8 +48,8 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 74 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 47 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -97,15 +97,15 @@ Useful resources:
 <details>
 <summary><b>What are the differences between Unix, Linux, BSD and GNU?</b></summary><br>
 
-GNU isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So GNU tools are basically open versions of tools that already existed, but were reimplemented to conform to principals of open software. GNU/Linux is a mesh of those tools and the Linux kernel to form a complete OS, but there are other "GNU"s, e.g. GNU/Hurd.
+**GNU** isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So **GNU** tools are basically open versions of tools that already existed, but were reimplemented to conform to principals of open software. **GNU/Linux** is a mesh of those tools and the **Linux kernel** to form a complete OS, but there are other GNUs, e.g. **GNU/Hurd**.
 
-Unix and BSD are "older" implementations of POSIX that are various levels of "closed source". Unix is usually totally closed source, but there are as many flavors of Unix as there are Linux (if not more). BSD is not usually considered "open", but it was considered to be very open when it was released. Its licensing also allowed for commercial use with far fewer restrictions than the more "open" licenses of the time allowed.
+**Unix** and **BSD** are "older" implementations of POSIX that are various levels of "closed source". **Unix** is usually totally closed source, but there are as many flavors of **Unix** as there are **Linux** (if not more). **BSD** is not usually considered "open", but it was considered to be very open when it was released. Its licensing also allowed for commercial use with far fewer restrictions than the more "open" licenses of the time allowed.
 
-Linux is the newest of the four. Strictly speaking, it's "just a kernel"; however, in general, it's thought of as a full OS when combined with GNU Tools and several other core components.
+**Linux** is the newest of the four. Strictly speaking, it's "just a kernel"; however, in general, it's thought of as a full OS when combined with GNU Tools and several other core components.
 
-The main governing differences between these are their ideals. Unix, Linux, and BSD have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
+The main governing differences between these are their ideals. **Unix**, **Linux**, and **BSD** have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
 
-For more info I suggest your read a brief article on the creation of GNU, OSS, Linux, BSD, and UNIX. They will be slanted towards their individual ideas, but those articles should give you a better idea of the differences.
+For more info I suggest your read a brief article on the creation of **GNU**, **OSS**, **Linux**, **BSD**, and **UNIX**. They will be slanted towards their individual ideas, but those articles should give you a better idea of the differences.
 
 Useful resources:
 
@@ -119,7 +119,7 @@ Useful resources:
 
 **CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
-In Linux, CLI is the interface by which a user can type commands for the system to execute. The CLI is very powerful, but is not very error-tolerant.
+In Linux, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
 
 Useful resources:
 
@@ -222,38 +222,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does it mean when the effective user is "root", but the real user ID is still your name?</b></summary><br>
-
-The real user ID is who you really are (the user who owns the process), and the effective user ID is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
-
-When you log in, the login shell sets both the real and effective user ID to the same value (your real user id) as supplied by the password file.
-
-If, for instance, you execute setuid, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf:
-
-After executing setuid, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
-
-Let's use the case of passwd:
-
-```bash
--rwsr-xr-x 1 root root 45396 may 25  2012 /usr/bin/passwd
-```
-
-When user2 wants to change their password, they execute `/usr/bin/passwd`.
-
-The **RUID** will be user2 but the **EUID** of that process will be root.
-
-user2 can use only passwd to change their own password, because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
-
-It's neccesary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
-
-Useful resources:
-
-- [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
-- [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
-
-</details>
-
-<details>
 <summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
 
 Running everything as root is bad because:
@@ -273,76 +241,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>When your server is booting up some errors appears on the console. How to examine boot messages and where are they stored?</b></summary><br>
-
-Your console has two types of messages:
-
-- **generated by the kernel** (via printk)
-- **generated by userspace** (usually your init system)
-
-Kernel messages are always stored in the **kmsg** buffer, visible via `dmesg` command. They're also often copied to your **syslog**. This also applies to userspace messages written to `/dev/kmsg`, but those are fairly rare.
-
-Meanwhile, when userspace writes its fancy boot status text to `/dev/console` or `/dev/tty1`, it's not stored anywhere at all. It just goes to the screen and that's it.
-
-`dmesg` is used to review boot messages contained in the kernel ring buffer. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
-
-It shows operations once the boot process has completed, such as command line options passed to the kernel; hardware components detected, events when a new USB device is added, or errors like NIC (Network Interface Card) failure and the drivers report no link activity detected on the network and so much more.
-
-If system logging is done via the journal component you should use `journalctl`. It shows messages include kernel and boot messages; messages from syslog or various services.
-
-Boot issues/errors calls for a system administrator to look into certain important files in conjunction with particular commands (handled differently by different versions of Linux):
-
-- `/var/log/boot.log` - system boot log, it contains all that unfolded during the system boot
-- `/var/log/messages` - stores global system messages, including the messages that are logged during system boot
-- `/var/log/dmesg` - contains kernel ring buffer information
-
-Useful resources:
-
-- [How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
-- [Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)
-- [How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)
-
-</details>
-
-<details>
-<summary><b>Swap usage too high. What are the reasons for this and how to resolve swapping problems?</b></summary><br>
-
-**Swap** space is a restricted amount of physical memory that is allocated for use by the operating system when available memory has been fully utilized. It is memory management that involves swapping sections of memory to and from physical storage.
-
-If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory.
-
-Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing swappiness to 1 might not be a wise decision. Setting swappiness to 1 does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
-
-- **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks arn't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
-
-- **Adding more RAM** - the real solution is to add more memory. There's no substitute for RAM, and if you have enough memory, you'll swap less.
-
-For monitoring swap space usage:
-
-- `cat /proc/swaps` - to see total and used swap size
-- `grep SwapTotal /proc/meminfo` - to show total swap space
-- `free` - to display the amount of free and used system memory (also swap)
-- `vmstat` - to check swapping statistics
-- `top`/`htop`- to check swap space usage
-- `atop` - to show is that your system is overcommitting memory
-- or use one-liner shell command to list all applications with how much swap space search is using in kilobytes:
-```bash
-for _fd in /proc/*/status ; do
-  awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $_fd
-done | sort -k 2 -n -r | less
-```
-
-Useful resources:
-
-- [Linux ate my ram!](https://www.linuxatemyram.com/)
-- [How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)
-- [8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)
-- [What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)
-- [How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)
-
-</details>
-
-<details>
 <summary><b>How to check memory stats and CPU stats?</b></summary><br>
 
 You'd use `top/htop` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
@@ -357,14 +255,14 @@ Useful resources:
 <details>
 <summary><b>What is load average?</b></summary><br>
 
-Linux load averages are "system load averages" that show the running thread (task) demand on the system as an average number of running plus waiting threads. This measures demand, which can be greater than what the system is currently processing. Most tools show three averages, for 1, 5, and 15 minutes.
+Linux **load averages** are "system load averages" that show the running thread (task) demand on the system as an average number of running plus waiting threads. This measures demand, which can be greater than what the system is currently processing. Most tools show three averages, for 1, 5, and 15 minutes.
 
 Some interpretations:
 
-- If the averages are 0.0, then your system is idle.
-- If the 1 minute average is higher than the 5 or 15 minute averages, then load is increasing.
-- If the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing.
-- If they are higher than your CPU count, then you might have a performance problem (it depends).
+- if the averages are 0.0, then your system is idle.
+- if the 1 minute average is higher than the 5 or 15 minute averages, then load is increasing.
+- if the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing.
+- if they are higher than your CPU count, then you might have a performance problem (it depends).
 
 Useful resources:
 
@@ -383,16 +281,7 @@ Useful resources:
 <details>
 <summary><b>Where journaling is dedicated?</b></summary><br>
 
-Journaling has a dedicated area in the file system, where all the changes are tracked. When the system crashes, the possibility of file  system corruption is less because of journaling.
-
-</details>
-
-<details>
-<summary><b>What are the kinds of permissions under Unix-like?</b></summary><br>
-
-- **Read**: users can read the files or list the directory
-- **Write**: users may write to the file or add new files to the directory
-- **Execute**: users may run the file or lookup a specific file within a directory
+Journaling has a dedicated area in the file system, where all the changes are tracked. When the system crashes, the possibility of file system corruption is less because of journaling.
 
 </details>
 
@@ -878,6 +767,38 @@ Some people use toor for day-to-day root tasks with a non-standard shell, leavin
 </details>
 
 <details>
+<summary><b>What does it mean when the effective user is "root", but the real user ID is still your name?</b></summary><br>
+
+The real user ID is who you really are (the user who owns the process), and the effective user ID is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
+
+When you log in, the login shell sets both the real and effective user ID to the same value (your real user id) as supplied by the password file.
+
+If, for instance, you execute setuid, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf:
+
+After executing setuid, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
+
+Let's use the case of passwd:
+
+```bash
+-rwsr-xr-x 1 root root 45396 may 25  2012 /usr/bin/passwd
+```
+
+When user2 wants to change their password, they execute `/usr/bin/passwd`.
+
+The **RUID** will be user2 but the **EUID** of that process will be root.
+
+user2 can use only passwd to change their own password, because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
+
+It's neccesary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
+
+Useful resources:
+
+- [Difference between Real User ID, Effective User ID and Saved User ID? (original)](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+- [What is the difference between a pid, ppid, uid, euid, gid and egid?](https://stackoverflow.com/questions/30493424/what-is-the-difference-between-a-process-pid-ppid-uid-euid-gid-and-egid)
+
+</details>
+
+<details>
 <summary><b>What is the name and path of the main system log?</b></summary><br>
 
 By default, the main system log is <b>/var/log/messages</b>. This file contains all the messages and the script written by the user.
@@ -928,6 +849,75 @@ To be completed.
 
 This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
 
+</details>
+
+<details>
+<summary><b>When your server is booting up some errors appears on the console. How to examine boot messages and where are they stored?</b></summary><br>
+
+Your console has two types of messages:
+
+- **generated by the kernel** (via printk)
+- **generated by userspace** (usually your init system)
+
+Kernel messages are always stored in the **kmsg** buffer, visible via `dmesg` command. They're also often copied to your **syslog**. This also applies to userspace messages written to `/dev/kmsg`, but those are fairly rare.
+
+Meanwhile, when userspace writes its fancy boot status text to `/dev/console` or `/dev/tty1`, it's not stored anywhere at all. It just goes to the screen and that's it.
+
+`dmesg` is used to review boot messages contained in the kernel ring buffer. A ring buffer is a buffer of fixed size for which any new data added to it overwrites the oldest data in it.
+
+It shows operations once the boot process has completed, such as command line options passed to the kernel; hardware components detected, events when a new USB device is added, or errors like NIC (Network Interface Card) failure and the drivers report no link activity detected on the network and so much more.
+
+If system logging is done via the journal component you should use `journalctl`. It shows messages include kernel and boot messages; messages from syslog or various services.
+
+Boot issues/errors calls for a system administrator to look into certain important files in conjunction with particular commands (handled differently by different versions of Linux):
+
+- `/var/log/boot.log` - system boot log, it contains all that unfolded during the system boot
+- `/var/log/messages` - stores global system messages, including the messages that are logged during system boot
+- `/var/log/dmesg` - contains kernel ring buffer information
+
+Useful resources:
+
+- [How to view all boot messages in Linux after booting? (original)](https://superuser.com/questions/1188407/how-to-view-all-boot-messages-in-linux-after-booting)
+- [Differences in /var/log/{syslog,dmesg,messages} log files](https://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files)
+- [How can the messages that scroll by when booting a Debian system be reviewed later?](https://serverfault.com/questions/516411/all-debian-boot-messages)
+
+</details>
+
+<details>
+<summary><b>Swap usage too high. What are the reasons for this and how to resolve swapping problems?</b></summary><br>
+
+**Swap** space is a restricted amount of physical memory that is allocated for use by the operating system when available memory has been fully utilized. It is memory management that involves swapping sections of memory to and from physical storage.
+
+If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. **Swap** space is located on hard drives, which have a slower access time than physical memory.
+
+Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing swappiness to 1 might not be a wise decision. Setting swappiness to 1 does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
+
+- **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks arn't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
+
+- **Adding more RAM** - the real solution is to add more memory. There's no substitute for RAM, and if you have enough memory, you'll swap less.
+
+For monitoring swap space usage:
+
+- `cat /proc/swaps` - to see total and used swap size
+- `grep SwapTotal /proc/meminfo` - to show total swap space
+- `free` - to display the amount of free and used system memory (also swap)
+- `vmstat` - to check swapping statistics
+- `top`, `htop`- to check swap space usage
+- `atop` - to show is that your system is overcommitting memory
+- or use one-liner shell command to list all applications with how much swap space search is using in kilobytes:
+```bash
+for _fd in /proc/*/status ; do
+  awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $_fd
+done | sort -k 2 -n -r | less
+```
+
+Useful resources:
+
+- [Linux ate my ram!](https://www.linuxatemyram.com/)
+- [How to find out which processes are using swap space in Linux?](https://stackoverflow.com/questions/479953/how-to-find-out-which-processes-are-using-swap-space-in-linux)
+- [8 Useful Commands to Monitor Swap Space Usage in Linux](https://www.tecmint.com/commands-to-monitor-swap-space-usage-in-linux/)
+- [What is the danger in having a fully used SWAP in an Ubuntu server?](https://serverfault.com/questions/499301/what-is-the-danger-in-having-a-fully-used-swap-in-an-ubuntu-server)
+- [How to empty swap if there is free RAM?](https://askubuntu.com/questions/1357/how-to-empty-swap-if-there-is-free-ram)
 
 </details>
 
@@ -1008,6 +998,95 @@ b) Softlink also termed a symbolic links or symlinks can link to a directory.
 <summary><b>What is the sticky-bit?</b></summary><br>
 
 A Sticky bit is a permission bit that is set on a file or a directory that lets only the owner of the file/directory or the root user to delete or rename the file. No other user is given privileges to delete the file created by some other user.
+
+</details>
+
+<details>
+<summary><b>You are preparing a web server. One of the steps are the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
+
+**1) Main requirements - remember about this**
+
+- which users have access to the app filesystem
+- permissions for web servers, e.g. apache and app servers e.g. uwsgi
+- permissions for specific directories like a **uploads**, **cache** and main app directory like a **/var/www/app01/html**
+- correct `umask` value for users and **suid**/**sgid** (only for specific situations)
+- permissions for all future files and directories
+- permissions for cron jobs and scripts
+
+**2) Application directories**
+
+**/var/www** contains a directory for each website (isolation of the apps), e.g. **/var/www/app01**, **/var/www/app02**
+
+```bash
+mkdir /var/www/{app01,app02}
+```
+
+**3) Application owner and group**
+
+Each application has a designated **owner** (e.g. **u01-prod**, **u02-prod**) and **group** (e.g. **g01-prod**, **g02-prod**) which are set as the owner of all files and directories in the website's directory:
+
+```bash
+chown -R u01-prod:g01-prod /var/www/app01
+chown -R u02-prod:g02-prod /var/www/app02
+```
+
+**4) Developers owner and group**
+
+All of the users that maintain the website have own groups and they're attach to application group:
+
+```bash
+id alice
+uid=2000(alice) gid=4000(alice) groups=8000(g01-prod)
+id bob
+uid=2001(bob) gid=4001(bob) groups=8000(g01-prod),8001(g02-prod)
+```
+
+So **alice** user has standard privileges for **/var/www/app01** and **bob** user has standard privileges for **/var/www/app01** and **/var/www/app02**.
+
+**5) Web server owner and group**
+
+Any files or directories that need to be written by the webserver have their owner. If the web servers is Apache, default owner/group are **apache:apache** or **www-data:www-data** and for Nginx it will be **nginx:nginx**. Don't change these settings.
+
+If applications works with app servers like a **uwsgi** or **php-fpm** should set the appropriate user and group (e.g. for **app01** it will be **u01-prod:g01-prod**) in specific config files.
+
+**6) Permissions**
+
+Set properly permissions with **Access Control Lists**:
+
+```bash
+# For web server
+setfacl -Rm "g:apache:rwx" /var/www/app01
+setfacl -Rd "g:apache:rwx" /var/www/app01
+
+# For developers
+setfacl -Rm "g:g01-prod:rwx" /var/www/app01
+setfacl -Rd "g:g01-prod:rwx" /var/www/app01
+```
+
+If you use **SELinux** remember about security context:
+
+```bash
+chcon -R system_u:object_r:httpd_sys_content_t /var/www/app01
+```
+
+**7) Security mistakes**
+
+- **root** owner for files and directories
+- **root** never executes any files in website directory, and shouldn't be creating files in there
+- to wide permissions like a **777** so some critical files may be world-writable and world-readable
+- avoid creating maintenance scripts or other critical files with suid root
+
+If you allow your site to modify the files which form the code running your site, you make it much easier for someone to take over your server.
+
+A file upload tool allows users to upload a file with any name and any contents. This allows a user to upload a mail relay PHP script to your site, which they can place wherever they want to turn your server into a machine to forward unsolicited commercial email. This script could also be used to read every email address out of your database, or other personal information.
+
+If the malicious user can upload a file with any name but not control the contents, then they could easily upload a file which overwrites your index.php (or another critical file) and breaks your site.
+
+Useful resources:
+
+- [How to setup linux permissions for the WWW folder?](https://serverfault.com/questions/124800/how-to-setup-linux-permissions-for-the-www-folder)
+- [What permissions should my website files/folders have on a Linux webserver?](https://serverfault.com/questions/357108/what-permissions-should-my-website-files-folders-have-on-a-linux-webserver)
+- [Security Pitfalls of setgid Programs](https://www.agwa.name/blog/post/security_pitfalls_of_setgid_programs)
 
 </details>
 
@@ -1197,7 +1276,7 @@ You may sometimes see entries marked <b>Z</b> (or <b>H</b> under Linux) in the <
 </details>
 
 <details>
-<summary><b>What are segmentation faults (segfaults), and how can I identify what's causing them?</b></summary><br>
+<summary><b>What are segmentation faults (segfaults), and how can identify what's causing them?</b></summary><br>
 
 A segmentation fault (aka segfault) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
 
