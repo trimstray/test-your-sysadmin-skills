@@ -367,7 +367,10 @@ Useful resources:
 <summary><b>How do you list contents of archive.tgz and extract only one file?</b></summary><br>
 
 ```bash
+# list of conent
 tar tf archive.tgz
+
+# extract file
 tar xf archive.tgz filename
 ```
 
@@ -410,9 +413,16 @@ find / -type f -size +20M
 <details>
 <summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
-`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
+`sudo` - in most modern (desktop-) Linux distributions (for example Ubuntu) the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`
 
-`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user.
+`su` - just switches the user, providing a normal shell with an environment nearly the same as with the old user
+
+`su -` - invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base
+
+Useful resources:
+
+- [`su` vs `sudo -s` vs `sudo -i` vs `sudo bash`](https://unix.stackexchange.com/questions/35338/su-vs-sudo-s-vs-sudo-i-vs-sudo-bash)
+- [Why do we use `su -`` and not just `su`? (original)](https://unix.stackexchange.com/questions/7013/why-do-we-use-su-and-not-just-su)
 
 </details>
 
@@ -467,11 +477,12 @@ An incremental backup is a type of backup that only copies files that have chang
 <summary><b>What is RAID? What is RAID0, RAID1, RAID5, RAID6, RAID10? </b></summary><br>
 
 A **RAID** (Redundant Array of Inexpensive Disks) is a technology that is used to increase the performance and/or reliability of data storage.
-- **RAID0**: Also known as disk **striping**, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure.
-- **RAID1**: A popular disk subsystem that increases safety by writing the same data on two drives. Called "**mirroring**," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one.
-- **RAID5**: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost.
-- **RAID6**: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations.
-- **RAID10**: Also known as **RAID 1+0**, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets.
+
+- **RAID0**: Also known as disk **striping**, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure
+- **RAID1**: A popular disk subsystem that increases safety by writing the same data on two drives. Called "**mirroring**," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one
+- **RAID5**: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost
+- **RAID6**: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations
+- **RAID10**: Also known as **RAID 1+0**, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets
 
 Useful resources:
 
@@ -486,7 +497,9 @@ Useful resources:
 useradd -m -g initial_group username
 ```
 
-`-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group. If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
+`-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group.
+
+If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
 
 </details>
 
@@ -1055,12 +1068,12 @@ Set properly permissions with **Access Control Lists**:
 
 ```bash
 # For web server
+setfacl -Rdm "g:apache:rwx" /var/www/app01
 setfacl -Rm "g:apache:rwx" /var/www/app01
-setfacl -Rd "g:apache:rwx" /var/www/app01
 
 # For developers
+setfacl -Rdm "g:g01-prod:rwx" /var/www/app01
 setfacl -Rm "g:g01-prod:rwx" /var/www/app01
-setfacl -Rd "g:g01-prod:rwx" /var/www/app01
 ```
 
 If you use **SELinux** remember about security context:
