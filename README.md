@@ -171,7 +171,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does `LC_ALL=C command` do?</b></summary><br>
+<summary><b>What does <code>LC_ALL=C command</code> do?</b></summary><br>
 
 `LC_ALL` is the environment variable that overrides all the other localisation settings.
 
@@ -2232,7 +2232,7 @@ The far majority of the time, this is all you need - and is much cleaner.
 </details>
 
 <details>
-<summary><b>Difference between `nohup`, `disown` and `&`. What happens when using all together?</b></summary><br>
+<summary><b>Difference between <code>nohup</code>, <code>disown</code> and <code>&</code>. What happens when using all together?</b></summary><br>
 
 - `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
 - `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a `SIGHUP`. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
