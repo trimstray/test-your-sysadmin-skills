@@ -237,6 +237,7 @@ Running everything as root is bad because:
 Useful resources:
 
 - [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
+- [What's wrong with always being root?](https://serverfault.com/questions/57962/whats-wrong-with-always-being-root)
 
 </details>
 
@@ -421,8 +422,8 @@ find / -type f -size +20M
 
 Useful resources:
 
-- [`su` vs `sudo -s` vs `sudo -i` vs `sudo bash`](https://unix.stackexchange.com/questions/35338/su-vs-sudo-s-vs-sudo-i-vs-sudo-bash)
-- [Why do we use `su -`` and not just `su`? (original)](https://unix.stackexchange.com/questions/7013/why-do-we-use-su-and-not-just-su)
+- [su vs sudo -s vs sudo -i vs sudo bash](https://unix.stackexchange.com/questions/35338/su-vs-sudo-s-vs-sudo-i-vs-sudo-bash)
+- [Why do we use su - and not just su? (original)](https://unix.stackexchange.com/questions/7013/why-do-we-use-su-and-not-just-su)
 
 </details>
 
