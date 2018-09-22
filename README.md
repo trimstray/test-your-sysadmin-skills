@@ -311,7 +311,7 @@ find /opt/data -type f -exec chmod 644 {} \;
 </details>
 
 <details>
-<summary><b>Every command fails with "command not found". How to trace the source of the error and resolve it?</b></summary><br>
+<summary><b>Every command fails with <code>command not found</code>. How to trace the source of the error and resolve it?</b></summary><br>
 
 It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. **/bin**, where the commands (including bash) reside.
 
