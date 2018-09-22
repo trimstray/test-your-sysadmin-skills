@@ -48,7 +48,7 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 79 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
@@ -167,6 +167,32 @@ last
 Useful resources:
 
 - [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
+
+</details>
+
+<details>
+<summary><b>What does `LC_ALL=C command` do?</b></summary><br>
+
+`LC_ALL` is the environment variable that overrides all the other localisation settings.
+
+The main reason to set `LC_ALL=C` before command is that fine to simply get English output.
+
+On the other hand, all you need to do if you want to restore all your normal (original) locale settings for the session:
+
+```bash
+LC_ALL=
+```
+
+If `LC_ALL` does not work, try using `LANG` (if that still does not work, try `LANGUAGE`):
+
+```bash
+LANG=C date +%A
+Monday
+```
+
+Useful resources:
+
+- [What does `LC_ALL=C` do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
 
 </details>
 
@@ -447,11 +473,11 @@ find / -type f -size +20M
 <details>
 <summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
-`sudo` - in most modern (desktop-) Linux distributions (for example Ubuntu) the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`
+`sudo` is in most modern Linux distributions the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`
 
-`su` - just switches the user, providing a normal shell with an environment nearly the same as with the old user
+`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user
 
-`su -` - invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base
+`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base
 
 Useful resources:
 
@@ -808,11 +834,15 @@ Security misconfiguration is a vulnerability when a device/application/network i
 <details>
 <summary><b>What is this UID 0 <code>toor</code> account? Have I been compromised?</b></summary><br>
 
-<code>toor</code> is an "alternative" superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
+**toor** is an alternative superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
 
-This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in <code>/usr/local/bin</code> which, by default, resides on a different file system. If root's shell is located in <code>/usr/local/bin</code> and the file system containing <code>/usr/local/bin</code>) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
+This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in `/usr/local/bin` which, by default, resides on a different file system. If root's shell is located in `/usr/local/bin` and the file system containing `/usr/local/bin`) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
 
 Some people use toor for day-to-day root tasks with a non-standard shell, leaving root, with a standard shell, for single-user mode or emergencies. By default, a user cannot log in using toor as it does not have a password, so log in as root and set a password for toor before using it to login.
+
+Useful resources:
+
+- [The root account (and toor)](https://administratosphere.wordpress.com/2007/10/04/the-root-account-and-toor/)
 
 </details>
 
@@ -983,6 +1013,10 @@ Permanently change (set e.g. <code>umask 02</code>):<br>
 - <b>~/.zshrc</b><br>
 - <b>~/.cshrc</b>
 
+Useful resources:
+
+- [What is Umask and How To Setup Default umask Under Linux?](https://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html)
+
 </details>
 
 <details>
@@ -1025,6 +1059,10 @@ Permanently change (set e.g. <code>umask 02</code>):<br>
     <td>500 r-x --- ---</td>
   </tr>
 </table>
+
+Useful resources:
+
+- [What is Umask and How To Setup Default umask Under Linux?](https://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html)
 
 </details>
 
@@ -2402,6 +2440,10 @@ Force login using the key:
 ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i id_rsa user@remote_host
 ```
 
+Useful resources:
+
+- [How to force ssh client to use only password auth?](https://unix.stackexchange.com/questions/15138/how-to-force-ssh-client-to-use-only-password-auth)
+
 </details>
 
 <details>
@@ -2870,19 +2912,40 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How do you kill program using one port in Linux?</b></summary><br>
+<summary><b>How do you kill program using e.g. 80 port in Linux?</b></summary><br>
 
-To list any process listening to the port 8080:<br>
+To list any process listening to the port 80:
 
-<code>lsof -i:8080</code>
+```bash
+# with lsof
+lsof -i:80
 
-To kill any process listening to the port 8080:<br>
+# with fuser
+fuser 8080/tcp
+```
 
-<code>kill $(lsof -t -i:8080)</code>
+To kill any process listening to the port 80:
 
-or more violently:<br>
+```bash
+kill $(lsof -t -i:80)
+```
 
-<code>kill -9 $(lsof -t -i:8080)</code><br><br>
+or more violently:
+
+```bash
+kill -9 $(lsof -t -i:80)
+```
+
+or with `fuser` command:
+
+```bash
+fuser -k 8080/tcp
+```
+
+Useful resources:
+
+- [How to kill a process running on particular port in Linux?](https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux/32592965)
+- [Finding the PID of the process using a specific port?](https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port)
 
 </details>
 
