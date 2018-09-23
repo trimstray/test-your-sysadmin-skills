@@ -1584,7 +1584,7 @@ You should use <code>#!/usr/bin/env bash</code> for portability: different *nixe
 </details>
 
 <details>
-<summary><b>You must run command that will be performed for a very long time on the remote server. How to prevent killing the long running process after the ssh session drops?</b></summary><br>
+<summary><b>You must run command that will be performed for a very long time on the remote server. How to prevent killing this process after the ssh session drops?</b></summary><br>
 
 Use `nohup` to make your process ignore the hangup signal:
 
@@ -1763,7 +1763,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Dev team reports an error: <code>POST http://gate.int.com/api/v1/SubmitResponse/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
+<summary><b>Dev team reports an error: <code>POST http://ws.com/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
 
 **Modify NGINX configuration file for domain**
 
@@ -1918,9 +1918,9 @@ Content-Type: text/html; charset=utf-8
 </details>
 
 <details>
-<summary><b>You get <code>curl: (56) TCP connection reset by peer</code> from production web cluster. What steps will you take to solve this problem?</b></summary><br>
+<summary><b>You get <code>curl: (56) TCP connection reset by peer</code>. What steps will you take to solve this problem?</b></summary><br>
 
-- check there was problem in URL, maybe you should add **www** or set correct **Host:** header? Check also scheme (http or https)
+- check if the URL is correct, maybe you should add **www** or set correctly **Host:** header? Check also scheme (http or https)
 - check the domain is resolving into a correct IP address
 - enable debug tracing with `--trace-ascii curl.dump`. "**Recv failure**" is a really generic error so its hard for more info
 - use external proxy with `--proxy` for debug connection from external ip
