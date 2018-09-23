@@ -35,13 +35,13 @@
 
 ****
 
-:information_source: This project contains **examples** of test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **235** of test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
 :warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
 
-:bangbang: The answers are only examples and do not exhaust the whole topic.
+:bangbang: The answers are only **examples** and do not exhaust the whole topic.
 
-:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; please make a pull request! Feedback and advice is welcome.
+:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**! All suggestions are welcome.
 
 ## Table of Contents
 
@@ -49,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 81 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -59,7 +59,7 @@
 ### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
 - <b>What did you learn this week?</b>
-- <b>What excites or interests you about the Sysadmin world?</b>
+- <b>What excites or interests you about the sysadmin world?</b>
 - <b>What is a recent technical challenge you experienced and how did you solve it?</b>
 - <b>Tell me about the last major project you finished.</b>
 - <b>Do you contribute to any open source projects?</b>
@@ -1758,7 +1758,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Dev team reports an error: <code>POST http://gate.int.com/api/v1/SubmitResponse/` resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
+<summary><b>Dev team reports an error: <code>POST http://gate.int.com/api/v1/SubmitResponse/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
 
 **Modify NGINX configuration file for domain**
 
@@ -1796,7 +1796,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (19)
+###### Network Questions (20)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -1909,6 +1909,25 @@ HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
 ...
 ```
+
+</details>
+
+<details>
+<summary><b>You get <code>curl: (56) TCP connection reset by peer</code> from production web cluster. What steps will you take to solve this problem?</b></summary><br>
+
+- check there was problem in URL, maybe you should add **www** or set correct **Host:** header? Check also scheme (http or https)
+- check the domain is resolving into a correct IP address
+- enable debug tracing with `--trace-ascii curl.dump`. "**Recv failure**" is a really generic error so its hard for more info
+- use external proxy with `--proxy` for debug connection from external ip
+- use network sniffer (e.g. `tcpdump`) for debug connection in the lower TCP/IP layers
+- check firewall rules on the production environment and on the exit point of your network, also check your NAT rules
+- check MTU size of packets travelling over your network
+- check SSL version with ssl/tls `curl` params if you connecting to https protocol
+- it may be a problem on the client side e.g. the netfilter drop or limit  connections from your IP address to the domain
+
+Useful resources:
+
+- [CURL ERROR: Recv failure: Connection reset by peer - PHP Curl](https://stackoverflow.com/questions/10285700/curl-error-recv-failure-connection-reset-by-peer-php-curl)
 
 </details>
 
