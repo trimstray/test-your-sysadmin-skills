@@ -48,8 +48,8 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 79 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -141,6 +141,44 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What do the fields in `ls -al` output mean?</b></summary><br>
+
+In the order of output;
+
+```bash
+-rwxrw-r--    1    root   root 2048    Jan 13 07:11 afile.exe
+```
+
+- file permissions,
+- number of links,
+- owner name,
+- owner group,
+- file size,
+- time of last modification, and
+- file/directory name
+
+File permissions is displayed as following;
+
+- first character is `-` or `l` or `d`, d indicates a directory, a line represents a file, l is a symlink (or soft link) - special type of file
+- three sets of characters, three times, indicating permissions for owner, group and other:
+  - r = readable
+  - w = writable
+  - x = executable
+
+In your example `-rwxrw-r--`, this means the line displayed is:
+
+- a regular file (displayed as -)
+- readable, writable and executable by owner (rwx)
+- readable, writable, but not executable by group (rw-)
+- readable but not writable or executable by other (r--)
+
+Useful resources:
+
+- [What do the fields in ls -al output mean? (original)](https://unix.stackexchange.com/questions/103114/what-do-the-fields-in-ls-al-output-mean)
+
+</details>
+
+<details>
 <summary><b>How do you get a list of logged-in users?</b></summary><br>
 
 For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
@@ -171,7 +209,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does <code>LC_ALL=C command</code> do?</b></summary><br>
+<summary><b>What does '<code>LC_ALL=C command</code>' do?</b></summary><br>
 
 `LC_ALL` is the environment variable that overrides all the other localisation settings.
 
@@ -615,7 +653,7 @@ I would connect to my web server via ssh to investigate the log files and resolv
 </details>
 
 <details>
-<summary><b>What types of cache working when you type api.example.com in your browser and press return?</b></summary><br>
+<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
 
 Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
 
@@ -1541,6 +1579,29 @@ You should use <code>#!/usr/bin/env bash</code> for portability: different *nixe
 </details>
 
 <details>
+<summary><b>You must run command that will be performed for a very long time on the remote server. How to prevent killing the long running process after the ssh session drops?</b></summary><br>
+
+Use `nohup` to make your process ignore the hangup signal:
+
+```bash
+nohup long-running-process &
+exit
+```
+
+or you want to be using GNU Screen:
+
+```bash
+screen -d -m long-running-process
+exit
+```
+
+Useful resources:
+
+- [5 Ways to Keep Remote SSH Sessions and Processes Running After Disconnection](https://www.tecmint.com/keep-remote-ssh-sessions-running-after-disconnection/)
+
+</details>
+
+<details>
 <summary><b>What is root certificate and intermediate certificate?</b></summary><br>
 
 A "root" authority is a certificate issuer that parties choose to trust (explicitly). It is usually self-signed (self-issued) and very highly protected. An intermediate authority is a certificate issuer that has itself been issued by a root or another higher level intermediate authority.
@@ -1603,6 +1664,11 @@ The best way is: `exec $SHELL -l`
 
 ```bash
 kill -9 $$
+```
+
+or
+
+```bash
 unset HISTFILE && exit
 ```
 
