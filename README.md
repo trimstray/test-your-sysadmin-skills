@@ -230,7 +230,7 @@ Monday
 
 Useful resources:
 
-- [What does `LC_ALL=C` do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
+- [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
 
 </details>
 
@@ -1398,9 +1398,9 @@ You may sometimes see entries marked **Z** (or **H** under Linux) in the `ps` or
 
 Useful resources:
 
-- [What if `kill -9` does not work? (original)](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
-- [How to kill a process in Linux if `kill -9` has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
-- [When should I not `kill -9` a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
+- [What if kill -9 does not work? (original)](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
+- [How to kill a process in Linux if kill -9 has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
+- [When should I not kill -9 a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
 
 </details>
 
@@ -1708,7 +1708,7 @@ ldd /bin/ls
 </details>
 
 <details>
-<summary><b>You have the task of sync the testing and prod environments. What steps will you take?</b></summary><br>
+<summary><b>You have the task of sync the testing and production environments. What steps will you take?</b></summary><br>
 
 It's easy to get dragged down into bikeshedding about cloning environments and miss the real point:
 
@@ -1754,6 +1754,45 @@ It is also important to make backup/snapshots of both environments.
 Useful resources:
 
 - [Keeping testing and production server environments clean, in sync, and consistent](https://stackoverflow.com/questions/639668/keeping-testing-and-production-server-environments-clean-in-sync-and-consisten)
+
+</details>
+
+<details>
+<summary><b>Dev team reports an error: <code>POST http://gate.int.com/api/v1/SubmitResponse/` resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
+
+**Modify NGINX configuration file for domain**
+
+Set correct `client_max_body_size` variable value:
+
+```bash
+client_max_body_size 20M;
+```
+
+Restart Nginx to apply the changes.
+
+**Modify php.ini file for upload limits**
+
+It’s not needed on all configurations, but you may also have to modify the PHP upload settings as well to ensure that nothing is going out of limit by php configurations.
+
+Now find following directives one by one:
+
+```bash
+upload_max_filesize
+post_max_size
+```
+
+and increase its limit to 20M, by default they are 8M and 2M:
+
+```bash
+upload_max_filesize = 20M
+post_max_size = 20M
+```
+
+Finally save it and restart PHP.
+
+Useful resources:
+
+- [413 Request Entity Too Large in Nginx with client_max_body_size set](https://serverfault.com/questions/814767/413-request-entity-too-large-in-nginx-with-client-max-body-size-set)
 
 </details>
 
@@ -2532,7 +2571,7 @@ First let's tackle the function of these.
 
 Useful resources:
 
-- [Difference between `2>&-`, `2>/dev/null`, `|&`, `&>/dev/null` and `>/dev/null 2>&1`](https://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21)
+- [Difference between 2>&-, 2>/dev/null, |&, &>/dev/null and >/dev/null 2>&1](https://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21)
 - [Chapter 20. I/O Redirection](http://www.tldp.org/LDP/abs/html/io-redirection.html)
 
 </details>
