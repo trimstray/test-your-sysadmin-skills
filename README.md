@@ -35,7 +35,7 @@
 
 ****
 
-:information_source: This project contains **235** of test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **235** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
 :warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
 
@@ -209,13 +209,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does '<code>LC_ALL=C command</code>' do?</b></summary><br>
+<summary><b>What does <code>LC_ALL=C</code> before command do?</b></summary><br>
 
-`LC_ALL` is the environment variable that overrides all the other localisation settings.
+`LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
 
-The main reason to set `LC_ALL=C` before command is that fine to simply get English output.
+The main reason to set `LC_ALL=C` before command is that fine to simply get English output (general change the locale used by the command).
 
-On the other hand, all you need to do if you want to restore all your normal (original) locale settings for the session:
+On the other hand, also important is to increase the speed of command execution with `LC_ALL=C` e.g. `grep` or `fgrep`. Using the `LC_ALL=C` locale increased our performance and brought command execution time down.
+
+For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the **/usr/lib/locale** directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
+
+If you want to restore all your normal (original) locale settings for the session:
 
 ```bash
 LC_ALL=
@@ -231,6 +235,7 @@ Monday
 Useful resources:
 
 - [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
+- [Speed up grep searches with LC_ALL=C](https://www.inmotionhosting.com/support/website/ssh/speed-up-grep-searches-with-lc-all)
 
 </details>
 
