@@ -49,8 +49,8 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 79 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -74,7 +74,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions
+###### System Questions (32)
 
 <details>
 <summary><b>Give some examples of Linux distribution names.</b></summary><br>
@@ -141,12 +141,12 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What do the fields in `ls -al` output mean?</b></summary><br>
+<summary><b>What do the fields in <code>ls -al</code> output mean?</b></summary><br>
 
 In the order of output;
 
 ```bash
--rwxrw-r--    1    root   root 2048    Jan 13 07:11 afile.exe
+-rwxrw-r--    1    root   root 2048    Jan 13 07:11 db.dump
 ```
 
 - file permissions,
@@ -611,7 +611,7 @@ If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB va
 
 </details>
 
-###### Network Questions
+###### Network Questions (16)
 
 <details>
 <summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it?</b></summary><br>
@@ -812,7 +812,7 @@ Whether you have a standard /24 VLAN for end users, a /30 for point-to-point lin
 
 </details>
 
-###### Devops Questions
+###### Devops Questions (2)
 
 <details>
 <summary><b>What is Version Control?</b></summary><br>
@@ -839,7 +839,7 @@ Version control allows you to:
 
 </details>
 
-###### Cyber Security Questions
+###### Cyber Security Questions (1)
 
 <details>
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
@@ -850,7 +850,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions
+###### System Questions (51)
 
 <details>
 <summary><b>Explain Linux Boot Sequence.</b></summary><br>
@@ -907,7 +907,7 @@ The **RUID** will be user2 but the **EUID** of that process will be root.
 
 user2 can use only passwd to change their own password, because internally passwd checks the **RUID** and, if it is not root, its actions will be limited to real user's password.
 
-It's neccesary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
+It's necessary that the **EUID** becomes root in the case of passwd because the process needs to write to `/etc/passwd` and/or `/etc/shadow`.
 
 Useful resources:
 
@@ -1707,7 +1707,57 @@ ldd /bin/ls
 
 </details>
 
-###### Network Questions
+<details>
+<summary><b>You have the task of sync the testing and prod environments. What steps will you take?</b></summary><br>
+
+It's easy to get dragged down into bikeshedding about cloning environments and miss the real point:
+
+- only production is production
+
+and every time you deploy there you are testing a unique combination of deploy code + software + environment.
+
+Every once in a while a good solution is regular cloning of the production servers to create testing servers. Sure, you can spin up clones of various system components or entire systems, and capture real traffic to replay offline (the gold standard of systems testing). But many systems are too big, complex, and cost-prohibitive to clone.
+
+Before environment synchronization a good way is keeping track of every change that you make to the testing environment and provide a way for propagating this to the production environment, so that you do not skip any step and do it as smoothly as possible.
+
+Also structure comparison tool or deploy scripts that update the testing environment from production environment is a good solution.
+
+**Presync tasks**
+
+First of all is informing developers and clients about not making changes on the test environment (if possible, disabling test domains that target this environment or set static pages with information about synchronization).
+
+It is also important to make backup/snapshots of both environments.
+
+**Database servers**
+
+- sync/update system version (e.g. packages)
+- create dump file from database on production db server
+- import dump file on testing db server
+- if necessary, syncs login permissions, roles, database permissions, open connections to the database and other
+
+**Web/App servers**
+
+- sync/update system version (e.g. packages)
+- if necessary, updated kernel parametres, firewall rules and other
+- sync/update configuration files of all running/important services
+- sync/update user accounts (e.g. permissions) and their home directories
+- deploy project from git/svn repository
+- sync/update important directories existing in project, e.g. **static**, **asset** and other
+- sync/update permissions for project directory
+- update cron jobs
+
+**Others tasks**
+
+- updated configurations of load balancers for testing domains and specific urls
+- updated configurations of queues, session and storage instances
+
+Useful resources:
+
+- [Keeping testing and production server environments clean, in sync, and consistent](https://stackoverflow.com/questions/639668/keeping-testing-and-production-server-environments-clean-in-sync-and-consisten)
+
+</details>
+
+###### Network Questions (19)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -1953,7 +2003,7 @@ There might be four types of responses:
 
 </details>
 
-###### Devops Questions
+###### Devops Questions (6)
 
 <details>
 <summary><b>Which are the top DevOps tools? Which tools have you worked on?</b></summary><br>
@@ -2038,7 +2088,7 @@ git submodule update --init --recursive
 
 </details>
 
-###### Cyber Security Questions
+###### Cyber Security Questions (4)
 
 <details>
 <summary><b>What is XSS, how will you mitigate it?</b></summary><br>
@@ -2072,7 +2122,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### Introduction Questions
+###### Introduction Questions (2)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
@@ -2088,7 +2138,7 @@ To be completed.
 
 </details>
 
-###### System Questions
+###### System Questions (52)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2456,6 +2506,34 @@ if [[ $string = *"My long"* ]] ; then
   true
 fi
 ```
+
+</details>
+
+<details>
+<summary><b>Explain differences between <code>2>&-</code>, <code>2>/dev/null</code>, <code>|&</code>, <code>&>/dev/null</code> and <code>>/dev/null 2>&1</code>.</b></summary><br>
+
+- a **number 1** = standard out (i.e. STDOUT)
+- a **number 2** = standard error (i.e. STDERR)
+- if a number isn't explicitly given, then **number 1** is assumed by the shell (bash)
+
+First let's tackle the function of these.
+
+`2>&-` - the general form of this one is `M>&-`, where **"M"** is a file descriptor number. This will close output for whichever file descriptor is referenced, i.e. **"M"**.
+
+`2>/dev/null` - the general form of this one is `M>/dev/null`, where **"M"** is a file descriptor number. This will redirect the file descriptor, **"M"**, to `/dev/null`.
+
+`2>&1` - the general form of this one is `M>&N`, where **"M"** & **"N"** are file descriptor numbers. It combines the output of file descriptors **"M"** and **"N"** into a single stream.
+
+`|&` - this is just an abbreviation for `2>&1 |`. It was added in Bash 4.
+
+`&>/dev/null` - this is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (STDERR) and descriptor 1 (STDOUT) to `/dev/null`.
+
+`>/dev/null` - this is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (STDOUT) to `/dev/null`.
+
+Useful resources:
+
+- [Difference between `2>&-`, `2>/dev/null`, `|&`, `&>/dev/null` and `>/dev/null 2>&1`](https://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21)
+- [Chapter 20. I/O Redirection](http://www.tldp.org/LDP/abs/html/io-redirection.html)
 
 </details>
 
@@ -2913,7 +2991,7 @@ To be completed.
 
 </details>
 
-###### Network Questions
+###### Network Questions (19)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -3222,7 +3300,7 @@ tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
 
 </details>
 
-###### Devops Questions
+###### Devops Questions (2)
 
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
@@ -3251,7 +3329,7 @@ Below are the advantages of containerization over virtualization:
 
 </details>
 
-###### Cyber Security Questions
+###### Cyber Security Questions (5)
 
 <details>
 <summary><b>What is OWASP Application Security Verification Standard? Explain in a few points. *</b></summary><br>
