@@ -511,11 +511,11 @@ find / -type f -size +20M
 <details>
 <summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
-`sudo` is in most modern Linux distributions the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`
+`sudo` is in most modern Linux distributions where (but not always) the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`.
 
-`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user
+`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user.
 
-`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base
+`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
 
 Useful resources:
 
