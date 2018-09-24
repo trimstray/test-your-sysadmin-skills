@@ -1272,8 +1272,8 @@ Note: Hard links are only valid within the same File System. Symbolic links can 
 
 Differences:
 
-a) **Hardlink** cannot be created for directories. Hard link can only be created for a file
-b) **Softlink** also termed a symbolic links or symlinks can link to a directory
+- **Hardlink** cannot be created for directories. Hard link can only be created for a file
+- **Softlink** also termed a symbolic links or symlinks can link to a directory
 
 Useful resources:
 
