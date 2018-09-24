@@ -357,17 +357,37 @@ Useful resources:
 
 Journaling has a dedicated area in the file system, where all the changes are tracked. When the system crashes, the possibility of file system corruption is less because of journaling.
 
+A journaling filesystem records changes to the filesystem before it actually performs them. In this way it is able to recover after a failure (e.g. power fail) with minimal loss of data.
+
+Useful resources:
+
+- [Journaling Filesystem Definition](http://www.linfo.org/journaling_filesystem.html)
+
 </details>
 
 <details>
-<summary><b>Where is password file located in Linux?</b></summary><br>
+<summary><b>Where is password file located in Linux/UNIX?</b></summary><br>
 
-Linux passwords are stored in the **/etc/shadow** file. They are salted and the algorithm being used depends on the particular distribution and is configurable.
+The passwords are not stored anywhere on the system at all. What is stored in **/etc/shadow** are so called hashes of the passwords.
+
+A hash of some text is created by performing a so called one way function on the text (password), thus creating a string to check against. By design it is "impossible" (computationally infeasible) to reverse that process.
+
+Older UNIX variants stored the encrypted passwords in **/etc/passwd** along with other information about each account.
+
+Newer ones simply have a `*` in the relevant field in **/etc/passwd** and use **/etc/shadow** to store the password, in part to ensure nobody gets read access to the passwords when they only need the other stuff (`shadow` is usually protected more strongly than `passwd`).
+
+For more info consult `man crypt`, `man shadow`, `man passwd`.
+
+Useful resources:
+
+- [Where is my password stored on Linux?](https://security.stackexchange.com/questions/37050/where-is-my-password-stored-on-linux)
+- [Where are the passwords of the users located in Linux?](https://www.cyberciti.biz/faq/where-are-the-passwords-of-the-users-located-in-linux/)
+- [Linux Password & Shadow File Formats](https://www.tldp.org/LDP/lame/LAME/linux-admin-made-easy/shadow-file-formats.html)
 
 </details>
 
 <details>
-<summary><b>How do you change directory and subdirectory with file permissions in Linux/UNIX?</b></summary><br>
+<summary><b>How to recursively change permissions for all directories except files and for all files except directories?</b></summary><br>
 
 To change all the directories e.g. to 755 (drwxr-xr-x):
 
@@ -380,6 +400,10 @@ To change all the files e.g. to 644 (-rw-r--r--):
 ```bash
 find /opt/data -type f -exec chmod 644 {} \;
 ```
+
+Useful resources:
+
+- [How do I set chmod for a folder and all of its subfolders and files? (original)](https://stackoverflow.com/questions/3740152/how-do-i-set-chmod-for-a-folder-and-all-of-its-subfolders-and-files?rq=1)
 
 </details>
 
@@ -1474,7 +1498,16 @@ Useful resources:
 <details>
 <summary><b>Which algorithms are supported in passwd file?</b></summary><br>
 
-The algorithms supported are MD5, Blowfish, SHA256 and SHA512.
+Typical current algorithms are:
+
+- MD5
+- SHA-1 (also called SHA)
+
+both should not be used for cryptographic/security purposes any more!!
+
+- SHA-256
+- SHA-512
+- SHA-3 (KECCAK was announced the winner in the competition for a new federal approved hash algorithm in October 2012)
 
 </details>
 
