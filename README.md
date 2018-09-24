@@ -441,16 +441,58 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>What is redirection?</b></summary><br>
+<summary><b>You have configured an RSA key login but your server show "Server refused our key" as expected. Where will you look for the cause of the problem?</b></summary><br>
 
-It’s a fairly simple process, allowing you to direct data from one output to another. You can also use it to direct an output as an input to another process.
+**Server side**
+
+Setting `LogLevel VERBOSE` in file **/etc/ssh/sshd_config** is probably what you need, although there are higher levels:
+
+SSH auth failures are logged in **/var/log/auth.log**, **/var/log/secure** or **/var/log/audit/audit.log**.
+
+The following should give you only ssh related log lines (for example):
+
+```bash
+grep 'sshd' /var/log/auth.log
+```
+
+Next, the most simple command to list all failed SSH logins is the one shown below:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+also useful is:
+
+```bash
+grep "Failed\|Failure" /var/log/auth.log
+```
+
+On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command (ssh.service or sshd.service). For example:
+
+```bash
+journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
+```
+
+**Client side**
+
+Also you should run SSH client with `-v|--verbose` - it is in first level of verbosity. Next, you can enable additional (level 2 and 3) verbosity for even more debugging messages as shown with e.g. `-vv`.
+
+Useful resources:
+
+- [Enable Debugging Mode in SSH to Troubleshoot Connectivity Issues](https://www.tecmint.com/enable-debugging-mode-in-ssh/)
 
 </details>
 
 <details>
 <summary><b>What is grep command?</b></summary><br>
 
+The `grep` utilities are a family of Unix tools, including `egrep` and `fgrep`.
+
 `grep` searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.
+
+Useful resources:
+
+- [What is grep, and how do I use it? (original)](https://kb.iu.edu/d/afiy)
 
 </details>
 
@@ -462,6 +504,10 @@ It’s a fairly simple process, allowing you to direct data from one output to a
 - `cat`: used to view, create, concatenate the files.
 - `more`: used to display the text in the terminal window in pager form.
 - `less`: used to view the text in the backward direction and also provides single line movement.
+
+Useful resources:
+
+- [Viewing text files from the shell prompt](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-viewingtext-terminal.html)
 
 </details>
 
@@ -505,10 +551,15 @@ tar tf archive.tgz
 tar xf archive.tgz filename
 ```
 
+Useful resources:
+
+- [List the contents of a tar or tar.gz file](https://www.cyberciti.biz/faq/list-the-contents-of-a-tar-or-targz-file/)
+- [How to extract specific file(s) from tar.gz](https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz)
+
 </details>
 
 <details>
-<summary><b>How to sync two local directories?</b></summary><br>
+<summary><b>How can I sync two local directories??</b></summary><br>
 
 To sync the contents of dir1 to dir2 on the same system, type:
 
@@ -521,6 +572,10 @@ rsync -av --progress --delete dir1/ dir2
 - `-v`, `--verbose` - verbose mode (increase verbosity)
 - `--progress` - show progress during transfer
 
+Useful resources:
+
+- [How can I sync two local directories? (original](https://unix.stackexchange.com/questions/392536/how-can-i-sync-two-local-directories)
+
 </details>
 
 <details>
@@ -530,6 +585,10 @@ rsync -av --progress --delete dir1/ dir2
 cp filename{,.orig}
 ```
 
+Useful resources:
+
+- [Backup file with .bak _before_ filename extension](https://unix.stackexchange.com/questions/66376/backup-file-with-bak-before-filename-extension)
+
 </details>
 
 <details>
@@ -538,6 +597,10 @@ cp filename{,.orig}
 ```bash
 find / -type f -size +20M
 ```
+
+Useful resources:
+
+- [How can I find files that are bigger/smaller than x bytes?](https://superuser.com/questions/204564/how-can-i-find-files-that-are-bigger-smaller-than-x-bytes)
 
 </details>
 
@@ -563,6 +626,10 @@ Useful resources:
 ```bash
 find / -mmin -60 -type f
 ```
+
+Useful resources:
+
+- [Get all files modified in last 30 days in a directory (orignal)](https://stackoverflow.com/questions/23070245/get-all-files-modified-in-last-30-days-in-a-directory)
 
 </details>
 
@@ -601,6 +668,10 @@ Useful resources:
 <summary><b>What is an incremental backup?</b></summary><br>
 
 An incremental backup is a type of backup that only copies files that have changed since the previous backup.
+
+Useful resources:
+
+- [What Is Incremental Backup?](https://www.nakivo.com/blog/what-is-incremental-backup/)
 
 </details>
 
