@@ -441,7 +441,7 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You have configured an RSA key login but your server show `Server refused our key` as expected. Where will you look for the cause of the problem?</b></summary><br>
+<summary><b>You have configured an RSA key login but your server show <code>Server refused our key</code> as expected. Where will you look for the cause of the problem?</b></summary><br>
 
 **Server side**
 
@@ -979,7 +979,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (49)
+###### System Questions (48)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
@@ -1993,46 +1993,7 @@ Useful resources:
 
 </details>
 
-<details>
-<summary><b>Dev team reports an error: <code>POST http://ws.com/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
-
-**Modify NGINX configuration file for domain**
-
-Set correct `client_max_body_size` variable value:
-
-```bash
-client_max_body_size 20M;
-```
-
-Restart Nginx to apply the changes.
-
-**Modify php.ini file for upload limits**
-
-It’s not needed on all configurations, but you may also have to modify the PHP upload settings as well to ensure that nothing is going out of limit by php configurations.
-
-Now find following directives one by one:
-
-```bash
-upload_max_filesize
-post_max_size
-```
-
-and increase its limit to 20M, by default they are 8M and 2M:
-
-```bash
-upload_max_filesize = 20M
-post_max_size = 20M
-```
-
-Finally save it and restart PHP.
-
-Useful resources:
-
-- [413 Request Entity Too Large in Nginx with client_max_body_size set](https://serverfault.com/questions/814767/413-request-entity-too-large-in-nginx-with-client-max-body-size-set)
-
-</details>
-
-###### Network Questions (20)
+###### Network Questions (21)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -2073,6 +2034,44 @@ To be completed.
 
 </details>
 
+<details>
+<summary><b>Dev team reports an error: <code>POST http://ws.com/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
+
+**Modify NGINX configuration file for domain**
+
+Set correct `client_max_body_size` variable value:
+
+```bash
+client_max_body_size 20M;
+```
+
+Restart Nginx to apply the changes.
+
+**Modify php.ini file for upload limits**
+
+It’s not needed on all configurations, but you may also have to modify the PHP upload settings as well to ensure that nothing is going out of limit by php configurations.
+
+Now find following directives one by one:
+
+```bash
+upload_max_filesize
+post_max_size
+```
+
+and increase its limit to 20M, by default they are 8M and 2M:
+
+```bash
+upload_max_filesize = 20M
+post_max_size = 20M
+```
+
+Finally save it and restart PHP.
+
+Useful resources:
+
+- [413 Request Entity Too Large in Nginx with client_max_body_size set](https://serverfault.com/questions/814767/413-request-entity-too-large-in-nginx-with-client-max-body-size-set)
+
+</details>
 
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
