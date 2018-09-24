@@ -343,8 +343,12 @@ Useful resources:
 <details>
 <summary><b>How to create partition and filesystem?</b></summary><br>
 
-1) `fdisk` or `gparted` - create a new partition
+1) `fdisk`, `gdisk` or `parted` - create a new partition
 2) `mkfs` - create a new filesystem
+
+Useful resources:
+
+- [Create partitions and filesystems](https://www.ibm.com/developerworks/library/l-lpic1-104-1/index.html)
 
 </details>
 
