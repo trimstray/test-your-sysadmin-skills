@@ -854,7 +854,7 @@ The main differences are: wget's major strong side compared to curl is its abili
 
 Useful resources:
 
-- [What is the difference between curl and wget? (originaL)](https://unix.stackexchange.com/questions/47434/what-is-the-difference-between-curl-and-wget)
+- [What is the difference between curl and wget? (original)](https://unix.stackexchange.com/questions/47434/what-is-the-difference-between-curl-and-wget)
 
 </details>
 
@@ -929,11 +929,11 @@ Whether you have a standard /24 VLAN for end users, a /30 for point-to-point lin
 <details>
 <summary><b>What are some common HTTP status codes?</b></summary><br>
 
-- <b>1xx</b> - Informational responses - communicates transfer protocol-level information
-- <b>2xx</b> - Success - indicates that the client’s request was accepted successfully
-- <b>3xx</b> - Redirection - indicates that the client must take some additional action in order to complete their request
-- <b>4xx</b> - Client side error - this category of error status codes points the finger at clients
-- <b>5xx</b> - Server side error - the server takes responsibility for these error status codes
+- **1xx** - Informational responses - communicates transfer protocol-level information
+- **2xx** - Success - indicates that the client’s request was accepted successfully
+- **3xx** - Redirection - indicates that the client must take some additional action in order to complete their request
+- **4xx** - Client side error - this category of error status codes points the finger at clients
+- **5xx** - Server side error - the server takes responsibility for these error status codes
 
 Useful resources:
 
@@ -961,10 +961,10 @@ Version control allows you to:
 <details>
 <summary><b>Explain some basic Git commands?</b></summary><br>
 
-- <code>git init</code> - create a new local repository
-- <code>git commit -m "message"</code> - commit changes to head
-- <code>git status</code> - list the files you've added with <code>git add</code> and also commit any files you've changed since then
-- <code>git push origin master</code> - send changes to the master branch of your remote repository
+- `git init` - create a new local repository
+- `git commit -m "message"` - commit changes to head
+- `git status` - list the files you've added with `git add` and also commit any files you've changed since then
+- `git push origin master` - send changes to the master branch of your remote repository
 
 </details>
 
@@ -982,19 +982,26 @@ Security misconfiguration is a vulnerability when a device/application/network i
 ###### System Questions (51)
 
 <details>
-<summary><b>Explain Linux Boot Sequence.</b></summary><br>
+<summary><b>Explain Linux Boot Process.</b></summary><br>
 
-<b>BIOS</b>: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.<br>
+**BIOS**: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.
 
-<b>MBR</b>: MBR means Master Boot Record. MBR contains the information regarding GRUB and executes and loads this bootloader.<br>
+**Bootloader**: Since the earlier phases are not specific to the operating system, the BIOS-based boot process for x86 and x86-64 architectures is considered to start when the master boot record (MBR) code is executed in real mode and the first-stage boot loader is loaded. In UEFI systems, a payload, such as the Linux kernel, can be executed directly. Thus no boot loader is necessary. Some popular bootloaders: GRUB, Syslinux/Isolinux or Lilo
 
-<b>GRUB</b>: GRUB means Grand Unified Bootloader. In case, many kernel images are installed on your system then you can select which one you want to execute.<br>
+**Kernel**: The kernel in Linux handles all operating system processes, such as memory management, task scheduling, I/O, interprocess communication, and overall system control. This is loaded in two stages - in the first stage, the kernel (as a compressed image file) is loaded into memory and decompressed, and a few fundamental functions such as basic memory management are set up.
 
-<b>Kernel</b>: Root file system is mounted by Kernel and executes the <code>/sbin/init</code> program.<br>
+**Init**:
 
-<b>Init</b>: Init checks the file <code>/etc/inittab</code> and decides the run level. There are seven-run levels available from 0-6. It will identify the default init level and will load the program.<br>
+**Init** is the parent of all processes on the system, it is executed by the kernel and is responsible for starting all other processes.
 
-<b>Runlevel programs</b>: As per your default settings for the run level, the system will execute the programs.
+- `SysV init` - init's job is "to get everything running the way it should be once the kernel is fully running. Essentially it establishes and operates the entire user space. This includes checking and mounting file systems, starting up necessary user services, and ultimately switching to a user-environment when system startup is completed.
+- `systemd` - the developers of systemd aimed to replace the Linux init system inherited from UNIX System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
+- `runint` - runit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools[13] process supervision toolkit that runs on the Linux, Mac OS X, *BSD, and Solaris operating systems.
+
+Useful resources:
+
+- [Analyzing the Linux boot process](https://opensource.com/article/18/1/analyzing-linux-boot-process)
+- [Systemd Boot Process a Close Look in Linux](https://linoxide.com/linux-how-to/systemd-boot-process/)
 
 </details>
 
