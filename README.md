@@ -441,7 +441,7 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You have configured an RSA key login but your server show "Server refused our key" as expected. Where will you look for the cause of the problem?</b></summary><br>
+<summary><b>You have configured an RSA key login but your server show `Server refused our key` as expected. Where will you look for the cause of the problem?</b></summary><br>
 
 **Server side**
 
@@ -587,7 +587,7 @@ cp filename{,.orig}
 
 Useful resources:
 
-- [Backup file with .bak _before_ filename extension](https://unix.stackexchange.com/questions/66376/backup-file-with-bak-before-filename-extension)
+- [Backup file with .bak before filename extension](https://unix.stackexchange.com/questions/66376/backup-file-with-bak-before-filename-extension)
 
 </details>
 
@@ -834,9 +834,16 @@ nc -vz code42.example.com 5432
 <details>
 <summary><b>Why should you avoid telnet to administer a system remotely?</b></summary><br>
 
+Modern operating systems have turned off all potentially insecure services by default. On the other hand, some verndors of network devices still allow to establish communication using the telnet protocol.
+
 Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
 
 In the case of Telnet, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a Telnet login session.
+
+Useful resources:
+
+- [Telnet and SSH as a secure alternative](https://www.ssh.com/ssh/telnet)
+- [How to telnet to an IP address on a specific port?](https://superuser.com/questions/339107/how-to-telnet-to-an-ip-address-on-a-specific-port)
 
 </details>
 
@@ -845,16 +852,24 @@ In the case of Telnet, these include the passing of login credentials in plain t
 
 The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
 
+Useful resources:
+
+- [What is the difference between curl and wget? (originaL)](https://unix.stackexchange.com/questions/47434/what-is-the-difference-between-curl-and-wget)
+
 </details>
 
 <details>
-<summary><b>How do SSH work?</b></summary><br>
+<summary><b>What is SSH and how does it work?</b></summary><br>
 
 SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
 
 An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
 
 The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
+
+Useful resources:
+
+- [Understanding the SSH Encryption and Connection Process](https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process)
 
 </details>
 
@@ -875,11 +890,13 @@ A proxy server is a dedicated computer or a software system running on a compute
 <details>
 <summary><b>What is the difference between a router and a gateway? What is the default gateway?</b></summary><br>
 
-Routers and Gateways are used to regulate network traffic between two or more separate networks. Gateways regulate traffic between two dissimilar networks, while routers regulate traffic between similar networks.
+Router describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "you set up a router as gateway". Another term is hop which describes the forwarding in between subnets.
 
-A default gateway serves as an access point or IP router that a networked computer uses to send information to a computer in another network or the internet. Default simply means that this gateway is used by default, unless an application specifies another gateway.
+It's just a matter of perspective, the device is the same.
 
-A gateway is a node (router) in a computer network, a key stopping point for data on its way to or from other networks. Thanks to gateways, we are able to communicate and send data back and forth.
+Useful resources:
+
+- [Difference between router and gateway (orignal)](https://networkengineering.stackexchange.com/questions/51426/difference-between-router-and-gateway)
 
 </details>
 
@@ -896,6 +913,10 @@ DNS records are basically mapping files that tell the DNS server which IP addres
 - **NS** - Name Server records
 - **PTR** - Reverse-lookup Pointer records
 
+Useful resources:
+
+- [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+
 </details>
 
 <details>
@@ -906,13 +927,17 @@ Whether you have a standard /24 VLAN for end users, a /30 for point-to-point lin
 </details>
 
 <details>
-<summary><b>Various response codes from a web application?</b></summary><br>
+<summary><b>What are some common HTTP status codes?</b></summary><br>
 
 - <b>1xx</b> - Informational responses - communicates transfer protocol-level information
 - <b>2xx</b> - Success - indicates that the client’s request was accepted successfully
 - <b>3xx</b> - Redirection - indicates that the client must take some additional action in order to complete their request
 - <b>4xx</b> - Client side error - this category of error status codes points the finger at clients
 - <b>5xx</b> - Server side error - the server takes responsibility for these error status codes
+
+Useful resources:
+
+- [HTTP Status Codes](https://httpstatuses.com/)
 
 </details>
 
