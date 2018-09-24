@@ -35,7 +35,7 @@
 
 ****
 
-:information_source: This project contains **234** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **233** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
 :warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
 
@@ -49,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -979,7 +979,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (50)
+###### System Questions (49)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
