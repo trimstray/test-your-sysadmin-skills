@@ -35,7 +35,7 @@
 
 ****
 
-:information_source: This project contains **235** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **234** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
 :warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
 
@@ -49,7 +49,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 81 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -979,20 +979,18 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (51)
+###### System Questions (50)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
 
 **BIOS**: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.
 
-**Bootloader**: Since the earlier phases are not specific to the operating system, the BIOS-based boot process for x86 and x86-64 architectures is considered to start when the master boot record (MBR) code is executed in real mode and the first-stage boot loader is loaded. In UEFI systems, a payload, such as the Linux kernel, can be executed directly. Thus no boot loader is necessary. Some popular bootloaders: GRUB, Syslinux/Isolinux or Lilo
+**Bootloader**: Since the earlier phases are not specific to the operating system, the BIOS-based boot process for x86 and x86-64 architectures is considered to start when the master boot record (MBR) code is executed in real mode and the first-stage boot loader is loaded. In UEFI systems, a payload, such as the Linux kernel, can be executed directly. Thus no boot loader is necessary. Some popular bootloaders: **GRUB**, **Syslinux/Isolinux** or **Lilo**.
 
 **Kernel**: The kernel in Linux handles all operating system processes, such as memory management, task scheduling, I/O, interprocess communication, and overall system control. This is loaded in two stages - in the first stage, the kernel (as a compressed image file) is loaded into memory and decompressed, and a few fundamental functions such as basic memory management are set up.
 
-**Init**:
-
-**Init** is the parent of all processes on the system, it is executed by the kernel and is responsible for starting all other processes.
+**Init**: Is the parent of all processes on the system, it is executed by the kernel and is responsible for starting all other processes.
 
 - `SysV init` - init's job is "to get everything running the way it should be once the kernel is fully running. Essentially it establishes and operates the entire user space. This includes checking and mounting file systems, starting up necessary user services, and ultimately switching to a user-environment when system startup is completed.
 - `systemd` - the developers of systemd aimed to replace the Linux init system inherited from UNIX System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
@@ -1053,35 +1051,47 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the name and path of the main system log?</b></summary><br>
+<summary><b>Developer added cron job which generate massive log files. How do You prevent them from getting so big?</b></summary><br>
 
-By default, the main system log is <b>/var/log/messages</b>. This file contains all the messages and the script written by the user.
+Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to **/etc/logrotate.conf** you should add your own job to **/etc/logrotate.d/**, otherwise you would have to look at more diffs of configuration files during release upgrades.
 
-By default all scripts are saved in this file. This is the standard system log file, which contains messages from all system software, non-kernel boot issues, and messages that go to <code>dmesg</code> (is a system file that is written upon system boot).
+Useful resources:
+
+- [How to Use logrotate to Manage Log Files](https://www.linode.com/docs/uptime/logs/use-logrotate-to-manage-log-files/)
+- [System logging](https://www.ibm.com/developerworks/library/l-lpic1-108-2/index.html)
 
 </details>
 
 <details>
 <summary><b>Explain <code>/proc</code> filesystem.</b></summary><br>
 
-<code>/proc</code> is a virtual file system that provides detailed information about kernel, hardware and running processes.
+`/proc` is a virtual file system that provides detailed information about kernel, hardware and running processes.
 
-Since <code>/proc</code> contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.<br>
+Since `/proc` contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.
 
-Virtual files such as <code>/proc/interrupts</code>, <code>/proc/meminfo</code>, <code>/proc/mounts</code> and <code>/proc/partitions</code> provide an up-to-the-moment glimpse of the system’s hardware. Others: <code>/proc/filesystems</code> file and the <code>/proc/sys/</code> directory provide system configuration information and interfaces.
+Virtual files such as `/proc/interrupts`, `/proc/meminfo`, `/proc/mounts` and `/proc/partitions` provide an up-to-the-moment glimpse of the system’s hardware. Others: `/proc/filesystems` file and the `/proc/sys/` directory provide system configuration information and interfaces.
+
+Useful resources:
+
+- [Linux Filesystem Hierarchy - /proc](https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)
 
 </details>
 
 <details>
 <summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
 
-The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70:<br>
+The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70.
 
-The "Need to Look into it" Rule of Thumb: 0.70 If your load average is staying above > 0.70, it's time to investigate before things get worse.<br>
+The "Need to Look into it" Rule of Thumb: 0.70 If your load average is staying above > 0.70, it's time to investigate before things get worse.
 
-The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, find the problem and fix it now. Otherwise, you're going to get woken up in the middle of the night, and it's not going to be fun.<br>
+The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, find the problem and fix it now. Otherwise, you're going to get woken up in the middle of the night, and it's not going to be fun.
 
 Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference. Don't let it get there.
+
+Usefule resources:
+
+- [Proper way of interpreting system load on a 4 core 8 thread processor](https://serverfault.com/questions/618130/proper-way-of-interpreting-system-load-on-a-4-core-8-thread-processor)
+- [Understanding Linux CPU Load - when should you be worried?](http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages)
 
 </details>
 
@@ -1089,6 +1099,10 @@ Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious 
 <summary><b>How the Linux kernel creates, manages and deletes the processes in the system? *</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [Linux Processes](https://www.tldp.org/LDP/tlk/kernel/processes.html)
 
 </details>
 
@@ -1178,14 +1192,14 @@ Useful resources:
 <details>
 <summary><b>What is umask? How to set it permanently for a user?</b></summary><br>
 
-On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask. The umask command is used to set this mask, or to show you its current value.<br>
+On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask. The umask command is used to set this mask, or to show you its current value.
 
-Permanently change (set e.g. <code>umask 02</code>):<br>
+Permanently change (set e.g. `umask 02`):
 
-- <b>~/.profile</b><br>
-- <b>~/.bashrc</b><br>
-- <b>~/.zshrc</b><br>
-- <b>~/.cshrc</b>
+- **~/.profile**
+- **~/.bashrc**
+- **~/.zshrc**
+- **~/.cshrc**
 
 Useful resources:
 
@@ -1241,25 +1255,100 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are symbolic links?</b></summary><br>
+<summary><b>What is the difference between a symbolic link and a hard link?</b></summary><br>
 
-A symbolic link, also termed a soft link, is a special kind of file that points to another file, much like a shortcut in Windows or a Macintosh alias. Unlike a hard link, a symbolic link does not contain the data in the target file. It simply points to another entry somewhere in the file system.
+Underneath the file system files are represented by inodes (or is it multiple inodes not sure)
+
+- a file in the file system is basically a link to an inode
+- a hard link then just creates another file with a link to the same underlying inode
+
+When you delete a file it removes one link to the underlying inode. The inode is only deleted (or deletable/over-writable) when all links to the inode have been deleted.
+
+- a symbolic link is a link to another name in the file system.
+
+Once a hard link has been made the link is to the inode. deleting renaming or moving the original file will not affect the hard link as it links to the underlying inode. Any changes to the data on the inode is reflected in all files that refer to that inode.
+
+Note: Hard links are only valid within the same File System. Symbolic links can span file systems as they are simply the name of another file.
+
+Differences:
+
+a) **Hardlink** cannot be created for directories. Hard link can only be created for a file
+b) **Softlink** also termed a symbolic links or symlinks can link to a directory
+
+Useful resources:
+
+- [What is the difference between a hard link and a symbolic link?](https://medium.com/@wendymayorgasegura/what-is-the-difference-between-a-hard-link-and-a-symbolic-link-8c0493041b62)
 
 </details>
 
 <details>
-<summary><b>List out the differences between softlink and hardlink?</b></summary><br>
+<summary><b>How does the sticky bit work? The SUID/GUID is the same?</b></summary><br>
 
-a) Hardlink cannot be created for directories. Hard link can only be created for a file.<br>
+This is probably one of my most irksome things that people mess up all the time. The SUID/GUID bit and the sticky-bit are 2 completely different things.
 
-b) Softlink also termed a symbolic links or symlinks can link to a directory.
+If you do a `man chmod` you can read about the SUID and sticky-bits.
 
-</details>
+**SUID/GUID**
 
-<details>
-<summary><b>What is the sticky-bit?</b></summary><br>
+What the above man page is trying to say is that the position that the x bit takes in the rwxrwxrwx for the user octal (1st group of rwx) and the group octal (2nd group of rwx) can take an additional state where the x becomes an s. When this occurs this file when executed (if it's a program and not just a shell script) will run with the permissions of the owner or the group of the file.
 
-A Sticky bit is a permission bit that is set on a file or a directory that lets only the owner of the file/directory or the root user to delete or rename the file. No other user is given privileges to delete the file created by some other user.
+So if the file is owned by root and the SUID bit is turned on, the program will run as root. Even if you execute it as a regular user. The same thing applies to the GUID bit.
+
+Examples:
+
+**no suid/guid** - just the bits *rwxr-xr-x* are set.
+
+```bash
+ls -lt b.pl
+-rwxr-xr-x 1 root root 179 Jan  9 01:01 b.pl
+```
+
+**suid & user's executable bit enabled (lowercase s)** - the bits *rwsr-x-r-x* are set.
+
+```bash
+chmod u+s b.pl
+ls -lt b.pl
+-rwsr-xr-x 1 root root 179 Jan  9 01:01 b.pl
+```
+
+**suid enabled & executable bit disabled (uppercase S)** - the bits *rwSr-xr-x* are set.
+
+```bash
+chmod u-x b.pl
+ls -lt b.pl
+-rwSr-xr-x 1 root root 179 Jan  9 01:01 b.pl
+```
+
+**guid & group's executable bit enabled (lowercase s)** - the bits *rwxr-sr-x* are set.
+
+```bash
+chmod g+s b.pl
+ls -lt b.pl
+-rwxr-sr-x 1 root root 179 Jan  9 01:01 b.pl
+```
+
+**guid enabled & executable bit disabled (uppercase S)** - the bits *rwxr-Sr-x* are set.
+
+```bash
+chmod g-x b.pl
+ls -lt b.pl
+-rwxr-Sr-x 1 root root 179 Jan  9 01:01 b.pl
+```
+
+**sticky bit**
+
+The sticky bit on the other hand is denoted as `t`, such as with the `/tmp` directory:
+
+```bash
+ls -l /|grep tmp
+drwxrwxrwt. 168 root root 28672 Jun 14 08:36 tmp
+```
+
+This bit should have always been called the "restricted deletion bit" given that's what it really connotes. When this mode bit is enabled, it makes a directory such that users can only delete files & directories within it that they are the owners of.
+
+Useful resources:
+
+- [How does the sticky bit work? (original)](https://unix.stackexchange.com/questions/79395/how-does-the-sticky-bit-work)
 
 </details>
 
@@ -1353,13 +1442,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to change the default run level in Linux?</b></summary><br>
-
-To change the run level we have to edit the file <b>/etc/inittab</b> and change initdefault entry (<code>id:5:initdefault</code>:). Using <code>init</code> command we change the run level temporary like <code>init 3</code>, this command will move the system in runlevl 3.
-
-</details>
-
-<details>
 <summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? *</b></summary><br>
 
 To be completed.
@@ -1369,20 +1451,28 @@ To be completed.
 <details>
 <summary><b>I have forgotten the root password! What do I do in BSD?</b></summary><br>
 
-Restart the system, type <code>boot -s</code> at the <code>Boot:</code> prompt to enter single-user mode.
+Restart the system, type `boot -s` at the `Boot:` prompt to enter single-user mode.
 
 At the question about the shell to use, hit Enter which will display a # prompt.
 
-Enter <code>mount -urw /</code> to remount the root file system read/write, then run <code>mount -a</code> to remount all the file systems.
+Enter `mount -urw /` to remount the root file system read/write, then run `mount -a` to remount all the file systems.
 
-Run <code>passwd root</code> to change the root password then run <code>exit</code> to continue booting.
+Run `passwd root` to change the root password then run `exit` to continue booting.
+
+Useful resources:
+
+- [FreeBSD Reset or Recover Root Password](https://www.cyberciti.biz/tips/howto-freebsd-reset-recover-root-password.html)
 
 </details>
 
 <details>
 <summary><b>How to add & change the Kernel parameters?</b></summary><br>
 
-To set the kernel parameters in UNIX-like, first edit the file <code>/etc/sysctl.conf</code> after making the changes save the file and run the command <code>sysctl -p</code>, this command will make the changes permanently without rebooting the machine.
+To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
+
+Useful resources:
+
+- [How to Change Kernel Runtime Parameters in a Persistent and Non-Persistent Way](https://www.tecmint.com/change-modify-linux-kernel-runtime-parameters/)
 
 </details>
 
@@ -1390,34 +1480,35 @@ To set the kernel parameters in UNIX-like, first edit the file <code>/etc/sysctl
 <summary><b>What is the difference between ext2, ext3 and ext4 file systems?</b></summary>
 <br>
 
-<b>ext2</b><br>
+**ext2**
 
-- ext2 stands for second extended file system.<br>
-- ext2 does not have journaling feature.<br>
-- on flash drives, usb drives, ext2 is recommended, as it doesn’t need to do the over head of journaling.<br>
-- maximum individual file size can be from 16 GB to 2 TB.<br>
-- overall ext2 file system size can be from 2 TB to 32 TB.<br>
+- Its second extended file system which was created to overcome limitations of EXT file system
+- Introduced in 1993 by Remy Card. It was the first commercial-grade filesystem for Linux
+- Does not supports Journaling
+- Fit for SD cards & USB drives since it has high performance and low writes (as journaling is not available). USB and SD storage are limited with write cycles hence its best fit for them
+- Limits : Individual file size 16GB to 2TB. File system size 2TB to 32TB
 
-<b>ext3</b><br>
+**ext3**
 
-- ext3 stands for third extended file system.<br>
-- starting from Linux Kernel 2.4.15 ext3 was available.<br>
-- the main benefit of ext3 is that it allows journaling.<br>
-- maximum individual file size can be from 16 GB to 2 TB.<br>
-- overall ext3 file system size can be from 2 TB to 32 TB.<br>
-- you can convert a ext2 file system to ext3 file system directly (without backup/restore).<br>
+- Its third extended file system which was created to overcome limitations of EXT2 file system
+- Introduced in 2001 by Stephen Tweedie. It was most common filesystem in many - Linux distro
+- Supports Journaling
+- Journaling keeps track of file changes which helps in fast recovery and reduce chances if data loss in case of system crash
+- Limits : Individual file size 16GB to 2TB. File system size 4TB to 32TB.
+Upgrading FS from ext2 to ext3 is online process without downtime
 
-<b>ext4</b><br>
+**ext4**
 
-- ext4 stands for fourth extended file system.<br>
-- starting from Linux Kernel 2.6.19 ext4 was available.<br>
-- supports huge individual file size and overall file system size.<br>
-- maximum individual file size can be from 16 GB to 16 TB.<br>
-- overall maximum ext4 file system size is 1 EB (exabyte). 1 EB = 1024 PB (petabyte). 1 PB = 1024 TB (terabyte).<br>
-- directory can contain a maximum of 64,000 subdirectories (as opposed to 32,000 in ext3).<br>
-- you can also mount an existing ext3 fs as ext4 fs (without having to upgrade it).<br>
-- several other new features are introduced in ext4: multiblock  allocation, delayed allocation, journal checksum, fast fsck, etc.<br>
-- in ext4, you also have the option of turning the journaling feature "off".
+- Its fourth extended file system which was created to overcome limitations of EXT3 file system
+- Introduced in 2008 by team of developers. Its most latest filesystem in ext family
+- Supports Journaling
+- Lots of new features introduced. Extents, Backward compatibility, Persistent pre-allocation,Delayed allocation,Unlimited number of subdirectories, Journal checksum, Faster FS check, Transparent encryption
+- Limits : Individual file size 16GB to 16TB. File system size up to 1EB
+- Upgrading FS not needed. Due to backward compatibility, ext2, ext3 can be directly mounted as ext4
+
+Useful resources:
+
+- [Linux File Systems: Ext2 vs Ext3 vs Ext4](https://www.thegeekstuff.com/2011/05/ext2-ext3-ext4/)
 
 </details>
 
