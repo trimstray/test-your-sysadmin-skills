@@ -52,11 +52,11 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 52 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
+  * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
 ## <a name="general-knowledge">Introduction</a>
 
@@ -78,7 +78,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (32)
+###### System Questions (30)
 
 <details>
 <summary><b>Give some examples of Linux distribution names.</b></summary><br>
@@ -209,37 +209,6 @@ last
 Useful resources:
 
 - [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
-
-</details>
-
-<details>
-<summary><b>What does <code>LC_ALL=C</code> before command do?</b></summary><br>
-
-`LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
-
-The main reason to set `LC_ALL=C` before command is that fine to simply get English output (general change the locale used by the command).
-
-On the other hand, also important is to increase the speed of command execution with `LC_ALL=C` e.g. `grep` or `fgrep`. Using the `LC_ALL=C` locale increased our performance and brought command execution time down.
-
-For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the **/usr/lib/locale** directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
-
-If you want to restore all your normal (original) locale settings for the session:
-
-```bash
-LC_ALL=
-```
-
-If `LC_ALL` does not work, try using `LANG` (if that still does not work, try `LANGUAGE`):
-
-```bash
-LANG=C date +%A
-Monday
-```
-
-Useful resources:
-
-- [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
-- [Speed up grep searches with LC_ALL=C](https://www.inmotionhosting.com/support/website/ssh/speed-up-grep-searches-with-lc-all)
 
 </details>
 
@@ -441,49 +410,6 @@ most commands should start working - and then you can edit **~/.bash_profile** i
 Useful resource:
 
 - [How to correctly add a path to PATH?](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path)
-
-</details>
-
-<details>
-<summary><b>You have configured an RSA key login but your server show <code>Server refused our key</code> as expected. Where will you look for the cause of the problem?</b></summary><br>
-
-**Server side**
-
-Setting `LogLevel VERBOSE` in file **/etc/ssh/sshd_config** is probably what you need, although there are higher levels:
-
-SSH auth failures are logged in **/var/log/auth.log**, **/var/log/secure** or **/var/log/audit/audit.log**.
-
-The following should give you only ssh related log lines (for example):
-
-```bash
-grep 'sshd' /var/log/auth.log
-```
-
-Next, the most simple command to list all failed SSH logins is the one shown below:
-
-```bash
-grep "Failed password" /var/log/auth.log
-```
-
-also useful is:
-
-```bash
-grep "Failed\|Failure" /var/log/auth.log
-```
-
-On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command (ssh.service or sshd.service). For example:
-
-```bash
-journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
-```
-
-**Client side**
-
-Also you should run SSH client with `-v|--verbose` - it is in first level of verbosity. Next, you can enable additional (level 2 and 3) verbosity for even more debugging messages as shown with e.g. `-vv`.
-
-Useful resources:
-
-- [Enable Debugging Mode in SSH to Troubleshoot Connectivity Issues](https://www.tecmint.com/enable-debugging-mode-in-ssh/)
 
 </details>
 
@@ -1066,7 +992,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (47)
+###### System Questions (48)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
@@ -1444,6 +1370,37 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What does <code>LC_ALL=C</code> before command do?</b></summary><br>
+
+`LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
+
+The main reason to set `LC_ALL=C` before command is that fine to simply get English output (general change the locale used by the command).
+
+On the other hand, also important is to increase the speed of command execution with `LC_ALL=C` e.g. `grep` or `fgrep`. Using the `LC_ALL=C` locale increased our performance and brought command execution time down.
+
+For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the **/usr/lib/locale** directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
+
+If you want to restore all your normal (original) locale settings for the session:
+
+```bash
+LC_ALL=
+```
+
+If `LC_ALL` does not work, try using `LANG` (if that still does not work, try `LANGUAGE`):
+
+```bash
+LANG=C date +%A
+Monday
+```
+
+Useful resources:
+
+- [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
+- [Speed up grep searches with LC_ALL=C](https://www.inmotionhosting.com/support/website/ssh/speed-up-grep-searches-with-lc-all)
+
+</details>
+
+<details>
 <summary><b>You are preparing a web server. One of the steps are the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
 
 **1) Main requirements - remember about this**
@@ -1736,7 +1693,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is strace command in Linux? How should strace be used?</b></summary><br>
+<summary><b>What is <code>strace</code> command in Linux? How should <code>strace</code> be used?</b></summary><br>
 
 `strace` is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
 
@@ -1853,6 +1810,49 @@ Hard limit is the maximum allowed to a user, set by the superuser or root. This 
 </details>
 
 <details>
+<summary><b>You have configured an RSA key login but your server show <code>Server refused our key</code> as expected. Where will you look for the cause of the problem?</b></summary><br>
+
+**Server side**
+
+Setting `LogLevel VERBOSE` in file **/etc/ssh/sshd_config** is probably what you need, although there are higher levels:
+
+SSH auth failures are logged in **/var/log/auth.log**, **/var/log/secure** or **/var/log/audit/audit.log**.
+
+The following should give you only ssh related log lines (for example):
+
+```bash
+grep 'sshd' /var/log/auth.log
+```
+
+Next, the most simple command to list all failed SSH logins is the one shown below:
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+also useful is:
+
+```bash
+grep "Failed\|Failure" /var/log/auth.log
+```
+
+On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command (ssh.service or sshd.service). For example:
+
+```bash
+journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
+```
+
+**Client side**
+
+Also you should run SSH client with `-v|--verbose` - it is in first level of verbosity. Next, you can enable additional (level 2 and 3) verbosity for even more debugging messages as shown with e.g. `-vv`.
+
+Useful resources:
+
+- [Enable Debugging Mode in SSH to Troubleshoot Connectivity Issues](https://www.tecmint.com/enable-debugging-mode-in-ssh/)
+
+</details>
+
+<details>
 <summary><b>What is the difference between Cron and Anacron?</b></summary><br>
 
 - one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running24*7. While anacron is used for the systems that are not running continuously
@@ -1960,15 +1960,6 @@ Useful resources:
 <summary><b>What is root certificate and intermediate certificate?</b></summary><br>
 
 A "root" authority is a certificate issuer that parties choose to trust (explicitly). It is usually self-signed (self-issued) and very highly protected. An intermediate authority is a certificate issuer that has itself been issued by a root or another higher level intermediate authority.
-
-</details>
-
-<details>
-<summary><b>Should the root certificate go on the server?</b></summary><br>
-
-Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
-
-If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
 
 </details>
 
@@ -2575,7 +2566,7 @@ To be completed.
 
 </details>
 
-###### System Questions (50)
+###### System Questions (52)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2623,6 +2614,10 @@ Example of use:
 ```bash
 export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
 ```
+
+Useful resources:
+
+- [How to correctly use LD_LIBRARY_PATH](http://wiredrevolution.com/system-administration/how-to-correctly-use-ld_library_path)
 
 </details>
 
@@ -3167,6 +3162,19 @@ The situation was then resolved by restarting apache (`service httpd restart`) a
 </details>
 
 <details>
+<summary><b>Should the root certificate go on the server?</b></summary><br>
+
+Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
+
+If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
+
+Useful resources:
+
+- [SSL root certificate optional?](https://security.stackexchange.com/questions/65332/ssl-root-certificate-optional)
+
+</details>
+
+<details>
 <summary><b>How to log all commands run by root on production servers?</b></summary><br>
 
 `auditd` is the correct tool for the job here:
@@ -3331,6 +3339,34 @@ user:x:501:
 ```bash
 passwd user
 ```
+
+</details>
+
+<details>
+<summary><b>Why do we need <code>mktemp</code> command? Present an example of use.</b></summary><br>
+
+<code>mktemp</code> randomizes the name. It is very important from the security point of view.
+
+Just imagine that you do something like:
+
+```bash
+echo "random_string" > /tmp/temp-file
+```
+
+in your root-running script. And someone (who has read your script) does
+
+```bash
+ln -s /etc/passwd /tmp/temp-file
+```
+
+The <code>mktemp</code> command could help you in this situation:
+
+```bash
+TEMP=$(mktemp /tmp/temp-file.XXXXXXXX)
+echo "random_string" > ${TEMP}
+```
+
+Now this <code>ln /etc/passwd</code> attack will not work.
 
 </details>
 
@@ -3776,9 +3812,9 @@ nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
 </details>
 
 <details>
-<summary><b>Explain 3 techniques for Avoiding Firewalls with Nmap.</b></summary><br>
+<summary><b>Explain 3 techniques for avoiding firewalls with Nmap.</b></summary><br>
 
-1. Use Decoy addresses
+**Use Decoy addresses**
 
 ```bash
 # Generates a random number of decoys.
@@ -3789,7 +3825,7 @@ nmap -D decoy1,decoy2,decoy3
 
 In this type of scan you can instruct Nmap to spoof packets from other hosts.In the firewall logs it will be not only our IP address but also and the IP addresses of the decoys so it will be much harder to determine from which system the scan started.
 
-2. Source port number specification
+**Source port number specification**
 
 ```bash
 nmap --source-port 53 [target]
@@ -3797,7 +3833,7 @@ nmap --source-port 53 [target]
 
 A common error that many administrators are doing when configuring firewalls is to set up a rule to allow all incoming traffic that comes from a specific port number.The <code>--source-port</code> option of Nmap can be used to exploit this misconfiguration.Common ports that you can use for this type of scan are: 20, 53 and 67.
 
-3. Append Random Data
+**Append Random Data**
 
 ```bash
 nmap --data-length 25 [target]
@@ -3805,7 +3841,7 @@ nmap --data-length 25 [target]
 
 Many firewalls are inspecting packets by looking at their size in order to identify a potential port scan.This is because many scanners are sending packets that have specific size.In order to avoid that kind of detection you can use the command <code>--data-length</code> to add additional data and to send packets with different size than the default.
 
-4. TCP ACK Scan
+**TCP ACK Scan**
 
 ```bash
 nmap -sA [target]
@@ -3813,19 +3849,23 @@ nmap -sA [target]
 
 It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
 
+Useful resources:
+
+- [Nmap - Techniques for Avoiding Firewalls](https://pentestlab.blog/2012/04/02/nmap-techniques-for-avoiding-firewalls/)
+
 </details>
 
 <details>
 <summary><b>What does a Tcpdump do? How to capture only incoming traffic to your interface?</b></summary><br>
 
-<code>tcpdump</code> is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
+`tcpdump` is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
 
-<code>tcpdump</code> puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
+`tcpdump` puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
 
 If you want to view only packets that come to your interface you should:
 
-- <code>-Q in</code> - for Linux <code>tcpdump</code> version
-- <code>-D in</code> - for BSD <code>tcpdump</code> version
+- `-Q in` - for Linux `tcpdump` version
+- `-D in` - for BSD `tcpdump` version
 
 Both params set send/receive direction direction for which packets should be captured.
 
@@ -3924,34 +3964,6 @@ Example:
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
 
 <details>
-<summary><b>Why do we need <code>mktemp</code> command? Present an example of use.</b></summary><br>
-
-<code>mktemp</code> randomizes the name. It is very important from the security point of view.
-
-Just imagine that you do something like:
-
-```bash
-echo "random_string" > /tmp/temp-file
-```
-
-in your root-running script. And someone (who has read your script) does
-
-```bash
-ln -s /etc/passwd /tmp/temp-file
-```
-
-The <code>mktemp</code> command could help you in this situation:
-
-```bash
-TEMP=$(mktemp /tmp/temp-file.XXXXXXXX)
-echo "random_string" > ${TEMP}
-```
-
-Now this <code>ln /etc/passwd</code> attack will not work.
-
-</details>
-
-<details>
 <summary><b>Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
 
 For example:
@@ -3967,48 +3979,6 @@ done
 
 if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 ```
-
-</details>
-
-<details>
-<summary><b>Explain Varnish Cache SHM Log (pooling mechanism).</b></summary><br>
-
-Every poll is recorded in the shared memory log as follows:
-
-```bash
-0 Backend_health - b0 Still healthy 4--X-S-RH 9 8 10 0.029291 0.030875 HTTP/1.1 200 Ok
-```
-
-The fields are:
-
-- 0 - Constant
-- Backend_health - Log record tag
-- '-' client/backend indication (XXX: wrong! should be 'b')
-- b0 - Name of backend (XXX: needs qualifier)
-- two words indicating state:
-  - "Still healthy"
-  - "Still sick"
-  - "Back healthy"
-  - "Went sick"
-
-Notice that the second word indicates present state, and the first word == "Still" indicates unchanged state.
-
-- 4--X-S-RH - Flags indicating how the latest poll went
-  - 4 - IPv4 connection established
-  - 6 - IPv6 connection established
-  - x - Request transmit failed
-  - X - Request transmit succeeded
-  - s - TCP socket shutdown failed
-  - S - TCP socket shutdown succeeded
-  - r - Read response failed
-  - R - Read response succeeded
-  - H - Happy with result
-- 9 - Number of good polls in the last .window polls
-- 8 - .threshold (see above)
-- 10 - .window (see above)
-- 0.029291 - Response time this poll or zero if it failed
-- 0.030875 - Exponential average (r=4) of responsetime for good polls.
-- HTTP/1.1 200 Ok - The HTTP response from the backend.
 
 </details>
 
