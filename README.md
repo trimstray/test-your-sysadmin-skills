@@ -35,7 +35,7 @@
 
 ****
 
-:information_source: This project contains **232** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **231** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
 :warning: Questions marked `*` don't have answers yet - make a pull request to add them!
 
@@ -52,9 +52,9 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 52 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 78 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
 
@@ -527,6 +527,17 @@ Useful resources:
 
 - [POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)
 - [Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)
+
+<details>
+<summary><b>What does a <code>kill</code> command do?</b></summary><br>
+
+In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
+
+Useful resources:
+
+- [Mastering the "Kill" Command in Linux](https://www.maketecheasier.com/kill-command-in-linux/)
+
+</details>
 
 </details>
 
@@ -1697,8 +1708,6 @@ Useful resources:
 
 Is a process that has completed execution (via the **exit** system call) but still has an entry in the process table: it is a process in the "Terminated state".
 
-Also useful is man page:
-
 Processes marked **<defunct>** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init(8) if the parent process exits.
 
 Useful resources:
@@ -1708,29 +1717,21 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What if <code>kill -9</code> does not work?</b></summary><br>
+<summary><b>Present and explain the correct process path using the <code>kill</code> command.</b></summary><br>
 
-`kill -9` (`SIGKILL`) always works, provided you have the permission to kill the process. Basically either the process must be started by you and not be setuid or setgid, or you must be root. There is one exception: even root cannot send a fatal signal to PID 1 (the init process).
+Speaking of killing processes never use `kill -9/SIGKILL` unless absolutely mandatory. This kill can cause problems because of its brute force.
 
-However `kill -9` is not guaranteed to work immediately. All signals, including `SIGKILL`, are delivered asynchronously: the kernel may take its time to deliver them. Usually, delivering a signal takes at most a few microseconds, just the time it takes for the target to get a time slice. However, if the target has blocked the signal, the signal will be queued until the target unblocks it.
+Always try to use the following simple procedure:
 
-Normally, processes cannot block `SIGKILL`. But kernel code can, and processes execute kernel code when they call system calls.
+- first, send **SIGTERM** (`kill -15`) signal first which tells the process to shutdown and is generally accepted as the signal to use when shutting down cleanly (but remember that this signal can be ignored).
+- next try to send **SIGHUP** (`kill -1`) signal which is commonly used to tell a process to shutdown and restart, this signal can also be caught and ignored by a process.
 
-A process blocked in a system call is in uninterruptible sleep. The `ps` or `top` command will (on most unices) show it in state **D**.
-
-To remove a **D** State Process, since it is uninterruptible, only a machine reboot can solve the problem in case its not automatically handled by the system.
-
-Usually there is a very few chance that a process stays in **D** State for long. And if it does then there is something not properly being handled in the system. This can be a potential bug as well.
-
-A classical case of long uninterruptible sleep is processes accessing files over NFS when the server is not responding; modern implementations tend not to impose uninterruptible sleep (e.g. under Linux, the intr mount option allows a signal to interrupt NFS file accesses).
-
-You may sometimes see entries marked **Z** (or **H** under Linux) in the `ps` or `top` output. These are technically not processes, they are zombie processes, which are nothing more than an entry in the process table, kept around so that the parent process can be notified of the death of its child. They will go away when the parent process pays attention (or dies).
+The far majority of the time, this is all you need - and is much cleaner.
 
 Useful resources:
 
-- [What if kill -9 does not work? (original)](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
-- [How to kill a process in Linux if kill -9 has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
 - [When should I not kill -9 a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
+- [SIGTERM vs. SIGKILL](https://major.io/2010/03/18/sigterm-vs-sigkill/)
 
 </details>
 
@@ -2574,7 +2575,7 @@ To be completed.
 
 </details>
 
-###### System Questions (52)
+###### System Questions (50)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2635,13 +2636,18 @@ export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
 <details>
 <summary><b>Explain all the fields in the <code>/etc/passwd</code> file.</b></summary><br>
 
-- <b>Username</b>: First field is the username that contains the username which is 1 to 32 length characters.<br>
-- <b>Password</b>: This field does not show the actual password as the password is encrypted. Here, x character shows that password is encrypted that is located in <code>/etc/shadow</code> file.<br>
-- <b>User ID (UID)</b>: All the users created in Linux is given a user ID whenever the user is created. UID 0 is fixed and reserved for the root user.<br>
-- <b>Group ID (GID)</b>: This field specifies the name of the group to which the user belongs. The group information is also stored in a file <code>/etc/group</code>.<br>
-- <b>User ID Info</b>: Here you can add comments and you can add any extra information related to the users like full name, contact number, etc.<br>
-- <b>Home directory</b>: This field provides the path where the user is directed after the login. For example, <code>/home/smith</code>.<br>
-- <b>Command/shell</b>: This field provides the path of a command/shell and denotes that user has access to this shell i.e. <code>/bin/bash</code>.
+- **Username**: First field is the username that contains the username which is 1 to 32 length characters
+- **Password**: This field does not show the actual password as the password is encrypted. Here, x character shows that password is encrypted that is located in `/etc/shadow` file
+- **User ID (UID)**: All the users created in Linux is given a user ID whenever the user is created. UID 0 is fixed and reserved for the root user
+- **Group ID (GID)**: This field specifies the name of the group to which the user belongs. The group information is also stored in a file `/etc/group`
+- **User ID Info**: Here you can add comments and you can add any extra information related to the users like full name, contact number, etc
+- **Home directory**: This field provides the path where the user is directed after the login. For example, `/home/smith`
+- **Command/shell**: This field provides the path of a command/shell and denotes that user has access to this shell i.e. `/bin/bash`
+
+Useful resources:
+
+- [Understanding /etc/passwd File Format](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
+- [What is difference between /etc/shadow and /etc/passwd](https://askubuntu.com/questions/445361/what-is-difference-between-etc-shadow-and-etc-passwd)
 
 </details>
 
@@ -2655,40 +2661,44 @@ To be completed.
 <details>
 <summary><b>Describe start-up configuration files and directory in BSD systems.</b></summary><br>
 
-In BSD the primary start-up configuration file is <code>/etc/defaults/rc.conf</code>. System startup scripts such as <code>/etc/rc</code> and <code>/etc/rc.d</code> just include this file.
+In BSD the primary start-up configuration file is **/etc/defaults/rc.conf**. System startup scripts such as **/etc/rc** and **/etc/rc.d** just include this file.
 
-If you want to add other programs to system startup you need to change <code>/etc/rc.conf</code> file instead of <code>/etc/defaults/rc.conf</code>.
+If you want to add other programs to system startup you need to change **/etc/rc.conf** file instead of **/etc/defaults/rc.conf**.
 
 </details>
 
 <details>
-<summary><b>What does Sar provides and at which location Sar logs are stored?</b></summary><br>
+<summary><b>What does `sar` provides and at which location `sar` logs are stored?</b></summary><br>
 
-Sar collect, report or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.
+`Sar` collect, report or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.
 
-By default log files of Sar command is located at <code>/var/log/sa/sadd</code> file, where the dd parameter indicates the current day.
+By default log files of `sar` command is located at **/var/log/sa/sadd** file, where the dd parameter indicates the current day.
 
 </details>
 
 <details>
 <summary><b>How to scan newly assigned luns on Linux box without rebooting?</b></summary><br>
 
-Run the command: <code>echo "---" >/sys/class/scsi_host/hostX/scan</code>.
+Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
 
 </details>
 
 <details>
 <summary><b>Explain system calls used for process management?</b></summary><br>
 
-There are some system calls used in Linux for process management. These are as follows:<br>
+There are some system calls for process management. These are as follows:
 
-- <code>Fork()</code>: It is used to create a new process<br>
-- <code>Exec()</code>: It is used to execute a new process<br>
-- <code>Wait()</code>: It is used to make the process to wait<br>
-- <code>Exit()</code>: It is used to exit or terminate the process<br>
-- <code>Getpid()</code>: It is used to find the unique process ID<br>
-- <code>Getppid()</code>: It is used to check the parent process ID<br>
-- <code>Nice()</code>: It is used to bias the currently running process property
+- **Fork()**: it is used to create a new process
+- **Exec()**: it is used to execute a new process
+- **Wait()**: it is used to make the process to wait
+- **Exit()**: it is used to exit or terminate the process
+- **Getpid()**: it is used to find the unique process ID
+- **Getppid()**: it is used to check the parent process ID
+- **Nice()**: it is used to bias the currently running process property
+
+Useful resources:
+
+- [System Calls](http://faculty.salina.k-state.edu/tim/ossg/Introduction/sys_calls.html)
 
 </details>
 
@@ -2696,6 +2706,11 @@ There are some system calls used in Linux for process management. These are as f
 <summary><b>Can’t mount the root file system. Why? *</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [What does "mounting a root file system" mean exactly?](https://superuser.com/questions/193918/what-does-mounting-a-root-file-system-mean-exactly)
+- [How does a kernel mount the root partition?](https://unix.stackexchange.com/questions/9944/how-does-a-kernel-mount-the-root-partition)
 
 </details>
 
@@ -2709,9 +2724,23 @@ To be completed.
 <details>
 <summary><b>Explain interrupts and interrupt handlers in Linux.</b></summary><br>
 
-Interrupts means the processor is transferred temporarily to another program or function. When that program is completed, the processor will be given back to that program to complete the task.
+Here's a high-level view of the low-level processing. I'm describing a simple typical architecture, real architectures can be more complex or differ in ways that don't matter at this level of detail.
 
-Interrupt handler is the function that the kernel runs for a specific interrupt. It is also called Interrupt Service Routine. Interrupts handlers are the function that matches a particular prototype and enables the kernel to pass the handler information accurately.
+When an **interrupt** occurs, the processor looks if interrupts are masked. If they are, nothing happens until they are unmasked. When interrupts become unmasked, if there are any pending interrupts, the processor picks one.
+
+Then the processor executes the interrupt by branching to a particular address in memory. The code at that address is called the **interrupt handler**. When the processor branches there, it masks interrupts (so the interrupt handler has exclusive control) and saves the contents of some registers in some place (typically other registers).
+
+The interrupt handler does what it must do, typically by communicating with the peripheral that triggered the interrupt to send or receive data. If the interrupt was raised by the timer, the handler might trigger the OS scheduler, to switch to a different thread. When the handler finishes executing, it executes a special return-from-interrupt instruction that restores the saved registers and unmasks interrupts.
+
+The interrupt handler must run quickly, because it's preventing any other interrupt from running. In the Linux kernel, interrupt processing is divided in two parts:
+
+- The "top half" is the interrupt handler. It does the minimum necessary, typically communicate with the hardware and set a flag somewhere in kernel memory.
+- The "bottom half" does any other necessary processing, for example copying data into process memory, updating kernel data structures, etc. It can take its time and even block waiting for some other part of the system since it runs with interrupts enabled.
+
+Useful resources:
+
+- [How is an Interrupt handled in Linux? (original)](https://unix.stackexchange.com/questions/5788/how-is-an-interrupt-handled-in-linux)
+- [Interrupts and Interrupt Handlers](https://notes.shichao.io/lkd/ch7/)
 
 </details>
 
@@ -2735,31 +2764,35 @@ __EOF__
 
 Within a POSIX system, a file has the following attributes which may be retrieved by the stat system call:
 
-- <b>Device ID</b> (this identifies the device containing the file; that is, the scope of uniqueness of the serial number).
+- **Device ID** (this identifies the device containing the file; that is, the scope of uniqueness of the serial number).
 File serial numbers
-- The <b>file mode</b> which determines the file type and how the file's owner, its group, and others can access the file
-- A <b>link count</b> telling how many hard links point to the inode
-- The <b>User ID</b> of the file's owner
-- The <b>Group ID</b> of the file
-- The <b>device ID</b> of the file if it is a device file.
-- The <b>size of the file</b> in bytes
-- <b>Timestamps</b> telling when the inode itself was last modified (ctime, inode change time), the file content last modified (mtime, modification time), and last accessed (atime, access time)
-- The preferred <b>I/O block size</b>
-- The <b>number of blocks</b> allocated to this file
+- The **file mode** which determines the file type and how the file's owner, its group, and others can access the file
+- A **link count** telling how many hard links point to the inode
+- The **User ID** of the file's owner
+- The **Group ID** of the file
+- The **device ID** of the file if it is a device file.
+- The **size of the file** in bytes
+- **Timestamps** telling when the inode itself was last modified (ctime, inode change time), the file content last modified (mtime, modification time), and last accessed (atime, access time)
+- The preferred **I/O block size**
+- The **number of blocks** allocated to this file
+
+Useful resources:
+
+- [Inodes - an Introduction](http://www.grymoire.com/Unix/Inodes.html)
 
 </details>
 
 <details>
 <summary><b>What is the Pluggable Authentication Modules? Explain.</b></summary><br>
 
-It provides a layer between applications and actual authentication mechanism. It is a library of loadable modules which are called by the application for authentication. It also allows the administrator to control when a user can log in. All PAM applications are configured in the directory <code>/etc/pam.d</code> or in a file <code>/etc/pam.conf</code>. PAM is controlled using the configuration file or the configuration directory.
+It provides a layer between applications and actual authentication mechanism. It is a library of loadable modules which are called by the application for authentication. It also allows the administrator to control when a user can log in. All PAM applications are configured in the directory **/etc/pam.d** or in a file **/etc/pam.conf**. PAM is controlled using the configuration file or the configuration directory.
 
 </details>
 
 <details>
 <summary><b>How do you run command every time a file is modified?</b></summary><br>
 
-For example:<br>
+For example:
 
 ```bash
 while inotifywait -e close_write filename ; do
@@ -2786,33 +2819,37 @@ An "s" in the first position means that the SETUID (or SUID) bit was set (the GU
 </details>
 
 <details>
-<summary><b>What does a <code>kill</code> command do?</b></summary><br>
+<summary><b>What if <code>kill -9</code> does not work? Describe exceptions for which the use of SIGKILL is insufficient.</b></summary><br>
 
-In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
+`kill -9` (`SIGKILL`) always works, provided you have the permission to kill the process. Basically either the process must be started by you and not be setuid or setgid, or you must be root. There is one exception: even root cannot send a fatal signal to PID 1 (the init process).
 
-</details>
+However `kill -9` is not guaranteed to work immediately. All signals, including `SIGKILL`, are delivered asynchronously: the kernel may take its time to deliver them. Usually, delivering a signal takes at most a few microseconds, just the time it takes for the target to get a time slice. However, if the target has blocked the signal, the signal will be queued until the target unblocks it.
 
-<details>
-<summary><b>Describe exceptions for which the use of SIGKILL is insufficient.</b></summary><br>
+Normally, processes cannot block `SIGKILL`. But kernel code can, and processes execute kernel code when they call system calls.
 
-- Zombie processes cannot be killed since they are already dead and waiting for their parent processes to reap them.<br>
-- Processes that are in the blocked state will not die until they wake up again.<br>
-- The init process is special: It does not get signals that it does not want to handle, and thus it can ignore SIGKILL. An exception from this exception is while init is ptraced on Linux.<br>
-- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent SIGKILL. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem.
+A process blocked in a system call is in uninterruptible sleep. The `ps` or `top` command will (on most unices) show it in state **D**.
 
-</details>
+To remove a **D** State Process, since it is uninterruptible, only a machine reboot can solve the problem in case its not automatically handled by the system.
 
-<details>
-<summary><b>Present and explain the correct process path using the <code>kill</code> command.</b></summary><br>
+Usually there is a very few chance that a process stays in **D** State for long. And if it does then there is something not properly being handled in the system. This can be a potential bug as well.
 
-Speaking of killing processes never use <code>kill -9/SIGKILL</code> unless absolutely mandatory. This kill can cause problems because of its brute force.
+A classical case of long uninterruptible sleep is processes accessing files over NFS when the server is not responding; modern implementations tend not to impose uninterruptible sleep (e.g. under Linux, the intr mount option allows a signal to interrupt NFS file accesses).
 
-Always try to use the following simple procedure:
+You may sometimes see entries marked **Z** (or **H** under Linux) in the `ps` or `top` output. These are technically not processes, they are zombie processes, which are nothing more than an entry in the process table, kept around so that the parent process can be notified of the death of its child. They will go away when the parent process pays attention (or dies).
 
-- first, send <b>SIGTERM</b> (<code>kill -15</code>) signal first which tells the process to shutdown and is generally accepted as the signal to use when shutting down cleanly (but remember that this signal can be ignored).
-- next try to send <b>SIGHUP</b> (<code>kill -1</code>) signal which is commonly used to tell a process to shutdown and restart, this signal can also be caught and ignored by a process.
+Summary exceptions:
 
-The far majority of the time, this is all you need - and is much cleaner.
+- Zombie processes cannot be killed since they are already dead and waiting for their parent processes to reap them
+- Processes that are in the blocked state will not die until they wake up again
+- The init process is special: It does not get signals that it does not want to handle, and thus it can ignore SIGKILL. An exception from this exception is while init is ptraced on Linux
+- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent SIGKILL. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem
+
+Useful resources:
+
+- [What if kill -9 does not work? (original)](https://unix.stackexchange.com/questions/5642/what-if-kill-9-does-not-work)
+- [How to kill a process in Linux if kill -9 has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
+- [When should I not kill -9 a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
+- [SIGTERM vs. SIGKILL](https://major.io/2010/03/18/sigterm-vs-sigkill/)
 
 </details>
 
@@ -2834,7 +2871,7 @@ Useful resources:
 <details>
 <summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
 
-The command <code>setfacl</code> refers to Set File Access Control Lists and <code>getfacl</code> refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
+The command `setfacl` refers to Set File Access Control Lists and `getfacl` refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
 
 </details>
 
@@ -2856,11 +2893,16 @@ The process table entry (aka process control block) contains a table, the file d
 <summary><b>What's the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
 </b></summary><br>
 
-When <code>/sbin/nologin</code> is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available.'
+When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available.'
 
-<code>/bin/false</code> is just a binary that immediately exits, returning false, when it's called, so when someone who has false as shell logs in, they're immediately logged out when false exits. Setting the shell to <code>/bin/true</code> has the same effect of not allowing someone to log in but false is probably used as a convention over true since it's much better at conveying the concept that person doesn't have a shell.
+`/bin/false` is just a binary that immediately exits, returning false, when it's called, so when someone who has false as shell logs in, they're immediately logged out when false exits. Setting the shell to `/bin/true` has the same effect of not allowing someone to log in but false is probably used as a convention over true since it's much better at conveying the concept that person doesn't have a shell.
 
-nologin is the more user-friendly option, with a customizable message given to the user trying to log in, so you would theoretically want to use that; but both nologin and false will have the same end result of someone not having a shell and not being able to ssh in.
+`/bin/nologin` is the more user-friendly option, with a customizable message given to the user trying to log in, so you would theoretically want to use that; but both nologin and false will have the same end result of someone not having a shell and not being able to ssh in.
+
+Useful resources:
+
+- [What's the difference between /sbin/nologin and /bin/false](https://unix.stackexchange.com/questions/10852/whats-the-difference-between-sbin-nologin-and-bin-false)
+- [Why do some system users have /usr/bin/false as their shell?](https://superuser.com/questions/1183311/why-do-some-system-users-have-usr-bin-false-as-their-shell)
 
 </details>
 
@@ -2868,13 +2910,13 @@ nologin is the more user-friendly option, with a customizable message given to t
 <summary><b>What is the meaning of the error <code>maxproc limit exceeded by uid %i ...</code> in FreeBSD?
 </b></summary><br>
 
-The FreeBSD kernel will only allow a certain number of processes to exist at one time. The number is based on the <code>kern.maxusers</code> variable.
+The FreeBSD kernel will only allow a certain number of processes to exist at one time. The number is based on the **kern.maxusers** variable.
 
-<code>kern.maxusers</code> also affects various other in-kernel limits, such as network buffers. If the machine is heavily loaded, increase <code>kern.maxusers</code>. This will increase these other system limits in addition to the maximum number of processes.
+**kern.maxusers** also affects various other in-kernel limits, such as network buffers. If the machine is heavily loaded, increase **kern.maxusers**. This will increase these other system limits in addition to the maximum number of processes.
 
-To adjust the <code>kern.maxusers</code> value, see the File/Process Limits section of the Handbook. While that section refers to open files, the same limits apply to processes.
+To adjust the **kern.maxusers** value, see the File/Process Limits section of the Handbook. While that section refers to open files, the same limits apply to processes.
 
-If the machine is lightly loaded but running a very large number of processes, adjust the <code>kern.maxproc</code> tunable by defining it in <code>/boot/loader.conf</code>.
+If the machine is lightly loaded but running a very large number of processes, adjust the **kern.maxproc** tunable by defining it in **/boot/loader.conf**.
 
 </details>
 
@@ -2891,9 +2933,13 @@ done < "/path/to/filename"
 
 Explanation:
 
-- <code>IFS=''</code> (or <code>IFS=</code>) prevents leading/trailing whitespace from being trimmed.
-- <code>-r</code> prevents backslash escapes from being interpreted.
-- <code>|| [[ -n $line ]]</code> prevents the last line from being ignored if it doesn't end with a <code>\n</code> (since  read returns a non-zero exit code when it encounters EOF).
+- `IFS=''` (or `IFS=``) prevents leading/trailing whitespace from being trimmed.
+- `-r` prevents backslash escapes from being interpreted.
+- `|| [[ -n $line ]]` prevents the last line from being ignored if it doesn't end with a `\n` (since  read returns a non-zero exit code when it encounters EOF).
+
+Useful resources:
+
+- [Read a file line by line assigning the value to a variable](https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable)
 
 </details>
 
@@ -2927,6 +2973,10 @@ If you take a situation where you have a lot of such bursty processes, you get a
 
 As "500 - Internal Server Error" says, the high number of context switches are going to make the situation even worse.
 
+Useful resources:
+
+- [What does “CPU jumps” mean? (original)](https://stackoverflow.com/questions/32185607/what-does-cpu-jumps-mean)
+
 </details>
 
 <details>
@@ -2944,21 +2994,25 @@ Other such examples
 - `-e trace=desc` - trace all file descriptor related system calls.
 - `-e trace=memory` - trace all memory mapping related system calls.
 
+Useful resources:
+
+- [How does strace connect to an already running process? (original)](https://stackoverflow.com/questions/7482076/how-does-strace-connect-to-an-already-running-process)
+
 </details>
 
 <details>
 <summary><b>How to remove all files except some from a directory?</b></summary><br>
 
-Solution 1 - with <b>extglob</b>:
+Solution 1 - with **extglob**:
 
-```
+```bash
 shopt -s extglob
 rm !(textfile.txt|backup.tar.gz|script.php|database.sql|info.txt)
 ```
 
-Solution 2 - with <b>find</b>:
+Solution 2 - with **find**:
 
-```
+```bash
 find . -type f -not -name '*txt' -print0 | xargs -0 rm --
 ```
 
@@ -2967,7 +3021,7 @@ find . -type f -not -name '*txt' -print0 | xargs -0 rm --
 <details>
 <summary><b>How to check if a string contains a substring in Bash?</b></summary><br>
 
-You can use * (wildcards) outside a case statement, too, if you use double brackets:
+You can use `*`` (wildcards) outside a case statement, too, if you use double brackets:
 
 ```bash
 string='some text'
@@ -3009,15 +3063,15 @@ Useful resources:
 <details>
 <summary><b>How to redirect stderr and stdout to different files in the same line?</b></summary><br>
 
-Just add them in one line <code>command 2>> error 1>> output</code>.
+Just add them in one line `command 2>> error 1>> output`.
 
-However, note that <code>>></code> is for appending if the file already has data. Whereas, <code>></code> will overwrite any existing data in the file.
+However, note that `>>` is for appending if the file already has data. Whereas, `> will overwrite any existing data in the file.
 
-So, <code>command 2> error 1> output</code> if you do not want to append.
+So, `command 2> error 1> output` if you do not want to append.
 
-Just for completion's sake, you can write <code>1></code> as just <code>></code> since the default file descriptor is the output. so <code>1></code> and <code>></code> is the same thing.
+Just for completion's sake, you can write `1>` as just `>` since the default file descriptor is the output. so `1>` and `>` is the same thing.
 
-So, <code>command 2> error 1> output</code> becomes, <code>command 2> error > output</code>.
+So, `command 2> error 1> output` becomes, `command 2> error > output`.
 
 </details>
 
@@ -3062,9 +3116,9 @@ Useful resources:
 <details>
 <summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
 
-Fixed the issue by reducing <code>max_files_per_process</code> e.g. to 200 from default 1000. This parameter is in <code>postgresql.conf</code> file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
+Fixed the issue by reducing **max_files_per_process** e.g. to 200 from default 1000. This parameter is in **postgresql.conf** file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
-Usually people start to edit <code>/etc/security/limits.conf</code> file, but forget that this file only apply to the actively logged in users through the pam system.
+Usually people start to edit **/etc/security/limits.conf** file, but forget that this file only apply to the actively logged in users through the pam system.
 
 </details>
 
@@ -3079,9 +3133,9 @@ I've had file copies while in single user mode dump files into directories that 
 
 Solution 2:
 
-On the other hand <code>df -h</code> and <code>du -sh</code> could mismatched by about 50% of the hard disk size. This was caused by e.g. apache (httpd) keeping large log files in memory which had been deleted from disk.
+On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. apache (httpd) keeping large log files in memory which had been deleted from disk.
 
-This was tracked down by running <code>lsof | grep "/var" | grep deleted</code> where <code>/var</code> was the partition I needed to clean up.
+This was tracked down by running `lsof | grep "/var" | grep deleted` where **/var** was the partition I needed to clean up.
 
 The output showed lines like this:
 
@@ -3089,23 +3143,23 @@ The output showed lines like this:
 httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
 ```
 
-The situation was then resolved by restarting apache (<code>service httpd restart</code>) and cleared of disk space, by allowing the locks on deleted files to be cleared.
+The situation was then resolved by restarting apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
 
 </details>
 
 <details>
 <summary><b>What is the difference between encryption and hashing?</b></summary><br>
 
-<b>Hashing</b>: Finally, hashing is a form of cryptographic security which differs from <b>encryption</b>. Whereas <b>encryption</b> is a two step process used to first encrypt and then decrypt a message, <b>hashing</b> condenses a message into an irreversible fixed-length value, or hash.
+**Hashing**: Finally, hashing is a form of cryptographic security which differs from **encryption** Whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
 
 </details>
 
 <details>
 <summary><b>How to log all commands run by root on production servers?</b></summary><br>
 
-<code>auditd</code> is the correct tool for the job here:
+`auditd` is the correct tool for the job here:
 
-1. Add these 2 lines to <code>/etc/audit/audit.rules</code>:
+1. Add these 2 lines to **/etc/audit/audit.rules**:
 
 ```bash
 -a exit,always -F arch=b64 -F euid=0 -S execve
@@ -3114,7 +3168,7 @@ The situation was then resolved by restarting apache (<code>service httpd restar
 
 These will track all commands run by root (euid=0). Why two rules? The execve syscall must be tracked in both 32 and 64 bit code.
 
-2. To get rid of <code>auid=4294967295</code> messages in logs, add <code>audit=1</code> to the kernel's cmdline (by editing <code>/etc/default/grub</code>)
+2. To get rid of `auid=4294967295` messages in logs, add `audit=1` to the kernel's cmdline (by editing **/etc/default/grub**)
 
 3. Place the line
 
@@ -3122,7 +3176,7 @@ These will track all commands run by root (euid=0). Why two rules? The execve sy
 session  required                pam_loginuid.so
 ```
 
-in all PAM config files that are relevant to login (<code>/etc/pam.d/{login,kdm,sshd}</code>), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
+in all PAM config files that are relevant to login (**/etc/pam.d/{login,kdm,sshd}**), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
 
 Restart your system now.
 
@@ -3138,7 +3192,7 @@ $ sudo su -
 [...]
 ```
 
-Now read <code>/var/log/audit/auditd.log</code> for show what has been logged in.
+Now read **/var/log/audit/auditd.log** for show what has been logged in.
 
 </details>
 
@@ -3151,28 +3205,28 @@ Try using ionice:
 ionice -c3 dd if=/dev/zero of=z
 ```
 
-This start the <code>dd</code> process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
+This start the `dd` process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
 
-Of course this can still flood the buffer cache and cause freezes while the system flushes out the cache to disk. There are tunables under <code>/proc/sys/vm/</code> to influence this, particularly the dirty_* entries.
+Of course this can still flood the buffer cache and cause freezes while the system flushes out the cache to disk. There are tunables under **/proc/sys/vm/** to influence this, particularly the `dirty_*` entries.
 
 </details>
 
 <details>
 <summary><b>How to limit processes to not exceed more than X% of CPU usage?</b></summary><br>
 
-- <b>nice/renice</b>
+- **nice/renice**
 
 nice is a great tool for 'one off' tweaks to a system:
 
 `nice COMMAND`
 
-- <b>cpulimit</b>
+- **cpulimit**
 
 cpulimit if you need to run a CPU intensive job and having free CPU time is essential for the responsiveness of a system:
 
 `cpulimit -l 50 COMMAND`
 
-- <b>cgroups</b>
+- **cgroups**
 
 cgroups apply limits to a set of processes, rather than to just one:
 
@@ -3660,7 +3714,7 @@ Key differences with HTTP/1.1:
 - fully multiplexed, instead of ordered and blocking
 - can therefore use one connection for parallelism
 - uses header compression to reduce overhead
-- allows servers to “push” responses proactively into client caches
+- allows servers to "push" responses proactively into client caches
 
 </details>
 
