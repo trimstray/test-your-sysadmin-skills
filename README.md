@@ -1375,7 +1375,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You are preparing a web server. One of the steps are the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
+<summary><b>During server configuration one of the steps are the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
 
 **1) Main requirements - remember about this**
 
