@@ -41,7 +41,7 @@
 
 :bangbang: The answers are only **examples** and do not exhaust the whole topic.
 
-:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**!
+:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**.
 
 <div align="center">
   All suggestions are welcome!
@@ -1080,7 +1080,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is this UID 0 <code>toor</code> account? Have I been compromised?</b></summary><br>
+<summary><b>What is this UID 0 toor account? Have I been compromised?</b></summary><br>
 
 **toor** is an alternative superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
 
@@ -1095,7 +1095,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does it mean when the effective user is "root", but the real user ID is still your name?</b></summary><br>
+<summary><b>What does it mean when the effective user is root, but the real user ID is still your name?</b></summary><br>
 
 The real user ID is who you really are (the user who owns the process), and the effective user ID is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
 
@@ -1127,7 +1127,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Developer added cron job which generate massive log files. How do You prevent them from getting so big?</b></summary><br>
+<summary><b>Developer added cron job which generate massive log files. How do you prevent them from getting so big?</b></summary><br>
 
 Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to **/etc/logrotate.conf** you should add your own job to **/etc/logrotate.d/**, otherwise you would have to look at more diffs of configuration files during release upgrades.
 
@@ -2611,16 +2611,24 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is LD_LIBRARY_PATH?</b></summary><br>
+<summary><b>What is LD_LIBRARY_PATH? How to use?</b></summary><br>
 
-Environment variable <code>LD_LIBRARY_PATH</code> is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
+Environment variable `LD_LIBRARY_PATH` is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
+
+The best way to use `LD_LIBRARY_PATH` is to set it on the command line or script immediately before executing the program. This way the new `LD_LIBRARY_PATH` isolated from the rest of your system.
+
+Example of use:
+
+```bash
+export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
+```
 
 </details>
 
 <details>
 <summary><b>How shadow passwords are given by in Linux?</b></summary><br>
 
-<code>pwconv</code> command is used for giving shadow passwords. Shadow passwords are given for better system security. The <code>pwconv</code> command creates the file <code>/etc/shadow</code> and changes all passwords to 'x' in the <code>/etc/passwd</code> file.
+`pwconv` command is used for giving shadow passwords. Shadow passwords are given for better system security. The `pwconv` command creates the file **/etc/shadow** and changes all passwords to 'x' in the **/etc/passwd** file.
 
 </details>
 
