@@ -35,25 +35,29 @@
 
 ****
 
-:information_source: This project contains **231** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **230** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
-:warning: Questions marked `*` don't have answers yet - make a pull request to add them!
+:warning: Questions marked **`*`** don't have answers yet - make a pull request to add them!
 
 :bangbang: The answers are only **examples** and do not exhaust the whole topic.
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**.
 
+<br>
+
 <div align="center">
   All suggestions are welcome!
 </div>
+
+<br>
 
 ## Table of Contents
 
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
@@ -780,7 +784,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to resolves the domain name (using external dns server) with CLI commands? Can IPs be resolved to domain names?</b></summary><br>
+<summary><b>How to resolves the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
 
 Examples for resolve IP address to domain name:
 
@@ -992,7 +996,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (48)
+###### System Questions (49)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
@@ -1017,17 +1021,20 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is this UID 0 toor account? Have I been compromised?</b></summary><br>
+<summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
 
-**toor** is an alternative superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
+The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70.
 
-This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in `/usr/local/bin` which, by default, resides on a different file system. If root's shell is located in `/usr/local/bin` and the file system containing `/usr/local/bin`) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
+The "Need to Look into it" Rule of Thumb: 0.70 If your load average is staying above > 0.70, it's time to investigate before things get worse.
 
-Some people use toor for day-to-day root tasks with a non-standard shell, leaving root, with a standard shell, for single-user mode or emergencies. By default, a user cannot log in using toor as it does not have a password, so log in as root and set a password for toor before using it to login.
+The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, find the problem and fix it now. Otherwise, you're going to get woken up in the middle of the night, and it's not going to be fun.
 
-Useful resources:
+Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference. Don't let it get there.
 
-- [The root account (and toor)](https://administratosphere.wordpress.com/2007/10/04/the-root-account-and-toor/)
+Usefule resources:
+
+- [Proper way of interpreting system load on a 4 core 8 thread processor](https://serverfault.com/questions/618130/proper-way-of-interpreting-system-load-on-a-4-core-8-thread-processor)
+- [Understanding Linux CPU Load - when should you be worried?](http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages)
 
 </details>
 
@@ -1072,39 +1079,6 @@ Useful resources:
 
 - [How to Use logrotate to Manage Log Files](https://www.linode.com/docs/uptime/logs/use-logrotate-to-manage-log-files/)
 - [System logging](https://www.ibm.com/developerworks/library/l-lpic1-108-2/index.html)
-
-</details>
-
-<details>
-<summary><b>Explain <code>/proc</code> filesystem.</b></summary><br>
-
-`/proc` is a virtual file system that provides detailed information about kernel, hardware and running processes.
-
-Since `/proc` contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.
-
-Virtual files such as `/proc/interrupts`, `/proc/meminfo`, `/proc/mounts` and `/proc/partitions` provide an up-to-the-moment glimpse of the system’s hardware. Others: `/proc/filesystems` file and the `/proc/sys/` directory provide system configuration information and interfaces.
-
-Useful resources:
-
-- [Linux Filesystem Hierarchy - /proc](https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)
-
-</details>
-
-<details>
-<summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
-
-The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70.
-
-The "Need to Look into it" Rule of Thumb: 0.70 If your load average is staying above > 0.70, it's time to investigate before things get worse.
-
-The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, find the problem and fix it now. Otherwise, you're going to get woken up in the middle of the night, and it's not going to be fun.
-
-Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference. Don't let it get there.
-
-Usefule resources:
-
-- [Proper way of interpreting system load on a 4 core 8 thread processor](https://serverfault.com/questions/618130/proper-way-of-interpreting-system-load-on-a-4-core-8-thread-processor)
-- [Understanding Linux CPU Load - when should you be worried?](http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages)
 
 </details>
 
@@ -1514,13 +1488,28 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to add & change the Kernel parameters?</b></summary><br>
+<summary><b>How to add & change the kernel parameters?</b></summary><br>
 
 To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
 Useful resources:
 
 - [How to Change Kernel Runtime Parameters in a Persistent and Non-Persistent Way](https://www.tecmint.com/change-modify-linux-kernel-runtime-parameters/)
+
+</details>
+
+<details>
+<summary><b>Explain <code>/proc</code> filesystem.</b></summary><br>
+
+`/proc` is a virtual file system that provides detailed information about kernel, hardware and running processes.
+
+Since `/proc` contains virtual files, it is called virtual file system. These virtual files have unique qualities. Most of them are listed as zero bytes in size.
+
+Virtual files such as `/proc/interrupts`, `/proc/meminfo`, `/proc/mounts` and `/proc/partitions` provide an up-to-the-moment glimpse of the system’s hardware. Others: `/proc/filesystems` file and the `/proc/sys/` directory provide system configuration information and interfaces.
+
+Useful resources:
+
+- [Linux Filesystem Hierarchy - /proc](https://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/proc.html)
 
 </details>
 
@@ -1665,7 +1654,7 @@ Useful resources:
 
 Is a process that has completed execution (via the **exit** system call) but still has an entry in the process table: it is a process in the "Terminated state".
 
-Processes marked **<defunct>** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init(8) if the parent process exits.
+Processes marked **<defunct>** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init if the parent process exits.
 
 Useful resources:
 
@@ -2017,6 +2006,21 @@ or
 ```bash
 unset HISTFILE && exit
 ```
+
+</details>
+
+<details>
+<summary><b>What is this UID 0 toor account? Have I been compromised?</b></summary><br>
+
+**toor** is an alternative superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
+
+This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in `/usr/local/bin` which, by default, resides on a different file system. If root's shell is located in `/usr/local/bin` and the file system containing `/usr/local/bin`) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
+
+Some people use toor for day-to-day root tasks with a non-standard shell, leaving root, with a standard shell, for single-user mode or emergencies. By default, a user cannot log in using toor as it does not have a password, so log in as root and set a password for toor before using it to login.
+
+Useful resources:
+
+- [The root account (and toor)](https://administratosphere.wordpress.com/2007/10/04/the-root-account-and-toor/)
 
 </details>
 
@@ -2603,7 +2607,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is LD_LIBRARY_PATH? How to use?</b></summary><br>
+<summary><b>What is LD_LIBRARY_PATH? How to use it?</b></summary><br>
 
 Environment variable `LD_LIBRARY_PATH` is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
 
