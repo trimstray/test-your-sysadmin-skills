@@ -2668,7 +2668,7 @@ If you want to add other programs to system startup you need to change **/etc/rc
 </details>
 
 <details>
-<summary><b>What does `sar` provides and at which location `sar` logs are stored?</b></summary><br>
+<summary><b>What does <code>sar</code> provides and at which location <code>sar</code> logs are stored?</b></summary><br>
 
 `Sar` collect, report or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.
 
@@ -2688,13 +2688,13 @@ Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
 
 There are some system calls for process management. These are as follows:
 
-- **Fork()**: it is used to create a new process
-- **Exec()**: it is used to execute a new process
-- **Wait()**: it is used to make the process to wait
-- **Exit()**: it is used to exit or terminate the process
-- **Getpid()**: it is used to find the unique process ID
-- **Getppid()**: it is used to check the parent process ID
-- **Nice()**: it is used to bias the currently running process property
+- `Fork()`: it is used to create a new process
+- `Exec()`: it is used to execute a new process
+- `Wait()`: it is used to make the process to wait
+- `Exit()`: it is used to exit or terminate the process
+- `Getpid()`: it is used to find the unique process ID
+- `Getppid()`: it is used to check the parent process ID
+- `Nice()`: it is used to bias the currently running process property
 
 Useful resources:
 
@@ -2893,7 +2893,7 @@ The process table entry (aka process control block) contains a table, the file d
 <summary><b>What's the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
 </b></summary><br>
 
-When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available.'
+When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available'.
 
 `/bin/false` is just a binary that immediately exits, returning false, when it's called, so when someone who has false as shell logs in, they're immediately logged out when false exits. Setting the shell to `/bin/true` has the same effect of not allowing someone to log in but false is probably used as a convention over true since it's much better at conveying the concept that person doesn't have a shell.
 
@@ -2933,7 +2933,7 @@ done < "/path/to/filename"
 
 Explanation:
 
-- `IFS=''` (or `IFS=``) prevents leading/trailing whitespace from being trimmed.
+- `IFS=''` (or `IFS=`) prevents leading/trailing whitespace from being trimmed.
 - `-r` prevents backslash escapes from being interpreted.
 - `|| [[ -n $line ]]` prevents the last line from being ignored if it doesn't end with a `\n` (since  read returns a non-zero exit code when it encounters EOF).
 
@@ -3021,7 +3021,7 @@ find . -type f -not -name '*txt' -print0 | xargs -0 rm --
 <details>
 <summary><b>How to check if a string contains a substring in Bash?</b></summary><br>
 
-You can use `*`` (wildcards) outside a case statement, too, if you use double brackets:
+You can use `*` (wildcards) outside a case statement, too, if you use double brackets:
 
 ```bash
 string='some text'
@@ -3041,17 +3041,29 @@ fi
 
 First let's tackle the function of these.
 
-`2>&-` - the general form of this one is `M>&-`, where **"M"** is a file descriptor number. This will close output for whichever file descriptor is referenced, i.e. **"M"**.
+`2>&-`
 
-`2>/dev/null` - the general form of this one is `M>/dev/null`, where **"M"** is a file descriptor number. This will redirect the file descriptor, **"M"**, to `/dev/null`.
+The general form of this one is `M>&-`, where **"M"** is a file descriptor number. This will close output for whichever file descriptor is referenced, i.e. **"M"**.
 
-`2>&1` - the general form of this one is `M>&N`, where **"M"** & **"N"** are file descriptor numbers. It combines the output of file descriptors **"M"** and **"N"** into a single stream.
+`2>/dev/null`
 
-`|&` - this is just an abbreviation for `2>&1 |`. It was added in Bash 4.
+The general form of this one is `M>/dev/null`, where **"M"** is a file descriptor number. This will redirect the file descriptor, **"M"**, to `/dev/null`.
 
-`&>/dev/null` - this is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (STDERR) and descriptor 1 (STDOUT) to `/dev/null`.
+`2>&1`
 
-`>/dev/null` - this is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (STDOUT) to `/dev/null`.
+The general form of this one is `M>&N`, where **"M"** & **"N"** are file descriptor numbers. It combines the output of file descriptors **"M"** and **"N"** into a single stream.
+
+`|&`
+
+This is just an abbreviation for `2>&1 |`. It was added in Bash 4.
+
+`&>/dev/null`
+
+This is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (STDERR) and descriptor 1 (STDOUT) to `/dev/null`.
+
+`>/dev/null`
+
+This is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (STDOUT) to `/dev/null`.
 
 Useful resources:
 
@@ -3284,8 +3296,8 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 <details>
 <summary><b><code>grub></code> vs <code>grub-rescue></code>. Explain.</b></summary><br>
 
-- <code>grub></code> - this is the mode to which it passes if you find everything you need to run the system in addition to the configuration file. With this mode, we have access to most (if not all) modules and commands. This mode can be called from the menu by pressing the 'c' key
-- <code>grub-rescue></code> - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory <code>/boot/grub/i386-pc</code>), if its contents are damaged or if no normal module is found, contains only basic commands
+- `grub>` - this is the mode to which it passes if you find everything you need to run the system in addition to the configuration file. With this mode, we have access to most (if not all) modules and commands. This mode can be called from the menu by pressing the 'c' key
+- `grub-rescue` - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory **/boot/grub/i386-pc**), if its contents are damaged or if no normal module is found, contains only basic commands
 
 </details>
 
