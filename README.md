@@ -35,13 +35,17 @@
 
 ****
 
-:information_source: This project contains **233** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **232** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
 
-:warning: Questions marked '<b>*</b>' don't have answers yet - make a pull request to add them!
+:warning: Questions marked `*` don't have answers yet - make a pull request to add them!
 
 :bangbang: The answers are only **examples** and do not exhaust the whole topic.
 
-:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**! All suggestions are welcome.
+:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**!
+
+<div align="center">
+  All suggestions are welcome!
+</div>
 
 ## Table of Contents
 
@@ -49,7 +53,7 @@
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 51 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 79 questions.
+  * [Regular Sysadmin](#regular-sysadmin) - 78 questions.
   * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 12 questions.
@@ -703,15 +707,24 @@ useradd -m -g initial_group username
 
 If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
 
+Useful resources:
+
+- [How can I change a user's default group in Linux?](https://unix.stackexchange.com/questions/26675/how-can-i-change-a-users-default-group-in-linux)
+
 </details>
 
 <details>
 <summary><b>Why would you want to mount servers in a rack?</b></summary><br>
 
 - Protecting Hardware
+- Proper Cooling
 - Organized Workspace
 - Better Power Management
 - Cleaner Environment
+
+Useful resources:
+
+- [5 Reasons to Rackmount Your PC](https://www.racksolutions.com/news/custom-projects/5-reasons-to-rackmount-pc/)
 
 </details>
 
@@ -720,7 +733,25 @@ If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB va
 <details>
 <summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it?</b></summary><br>
 
-I would connect to my web server via ssh to investigate the log files and resolve the issue regarding to the logs.
+If you can telnet to the port, this means that the service listening on the port is running and you can connect to it (it's not a networking problem). It is good to check this way for the IP address to which the domain is resolved and using the same domain to test connection.
+
+First of all check if your site is online from a other location. It then lets you know if the site is down everywhere, or if only your network is unable to view it. It is also a good idea to check what the web browser returns.
+
+**If only IP connection working**
+
+- you can use whois to see what DNS servers serve up the hostname to the site: `whois www.example.com`
+- you can use tools like `dig` or `host` to test DNS to see if the host name is resolving: `host www.example.org dns.example.org`
+- you can also check global public dns servers: `host www.example.com 9.9.9.9`
+
+If domain not resolved it's probably probem with DNS servers.
+
+**If domain resolved properly**
+
+- investigate the log files and resolve the issue regarding to the logs, it's the best way to show what's wrong
+- check the http status code, usually it will be the response with the 5xx, maybe server is overload because clients making lot's of connection to the website or specific url? maybe your caching rules not working properly?
+- check web/proxy server configuration (e.g. `nginx -t -c </path/to/nginx.conf>`), maybe another sysadmin has made some changes to the domain configuration?
+- maybe something on the server has crashed? maybe run out of space or run out of memory?
+- maybe it's a programming error on the website?
 
 </details>
 
@@ -754,6 +785,10 @@ I would connect to my web server via ssh to investigate the log files and resolv
   </tr>
 </table>
 
+Useful resources:
+
+- [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+
 </details>
 
 <details>
@@ -780,6 +815,11 @@ Useful resources:
 
 Using the commands `netstat -nr`, `route -n` or `ip route show` we can see the default route and routing tables.
 
+Useful resources:
+
+- [How to check routes (routing table) in linux](https://howto.lintel.in/how-to-check-routes-routing-table-in-linux/)
+- [FreeBSD Set a Default Route/Gateway](https://www.cyberciti.biz/faq/freebsd-setup-default-routing-with-route-command/)
+
 </details>
 
 <details>
@@ -803,7 +843,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to resolves the domain name (using external dns server) with CLI commands?</b></summary><br>
+<summary><b>How to resolves the domain name (using external dns server) with CLI commands? Can IPs be resolved to domain names?</b></summary><br>
+
+Examples for resolve IP address to domain name:
 
 ```bash
 # with host command:
@@ -815,6 +857,35 @@ dig @9.9.9.9 google.com
 # with nslookup command:
 nslookup domain.com 8.8.8.8
 ```
+
+You can (sometimes) resolve an IP Address back to a hostname. IP Address can be stored against a **PTR** record. You can then do:
+
+```bash
+dig A <hostname>
+```
+
+To lookup the IPv4 address for a host, or:
+
+```bash
+dig AAAA <hostname>
+```
+
+To lookup the IPv6 address for a host, or:
+
+```bash
+dig PTR ZZZ.YYY.XXX.WWW.in-addr.arpa.
+```
+
+To lookup the hostname for IPv4 address WWW.XXX.YYY.ZZZ (note the octets are reversed), or:
+
+```bash
+dig PTR b.a.9.8.7.6.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.
+```
+
+Useful resources:
+
+- [How can I resolve a hostname to an IP address in a Bash script?](https://unix.stackexchange.com/questions/20784/how-can-i-resolve-a-hostname-to-an-ip-address-in-a-bash-script)
+- [How To Resolve IP Addresses To Domain Names?](https://superuser.com/questions/315687/how-to-resolve-ip-addresses-to-domain-names)
 
 </details>
 
@@ -924,6 +995,11 @@ Useful resources:
 
 Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 - or a subnet mask of `255.255.255.224`.
 
+Useful resources:
+
+- [How do you calculate the prefix, network, subnet, and host numbers?](https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers)
+- [IP Calculator](http://jodies.de/ipcalc)
+
 </details>
 
 <details>
@@ -979,7 +1055,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (48)
+###### System Questions (47)
 
 <details>
 <summary><b>Explain Linux Boot Process.</b></summary><br>
@@ -1109,13 +1185,17 @@ Useful resources:
 <details>
 <summary><b>How would you recognize a process that is hogging resources? </b></summary><br>
 
-<b><code>top</code></b> works reasonably well, as long as you look at the right numbers.
-- <b>M</b> Sorts by current resident memory usage
-- <b>T</b> Sorts by total ( or cummulaative) CPU usage
-- <b>p</b> Sorts by current CPU usage (this is the default refresh)
-- <b>?</b> Displays a usage summary for all top commands
+`top` works reasonably well, as long as you look at the right numbers.
+- **M** Sorts by current resident memory usage
+- **T** Sorts by total ( or cummulaative) CPU usage
+- **p** Sorts by current CPU usage (this is the default refresh)
+- **?** Displays a usage summary for all top commands
 
 This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
+
+Useful resources:
+
+- [How to find the process(es) which are hogging the machine](https://superuser.com/questions/326300/how-to-find-the-processes-which-are-hogging-the-machine)
 
 </details>
 
@@ -1517,25 +1597,30 @@ Useful resources:
 
 There are three types of journaling available in ext3/ext4 file systems:
 
-- <b>Journal</b> - metadata and content are saved in the journal.<br>
-- <b>Ordered</b> - only metadata is saved in the journal. Metadata are  journaled only after writing the content to disk. This is the default.<br>
-- <b>Writeback</b> - only metadata is saved in the journal. Metadata might be  journaled either before or after the content is written to the disk.
+- **Journal** - metadata and content are saved in the journal
+- **Ordered** - only metadata is saved in the journal. Metadata are  journaled only after writing the content to disk. This is the default
+- **Writeback** - only metadata is saved in the journal. Metadata might be  journaled either before or after the content is written to the disk
 
 </details>
 
 <details>
 <summary><b>What is an inode?</b></summary><br>
 
-An inode is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.<br>
+An inode is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
 
 A Unix file is "stored" in two different parts of the disk - the data blocks and the inodes. (I won't get into superblocks and other esoteric information.) The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
+
+Useful resources:
+
+- [Understand UNIX/Linux Inodes Basics with Examples](https://www.thegeekstuff.com/2012/01/linux-inodes/)
+- [What is an inode as defined by POSIX?](https://unix.stackexchange.com/questions/387087/what-is-an-inode-as-defined-by-posix/387093)
 
 </details>
 
 <details>
 <summary><b>How to increase the size of LVM partition?</b></summary><br>
 
-Use the <code>lvextend</code> command for resize LVM partition.<br>
+Use the `lvextend` command for resize LVM partition.
 
 - extending the size by 500MB:
 
@@ -1549,7 +1634,7 @@ lvextend -L +500M /dev/vgroup/lvolume
 lvextend -l +100%FREE /dev/vgroup/lvolume
 ```
 
-and `resize2fs` or `xfs_growfs` to resize filesystem:<br>
+and `resize2fs` or `xfs_growfs` to resize filesystem:
 
 - for ext filesystems:
 
@@ -1562,6 +1647,10 @@ resize2fs /dev/vgroup/lvolume
 ```bash
 xfs_growfs mountpoint_for_/dev/vgroup/lvolume
 ```
+
+Useful resources:
+
+- [Extending a logical volume](https://www.tldp.org/HOWTO/LVM-HOWTO/extendlv.html)
 
 </details>
 
@@ -1595,12 +1684,26 @@ mkfs -t xfs /dev/mapper/vg0-datastore
 
 The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
 
+Generally applications that take too long to execute and dosent require user interaction are sent to background so that we can continue our work in terminal.
+
+Useful resources:
+
+- [What is/are the advantage(s) of running applications in backgound?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
+
 </details>
 
 <details>
 <summary><b>What is a zombie/defunct process?</b></summary><br>
 
-Is a process that has completed execution (via the <b>exit</b> system call) but still has an entry in the process table: it is a process in the "Terminated state".
+Is a process that has completed execution (via the **exit** system call) but still has an entry in the process table: it is a process in the "Terminated state".
+
+Also useful is man page:
+
+Processes marked **<defunct>** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init(8) if the parent process exits.
+
+Useful resources:
+
+- [What is a <defunct> process, and why doesn't it get killed?](https://askubuntu.com/questions/201303/what-is-a-defunct-process-and-why-doesnt-it-get-killed)
 
 </details>
 
@@ -1632,9 +1735,22 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is strace command in Linux?</b></summary><br>
+<summary><b>What is strace command in Linux? How should strace be used?</b></summary><br>
 
 `strace` is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+
+**Strace Overview**
+
+`strace` can be seen as a light weight debugger. It allows a programmer/user to quickly find out how a program is interacting with the OS. It does this by monitoring system calls and signals.
+
+**Uses**
+
+Good for when you don't have source code or don't want to be bothered to really go through it. Also, useful for your own code if you don't feel like opening up **GDB**, but are just interested in understanding external interaction.
+
+Useful resources:
+
+- [How should strace be used? (original)](https://stackoverflow.com/questions/174942/how-should-strace-be-used)
+- [strace: for fun, profit, and debugging](http://timetobleed.com/hello-world/)
 
 </details>
 
@@ -1690,7 +1806,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Which algorithms are supported in passwd file?</b></summary><br>
+<summary><b>Which algorithms are supported in <code>/etc/shadow</code> file?</b></summary><br>
 
 Typical current algorithms are:
 
@@ -1703,6 +1819,11 @@ both should not be used for cryptographic/security purposes any more!!
 - SHA-512
 - SHA-3 (KECCAK was announced the winner in the competition for a new federal approved hash algorithm in October 2012)
 
+Useful resources:
+
+- [What is the algorithm used to encrypt Linux passwords?](https://crypto.stackexchange.com/questions/40841/what-is-the-algorithm-used-to-encrypt-linux-passwords)
+- [How to find the hashing algorithm used to obfuscate passwords?](https://unix.stackexchange.com/questions/430141/how-to-find-the-hashing-algorithm-used-to-obfuscate-passwords)
+
 </details>
 
 <details>
@@ -1710,12 +1831,9 @@ both should not be used for cryptographic/security purposes any more!!
 
 Key-based authentication is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
 
-</details>
+Useful resources:
 
-<details>
-<summary><b>Which utility is used to make automate rotation of a log?</b></summary><br>
-
-<code>logrotate</code> command is used to make automate rotation of log. It allows automatic rotation, compression, removal, and mailing of log files.
+- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
 
 </details>
 
@@ -1729,17 +1847,17 @@ Most UNIX-like operating systems, including Linux and BSD, provide ways to limit
 <details>
 <summary><b>What are soft limits and hard limits?</b></summary><br>
 
-Hard limit is the maximum allowed to a user, set by the superuser or root. This value is set in the file <code>/etc/security/limits.conf</code>. The user can increase the soft limit on their own in times of needing more resources, but cannot set the soft limit higher than the hard limit.
+Hard limit is the maximum allowed to a user, set by the superuser or root. This value is set in the file **/etc/security/limits.conf**. The user can increase the soft limit on their own in times of needing more resources, but cannot set the soft limit higher than the hard limit.
 
 </details>
 
 <details>
 <summary><b>What is the difference between Cron and Anacron?</b></summary><br>
 
-- one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running24*7. While anacron is used for the systems that are not running continuously.<br>
-- other difference between the two is cron jobs can run every minute, but anacron jobs can be run only once a day.<br>
-- any normal user can do the scheduling of cron jobs, but the scheduling of anacron jobs can be done by the superuser only.<br>
-- cron should be used when you need to execute the job at a specific time as per the given time in cron, but anacron should be used in when there is no any restriction for the timing and can be executed at any time.
+- one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running24*7. While anacron is used for the systems that are not running continuously
+- other difference between the two is cron jobs can run every minute, but anacron jobs can be run only once a day
+- any normal user can do the scheduling of cron jobs, but the scheduling of anacron jobs can be done by the superuser only
+- cron should be used when you need to execute the job at a specific time as per the given time in cron, but anacron should be used in when there is no any restriction for the timing and can be executed at any time
 
 </details>
 
@@ -1757,13 +1875,13 @@ cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 100 > /path/to/file
 <details>
 <summary><b>How to run script as another user without password?</b></summary><br>
 
-For example (with <code>visudo</code> command):
+For example (with `visudo` command):
 
 ```bash
 user1 ALL=(user2) NOPASSWD: /opt/scripts/bin/generate.sh
 ```
 
-The command paths must be absolute! Then call <code>sudo -u user2 /opt/scripts/bin/generate.sh</code> from a user1 shell.
+The command paths must be absolute! Then call `sudo -u user2 /opt/scripts/bin/generate.sh` from a user1 shell.
 
 </details>
 
@@ -1810,7 +1928,7 @@ Furthermore, if you want to append to the log file, use tee -a as:
 <details>
 <summary><b>What is the preferred Bash shebang?</b></summary><br>
 
-You should use <code>#!/usr/bin/env bash</code> for portability: different *nixes put bash in different places, and using <code>/usr/bin/env</code> is a workaround to run the first bash found on the PATH.
+You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the PATH.
 
 </details>
 
@@ -1858,7 +1976,7 @@ If the client does not have the root in their trust store, then it won't trust t
 
 Solution 1:
 
-```
+```bash
 systemctl reload postgresql
 ```
 
@@ -1880,9 +1998,9 @@ SELECT pg_reload_conf();
 <details>
 <summary><b>How to restore config file in Debian GNU/Linux?</b></summary><br>
 
-Will recreate any missing configuration files, e.g. <code>/etc/mysql/my.cnf</code> in your case:
+Will recreate any missing configuration files, e.g. **/etc/mysql/my.cnf** in your case:
 
-```
+```bash
 dpkg -i --force-confmiss mysql-common.deb
 ```
 
@@ -1913,7 +2031,7 @@ unset HISTFILE && exit
 <details>
 <summary><b>How do I find all files containing specific string?</b></summary><br>
 
-For example use <code>fgrep</code>:
+For example use `fgrep`:
 
 ```bash
 fgrep * -R "string"
@@ -1925,17 +2043,17 @@ or:
 grep -insr "pattern" *
 ```
 
-- <code>-i</code> ignore case distinctions in both the PATTERN and the input files
-- <code>-n</code>  prefix each line of output with the 1-based line number within its input file
-- <code>-s</code> suppress error messages about nonexistent or unreadable files.
-- <code>-r</code> read all files under each directory, recursively.
+- `-i` ignore case distinctions in both the PATTERN and the input files
+- `-n`  prefix each line of output with the 1-based line number within its input file
+- `-s` suppress error messages about nonexistent or unreadable files.
+- `-r` read all files under each directory, recursively.
 
 </details>
 
 <details>
 <summary><b>How to find out the dynamic libraries executables loads when run?</b></summary><br>
 
-You can do this with <code>ldd</code> command:
+You can do this with `ldd` command:
 
 ```bash
 ldd /bin/ls
@@ -2013,9 +2131,13 @@ To be completed.
 <summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b></summary><br>
 
 To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
+
 1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
+
 2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
+
 3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+
 4. Physical Layer: Are the servers connected to a network? Are packets being lost?
 
 </details>
@@ -2076,9 +2198,13 @@ Useful resources:
 <details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
 
-<b>Handshaking</b> begins when one device sends a message to another device indicating that it wants to establish a communications channel. The two devices then send several messages back and forth that enable them to agree on a communications protocol.
+**Handshaking** begins when one device sends a message to another device indicating that it wants to establish a communications channel. The two devices then send several messages back and forth that enable them to agree on a communications protocol.
 
-A <b>three-way handshake</b> is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange SYN and ACK (SYN, SYN-ACK, ACK) packets before actual data communication begins.
+A **three-way handshake** is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange SYN and ACK (SYN, SYN-ACK, ACK) packets before actual data communication begins.
+
+Useful resources:
+
+- [Why do we need a 3-way handshake? Why not just 2-way?](https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way)
 
 </details>
 
@@ -2086,6 +2212,10 @@ A <b>three-way handshake</b> is a method used in a TCP/IP network to create a co
 <summary><b>Why is UDP faster than TCP?</b></summary><br>
 
 UDP is faster than TCP, and the simple reason is because its nonexistent acknowledge packet (ACK) that permits a continuous packet stream, instead of TCP that acknowledges a set of packets, calculated by using the TCP window size and round-trip time (RTT).
+
+Useful resources:
+
+- [UDP vs TCP, how much faster is it?](https://stackoverflow.com/questions/47903/udp-vs-tcp-how-much-faster-is-it)
 
 </details>
 
@@ -2095,6 +2225,10 @@ UDP is faster than TCP, and the simple reason is because its nonexistent acknowl
 It enables private IP networks that use unregistered IP addresses to connect to the Internet. NAT operates on a router, usually connecting two networks together, and translates the private (not globally unique) addresses in the internal network into legal addresses, before packets are forwarded to another network.
 
 Workstations or other computers requiring special access outside the network can be assigned specific external IPs using NAT, allowing them to communicate with computers and applications that require a unique public IP address. NAT is also a very important aspect of firewall security.
+
+Useful resources:
+
+- [Network Address Translation (NAT) Concepts](http://www.firewall.cx/networking-topics/network-address-translation-nat/227-nat-concepts.html)
 
 </details>
 
@@ -2110,18 +2244,18 @@ This protocol operates at layer 2 of the OSI model with the purpose of preventin
 
 Use the:
 
-- <code>lsof -i</code>
-- <code>ss -l</code>
-- <code>netstat -atn</code> - for tcp
-- <code>netstat -aun</code> - for udp
-- <code>netstat -tulapn</code>
+- `lsof -i`
+- `ss -l`
+- `netstat -atn` - for tcp
+- `netstat -aun` - for udp
+- `netstat -tulapn`
 
 </details>
 
 <details>
 <summary><b>How to get fingerprint from SSH key?</b></summary><br>
 
-```
+```bash
 ssh-keygen -lf ~/.ssh/id_rsa.pub
 ```
 
@@ -2181,7 +2315,7 @@ For example:
 <details>
 <summary><b>How to block abusive IP addresses with <code>pf</code> in OpenBSD?</b></summary><br>
 
-The best way to do this is to define a table and create a rule to block the hosts, in <code>pf.conf</code>:
+The best way to do this is to define a table and create a rule to block the hosts, in **pf.conf**:
 
 ```bash
 table <badhosts> persist
@@ -2204,7 +2338,7 @@ For example:
 
 ```
 sub vcl_recv {
-   # dont cache foo.com or bar.com - optional www
+   # don't cache foo.com or bar.com - optional www
    if (req.host ~ "(www)?(foo|bar).com") {
      return(pass);
    }
@@ -2215,16 +2349,20 @@ or:
 
 ```
 sub vcl_recv {
-  # dont cache foo.com or bar.com - optional www
-   if (req.http.host ~ "(www\.)?(foo|bar)\.com") {
-     return(pass);
-   }
+  # don't cache foo.com or bar.com - optional www
+  if (req.http.host ~ "(www\.)?(foo|bar)\.com") {
+    return(pass);
+  }
   # cache foobar.com - optional www
-   if (req.http.host ~ "(www\.)?foobar\.com") {
-     return(hash);
-   }
+  if (req.http.host ~ "(www\.)?foobar\.com") {
+    return(hash);
+  }
 }
 ```
+
+Useful resources:
+
+- [Varnish: cache only specific domain](https://stackoverflow.com/questions/3728066/varnish-cache-only-specific-domain)
 
 </details>
 
@@ -2272,15 +2410,20 @@ Useful resources:
 <details>
 <summary><b>What is the difference between CORS and CSPs?</b></summary><br>
 
-CORS allows the Same Origin Policy to be relaxed for a domain.
+**CORS** allows the **Same Origin Policy** to be relaxed for a domain.
 
-e.g. normally if the user logs into both example.com and <code>example.org</code>, the Same Origin Policy prevents <code>example.com</code> from making an AJAX request to <code>example.org/current_user/full_user_details</code> and gaining access to the response.
+e.g. normally if the user logs into both `example.com` and `example.org`, the Same Origin Policy prevents `example.com` from making an AJAX request to `example.org/current_user/full_user_details` and gaining access to the response.
 
 This is the default policy of the web and prevents the user's data from being leaked when logged into multiple sites at the same time.
 
-Now with CORS, example.org could set a policy to say it will allow the origin <code>https://example.com</code> to read responses made by AJAX. This would be done if both example.com and example.org are ran by the same company and data sharing between the origins is to be allowed in the user's browser. It only affects the client-side of things, not the server-side.
+Now with **CORS**, `example.org` could set a policy to say it will allow the origin `https://example.com` to read responses made by AJAX. This would be done if both `example.com` and `example.org` are ran by the same company and data sharing between the origins is to be allowed in the user's browser. It only affects the client-side of things, not the server-side.
 
-CSPs on the other hand set a policy of what content can run on the current site. For example, if JavaScript can be executed inline, or which domains .js files can be loaded from. This can be beneficial to act as another line of defence against XSS attacks, where the attacker will try and inject script into the HTML page. Normally output would be encoded, however say the developer had forgotten only on one output field. Because the policy is preventing in-line script from executing, the attack is thwarted.
+**CSPs** on the other hand set a policy of what content can run on the current site. For example, if JavaScript can be executed inline, or which domains `.js` files can be loaded from. This can be beneficial to act as another line of defence against **XSS** attacks, where the attacker will try and inject script into the HTML page. Normally output would be encoded, however say the developer had forgotten only on one output field. Because the policy is preventing in-line script from executing, the attack is thwarted.
+
+Useful resources:
+
+- [What is the difference between CORS and CSPs? (original)](https://stackoverflow.com/questions/39488241/what-is-the-difference-between-cors-and-csps)
+- [CSP, SRI and CORS](https://colorblindprogramming.com/csp-sri-and-cors)
 
 </details>
 
@@ -2289,10 +2432,10 @@ CSPs on the other hand set a policy of what content can run on the current site.
 
 There might be four types of responses:
 
-- <b>Open port</b> - few ports in the case of the firewall
-- <b>Closed port</b> - most ports are closed because of the firewall
-- <b>Filtered</b> - Nmap is not sure whether the port is open or not
-- <b>Unfiltered</b> - Nmap can access the port but is still confused about the open status of the port
+- **Open port** - few ports in the case of the firewall
+- **Closed port** - most ports are closed because of the firewall
+- **Filtered** - Nmap is not sure whether the port is open or not
+- **Unfiltered** - Nmap can access the port but is still confused about the open status of the port
 
 </details>
 
@@ -2303,12 +2446,12 @@ There might be four types of responses:
 
 The most popular DevOps tools are mentioned below:
 
-- <b>Git</b> : Version Control System tool
-- <b>Jenkins</b> : Continuous Integration tool
-- <b>Selenium</b> : Continuous Testing tool
-- <b>Puppet</b>, <b>Chef</b>, <b>Ansible</b> : Configuration Management and Deployment tools
-- <b>Nagios</b> : Continuous Monitoring tool
-- <b>Docker</b> : Containerization tool
+- **Git** : Version Control System tool
+- **Jenkins** : Continuous Integration tool
+- **Selenium** : Continuous Testing tool
+- **Puppet**, **Chef**, **Ansible** : Configuration Management and Deployment tools
+- **Nagios** : Continuous Monitoring tool
+- **Docker** : Containerization tool
 
 </details>
 
@@ -2318,12 +2461,12 @@ The most popular DevOps tools are mentioned below:
 The most popular DevOps tools are mentioned below:
 
 - Developers develop the code and this source code is managed by Version Control System tools like Git etc.
-- Developers send this code to the Git repository and any changes made in the code is committed to this Repository.
-- Jenkins pulls this code from the repository using the Git plugin and build it using tools like Ant or Maven.
-- Configuration management tools like puppet deploys & provisions testing environment and then Jenkins releases this code on the test environment on which testing is done using tools like selenium.
-- Once the code is tested, Jenkins send it for deployment on the production server (even production server is provisioned & maintained by tools like puppet).
-- After deployment It is continuously monitored by tools like Nagios.
-- Docker containers provides testing environment to test the build features.
+- Developers send this code to the Git repository and any changes made in the code is committed to this Repository
+- Jenkins pulls this code from the repository using the Git plugin and build it using tools like Ant or Maven
+- Configuration management tools like puppet deploys & provisions testing environment and then Jenkins releases this code on the test environment on which testing is done using tools like selenium
+- Once the code is tested, Jenkins send it for deployment on the production server (even production server is provisioned & maintained by tools like puppet)
+- After deployment It is continuously monitored by tools like Nagios
+- Docker containers provides testing environment to test the build features
 
 </details>
 
@@ -2386,7 +2529,7 @@ git submodule update --init --recursive
 <details>
 <summary><b>What is XSS, how will you mitigate it?</b></summary><br>
 
-<b>Cross Site Scripting</b> is a JavaScript vulnerability in the web applications. The easiest way to explain this is a case when a user enters a script in the client side input fields and that input gets processed without getting validated. This leads to untrusted data getting saved and executed on the client side.
+**Cross Site Scripting** is a JavaScript vulnerability in the web applications. The easiest way to explain this is a case when a user enters a script in the client side input fields and that input gets processed without getting validated. This leads to untrusted data getting saved and executed on the client side.
 
 Countermeasures of XSS are input validation, implementing a CSP (Content security policy) etc.
 
@@ -2395,7 +2538,7 @@ Countermeasures of XSS are input validation, implementing a CSP (Content securit
 <details>
 <summary><b>HIDS vs NIDS and which one is better and why?</b></summary><br>
 
-<b>HIDS</b> is host intrusion detection system and <b>NIDS</b> is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. HIDS is placed on each host whereas NIDS is placed in the network. For an enterprise, NIDS is preferred as HIDS is difficult to manage, plus it consumes processing power of the host as well.
+**HIDS** is host intrusion detection system and **NIDS** is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. HIDS is placed on each host whereas NIDS is placed in the network. For an enterprise, NIDS is preferred as HIDS is difficult to manage, plus it consumes processing power of the host as well.
 
 </details>
 
@@ -2409,7 +2552,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 <details>
 <summary><b>What is a WAF and what are its types?</b></summary><br>
 
-<b>WAF</b> stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. WAF can be either a box type or cloud based.
+**WAF** stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. WAF can be either a box type or cloud based.
 
 </details>
 
@@ -2436,9 +2579,34 @@ To be completed.
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
 
-- <b>Microkernel</b>: This type of kernel only manages CPU, memory, and IPC. This kind of kernel provides portability, small memory footprint and also security.<br>
-- <b>Monolithic Kernel</b>: Linux is a monolithic kernel. So, this type of kernel provides file management, system server calls, also manages CPU, IPC as well as device drivers. It provides easier access to the process to communicate and as there is not any queue for processor time, so processes react faster.<br>
-- <b>Hybrid Kernel</b>: In this type of kernels, programmers can select what they want to run in user mode and what in supervisor mode. So, this kernel provides more flexibility than any other kernel but it can have some latency problems.
+**Monolithic Kernels**
+
+Earlier in this type of kernel architecture, all the basic system services like a process and memory management, interrupt handling etc were packaged into a single module in kernel space. This type of architecture led to some serious drawbacks like:
+
+- the size of the kernel, which was huge
+- poor maintainability, which means bug fixing or addition of new features resulted in recompilation of the whole kernel which could consume hours
+
+In a modern day approach to monolithic architecture, the kernel consists of different modules which can be dynamically loaded and unloaded. This modular approach allows easy extension of OS's capabilities. With this approach, maintainability of kernel became very easy as only the concerned module needs to be loaded and unloaded every time there is a change or bug fix in a particular module.
+
+Linux follows the monolithic modular approach.
+
+**Microkernels**
+
+This architecture majorly caters to the problem of ever growing size of kernel code which we could not control in the monolithic approach. This architecture allows some basic services like device driver management, protocol stack, file system etc to run in user space.
+
+In this architecture, all the basic OS services which are made part of user space are made to run as servers which are used by other programs in the system through inter process communication (IPC).
+
+e.g. We have servers for device drivers, network protocol stacks, file systems, graphics, etc. Microkernel servers are essentially daemon programs like any others, except that the kernel grants some of them privileges to interact with parts of physical memory that are otherwise off limits to most programs.
+
+**Hybrid Kernels (Modular Kernels)**
+
+This is a combination of the above two, where the key idea is that Operating System services are in Kernel Space, and and there is no message passing, no performance overhead and no reliability benefits, of having services in user space.
+
+This is used by Microsoft's NT kernels, all the way up to the latest Windows version.
+
+Useful resources:
+
+- [An Introduction to Kernels. The Heart of Computing Devices. (original)](https://keetmalin.wixsite.com/keetmalin/single-post/2017/08/24/An-Introduction-to-Kernels-The-Heart-of-Computing-Devices)
 
 </details>
 
