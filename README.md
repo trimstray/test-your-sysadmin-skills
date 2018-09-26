@@ -3634,6 +3634,7 @@ According to the CA Browser forum, there may be compatibility issues with certif
 Useful resources:
 
 - [Are SSL certificates bound to the servers ip address?](https://stackoverflow.com/questions/1095780/are-ssl-certificates-bound-to-the-servers-ip-address)
+- [SSL certificate for a public IP address?](https://serverfault.com/questions/193775/ssl-certificate-for-a-public-ip-address)
 
 </details>
 
