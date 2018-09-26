@@ -3165,13 +3165,15 @@ Usually people start to edit **/etc/security/limits.conf** file, but forget that
 <details>
 <summary><b>In what circumstance can <code>df</code> and <code>du</code> disagree on available disk space? How do you solve it?</b></summary><br>
 
-Solution 1:
+`du` checks usage of directories, but `df` checks free'd inodes, and files can be held open and take space after they're deleted.
+
+**Solution 1**
 
 Check for files on located under mount points. Frequently if you mount a directory (say a sambafs) onto a filesystem that already had a file or directories under it, you lose the ability to see those files, but they're still consuming space on the underlying disk.
 
 I've had file copies while in single user mode dump files into directories that I couldn't see except in single usermode (due to other directory systems being mounted on top of them).
 
-Solution 2:
+**Solution 2**
 
 On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. apache (httpd) keeping large log files in memory which had been deleted from disk.
 
@@ -3184,6 +3186,10 @@ httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/l
 ```
 
 The situation was then resolved by restarting apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
+
+Useful resources:
+
+- [Why du and df display different values in Linux and Unix](https://linuxshellaccount.blogspot.com/2008/12/why-du-and-df-display-different-values.html)
 
 </details>
 
