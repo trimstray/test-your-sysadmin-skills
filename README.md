@@ -151,7 +151,7 @@ Useful resources:
 <details>
 <summary><b>What do the fields in <code>ls -al</code> output mean?</b></summary><br>
 
-In the order of output;
+In the order of output:
 
 ```bash
 -rwxrw-r--    1    root   root 2048    Jan 13 07:11 db.dump
@@ -162,10 +162,10 @@ In the order of output;
 - owner name,
 - owner group,
 - file size,
-- time of last modification, and
+- time of last modification,
 - file/directory name
 
-File permissions is displayed as following;
+File permissions is displayed as following:
 
 - first character is `-` or `l` or `d`, d indicates a directory, a line represents a file, l is a symlink (or soft link) - special type of file
 - three sets of characters, three times, indicating permissions for owner, group and other:
@@ -175,10 +175,10 @@ File permissions is displayed as following;
 
 In your example `-rwxrw-r--`, this means the line displayed is:
 
-- a regular file (displayed as -)
-- readable, writable and executable by owner (rwx)
-- readable, writable, but not executable by group (rw-)
-- readable but not writable or executable by other (r--)
+- a regular file (displayed as `-`)
+- readable, writable and executable by owner (`rwx`)
+- readable, writable, but not executable by group (`rw-`)
+- readable but not writable or executable by other (`r--`)
 
 Useful resources:
 
@@ -270,7 +270,7 @@ Useful resources:
 <details>
 <summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
 
-Running everything as root is bad because:
+Running (everything) as root is bad because:
 
 - **Stupidity**: nothing prevents you from making a careless mistake. If you try to change the system in any potentially harmful way, you need to use sudo, which ensures a pause (while you're entering the password) to ensure that you aren't about to make a mistake.
 
@@ -1076,6 +1076,7 @@ Useful resources:
 <summary><b>Developer added cron job which generate massive log files. How do you prevent them from getting so big?</b></summary><br>
 
 Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to **/etc/logrotate.conf** you should add your own job to **/etc/logrotate.d/**, otherwise you would have to look at more diffs of configuration files during release upgrades.
+
 
 Useful resources:
 
@@ -1918,14 +1919,20 @@ Furthermore, if you want to append to the log file, use tee -a as:
 </details>
 
 <details>
-<summary><b>What is the preferred Bash shebang?</b></summary><br>
+<summary><b>What is the preferred Bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>sh program</code>?</b></summary><br>
 
-You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the PATH.
+You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the `PATH`.
+
+Running `./program` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `sh program` would force it to be run under sh, instead of anything else.
+
+Useful resources:
+
+- [What is the preferred Bash shebang? (original)](https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang)
 
 </details>
 
 <details>
-<summary><b>You must run command that will be performed for a very long time on the remote server. How to prevent killing this process after the ssh session drops?</b></summary><br>
+<summary><b>You must run command that will be performed for a very long time. How to prevent killing this process after the ssh session drops?</b></summary><br>
 
 Use `nohup` to make your process ignore the hangup signal:
 
@@ -1948,9 +1955,21 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is root certificate and intermediate certificate?</b></summary><br>
+<summary><b>What is the main purpose of the intermediate certification authorities?</b></summary><br>
 
-A "root" authority is a certificate issuer that parties choose to trust (explicitly). It is usually self-signed (self-issued) and very highly protected. An intermediate authority is a certificate issuer that has itself been issued by a root or another higher level intermediate authority.
+To find out the main purpose of an intermediate CA, you should first learn about Root CAs, Intermediate CAs, and the SSL Certificate Chain Trust.
+
+**Root CAs** are primary CAs which typically don’t directly sign end entity/server certificates. They issue Root certificates which are usually pre-installed within all browsers, mobiles, and applications. The private key of these certificates is used to sign other subsequent certificates called intermediate certificates. Root CAs are usually kept “offline” and in a highly secure environment with stringently limited access.
+
+**Intermediates CAs** are CAs that subordinate to the Root CA by one or more levels, being trusted by these to sign certificates on their behalf. The purpose of creating and using Intermediate CAs is primarily for security because if the intermediate private key is compromised, then the Root CA can revoke the intermediate certificate and create a new one with a new cryptographic key pair.
+
+**SSL Certificate Chain Trust** is the list of SSL certificates, from the root certificate to the end entity/server certificate. For an SSL Certificate to be trusted, it must be issued by a trusted CAs which is included in the trusted CA list of the connecting device (browser, mobile, and application). Therefore, the connecting device will test the trustworthiness of each SSL Certificate in the Chain Trust until it matches the one issued by a trusted CA.
+
+The **Root-Intermediate CA** structure is created by each major CA to protect against the disastrous effects of a root key compromise. If a root key is compromised, it would render the root and all subordinated certificates untrustworthy. For this reason, creating an Intermediate CA is a best practice to ensure a rigorous protection of the primary root key.
+
+Useful resources:
+
+- [How certificate chains work](https://knowledge.digicert.com/solution/SO16297.html)
 
 </details>
 
@@ -1990,9 +2009,13 @@ dpkg -i --force-confmiss mysql-common.deb
 </details>
 
 <details>
-<summary><b>How reload shell without exit?</b></summary><br>
+<summary><b>You have added several aliases to `.profile`. How reload shell without exit?</b></summary><br>
 
-The best way is: `exec $SHELL -l`
+The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good solution is `. ~/.profile`.
+
+Useful resources:
+
+- [How to reload .bash_profile from the command line?](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line)
 
 </details>
 
@@ -2008,6 +2031,10 @@ or
 ```bash
 unset HISTFILE && exit
 ```
+
+Useful resources:
+
+- [How do I close a terminal without saving the history?](https://unix.stackexchange.com/questions/25049/how-do-i-close-a-terminal-without-saving-the-history)
 
 </details>
 
@@ -2148,7 +2175,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Why won’t the hostnames resolve on your server? Resolve this problem. *</b></summary><br>
+<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. *</b></summary><br>
 
 To be completed.
 
@@ -3287,7 +3314,7 @@ fuser -k filename
 </details>
 
 <details>
-<summary><b>How to restore permission for <code>/bin/chmod</code>?</b></summary><br>
+<summary><b>While trying to debug a server you accidentally typed: <code>chmod -x /bin/chmod</code>. How to reset permissions back to default?</b></summary><br>
 
 ```bash
 # 1:
@@ -3304,6 +3331,10 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 # 4:
 /usr/lib/ld*.so /bin/chmod 0700 /bin/chmod
 ```
+
+Useful resources:
+
+- [What can you do when you can't chmod chmod?](https://www.networkworld.com/article/3002286/operating-systems/what-can-you-do-when-you-cant-chmod-chmod.html)
 
 </details>
 
@@ -3578,7 +3609,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the difference between an authoritative and a nonauthorita-tive answer to a DNS query? *</b></summary><br>
+<summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? *</b></summary><br>
 
 To be completed.
 
@@ -3592,13 +3623,17 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Use tcpdump to capture FTP traffic for both active and passive FTP
-sessions.</b></summary><br>
+<summary><b>Is it possible to have SSL certificate for IP address, not domain name?</b></summary><br>
 
-```bash
-tcpdump '(port ftp or ftp-data)'
-```
+It is possible (but rarely used) as long as it is a public IP address.
 
+An SSL certificate is typically issued to a Fully Qualified Domain Name (FQDN) such as `https://www.domain.com`. However, some organizations need an SSL certificate issued to a public IP address. This option allows you to specify a public IP address as the Common Name in your Certificate Signing Request (CSR). The issued certificate can then be used to secure connections directly with the public IP address (e.g. `https://1.1.1.1`.).
+
+According to the CA Browser forum, there may be compatibility issues with certificates for IP addresses unless the IP address is in both the commonName and subjectAltName fields. This is due to legacy SSL implementations which are not aligned with RFC 5280, notably, Windows OS prior to Windows 10.
+
+Useful resources:
+
+- [Are SSL certificates bound to the servers ip address?](https://stackoverflow.com/questions/1095780/are-ssl-certificates-bound-to-the-servers-ip-address)
 
 </details>
 
@@ -3671,7 +3706,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to test connection with OpenSSL to remote host (with and without SNI)?</b></summary><br>
+<summary><b>How to test connection with OpenSSL to remote host with and without SNI?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
