@@ -902,9 +902,11 @@ A proxy server is a dedicated computer or a software system running on a compute
 <details>
 <summary><b>What is the difference between a router and a gateway? What is the default gateway?</b></summary><br>
 
-Router describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "you set up a router as gateway". Another term is hop which describes the forwarding in between subnets.
+**Router** describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "you set up a router as gateway". Another term is hop which describes the forwarding in between subnets.
 
 It's just a matter of perspective, the device is the same.
+
+The term **default gateway** is used to mean the router on your LAN which has the responsibility of being the first point of contact for traffic to computers outside the LAN.
 
 Useful resources:
 
@@ -999,7 +1001,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 ###### System Questions (49)
 
 <details>
-<summary><b>Explain Linux Boot Process.</b></summary><br>
+<summary><b>Explain the boot process of the Linux system.</b></summary><br>
 
 **BIOS**: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.
 
@@ -1375,7 +1377,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>During server configuration one of the steps are the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
+<summary><b>During server configuration one of the steps is setting the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
 
 **1) Main requirements - remember about this**
 
