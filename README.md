@@ -35,11 +35,11 @@
 
 ****
 
-:information_source: This project contains **230** test questions and answers that can be used during an interview or exam for positions such as **\*nix System Administrator**.
+:information_source: This project contains **230** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
 
-:warning: Questions marked **`*`** don't have answers yet - make a pull request to add them!
+:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of the answer.
 
-:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains "**Useful resources**" for a deeper understanding of the topic.
+:warning: Questions marked **`*`** don't have answers yet - **make a pull request to add them**!
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
