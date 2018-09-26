@@ -39,9 +39,9 @@
 
 :warning: Questions marked **`*`** don't have answers yet - make a pull request to add them!
 
-:bangbang: The answers are only **examples** and do not exhaust the whole topic.
+:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains "**Useful resources**" for a deeper understanding of the topic.
 
-:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right; **please make a pull request**.
+:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
 <br>
 
@@ -1919,11 +1919,11 @@ Furthermore, if you want to append to the log file, use tee -a as:
 </details>
 
 <details>
-<summary><b>What is the preferred Bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>sh program</code>?</b></summary><br>
+<summary><b>What is the preferred Bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>bash program</code>?</b></summary><br>
 
 You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the `PATH`.
 
-Running `./program` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `sh program` would force it to be run under sh, instead of anything else.
+Running `./program` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `bash program` would force it to be run under sh, instead of anything else.
 
 Useful resources:
 
