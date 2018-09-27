@@ -39,7 +39,7 @@
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of the answer.
 
-:warning: Questions marked **`*`** don't have answers yet - **make a pull request to add them**!
+:warning: Questions marked **`*`** don't have answers yet or answers are incomplete - **make a pull request to add them**!
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -2009,9 +2009,9 @@ dpkg -i --force-confmiss mysql-common.deb
 </details>
 
 <details>
-<summary><b>You have added several aliases to `.profile`. How reload shell without exit?</b></summary><br>
+<summary><b>You have added several aliases to <code>.profile</code>. How reload shell without exit?</b></summary><br>
 
-The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good solution is `. ~/.profile`.
+The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good (but other) solution is `. ~/.profile`.
 
 Useful resources:
 
@@ -2095,7 +2095,13 @@ It's easy to get dragged down into bikeshedding about cloning environments and m
 
 and every time you deploy there you are testing a unique combination of deploy code + software + environment.
 
-Every once in a while a good solution is regular cloning of the production servers to create testing servers. Sure, you can spin up clones of various system components or entire systems, and capture real traffic to replay offline (the gold standard of systems testing). But many systems are too big, complex, and cost-prohibitive to clone.
+Every once in a while a good solution is regular cloning of the production servers to create testing servers. You can create instances with an exact copy of your production environment under a dev/test with snapshots, for example:
+
+- generate a snapshot of production
+- copy the snapshot to staging (or other)
+- create a new disk using this snapshot
+
+Sure, you can spin up clones of various system components or entire systems, and capture real traffic to replay offline (the gold standard of systems testing). But many systems are too big, complex, and cost-prohibitive to clone.
 
 Before environment synchronization a good way is keeping track of every change that you make to the testing environment and provide a way for propagating this to the production environment, so that you do not skip any step and do it as smoothly as possible.
 
@@ -2123,6 +2129,7 @@ It is also important to make backup/snapshots of both environments.
 - deploy project from git/svn repository
 - sync/update important directories existing in project, e.g. **static**, **asset** and other
 - sync/update permissions for project directory
+- remove/update all webhooks
 - update cron jobs
 
 **Others tasks**
@@ -2696,11 +2703,93 @@ If you want to add other programs to system startup you need to change **/etc/rc
 </details>
 
 <details>
-<summary><b>What does <code>sar</code> provides and at which location <code>sar</code> logs are stored?</b></summary><br>
+<summary><b>The Junior dev accidentally destroyed production database. How can you prevent such situations?</b></summary><br>
 
-`Sar` collect, report or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.
+**Create disaster recovery plan**
 
-By default log files of `sar` command is located at **/var/log/sa/sadd** file, where the dd parameter indicates the current day.
+Disaster recovery and business continuity planning are integral parts of the overall risk management for an organization. Is a documented process or set of procedures to recover and protect a business IT infrastructure.
+
+If you don’t have a recovery solution, then your restoration efforts will become rebuilding efforts, starting from scratch to recreate whatever was lost.
+
+You should use commonly occurring real life data disaster scenarios to simulate what your backups will and won’t do in a crisis.
+
+**Create disaster recovery center**
+
+As a result, in the event of unplanned interruptions in the functioning of the primary location, service and all operational activities are switched to the backup center and therefore the unavailability of services is limited to the absolute minimum.
+
+Does the facility have sufficient bandwidth options and power to scale and deal with the increased load during a major disaster? Are resources available to periodically test failover?
+
+**Create regular backups and tested it!**
+
+Backups are a way to protect the investment in data. By having several copies of the data, it does not matter as much if one is destroyed (the cost is only that of the restoration of the lost data from the backup).
+
+When you lose data, one thing is certain: downtime.
+
+To assure the validity and integrity of any backup, it's essential to carry out regular restoration tests. Ideally, a test should be conducted after every backup completes to ensure data can be successfully secured and recovered. However, this often isn't practical due to a lack of available resources or time constraints.
+
+Make backups of entire virtual machines and important components in the middle of them.
+
+**Create snapshots: vm, disks or lvm**
+
+Snapshots are perfect if you want to recover a server from a previous state but it's only a "quick method", it cannot restore the system after too many items changed.
+
+Create them always before making changes on production environments (and not only).
+
+Disk snapshots are used to generate a snapshot of an entire disk. These snapshots don't make it easy to restore individual chunks of data (e.g. a lost user account), though it's possible. The primary purpose is to restore entire disks in case of disk failure.
+
+The LVM snapshots can be primarily used to easily copy data from production environment to staging environment.
+
+Remember: Snapshots are not backups!
+
+**Development and testing environments**
+
+A production environment is the real instance of the application and its database used by the company or the clients. The production database has all the real data.
+
+Setting up development environments based directly on the production database, instead of using a backup for this (removing the need for the above). Dev and test environment that your engineers can get to and a prod environment that only a few people can push updates to following an approved change.
+
+All environments such as prod, dev and test should have one major difference: authorization data for services. For example postgres database instance on testing environment should be consistent (if possible) with the production base, however, in order to eliminate errors of database names and logins and passwords for authorization should be different.
+
+**Single point of failure**
+
+The general method to avoid single points of failures is to provide redundant components for each necessary resource, so service can continue if a component fails.
+
+**Synchronization and replication process for databases**
+
+The replication procedure is super fragile and prone to error.
+
+A good idea is also slightly longer delay of data replication (e.g. for DRC). As in replicas, the data changes will usually be replicated within minutes, so the lost data won’t be on the replica database either once that happens.
+
+**Create database model with users, roles and rights, use different methods of protection**
+
+Only very advanced devs have permissions for db admin access. The other really don't need write access to clone a database. On the other hand just don't give a developer write access to prod.
+
+The production database should refuse connections from any server and pc which isn't the one running the production application, even if it provides a valid username/password.
+
+How the hell development machines can access a production database right like that? How about a simple firewall rule to just let the servers needing the DB data access the database?
+
+**Create summmary/postmortem documents after failures**
+
+The post-mortem audience includes customers, direct reports, peers, the company's executive team and often investors.
+
+Explain what caused the outage on a timeline. Every incident begins with a specific trigger at a specific time, which often causes some unexpected behavior. For example, our servers were rebooted and we expected them to come back up intact, which didn't happen.
+
+Furthermore, every incident has a root cause: the reboot itself was trigger, however a bug in the driver caused the actual outage. Finally, there're consequences to every incident, the most obvious one is that the site goes down.
+
+The post-mortem answers the single most important question of what could have prevented the outage.
+
+Despite how painful an outage may have been, the worst thing you can do is to bury it and never properly close the incident in a clear and transparent way.
+
+  > "*Humans are just apes with bigger computers.*" - african_cheetah (Reddit)
+  >
+  > "*I've come to appreciate not having access to things I don't absolutely need.*" - warm_vanilla_sugar (Reddit)
+  >
+  > Document whatever happened somewhere. Write setup guides. Failure is instructive.
+
+Useful resources:
+
+- [Accidentally destroyed production database on first day of a job...](https://www.reddit.com/r/cscareerquestions/comments/6ez8ag/accidentally_destroyed_production_database_on/)
+- [Postmortem of database outage of January 31](https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/)
+- [How to write an Incident Report/Postmortem](https://sysadmincasts.com/episodes/20-how-to-write-an-incident-report-postmortem)
 
 </details>
 
@@ -2840,9 +2929,9 @@ A superblock is a record of the characteristics of a filesystem, including its s
 </details>
 
 <details>
-<summary><b>What is the use of Suid?</b></summary><br>
+<summary><b>Python dev team in your company have a dilemma whether to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? *</b></summary><br>
 
-An "s" in the first position means that the SETUID (or SUID) bit was set (the GUID bit is the same thing, at the group level). Linux runs an executable file with the SETUID bit set with the User ID (that is, the privileges!) of the owner of that file, not the one of the user who launched it.
+To be completed.
 
 </details>
 
@@ -3196,7 +3285,7 @@ Useful resources:
 <details>
 <summary><b>What is the difference between encryption and hashing?</b></summary><br>
 
-**Hashing**: Finally, hashing is a form of cryptographic security which differs from **encryption** Whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
+**Hashing**: Finally, hashing is a form of cryptographic security which differs from **encryption** whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
 
 </details>
 
