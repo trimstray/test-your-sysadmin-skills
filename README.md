@@ -35,7 +35,7 @@
 
 ****
 
-:information_source: This project contains **231** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **233** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of the answer.
 
@@ -56,9 +56,9 @@
 - <b>[Introduction](#introduction)</b>
   * [Simple Questions](#simple-questions) - 11 questions.
 - <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
+  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 81 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 82 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
@@ -414,6 +414,16 @@ most commands should start working - and then you can edit **~/.bash_profile** i
 Useful resource:
 
 - [How to correctly add a path to PATH?](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path)
+
+</details>
+
+<details>
+<summary><b>You typing `CTRL + C` but your script still running. How do you stop it? *</b></summary><br>
+
+Useful resources:
+
+- [How to kill a script running in terminal, without closing terminal (Ctrl + C doesn't work)? (original)](https://askubuntu.com/questions/520107/how-to-kill-a-script-running-in-terminal-without-closing-terminal-ctrl-c-doe)
+- [What's the difference between ^C and ^D for UNIX/Mac OS X terminal?](https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal)
 
 </details>
 
@@ -3752,7 +3762,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (19)
+###### Network Questions (20)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -3770,6 +3780,13 @@ To be completed.
 
 <details>
 <summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>How to find a domain based on the IP address? What techniques/tools can you use? *</b></summary><br>
 
 To be completed.
 
