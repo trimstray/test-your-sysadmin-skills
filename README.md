@@ -123,15 +123,36 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is a CLI?</b></summary><br>
+<summary><b>What is a CLI? Tell me about your favorite cli tools, tips and hacks.</b></summary><br>
 
 **CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
-In Linux, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
+In Unix like systems, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
+
+**My favorite tools**
+
+- `screen` - free terminal multiplexer, I can start a session and My terminals will be saved even when you connection is lost, so you can resume later or from home
+- `ssh` - the most valuable over-all command to learn, I can use it to do some amazing things:
+  * mount a file system over the internet with `sshfs`
+  * forward commands: runs against a `rsync` server with no `rsync` deamon by starting one itself via ssh
+  * run in batch files: I can redirect the output from the remote command and use it within local batch file
+- `vi/vim` - is the most popular and powerful text editor, it's universal, it's work very fast, even on large files
+- `bash-completion` - contains a number of predefined completion rules for shell
+
+**Tips & Hacks**
+
+- searches the command history with `CTRL + R`
+- `popd/pushd` and other shell builtins which allow you manipulate the directory stack
+- editing keyboard shortcuts like a `CTRL + U`, `CTRL + E`
+- combinations will be auto-expanded:
+  * `!*` - all arguments of last command
+  * `!!` - the whole of last command
+  * `!ssh` - last command starting with ssh
 
 Useful resources:
 
 - [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
+- [What is your single most favorite command-line trick using Bash?](https://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash/69716)
 
 </details>
 
@@ -219,7 +240,7 @@ Useful resources:
 <details>
 <summary><b>How do you run commands in the background?</b></summary><br>
 
-You can run command in background by appending ```&``` after the command you want to run. For example if you want to download something in background, you can:
+You can run command in background by appending `&` after the command you want to run. For example if you want to download something in background, you can:
 
 ```bash
 wget https://url-to-download.com/download.tar.gz &
@@ -232,7 +253,6 @@ When you run the above command you get the following output:
 ```
 
 Here 1 is the serial number of job and 2203 is PID of the job.
-
 
 You can see the jobs running in background using the following command:
 
@@ -258,12 +278,32 @@ If you have multiple jobs running in background you can bring any job in foregro
 fg %#
 ```
 
-Replace the ```#``` with serial number of the job.
+Replace the `#` with serial number of the job.
 
 Useful resources:
 
 - [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
 - [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
+
+</details>
+
+<details>
+<summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
+
+Running (everything) as root is bad because:
+
+- **Stupidity**: nothing prevents you from making a careless mistake. If you try to change the system in any potentially harmful way, you need to use sudo, which ensures a pause (while you're entering the password) to ensure that you aren't about to make a mistake.
+
+- **Security**: harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+
+- **You don't really need it**: if you need to run several commands as root, and you're annoyed by having to enter your password several times when `sudo` has expired, all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "command1 | command2"`.
+
+- **You can always use it in the recovery console**: the recovery console allows you to recover from a major mistake, or fix a problem caused by an app (which you still had to run as `sudo`). Ubuntu doesn't have a password for the root account in this case, but you can search online for changing that - this will make it harder for anyone that has physical access to your box to be able to do harm.
+
+Useful resources:
+
+- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
+- [What's wrong with always being root?](https://serverfault.com/questions/57962/whats-wrong-with-always-being-root)
 
 </details>
 
