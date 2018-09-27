@@ -4159,7 +4159,7 @@ When the device generated an alert for an intrusion which has actually not happe
 </details>
 
 <details>
-<summary><b>5 quick points on Web server hardening?</b></summary><br>
+<summary><b>5 quick points on Web server hardening.</b></summary><br>
 
 Web server hardening is filtering of unnecessary services running on various ports and removal of default test scripts from the servers. Although web server hardening is a lot more than this and usually organisations have a customised checklist for hardening the servers. Any server getting created has to be hardened and hardening has to be re-confirmed on a yearly basis. Even the hardening checklist has to be reviewed on a yearly basis for new add-ons.
 
