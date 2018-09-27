@@ -35,11 +35,11 @@
 
 ****
 
-:information_source: This project contains **230** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **231** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of the answer.
 
-:warning: Questions marked **`*`** don't have answers yet or answers are incomplete - **make a pull request to add them**!
+:warning: Questions marked **`*`** don't have answer yet or answer is incomplete - **make a pull request to add them**!
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -58,7 +58,7 @@
 - <b>[General Knowledge](#general-knowledge)</b>
   * [Junior Sysadmin](#junior-sysadmin) - 49 questions.
   * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 80 questions.
+  * [Senior Sysadmin](#senior-sysadmin) - 81 questions.
 - <b>[Secret Knowledge](#secret-knowledge)</b>
   * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
 
@@ -2606,7 +2606,7 @@ To be completed.
 
 </details>
 
-###### System Questions (52)
+###### System Questions (53)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2643,7 +2643,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is LD_LIBRARY_PATH? How to use it?</b></summary><br>
+<summary><b>The program returns the error of the missing library. How to provide dynamically linkable libraries?</b></summary><br>
 
 Environment variable `LD_LIBRARY_PATH` is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
 
@@ -2658,13 +2658,6 @@ export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
 Useful resources:
 
 - [How to correctly use LD_LIBRARY_PATH](http://wiredrevolution.com/system-administration/how-to-correctly-use-ld_library_path)
-
-</details>
-
-<details>
-<summary><b>How shadow passwords are given by in Linux?</b></summary><br>
-
-`pwconv` command is used for giving shadow passwords. Shadow passwords are given for better system security. The `pwconv` command creates the file **/etc/shadow** and changes all passwords to 'x' in the **/etc/passwd** file.
 
 </details>
 
@@ -2690,6 +2683,10 @@ Useful resources:
 <summary><b>What principles to follow for successful system performance tuning? *</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [An Introduction to Performance Tuning](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/ch01.html)
 
 </details>
 
@@ -2779,6 +2776,8 @@ The post-mortem answers the single most important question of what could have pr
 
 Despite how painful an outage may have been, the worst thing you can do is to bury it and never properly close the incident in a clear and transparent way.
 
+**If you also made a big mistake...**
+
   > "*Humans are just apes with bigger computers.*" - african_cheetah (Reddit)
   >
   > "*I've come to appreciate not having access to things I don't absolutely need.*" - warm_vanilla_sugar (Reddit)
@@ -2797,6 +2796,13 @@ Useful resources:
 <summary><b>How to scan newly assigned luns on Linux box without rebooting?</b></summary><br>
 
 Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
+
+</details>
+
+<details>
+<summary><b>You need to move ext4 journal on another system. What are the reasons for this? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -2832,9 +2838,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the purpose of a process’s effective UID? *</b></summary><br>
+<summary><b>You have to delete 100GB files. Which method will be the most optimal? *</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [Is there a way to delete 100GB file on Linux without thrashing IO/load?](https://serverfault.com/questions/336917/is-there-a-way-to-delete-100gb-file-on-linux-without-thrashing-io-load)
+- [rm on a directory with millions of files](https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files)
 
 </details>
 
@@ -2900,6 +2911,33 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>Ordinary users are able to read <code>/etc/passwd</code>, is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
+
+Typically, the _hashed_ passwords are stored in **/etc/shadow** on most Linux systems:
+
+```bash
+-rw-r----- 1 root shadow 1349 2011-07-03 03:54 /etc/shadow
+```
+
+They are stored in **/etc/master.passwd** on BSD systems.
+
+Programs that need to perform authentication still need to run with `root` privileges:
+
+```bash
+-rwsr-xr-x 1 root root 42792 2011-02-14 14:13 /usr/bin/passwd
+```
+
+If you dislike the `setuid root` programs and one single file containing all the hashed passwords on your system, you can replace it with the Openwall TCB PAM module. This provides every single user with their own file for storing their hashed password - as a result the number of `setuid root` programs on the system can be drastically reduced.
+
+Useful resources:
+
+- [Ordinary users are able to read /etc/passwd, is this a security hole? (original)](https://serverfault.com/questions/286654/ordinary-users-are-able-to-read-etc-passwd-is-this-a-security-hole/286657#286657)
+- [tcb - the alternative to /etc/shadow](https://www.openwall.com/tcb/)
+- [Why shadow your passwd file?](https://www.tldp.org/HOWTO/Shadow-Password-HOWTO-2.html)
+
+</details>
+
+<details>
 <summary><b>What is the Pluggable Authentication Modules? Explain.</b></summary><br>
 
 It provides a layer between applications and actual authentication mechanism. It is a library of loadable modules which are called by the application for authentication. It also allows the administrator to control when a user can log in. All PAM applications are configured in the directory **/etc/pam.d** or in a file **/etc/pam.conf**. PAM is controlled using the configuration file or the configuration directory.
@@ -2929,9 +2967,13 @@ A superblock is a record of the characteristics of a filesystem, including its s
 </details>
 
 <details>
-<summary><b>Python dev team in your company have a dilemma whether to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? *</b></summary><br>
+<summary><b>Python dev team in your company have a dilemma what to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? *</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [uWSGI vs. Gunicorn, or How to Make Python Go Faster than Node](https://blog.kgriffs.com/2012/12/18/uwsgi-vs-gunicorn-vs-node-benchmarks.html)
 
 </details>
 
@@ -3061,21 +3103,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to rebuild Initial Ramdisk Image in Debian/CentOS?</b></summary><br>
+<summary><b>The client reports that his site received a grade B in the ssllabs scanner. Prepare a checklist of best practice for ssl configuration. *</b></summary><br>
 
-Debian GNU/Linux:
+Useful resources:
 
-```bash
-update-initramfs -m -k all
-update-grub
-```
-
-CentOS Linux:
-
-```bash
-dracut -f
-grub2-mkconfig -o /boot/grub/grub.cfg
-```
+- [Getting a Perfect SSL Labs Score](https://michael.lustfield.net/nginx/getting-a-perfect-ssl-labs-score)
+- [17 small suggestions how to improve ssllabs.com/ssltest/](https://community.qualys.com/thread/14023)
+- [How do you score A+ with 100 on all categories on SSL Labs test with Let's Encrypt and Nginx?](https://stackoverflow.com/questions/41930060/how-do-you-score-a-with-100-on-all-categories-on-ssl-labs-test-with-lets-encry)
 
 </details>
 
@@ -3205,19 +3239,43 @@ So, `command 2> error 1> output` becomes, `command 2> error > output`.
 </details>
 
 <details>
-<summary><b>How to remove leading whitespace from each line in a file?</b></summary><br>
+<summary><b>Load averages are above 30 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How to debug and fixed?</b></summary><br>
 
-Warning: this will overwrite the original file:
+Requests which involve disk I/O can be slowed greatly if cpu(s) needs to wait on the disk to read or write data. I/O Wait, is the percentage of time the CPU has to wait on disk.
 
-```bash
-sed -i "s/^[ \t]*//" filename
-```
+Lets looks at how we can confirm if disk I/O is slowing down application performance by using a few terminal command line tools (`top`, `atop` and `iotop`).
 
-or:
+Example of debug:
 
-```bash
-sed 's/^[ \t]+//g' < input > output
-```
+- answering whether or not I/O is causing system slowness
+- finding which disk is being written to
+- finding the processes that are causing high I/O
+- process list **state**
+- finding what files are being written too heavily
+- do you see your copy process put in **D** state waiting for I/O work to be done by pdflush?
+- do you see heavy synchronous write activity on your disks?
+
+also:
+
+- using `top` command - load averages and wa (wait time)
+- using `atop` command to monitor DSK (disk) I/O stats
+- using `iotop` command for real-time insight on disk read/writes
+
+For improvement performance:
+
+- check drive array configuration
+- check disk queuing algorithms and tuning them
+- tuning general block I/O parameters
+- tuning virtual memory management to improve I/O performance
+- check and tuning mount options and filesystem params (also responsible for cache)
+
+Useful resources:
+
+- [Linux server performance: Is disk I/O slowing your application? (original)](https://haydenjames.io/linux-server-performance-disk-io-slowing-application/)
+- [Troubleshooting High I/O Wait in Linux](https://bencane.com/2012/08/06/troubleshooting-high-io-wait-in-linux/)
+- [Debugging Linux I/O latency](https://superuser.com/questions/396696/debugging-linux-i-o-latency)
+- [How do pdflush, kjournald, swapd, etc interoperate?](https://unix.stackexchange.com/questions/76970/how-do-pdflush-kjournald-swapd-etc-interoperate)
+- [5 ways to improve HDD speed on Linux](https://thecodeartist.blogspot.com/2012/06/improving-hdd-performance-linux.html)
 
 </details>
 
@@ -3409,7 +3467,7 @@ fuser -k filename
 </details>
 
 <details>
-<summary><b>While trying to debug a server you accidentally typed: <code>chmod -x /bin/chmod</code>. How to reset permissions back to default?</b></summary><br>
+<summary><b>Other admin trying to debug a server accidentally typed: <code>chmod -x /bin/chmod</code>. How to reset permissions back to default?</b></summary><br>
 
 ```bash
 # 1:
