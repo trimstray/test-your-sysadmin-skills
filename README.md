@@ -418,7 +418,7 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You typing `CTRL + C` but your script still running. How do you stop it? *</b></summary><br>
+<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? *</b></summary><br>
 
 Useful resources:
 
@@ -428,11 +428,23 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is grep command?</b></summary><br>
+<summary><b>What is grep command? How to match multiple strings in the same line?</b></summary><br>
 
 The `grep` utilities are a family of Unix tools, including `egrep` and `fgrep`.
 
 `grep` searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.
+
+For match multiple strings:
+
+```bash
+grep -E "string1|string2" filename
+```
+
+or
+
+```bash
+grep -e "string1" -e "string2" filename
+```
 
 Useful resources:
 
