@@ -308,26 +308,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
-
-Running (everything) as root is bad because:
-
-- **Stupidity**: nothing prevents you from making a careless mistake. If you try to change the system in any potentially harmful way, you need to use sudo, which ensures a pause (while you're entering the password) to ensure that you aren't about to make a mistake.
-
-- **Security**: harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
-
-- **You don't really need it**: if you need to run several commands as root, and you're annoyed by having to enter your password several times when `sudo` has expired, all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "command1 | command2"`.
-
-- **You can always use it in the recovery console**: the recovery console allows you to recover from a major mistake, or fix a problem caused by an app (which you still had to run as `sudo`). Ubuntu doesn't have a password for the root account in this case, but you can search online for changing that - this will make it harder for anyone that has physical access to your box to be able to do harm.
-
-Useful resources:
-
-- [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
-- [What's wrong with always being root?](https://serverfault.com/questions/57962/whats-wrong-with-always-being-root)
-
-</details>
-
-<details>
 <summary><b>How to check memory stats and CPU stats?</b></summary><br>
 
 You'd use `top/htop` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
