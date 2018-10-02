@@ -34,9 +34,9 @@
 
 ****
 
-:information_source: This project contains **232** test questions and answers that can be used as a test your knowledge; during an interview or exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **234** test questions and answers that can be used as a test your knowledge and during an interview or exam for position such as **\*nix System Administrator**.
 
-:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of them.
+:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
 :warning: Questions marked **`*`** don't have answer yet or answer is incomplete - **make a pull request to add them**.
 
@@ -58,7 +58,7 @@
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 49 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 80 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 82 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
@@ -134,7 +134,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is a CLI? Tell me about your favorite cli tools, tips and hacks.</b></summary><br>
+<summary><b>What is a CLI? Tell me about your favorite CLI tools, tips and hacks.</b></summary><br>
 
 **CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
@@ -182,7 +182,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Your first 5 commands on a Linux Server after login.</b></summary><br>
+<summary><b>Your first 5 commands on a *nix server after login.</b></summary><br>
 
 - `w` - a lot of great information in there with the server uptime
 - `top` - you can see all running processes, then order them by CPU, memory utilization and more
@@ -468,7 +468,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is grep command? How to match multiple strings in the same line?</b></summary><br>
+<summary><b>What is <code>grep</code> command? How to match multiple strings in the same line?</b></summary><br>
 
 The `grep` utilities are a family of Unix tools, including `egrep` and `fgrep`.
 
@@ -1015,7 +1015,7 @@ Version control allows you to:
 </details>
 
 <details>
-<summary><b>Explain some basic Git commands?</b></summary><br>
+<summary><b>Explain some basic Git commands.</b></summary><br>
 
 - `git init` - create a new local repository
 - `git commit -m "message"` - commit changes to head
@@ -1661,7 +1661,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Present and explain the correct process path using the <code>kill</code> command.</b></summary><br>
+<summary><b>Present and explain the good ways of using the <code>kill</code> command.</b></summary><br>
 
 Speaking of killing processes never use `kill -9/SIGKILL` unless absolutely mandatory. This kill can cause problems because of its brute force.
 
@@ -1680,7 +1680,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is <code>strace</code> command in Linux? How should <code>strace</code> be used?</b></summary><br>
+<summary><b>What is <code>strace</code> command? How should <code>strace</code> be used?</b></summary><br>
 
 `strace` is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
 
@@ -2668,7 +2668,7 @@ To be completed.
 
 </details>
 
-###### System Questions (53)
+###### System Questions (55)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2738,6 +2738,29 @@ Useful resources:
 
 - [Understanding /etc/passwd File Format](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
 - [What is difference between /etc/shadow and /etc/passwd](https://askubuntu.com/questions/445361/what-is-difference-between-etc-shadow-and-etc-passwd)
+
+</details>
+
+<details>
+<summary><b>What's the advantage of synchronizing UID/GID across multiple systems?</b></summary><br>
+
+There are several principle reasons why you want to co-ordinate the **user/UID** and **group/GID** management across your network.
+
+The first is relatively obvious - it has to do with user and administrative convenience.
+
+If each of your users are expected to have relatively uniform access to the systems throughout the network, then they'll expect the same username and password to work on each system that they are supposed to use. If they change their password they will expect that change to be global.
+
+It also has a relationship with names and group names in Unix and Linux. They are mapped into numeric forms (UID's and GID's respectively). All file ownership (inodes) and processes use these numerics for all access and identity determination throughout the kernel and drivers. These numeric values are reverse mapped back to their corresponding principle symbolic representations (the names) by the utilities that display or process that information.
+
+It is also recommended that you adopt a policy that UID's are not re-used. When a user leaves your organization you "retire" their UID (disabling their access by *'ing out their passwd, removing them from the groups maps, setting their "shell" to some /bin/denied binary and their "home" directory to a secured "graveyard" - I use **/home/.graveyard** on my systems).
+
+The reason for this may not be obvious. However, if you are maintaining archival backups for several years (or indefinitely) you'll want to avoid any ambiguities and confusion that might result from restoring one (long gone) user's files and finding them owned by one of your new users.
+
+Useful resources:
+
+- [UID/GID Synchronization and Management (original)](https://linuxgazette.net/issue31/tag_uidgid.html)
+- [What's the advantage of synchronizing UID/GID across Linux machines?](https://serverfault.com/questions/603987/whats-the-advantage-of-synchronizing-uid-gid-across-linux-machines)
+- [How can I keep user acccounts consistent accross multiple machines?](https://unix.stackexchange.com/questions/141023/how-can-i-keep-user-acccounts-consistent-accross-multiple-machines)
 
 </details>
 
@@ -3018,6 +3041,17 @@ while inotifywait -e close_write filename ; do
 
 done
 ```
+
+</details>
+
+<details>
+<summary><b>You need to copy a large amount of data. Explain the most effective way. *</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [Copying a large directory tree locally? cp or rsync?](https://serverfault.com/questions/43014/copying-a-large-directory-tree-locally-cp-or-rsync)
 
 </details>
 
