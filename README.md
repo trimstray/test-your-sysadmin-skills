@@ -56,8 +56,8 @@
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 11 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 49 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 50 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 81 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 82 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
@@ -732,7 +732,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (15)
+###### Network Questions (16)
 
 <details>
 <summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
@@ -817,6 +817,21 @@ Useful resources:
 
 - [What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)
 - [localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)
+
+</details>
+
+<details>
+<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b></summary><br>
+
+To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
+
+1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
+
+2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
+
+3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+
+4. Physical Layer: Are the servers connected to a network? Are packets being lost?
 
 </details>
 
@@ -1623,7 +1638,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe a process to create partition, lvm partition and filesystem.</b></summary><br>
+<summary><b>Describe a process to create partition, LVM partition and filesystem.</b></summary><br>
 
 1. Create partition
 
@@ -2094,7 +2109,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (25)
+###### Network Questions (24)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -2132,21 +2147,6 @@ If domain not resolved it's probably probem with DNS servers.
 <summary><b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms. *</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>Server A can't talk to Server B. Describe possible reasons in a few steps.</b></summary><br>
-
-To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
-
-1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
-
-2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
-
-3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
-
-4. Physical Layer: Are the servers connected to a network? Are packets being lost?
 
 </details>
 
@@ -2502,7 +2502,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain four types of responses from firewall when scanning with Nmap.</b></summary><br>
+<summary><b>Explain four types of responses from firewall when scanning with <code>nmap</code>.</b></summary><br>
 
 There might be four types of responses:
 
@@ -2514,7 +2514,7 @@ There might be four types of responses:
 </details>
 
 <details>
-<summary><b>What does a Tcpdump do? How to capture only incoming traffic to your interface?</b></summary><br>
+<summary><b>What does a <code>tcpdump</code> do? How to capture only incoming traffic to your interface?</b></summary><br>
 
 `tcpdump` is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
 
