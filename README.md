@@ -182,10 +182,10 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>First 5 commands when you connect on a Linux Server.</b></summary><br>
+<summary><b>Your first 5 commands on a Linux Server after login.</b></summary><br>
 
 - `w` - a lot of great information in there with the server uptime
-- `top` - ou can see all running processes, then order them by CPU, memory utilization and more
+- `top` - you can see all running processes, then order them by CPU, memory utilization and more
 - `netstat` - to know on what port and IP your server is listening on and what processes are using those
 - `df` - reports the amount of available disk space being used by file systems
 - `history` - tell you what was previously run by the user you are currently connected to
