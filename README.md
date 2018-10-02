@@ -1701,53 +1701,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are segmentation faults (segfaults), and how can identify what's causing them?</b></summary><br>
+<summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
 
-A segmentation fault (aka segfault) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
-
-Program memory is divided into different segments:
-
-- a text segment for program instructions
-- a data segment for variables and arrays defined at compile time
-- a stack segment for temporary (or automatic) variables defined in subroutines and functions
-- a heap segment for variables allocated during runtime by functions, such as `malloc` (in C)
-
-In practice, segfaults are almost always due to trying to read or write a non-existent array element, not properly defining a pointer before using it, or (in C programs) accidentally using a variable's value as an address. Thus, when Process A reads memory location 0x877, it reads information residing at a different physical location in RAM than when Process B reads its own 0x877.
-
-All modern operating systems support and use segmentation, and so all can produce a segmentation fault.
-
-Segmentation fault can also occur under following circumstances:
-
-- a buggy program/command, which can be only fixed by applying patch
-- it can also appear when you try to access an array beyond the end of an array under C programming
-- inside a chrooted jail this can occur when critical shared libs, config file or `/dev/` entry missing
-- sometime hardware or faulty memory or driver can also create problem
-- maintain suggested environment for all computer equipment (overheating can also generate this problem)
-
-To debug this kind of error try one or all of the following techniques:
-
-- enable core files: `$ ulimit -c unlimited`
-- reproduce the crash: `$ ./<program>`
-- debug crash with gdb: `$ gdb <program> [core file]`
-- or run `LD_PRELOAD=...path-to.../libSegFault.so <program>` to get a report with backtrace, loaded libs, etc
-
-Also:
-
-- make sure correct hardware installed and configured
-- always apply all patches and use updated system
-- make sure all dependencies installed inside jail
-- turn on core dumping for supported services such as Apache
-- use `strace` which is a useful diagnostic, instructional, and debugging tool
-
-Sometimes segmentation faults are not caused by bugs in the program but are caused instead by system memory limits being set too low. Usually it is the limit on stack size that causes this kind of problem (stack overflows). To check memory limits, use the `ulimit` command in bash.
-
-Useful resources:
-
-- [What are segmentation faults (segfaults), and how can I identify what's causing them? (original)](https://kb.iu.edu/d/aqsj)
-- [What is a segmentation fault on Linux?](https://stackoverflow.com/questions/3200526/what-is-a-segmentation-fault-on-linux)
-- [Segmentation fault when calling a recursive bash function](https://unix.stackexchange.com/questions/296641/segmentation-fault-when-calling-a-recursive-bash-function)
-- [Troubleshooting Segmentation Violations/Faults](http://web.mit.edu/10.001/Web/Tips/tips_on_segmentation.html)
-- [Can one use libSegFault.so to get backtraces for SIGABRT?](https://stackoverflow.com/questions/18706496/can-one-use-libsegfault-so-to-get-backtraces-for-sigabrt)
+The command `setfacl` refers to Set File Access Control Lists and `getfacl` refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
 
 </details>
 
@@ -1841,9 +1797,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between Cron and Anacron?</b></summary><br>
+<summary><b>What is the difference between cron and anacron?</b></summary><br>
 
-- one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running24*7. While anacron is used for the systems that are not running continuously
+- one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running 24*7. While anacron is used for the systems that are not running continuously
 - other difference between the two is cron jobs can run every minute, but anacron jobs can be run only once a day
 - any normal user can do the scheduling of cron jobs, but the scheduling of anacron jobs can be done by the superuser only
 - cron should be used when you need to execute the job at a specific time as per the given time in cron, but anacron should be used in when there is no any restriction for the timing and can be executed at any time
@@ -2005,7 +1961,7 @@ dpkg -i --force-confmiss mysql-common.deb
 </details>
 
 <details>
-<summary><b>You have added several aliases to <code>.profile</code>. How reload shell without exit?</b></summary><br>
+<summary><b>You have added several aliases to <code>.profile</code>. How to reload shell without exit?</b></summary><br>
 
 The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good (but other) solution is `. ~/.profile`.
 
@@ -2363,7 +2319,7 @@ To list any process listening to the port 80:
 lsof -i:80
 
 # with fuser
-fuser 8080/tcp
+fuser 80/tcp
 ```
 
 To kill any process listening to the port 80:
@@ -2381,7 +2337,7 @@ kill -9 $(lsof -t -i:80)
 or with `fuser` command:
 
 ```bash
-fuser -k 8080/tcp
+fuser -k 80/tcp
 ```
 
 Useful resources:
@@ -2477,11 +2433,20 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Analyse web server log and show only 5xx http codes.</b></summary><br>
+<summary><b>Analyse web server log and show only 5xx http codes. What external tools do you use?</b></summary><br>
 
 ```bash
 tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
 ```
+
+Examples of http/https log management tools:
+
+- **goaccess** - is an open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser
+- **graylog** - is a free and open-source log management platform that supports in-depth log collection and analysis
+
+Useful resources:
+
+- [Best Log Management Tools: 51 Useful Tools for Log Management, Monitoring, Analytics, and More](https://stackify.com/best-log-management-tools/)
 
 </details>
 
@@ -2675,7 +2640,7 @@ Countermeasures of XSS are input validation, implementing a CSP (Content securit
 <details>
 <summary><b>What is compliance?</b></summary><br>
 
-Abiding by a set of standards set by a government/Independent party/organisation. E.g. An industry which stores, processes or transmits Payment related information needs to be complied with PCI DSS (Payment card Industry Data Security Standard). Other compliance examples can be an organisation complying with its own policies.
+Abiding by a set of standards set by a government/Independent party/organisation, e.g. an industry which stores, processes or transmits Payment related information needs to be complied with PCI DSS (Payment card Industry Data Security Standard). Other compliance examples can be an organisation complying with its own policies.
 
 </details>
 
@@ -3126,9 +3091,53 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
+<summary><b>What are segmentation faults (segfaults), and how can identify what's causing them?</b></summary><br>
 
-The command `setfacl` refers to Set File Access Control Lists and `getfacl` refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
+A segmentation fault (aka segfault) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
+
+Program memory is divided into different segments:
+
+- a text segment for program instructions
+- a data segment for variables and arrays defined at compile time
+- a stack segment for temporary (or automatic) variables defined in subroutines and functions
+- a heap segment for variables allocated during runtime by functions, such as `malloc` (in C)
+
+In practice, segfaults are almost always due to trying to read or write a non-existent array element, not properly defining a pointer before using it, or (in C programs) accidentally using a variable's value as an address. Thus, when Process A reads memory location 0x877, it reads information residing at a different physical location in RAM than when Process B reads its own 0x877.
+
+All modern operating systems support and use segmentation, and so all can produce a segmentation fault.
+
+Segmentation fault can also occur under following circumstances:
+
+- a buggy program/command, which can be only fixed by applying patch
+- it can also appear when you try to access an array beyond the end of an array under C programming
+- inside a chrooted jail this can occur when critical shared libs, config file or `/dev/` entry missing
+- sometime hardware or faulty memory or driver can also create problem
+- maintain suggested environment for all computer equipment (overheating can also generate this problem)
+
+To debug this kind of error try one or all of the following techniques:
+
+- enable core files: `$ ulimit -c unlimited`
+- reproduce the crash: `$ ./<program>`
+- debug crash with gdb: `$ gdb <program> [core file]`
+- or run `LD_PRELOAD=...path-to.../libSegFault.so <program>` to get a report with backtrace, loaded libs, etc
+
+Also:
+
+- make sure correct hardware installed and configured
+- always apply all patches and use updated system
+- make sure all dependencies installed inside jail
+- turn on core dumping for supported services such as Apache
+- use `strace` which is a useful diagnostic, instructional, and debugging tool
+
+Sometimes segmentation faults are not caused by bugs in the program but are caused instead by system memory limits being set too low. Usually it is the limit on stack size that causes this kind of problem (stack overflows). To check memory limits, use the `ulimit` command in bash.
+
+Useful resources:
+
+- [What are segmentation faults (segfaults), and how can I identify what's causing them? (original)](https://kb.iu.edu/d/aqsj)
+- [What is a segmentation fault on Linux?](https://stackoverflow.com/questions/3200526/what-is-a-segmentation-fault-on-linux)
+- [Segmentation fault when calling a recursive bash function](https://unix.stackexchange.com/questions/296641/segmentation-fault-when-calling-a-recursive-bash-function)
+- [Troubleshooting Segmentation Violations/Faults](http://web.mit.edu/10.001/Web/Tips/tips_on_segmentation.html)
+- [Can one use libSegFault.so to get backtraces for SIGABRT?](https://stackoverflow.com/questions/18706496/can-one-use-libsegfault-so-to-get-backtraces-for-sigabrt)
 
 </details>
 
@@ -3996,6 +4005,7 @@ With <b>ssh</b> and port forwarding tunnel:
 ```bash
 # First, open the tunnel
 ssh -L 1234:remote2:22 -p 45678 user1@remote1
+
 # Then, use the tunnel to copy the file directly from remote2
 scp -P 1234 user2@localhost:file .
 ```
@@ -4029,7 +4039,7 @@ Key differences with HTTP/1.1:
 </details>
 
 <details>
-<summary><b>What's the difference between <code>Cache-Control: max-age=0</code> and <code>no-cache</code>?</b></summary><br>
+<summary><b>What's the difference between <code>Cache-Control: max-age=0</code> and <code>Cache-Control: no-cache</code>?</b></summary><br>
 
 When sent by the origin server:
 
@@ -4081,6 +4091,7 @@ nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
 ```bash
 # Generates a random number of decoys.
 nmap -D RND:10 [target]
+
 # Manually specify the IP addresses of the decoys.
 nmap -D decoy1,decoy2,decoy3
 ```
@@ -4225,7 +4236,7 @@ if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 </details>
 
 <details>
-<summary><b>How to rewrite POST data with Payload in Nginx?</b></summary><br>
+<summary><b>How to rewrite POST data with payload in Nginx?</b></summary><br>
 
 You just need to write a Nginx rewrite rule with HTTP status code <b>307</b> or <b>308</b>:
 
