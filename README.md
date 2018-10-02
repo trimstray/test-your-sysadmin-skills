@@ -35,11 +35,11 @@
 
 ****
 
-:information_source: This project contains **233** test questions and answers that can be used during an interview or exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **232** test questions and answers that can be used as a test your knowledge; during an interview or exam for position such as **\*nix System Administrator**.
 
-:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of the answer.
+:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding of them.
 
-:warning: Questions marked **`*`** don't have answer yet or answer is incomplete - **make a pull request to add them**!
+:warning: Questions marked **`*`** don't have answer yet or answer is incomplete - **make a pull request to add them**.
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -53,14 +53,15 @@
 
 ## Table of Contents
 
-- <b>[Introduction](#introduction)</b>
-  * [Simple Questions](#simple-questions) - 11 questions.
-- <b>[General Knowledge](#general-knowledge)</b>
-  * [Junior Sysadmin](#junior-sysadmin) - 50 questions.
-  * [Regular Sysadmin](#regular-sysadmin) - 80 questions.
-  * [Senior Sysadmin](#senior-sysadmin) - 82 questions.
-- <b>[Secret Knowledge](#secret-knowledge)</b>
-  * [Guru Sysadmin](#guru-sysadmin) - 10 questions.
+| <b>[Introduction](#introduction)</b> ||
+| :---         | :---         |
+| :small_orange_diamond: [Simple Questions](#simple-questions) | 11 questions |
+| <b>[General Knowledge](#general-knowledge)</b> ||
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 49 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 80 questions |
+| <b>[General Knowledge](#general-knowledge)</b> ||
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
 ## <a name="general-knowledge">Introduction</a>
 
@@ -82,23 +83,34 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (30)
+###### System Questions (31)
 
 <details>
-<summary><b>Give some examples of Linux distribution names.</b></summary><br>
+<summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
 
 - Red Hat Enterprise Linux
 - Fedora
 - CentOS
 - Debian
 - Ubuntu
+- Mint
 - SUSE Linux Enterprise Server (SLES)
 - SUSE Linux Enterprise Desktop (SLED)
 - Slackware
+- Arch
+- Kali
+- Backbox
+
+My favorite Linux distribution:
+
+- **Arch Linux**, which offers a nice minimalist base system on which one can build a custom operating system. The beauty of it too is that it has the Arch User Repository (AUR), which when combined with its official binary repositories allows it to probably have the largest repositories of any distribution. Its packaging process is also very simple, which means if one wants a package not in its official repositories or the AUR, it should be easy to make it for oneself.
+- **Linux Mint**, which is also built from Ubuntu LTS releases, but features editions featuring a few different desktop environments, including Cinnamon, MATE and Xfce. Mint is quite polished and its aesthetics are rather appealing, I especially like its new icon theme, although I do quite dislike its GTK+ theme (too bland to my taste). I’ve also found a bug in its latest release Mint 19, that is getting quite irritating as I asked for help with it over a fortnight ago on their forums and I have received no replies so far and it is a bug that makes my life on it more difficult.
+- **Kali Linux**, is a Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing. Kali contains several hundred tools which are geared towards various information security tasks, such as Penetration Testing, Security research, Computer Forensics and Reverse Engineering.
 
 Useful resources:
 
 - [List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
+- [What is your favorite Linux distro and why?](https://www.quora.com/What-is-your-favorite-Linux-distro-and-why)
 
 </details>
 
@@ -153,6 +165,7 @@ Useful resources:
 
 - [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
 - [What is your single most favorite command-line trick using Bash?](https://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash/69716)
+- [What are your favorite command line features or tricks?](https://unix.stackexchange.com/questions/6/what-are-your-favorite-command-line-features-or-tricks)
 
 </details>
 
@@ -166,6 +179,21 @@ I also like the ZSH shell, because is much more customizable than BASH. It has t
 Useful resources:
 
 - [Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)
+
+</details>
+
+<details>
+<summary><b>First 5 commands when you connect on a Linux Server.</b></summary><br>
+
+- `w` - a lot of great information in there with the server uptime
+- `top` - ou can see all running processes, then order them by CPU, memory utilization and more
+- `netstat` - to know on what port and IP your server is listening on and what processes are using those
+- `df` - reports the amount of available disk space being used by file systems
+- `history` - tell you what was previously run by the user you are currently connected to
+
+Useful resources:
+
+- [First 5 Commands When I Connect on a Linux Server (original)](https://www.linux.com/blog/first-5-commands-when-i-connect-linux-server)
 
 </details>
 
@@ -238,9 +266,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you run commands in the background?</b></summary><br>
+<summary><b>What is the advantage of executing the running processes in the background? How can you do that?</b></summary><br>
 
-You can run command in background by appending `&` after the command you want to run. For example if you want to download something in background, you can:
+The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
+
+Generally applications that take too long to execute and doesn't require user interaction are sent to background so that we can continue our work in terminal.
+
+For example if you want to download something in background, you can:
 
 ```bash
 wget https://url-to-download.com/download.tar.gz &
@@ -284,11 +316,12 @@ Useful resources:
 
 - [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
 - [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
+- [What is/are the advantage(s) of running applications in backgound?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
 
 </details>
 
 <details>
-<summary><b>Why is this a bad idea to run commands as root user?</b></summary><br>
+<summary><b>Why is it bad to run commands as root user?</b></summary><br>
 
 Running (everything) as root is bad because:
 
@@ -304,6 +337,7 @@ Useful resources:
 
 - [Why is it bad to log in as root? (original)](https://askubuntu.com/questions/16178/why-is-it-bad-to-log-in-as-root)
 - [What's wrong with always being root?](https://serverfault.com/questions/57962/whats-wrong-with-always-being-root)
+- [Why you should avoid running applications as root](https://bencane.com/2012/02/20/why-you-should-avoid-running-applications-as-root/)
 
 </details>
 
@@ -346,19 +380,6 @@ Useful resources:
 Useful resources:
 
 - [Create partitions and filesystems](https://www.ibm.com/developerworks/library/l-lpic1-104-1/index.html)
-
-</details>
-
-<details>
-<summary><b>Where journaling is dedicated?</b></summary><br>
-
-Journaling has a dedicated area in the file system, where all the changes are tracked. When the system crashes, the possibility of file system corruption is less because of journaling.
-
-A journaling filesystem records changes to the filesystem before it actually performs them. In this way it is able to recover after a failure (e.g. power fail) with minimal loss of data.
-
-Useful resources:
-
-- [Journaling Filesystem Definition](http://www.linfo.org/journaling_filesystem.html)
 
 </details>
 
@@ -546,7 +567,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How can I sync two local directories??</b></summary><br>
+<summary><b>How can I sync two local directories?</b></summary><br>
 
 To sync the contents of dir1 to dir2 on the same system, type:
 
@@ -562,6 +583,7 @@ rsync -av --progress --delete dir1/ dir2
 Useful resources:
 
 - [How can I sync two local directories? (original](https://unix.stackexchange.com/questions/392536/how-can-i-sync-two-local-directories)
+- [Synchronizing folders with rsync](https://www.jveweb.net/en/archives/2010/11/synchronizing-folders-with-rsync.html)
 
 </details>
 
@@ -579,7 +601,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to find all files larger than 20M?</b></summary><br>
+<summary><b>You have to find all files larger than 20M. How will you do this?</b></summary><br>
 
 ```bash
 find / -type f -size +20M
@@ -711,32 +733,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (16)
-
-<details>
-<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it?</b></summary><br>
-
-If you can telnet to the port, this means that the service listening on the port is running and you can connect to it (it's not a networking problem). It is good to check this way for the IP address to which the domain is resolved and using the same domain to test connection.
-
-First of all check if your site is online from a other location. It then lets you know if the site is down everywhere, or if only your network is unable to view it. It is also a good idea to check what the web browser returns.
-
-**If only IP connection working**
-
-- you can use whois to see what DNS servers serve up the hostname to the site: `whois www.example.com`
-- you can use tools like `dig` or `host` to test DNS to see if the host name is resolving: `host www.example.org dns.example.org`
-- you can also check global public dns servers: `host www.example.com 9.9.9.9`
-
-If domain not resolved it's probably probem with DNS servers.
-
-**If domain resolved properly**
-
-- investigate the log files and resolve the issue regarding to the logs, it's the best way to show what's wrong
-- check the http status code, usually it will be the response with the 5xx, maybe server is overload because clients making lot's of connection to the website or specific url? maybe your caching rules not working properly?
-- check web/proxy server configuration (e.g. `nginx -t -c </path/to/nginx.conf>`), maybe another sysadmin has made some changes to the domain configuration?
-- maybe something on the server has crashed? maybe run out of space or run out of memory?
-- maybe it's a programming error on the website?
-
-</details>
+###### Network Questions (15)
 
 <details>
 <summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
@@ -775,21 +772,20 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
+<summary><b>What is the difference between a VLAN and a subnet? Do you need a VLAN to setup a subnet?</b></summary><br>
 
-Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
+VLANs and subnets solve different problems. VLANs work at Layer 2, thereby altering broadcast domains (for instance). Whereas subnets are Layer 3 in the current context.
 
-The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
+**Subnet** - is a range of IP addresses determined by part of an address (often called the network address) and a subnet mask (netmask). For example, if the netmask is 255.255.255.0 (or /24 for short), and the network address is 192.168.10.0, then that defines a range of IP addresses 192.168.10.0 through 192.168.10.255. Shorthand for writing that is 192.168.10.0/24.
 
-The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router.
+**VLAN** - a good way to think of this is "switch partitioning." Let's say you have an 8 port switch that is VLAN-able. You can assign 4 ports to one VLAN (say VLAN 1) and 4 ports to another VLAN (say VLAN 2). VLAN 1 won't see any of VLAN 2's traffic and vice versa, logically, you now have two separate switches. Normally on a switch, if the switch hasn't seen a MAC address it will "flood" the traffic to all other ports. VLANs prevent this.
 
-In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
+Subnet is nothing more than an IP address range of IP addresses that help hosts communicate over layer 2 and 3. Each subnet does not require its own VLAN. VLANs are implemented for isolation (are sandbox for layer two communication, no 2 systems of 2 different VLANs may communicate but it can be done through Inter VLAN routing), ease of management and security.
 
 Useful resources:
 
-- [What happens when...](https://github.com/alex/what-happens-when)
-- [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
-- [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
+- [What is the difference between a VLAN and a subnet? (original)](https://superuser.com/questions/353664/what-is-the-difference-between-a-vlan-and-a-subnet)
+- [VLANS vs. subnets for network security and segmentation](https://networkengineering.stackexchange.com/questions/46899/vlans-vs-subnets-for-network-security-and-segmentation)
 
 </details>
 
@@ -1040,7 +1036,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (49)
+###### System Questions (47)
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
@@ -1119,6 +1115,13 @@ Useful resources:
 
 Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to **/etc/logrotate.conf** you should add your own job to **/etc/logrotate.d/**, otherwise you would have to look at more diffs of configuration files during release upgrades.
 
+If it's actively being written to you don't really have much you can do by way of truncate. Your only options are to truncate the file:
+
+```bash
+: >/var/log/massive-logfile
+```
+
+It's very helpful, because it's truncate the file without disrupting the processes.
 
 Useful resources:
 
@@ -1559,42 +1562,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between ext2, ext3 and ext4 file systems?</b></summary>
-<br>
-
-**ext2**
-
-- Its second extended file system which was created to overcome limitations of EXT file system
-- Introduced in 1993 by Remy Card. It was the first commercial-grade filesystem for Linux
-- Does not supports Journaling
-- Fit for SD cards & USB drives since it has high performance and low writes (as journaling is not available). USB and SD storage are limited with write cycles hence its best fit for them
-- Limits : Individual file size 16GB to 2TB. File system size 2TB to 32TB
-
-**ext3**
-
-- Its third extended file system which was created to overcome limitations of EXT2 file system
-- Introduced in 2001 by Stephen Tweedie. It was most common filesystem in many - Linux distro
-- Supports Journaling
-- Journaling keeps track of file changes which helps in fast recovery and reduce chances if data loss in case of system crash
-- Limits : Individual file size 16GB to 2TB. File system size 4TB to 32TB.
-Upgrading FS from ext2 to ext3 is online process without downtime
-
-**ext4**
-
-- Its fourth extended file system which was created to overcome limitations of EXT3 file system
-- Introduced in 2008 by team of developers. Its most latest filesystem in ext family
-- Supports Journaling
-- Lots of new features introduced. Extents, Backward compatibility, Persistent pre-allocation,Delayed allocation,Unlimited number of subdirectories, Journal checksum, Faster FS check, Transparent encryption
-- Limits : Individual file size 16GB to 16TB. File system size up to 1EB
-- Upgrading FS not needed. Due to backward compatibility, ext2, ext3 can be directly mounted as ext4
-
-Useful resources:
-
-- [Linux File Systems: Ext2 vs Ext3 vs Ext4](https://www.thegeekstuff.com/2011/05/ext2-ext3-ext4/)
-
-</details>
-
-<details>
 <summary><b>Explain three types of journaling in ext3/ext4.</b></summary><br>
 
 There are three types of journaling available in ext3/ext4 file systems:
@@ -1678,19 +1645,6 @@ lvcreate --name datastore --size 50G vg0
 ```bash
 mkfs -t xfs /dev/mapper/vg0-datastore
 ```
-
-</details>
-
-<details>
-<summary><b>What is the advantage of executing the running processes in the background? How can you do that?</b></summary><br>
-
-The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
-
-Generally applications that take too long to execute and dosent require user interaction are sent to background so that we can continue our work in terminal.
-
-Useful resources:
-
-- [What is/are the advantage(s) of running applications in backgound?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
 
 </details>
 
@@ -2185,12 +2139,37 @@ Useful resources:
 
 </details>
 
-###### Network Questions (21)
+###### Network Questions (25)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>According to an HTTP monitor, a website is down. You're able to telnet to the port, so how do you resolve it?</b></summary><br>
+
+If you can telnet to the port, this means that the service listening on the port is running and you can connect to it (it's not a networking problem). It is good to check this way for the IP address to which the domain is resolved and using the same domain to test connection.
+
+First of all check if your site is online from a other location. It then lets you know if the site is down everywhere, or if only your network is unable to view it. It is also a good idea to check what the web browser returns.
+
+**If only IP connection working**
+
+- you can use whois to see what DNS servers serve up the hostname to the site: `whois www.example.com`
+- you can use tools like `dig` or `host` to test DNS to see if the host name is resolving: `host www.example.org dns.example.org`
+- you can also check global public dns servers: `host www.example.com 9.9.9.9`
+
+If domain not resolved it's probably probem with DNS servers.
+
+**If domain resolved properly**
+
+- investigate the log files and resolve the issue regarding to the logs, it's the best way to show what's wrong
+- check the http status code, usually it will be the response with the 5xx, maybe server is overload because clients making lot's of connection to the website or specific url? maybe your caching rules not working properly?
+- check web/proxy server configuration (e.g. `nginx -t -c </path/to/nginx.conf>`), maybe another sysadmin has made some changes to the domain configuration?
+- maybe something on the server has crashed? maybe run out of space or run out of memory?
+- maybe it's a programming error on the website?
 
 </details>
 
@@ -2220,6 +2199,25 @@ To troubleshoot communication problems between servers, it is better to ideally 
 <summary><b>List examples of network troubleshooting tools that can degrade during DNS issues. *</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
+
+Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
+
+The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
+
+The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router.
+
+In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
+
+Useful resources:
+
+- [What happens when...](https://github.com/alex/what-happens-when)
+- [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
+- [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
 
 </details>
 
@@ -2352,6 +2350,44 @@ HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
 ...
 ```
+
+</details>
+
+<details>
+<summary><b>How do you kill program using e.g. 80 port in Linux?</b></summary><br>
+
+To list any process listening to the port 80:
+
+```bash
+# with lsof
+lsof -i:80
+
+# with fuser
+fuser 8080/tcp
+```
+
+To kill any process listening to the port 80:
+
+```bash
+kill $(lsof -t -i:80)
+```
+
+or more violently:
+
+```bash
+kill -9 $(lsof -t -i:80)
+```
+
+or with `fuser` command:
+
+```bash
+fuser -k 8080/tcp
+```
+
+Useful resources:
+
+- [How to kill a process running on particular port in Linux?](https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux/32592965)
+- [Finding the PID of the process using a specific port?](https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port)
 
 </details>
 
@@ -2510,6 +2546,26 @@ There might be four types of responses:
 - **Closed port** - most ports are closed because of the firewall
 - **Filtered** - Nmap is not sure whether the port is open or not
 - **Unfiltered** - Nmap can access the port but is still confused about the open status of the port
+
+</details>
+
+<details>
+<summary><b>What does a Tcpdump do? How to capture only incoming traffic to your interface?</b></summary><br>
+
+`tcpdump` is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
+
+`tcpdump` puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
+
+If you want to view only packets that come to your interface you should:
+
+- `-Q in` - for Linux `tcpdump` version
+- `-D in` - for BSD `tcpdump` version
+
+Both params set send/receive direction direction for which packets should be captured.
+
+```bash
+tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
+```
 
 </details>
 
@@ -3794,7 +3850,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (20)
+###### Network Questions (18)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -3871,45 +3927,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How do you kill program using e.g. 80 port in Linux?</b></summary><br>
-
-To list any process listening to the port 80:
-
-```bash
-# with lsof
-lsof -i:80
-
-# with fuser
-fuser 8080/tcp
-```
-
-To kill any process listening to the port 80:
-
-```bash
-kill $(lsof -t -i:80)
-```
-
-or more violently:
-
-```bash
-kill -9 $(lsof -t -i:80)
-```
-
-or with `fuser` command:
-
-```bash
-fuser -k 8080/tcp
-```
-
-Useful resources:
-
-- [How to kill a process running on particular port in Linux?](https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux/32592965)
-- [Finding the PID of the process using a specific port?](https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port)
-
-</details>
-
-<details>
-<summary><b>How to test connection with OpenSSL to remote host with and without SNI?</b></summary><br>
+<summary><b>How to test connection to remote host with and without SNI?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
@@ -4096,26 +4114,6 @@ It is always good to send the ACK packets rather than the SYN packets because if
 Useful resources:
 
 - [Nmap - Techniques for Avoiding Firewalls](https://pentestlab.blog/2012/04/02/nmap-techniques-for-avoiding-firewalls/)
-
-</details>
-
-<details>
-<summary><b>What does a Tcpdump do? How to capture only incoming traffic to your interface?</b></summary><br>
-
-`tcpdump` is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
-
-`tcpdump` puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
-
-If you want to view only packets that come to your interface you should:
-
-- `-Q in` - for Linux `tcpdump` version
-- `-D in` - for BSD `tcpdump` version
-
-Both params set send/receive direction direction for which packets should be captured.
-
-```bash
-tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
-```
 
 </details>
 
