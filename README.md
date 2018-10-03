@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **238** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **240** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,8 +57,8 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 12 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 52 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 82 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 83 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 83 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
@@ -984,9 +984,33 @@ Packet filtering is a firewall technique used to control network access by monit
 </details>
 
 <details>
-<summary><b>What is a proxy and how does it work?</b></summary><br>
+<summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
 
-A proxy server is a dedicated computer or a software system running on a computer that acts as an intermediary between an endpoint device, such as a computer, and another server from which a user or client is requesting a service.
+**Hide the topology and characteristics of your back-end servers**
+
+The **reverse proxy server** can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.
+
+**Allows transparent maintenance of backend servers**
+
+Changes you make to servers running behind a reverse proxy are going to be completely transparent to your end users.
+
+**Load Balancing**
+
+The reverse proxy will then enforce a load balancing algorithm like round robin, weighted round robin, least connections, weighted least connections, or random, to distribute the load among the servers in the cluster.
+
+When a server goes down, the system will automatically failover to the next server up and users can continue with their secure file transfer activities.
+
+**SSL offloading/termination**
+
+Handles incoming HTTPS connections, decrypting the requests and passing unencrypted requests on to the web servers.
+
+**IP masking**
+
+Using a single ip but different URLs to route to different back end servers.
+
+Useful resources:
+
+- [The Benefits of a Reverse Proxy](https://dzone.com/articles/benefits-reverse-proxy)
 
 </details>
 
@@ -2587,7 +2611,7 @@ tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
 
 </details>
 
-###### Devops Questions (6)
+###### Devops Questions (7)
 
 <details>
 <summary><b>Which are the top DevOps tools? Which tools have you worked on?</b></summary><br>
@@ -2669,6 +2693,23 @@ git clone git://github.com/foo/bar.git
 cd bar
 git submodule update --init --recursive
 ```
+
+</details>
+
+<details>
+<summary><b>Mention what are the advantages of using Redis? What is <code>redis-cli</code>? </b></summary><br>
+
+- it provides high speed (exceptionally faster than others)
+- it supports a server-side locking
+- it has got lots of client lib
+- it has got command level Atomic Operation (tx operation)
+- supports for rich data types like hashes, sets, bitmaps
+
+`redis-cli` is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.
+
+Useful resources:
+
+- [10 Advantages of Redis](https://dzone.com/articles/10-traits-of-redis)
 
 </details>
 
@@ -3637,23 +3678,27 @@ Of course this can still flood the buffer cache and cause freezes while the syst
 <details>
 <summary><b>How to limit processes to not exceed more than X% of CPU usage?</b></summary><br>
 
-- **nice/renice**
+**nice/renice**
 
 nice is a great tool for 'one off' tweaks to a system:
 
-`nice COMMAND`
+```bash
+nice COMMAND
+```
 
-- **cpulimit**
+**cpulimit**
 
 cpulimit if you need to run a CPU intensive job and having free CPU time is essential for the responsiveness of a system:
 
-`cpulimit -l 50 COMMAND`
+```bash
+cpulimit -l 50 COMMAND
+```
 
-- **cgroups**
+**cgroups**
 
 cgroups apply limits to a set of processes, rather than to just one:
 
-```
+```bash
 cgcreate -g cpu:/cpulimited
 cgset -r cpu.shares=512 cpulimited
 cgexec -g cpu:cpulimited COMMAND_1
@@ -4238,7 +4283,7 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (2)
+###### Devops Questions (3)
 
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
@@ -4264,6 +4309,25 @@ Below are the advantages of containerization over virtualization:
 - containers are lightweight when compared to VMs
 - VMs have limited performance when compared to containers
 - containers have better resource utilization compared to VMs
+
+</details>
+
+<details>
+<summary><b>You have to prepare a redis cluster. How will you ensure security?</b></summary><br>
+
+- protect a given Redis instance from outside accesses via firewall
+- binding it to 127.0.0.1 if only local clients are accessing it
+- sandboxed environment
+- enabling **AUTH**
+- enabling **Protected Mode**
+- data encryption support (e.g. `spiped`)
+- disabling of specific commands
+- users ACLs
+
+Useful resources:
+
+- [Redis Security](https://redis.io/topics/security)
+- [A few things about Redis security](http://antirez.com/news/96)
 
 </details>
 
