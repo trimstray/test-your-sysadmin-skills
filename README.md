@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **235** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **238** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -54,12 +54,12 @@
 
 | <b>[Introduction](#introduction)</b> ||
 | :---         | :---         |
-| :small_orange_diamond: [Simple Questions](#simple-questions) | 11 questions |
+| :small_orange_diamond: [Simple Questions](#simple-questions) | 12 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 50 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 52 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 82 questions |
-| <b>[General Knowledge](#general-knowledge)</b> ||
+| <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
 ## <a name="general-knowledge">Introduction</a>
@@ -75,6 +75,7 @@
 - <b>What personal achievement are you most proud of?</b>
 - <b>Tell me about the biggest mistake you've made.</b>
 - <b>Tell me about your favorite UNIX-like system.</b>
+- <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
 
@@ -732,7 +733,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (16)
+###### Network Questions (18)
 
 <details>
 <summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
@@ -767,6 +768,22 @@ Useful resources:
 Useful resources:
 
 - [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+
+</details>
+
+<details>
+<summary><b>What are the most important things to understand about the OSI (or any other) model?</b></summary><br>
+
+The most important things to understand about the OSI (or any other) model are:
+
+- we can divide up the protocols into layers
+- layers provide encapsulation
+- layers provide abstraction
+- layers decouple functions from others
+
+Useful resources:
+
+- [OSI Model and Networking Protocols Relationship](https://networkengineering.stackexchange.com/questions/6380/osi-model-and-networking-protocols-relationship)
 
 </details>
 
@@ -817,6 +834,28 @@ Useful resources:
 
 - [What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)
 - [localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)
+
+</details>
+
+<details>
+<summary><b>Which port is used for `ping` command?</b></summary><br>
+
+`ping` uses ICMP, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with ICMP. Ports are associated with the two IP transport layer protocols, TCP and UDP. ICMP, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
+
+ICMP packets are identified by the 'protocol' field in the IP datagram header. ICMP does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the ICMP message is carried directly in an IP datagram data field. ('raw' comes from how this is implemented in software, to create and send an ICMP message, one opens a 'raw' socket, builds a buffer containing the ICMP message, and then writes the buffer containing the message to the raw socket.)
+
+The IP protocol value for ICMP is 1. (The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.)
+
+However, you could use `nmap` to see whether ports are open or not:
+
+```bash
+nmap -p 80 example.com
+```
+
+Useful resources:
+
+- [Ping Port Number](https://networkengineering.stackexchange.com/questions/42463/ping-port-number)
+- [Is it possible to ping an address:port?](https://superuser.com/questions/769541/is-it-possible-to-ping-an-addressport)
 
 </details>
 
@@ -2686,7 +2725,7 @@ To be completed.
 ###### System Questions (54)
 
 <details>
-<summary><b>What are the different types of Kernels? Explain.</b></summary><br>
+<summary><b>What are the different types of kernels? Explain.</b></summary><br>
 
 **Monolithic Kernels**
 
@@ -3124,11 +3163,19 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are the advantages of using <code>chroot</code>? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
+<summary><b>What is the main advantage of using <code>chroot</code>? When and why is it used? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
+
+An advantage of having a chroot environment is the file-system is totally isolated from the physical host. `chroot` has a separate file-system inside the file-system, the difference is its uses a newly created root(/) as its root directory.
+
+A chroot jail is a way to isolate a process and its children from the rest of the system. It should only be used for processes that don't run as root, as root users can break out of the jail very easily.
+
+The idea is that you create a directory tree where you copy or link in all the system files needed for a process to run. You then use the `chroot()` system call to change the root directory to be at the base of this new tree and start the process running in that chroot'd environment. Since it can't actually reference paths outside the modified root, it can't perform operations (read/write etc.) maliciously on those locations.
+
+On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like **/lib** and **/usr/lib** while not pulling in **/usr**, for example. Just bind the directory trees you want to directories you create in the jail directory.
 
 Chroot environment is useful for:
 
-- resintall GRUB to your disk's MBR
+- reinstall bootloader
 - reset a forgotten password
 - perform a kernel upgrade (or downgrade)
 - rebuild your initramdisk
@@ -3143,6 +3190,7 @@ Limitation is that **/dev**, **/sys** and **/proc** are not mounted by default b
 Useful resources:
 
 - [Its all about Chroot](https://medium.com/@itseranga/chroot-316dc3c89584)
+- [Best Practices for UNIX chroot() Operations](http://www.unixwiz.net/techtips/chroot-practices.html)
 - [Is there an easier way to chroot than bind-mounting?](https://askubuntu.com/questions/32418/is-there-an-easier-way-to-chroot-than-bind-mounting)
 - [What's the proper way to prepare chroot to recover a broken Linux installation?](https://superuser.com/questions/111152/whats-the-proper-way-to-prepare-chroot-to-recover-a-broken-linux-installation)
 
