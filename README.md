@@ -52,7 +52,7 @@
 
 ## Table of Contents
 
-| <b>[Introduction](#introduction)</b> ||
+| <b>[Basic Knowledge](#basic-knowledge)</b> ||
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 12 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
@@ -62,7 +62,7 @@
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
-## <a name="general-knowledge">Introduction</a>
+## <a name="general-knowledge">Basic Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
