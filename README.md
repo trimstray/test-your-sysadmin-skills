@@ -54,11 +54,11 @@
 
 | <b>[Basic Knowledge](#basic-knowledge)</b> ||
 | :---         | :---         |
-| :small_orange_diamond: [Simple Questions](#simple-questions) | 12 questions |
+| :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 52 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 83 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 83 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 53 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 85 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 84 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
@@ -78,6 +78,8 @@
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
+- <b>How do you interact with developers: 'us vs. them' or 'all pulling together with a different approach'?</b>
+- <b>Which question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -733,41 +735,12 @@ Useful resources:
 
 </details>
 
-###### Network Questions (18)
+###### Network Questions (19)
 
 <details>
-<summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
+<summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. *</b></summary><br>
 
-<table style="width:100%">
-  <tr>
-    <th>SERVICE</th>
-    <th>PORT</th>
-  </tr>
-  <tr>
-    <td>SMTP</td>
-    <td>25</td>
-  </tr>
-  <tr>
-    <td>FTP</td>
-    <td>20 for data transfer and 21 for connection established</td>
-  </tr>
-  <tr>
-    <td>DNS</td>
-    <td>53</td>
-  </tr>
-  <tr>
-    <td>DHCP</td>
-    <td>67/UDP for DHCP server, 68/UDP for DHCP client</td>
-  </tr>
-  <tr>
-    <td>SSH</td>
-    <td>22</td>
-  </tr>
-</table>
-
-Useful resources:
-
-- [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+To be completed.
 
 </details>
 
@@ -802,6 +775,42 @@ Useful resources:
 
 - [What is the difference between a VLAN and a subnet? (original)](https://superuser.com/questions/353664/what-is-the-difference-between-a-vlan-and-a-subnet)
 - [VLANS vs. subnets for network security and segmentation](https://networkengineering.stackexchange.com/questions/46899/vlans-vs-subnets-for-network-security-and-segmentation)
+
+</details>
+
+<details>
+<summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
+
+<table style="width:100%">
+  <tr>
+    <th>SERVICE</th>
+    <th>PORT</th>
+  </tr>
+  <tr>
+    <td>SMTP</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>FTP</td>
+    <td>20 for data transfer and 21 for connection established</td>
+  </tr>
+  <tr>
+    <td>DNS</td>
+    <td>53</td>
+  </tr>
+  <tr>
+    <td>DHCP</td>
+    <td>67/UDP for DHCP server, 68/UDP for DHCP client</td>
+  </tr>
+  <tr>
+    <td>SSH</td>
+    <td>22</td>
+  </tr>
+</table>
+
+Useful resources:
+
+- [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
 
 </details>
 
@@ -875,7 +884,7 @@ To troubleshoot communication problems between servers, it is better to ideally 
 </details>
 
 <details>
-<summary><b>How to resolves the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
+<summary><b>How to resolve the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
 
 Examples for resolve IP address to domain name:
 
@@ -1078,7 +1087,7 @@ Useful resources:
 ###### Devops Questions (2)
 
 <details>
-<summary><b>What is Version Control?</b></summary><br>
+<summary><b>What is version control? Are your commit messages good looking?</b></summary><br>
 
 It is a system that records changes to a file or set of files over time so that you can recall specific versions later. Version control systems consist of a central shared repository where teammates can commit changes to a file or set of file. Then you can mention the uses of version control.
 
@@ -1090,10 +1099,24 @@ Version control allows you to:
 - see who last modified something that might be causing a problem
 - who introduced an issue and when
 
+The seven rules of a great commit message:
+
+- separate subject from body with a blank line
+- limit the subject line to 50 characters
+- capitalize the subject line
+- do not end the subject line with a period
+- use the imperative mood in the subject line
+- wrap the body at 72 characters
+- use the body to explain what and why vs. how
+
+Useful resources:
+
+- [Getting Started - About Version Control (original)](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+
 </details>
 
 <details>
-<summary><b>Explain some basic Git commands.</b></summary><br>
+<summary><b>Explain some basic <code>git</code> commands.</b></summary><br>
 
 - `git init` - create a new local repository
 - `git commit -m "message"` - commit changes to head
@@ -1113,7 +1136,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (48)
+###### System Questions (50)
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
@@ -1654,6 +1677,13 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>Describe your data backup process. Do you test your backups on a regular basis?</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>Explain three types of journaling in ext3/ext4.</b></summary><br>
 
 There are three types of journaling available in ext3/ext4 file systems:
@@ -1895,6 +1925,16 @@ Useful resources:
 - other difference between the two is cron jobs can run every minute, but anacron jobs can be run only once a day
 - any normal user can do the scheduling of cron jobs, but the scheduling of anacron jobs can be done by the superuser only
 - cron should be used when you need to execute the job at a specific time as per the given time in cron, but anacron should be used in when there is no any restriction for the timing and can be executed at any time
+
+</details>
+
+<details>
+<summary><b>A project manager needs a new SQL Server. What do you ask her/his? *</b></summary><br>
+
+I want the DBA to ask questions like:
+
+- How big will the database be? (whether we can add the database to an existing server)
+- How critical is the database? (about clustering, disaster recovery, high availability)
 
 </details>
 
@@ -2338,7 +2378,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What's the purpose of Spanning Tree?</b></summary><br>
+<summary><b>What is the purpose of Spanning Tree?</b></summary><br>
 
 This protocol operates at layer 2 of the OSI model with the purpose of preventing loops on the network. Without STP, a redundant switch deployment would create broadcast storms that cripple even the most robust networks. There are several iterations based on the original IEEE 802.1D standard; each operates slightly different than the others while largely accomplishing the same loop-free goal.
 
@@ -2747,7 +2787,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### Introduction Questions (2)
+###### System Questions (58)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
@@ -2762,8 +2802,6 @@ To be completed.
 To be completed.
 
 </details>
-
-###### System Questions (54)
 
 <details>
 <summary><b>What are the different types of kernels? Explain.</b></summary><br>
@@ -2837,7 +2875,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What's the advantage of synchronizing UID/GID across multiple systems?</b></summary><br>
+<summary><b>What is the advantage of synchronizing UID/GID across multiple systems?</b></summary><br>
 
 There are several principle reasons why you want to co-ordinate the **user/UID** and **group/GID** management across your network.
 
@@ -2980,14 +3018,14 @@ Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
 </details>
 
 <details>
-<summary><b>You need to move ext4 journal on another system. What are the reasons for this? *</b></summary><br>
+<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? *</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Explain system calls used for process management?</b></summary><br>
+<summary><b>Explain system calls used for process management.</b></summary><br>
 
 There are some system calls for process management. These are as follows:
 
@@ -3053,6 +3091,13 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What considerations come into play when designing a highly available application, both at the architecture level and the application level? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>What fields are stored in an inode?</b></summary><br>
 
 Within a POSIX system, a file has the following attributes which may be retrieved by the stat system call:
@@ -3103,9 +3148,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the Pluggable Authentication Modules? Explain.</b></summary><br>
+<summary><b>What are some of the benefits of using systemd over SysV init? *</b></summary><br>
 
-It provides a layer between applications and actual authentication mechanism. It is a library of loadable modules which are called by the application for authentication. It also allows the administrator to control when a user can log in. All PAM applications are configured in the directory **/etc/pam.d** or in a file **/etc/pam.conf**. PAM is controlled using the configuration file or the configuration directory.
+To be completed.
 
 </details>
 
@@ -3136,9 +3181,19 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the superblock?</b></summary><br>
+<summary><b>Tell me about the dangers and caveats of LVM.</b></summary><br>
 
-A superblock is a record of the characteristics of a filesystem, including its size, the block size, the empty and the filled blocks and their respective counts, the size and location of the inode tables, the disk block map and usage information, and the size of the block groups.
+**Risks of using LVM**
+
+- Vulnerable to write caching issues with SSD or VM hypervisor
+- Harder to recover data due to more complex on-disk structures
+- Harder to resize filesystems correctly
+- Snapshots are hard to use, slow and buggy
+- Requires some skill to configure correctly given these issues
+
+Useful resources:
+
+- [LVM dangers and caveats (original)](https://serverfault.com/questions/279571/lvm-dangers-and-caveats)
 
 </details>
 
@@ -3303,7 +3358,7 @@ The process table entry (aka process control block) contains a table, the file d
 </details>
 
 <details>
-<summary><b>What's the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
+<summary><b>What is the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
 </b></summary><br>
 
 When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available'.
@@ -4084,7 +4139,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What's a reasonable TTL for cached content given the following parameters? *</b></summary><br>
+<summary><b>What is a reasonable TTL for cached content given the following parameters? *</b></summary><br>
 
 To be completed.
 
@@ -4194,7 +4249,7 @@ Key differences with HTTP/1.1:
 </details>
 
 <details>
-<summary><b>What's the difference between <code>Cache-Control: max-age=0</code> and <code>Cache-Control: no-cache</code>?</b></summary><br>
+<summary><b>What is the difference between <code>Cache-Control: max-age=0</code> and <code>Cache-Control: no-cache</code>?</b></summary><br>
 
 When sent by the origin server:
 
