@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **234** test questions and answers that can be used as a test your knowledge and during an interview or exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **234** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -1406,7 +1406,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does <code>LC_ALL=C</code> before command do?</b></summary><br>
+<summary><b>What does <code>LC_ALL=C</code> before command do? In what cases, it will be useful?</b></summary><br>
 
 `LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
 
@@ -2184,7 +2184,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Dev team reports an error: <code>POST http://ws.com/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
+<summary><b>Dev team reports an error: <code>POST http://ws.int/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
 
 **Modify NGINX configuration file for domain**
 
@@ -3056,7 +3056,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the Superblock?</b></summary><br>
+<summary><b>What is the superblock?</b></summary><br>
 
 A superblock is a record of the characteristics of a filesystem, including its size, the block size, the empty and the filled blocks and their respective counts, the size and location of the inode tables, the disk block map and usage information, and the size of the block groups.
 
@@ -3539,6 +3539,10 @@ $ sudo su -
 ```
 
 Now read **/var/log/audit/auditd.log** for show what has been logged in.
+
+Useful resources:
+
+- [Log all commands run by admins on production servers](https://serverfault.com/questions/470755/log-all-commands-run-by-admins-on-production-servers)
 
 </details>
 
@@ -4098,7 +4102,7 @@ So any site can make a request to your site on behalf of their visitors and proc
 </details>
 
 <details>
-<summary><b>Create a single-use TCP or UDP proxy with Netcat.</b></summary><br>
+<summary><b>Create a single-use TCP or UDP proxy with <code>netcat</code>.</b></summary><br>
 
 ```bash
 ### TCP -> TCP
@@ -4117,7 +4121,7 @@ nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
 </details>
 
 <details>
-<summary><b>Explain 3 techniques for avoiding firewalls with Nmap.</b></summary><br>
+<summary><b>Explain 3 techniques for avoiding firewalls with <code>nmap</code>.</b></summary><br>
 
 **Use Decoy addresses**
 
@@ -4221,7 +4225,7 @@ When the device generated an alert for an intrusion which has actually not happe
 </details>
 
 <details>
-<summary><b>5 quick points on Web server hardening.</b></summary><br>
+<summary><b>5 quick points on web server hardening.</b></summary><br>
 
 Web server hardening is filtering of unnecessary services running on various ports and removal of default test scripts from the servers. Although web server hardening is a lot more than this and usually organisations have a customised checklist for hardening the servers. Any server getting created has to be hardened and hardening has to be re-confirmed on a yearly basis. Even the hardening checklist has to be reviewed on a yearly basis for new add-ons.
 
