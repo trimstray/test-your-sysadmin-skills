@@ -838,7 +838,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Which port is used for `ping` command?</b></summary><br>
+<summary><b>Which port is used for <code>ping</code> command?</b></summary><br>
 
 `ping` uses ICMP, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with ICMP. Ports are associated with the two IP transport layer protocols, TCP and UDP. ICMP, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
 
