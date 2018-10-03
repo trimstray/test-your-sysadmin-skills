@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **234** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **235** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,7 +57,7 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 11 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 50 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 81 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 82 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 82 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
@@ -1050,7 +1050,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (47)
+###### System Questions (48)
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
@@ -1550,6 +1550,21 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>How could you modify a text file without invoking a text editor?</b></summary><br>
+
+For example:<br>
+
+```bash
+# cat  >filename ... - overwrite file
+# cat >>filename ... - append to file
+cat > filename << __EOF__
+data data data
+__EOF__
+```
+
+</details>
+
+<details>
 <summary><b>How to add & change the kernel parameters?</b></summary><br>
 
 To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
@@ -1885,7 +1900,7 @@ Furthermore, if you want to append to the log file, use tee -a as:
 </details>
 
 <details>
-<summary><b>What is the preferred Bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>bash program</code>?</b></summary><br>
+<summary><b>What is the preferred bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>bash program</code>?</b></summary><br>
 
 You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the `PATH`.
 
@@ -2668,7 +2683,7 @@ To be completed.
 
 </details>
 
-###### System Questions (55)
+###### System Questions (54)
 
 <details>
 <summary><b>What are the different types of Kernels? Explain.</b></summary><br>
@@ -2958,21 +2973,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How could you modify a text file without invoking a text editor?</b></summary><br>
-
-For example:<br>
-
-```bash
-# cat  >filename ... - overwrite file
-# cat >>filename ... - append to file
-cat > filename << __EOF__
-data data data
-__EOF__
-```
-
-</details>
-
-<details>
 <summary><b>What fields are stored in an inode?</b></summary><br>
 
 Within a POSIX system, a file has the following attributes which may be retrieved by the stat system call:
@@ -3120,6 +3120,31 @@ If you use all three together, the process is running in the background, is remo
 Useful resources:
 
 - [Difference between nohup, disown and & (original)](https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and)
+
+</details>
+
+<details>
+<summary><b>What are the advantages of using <code>chroot</code>? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
+
+Chroot environment is useful for:
+
+- resintall GRUB to your disk's MBR
+- reset a forgotten password
+- perform a kernel upgrade (or downgrade)
+- rebuild your initramdisk
+- fix your **/etc/fstab**
+- reinstall packages using your package manager
+- whatever
+
+When working in a chrooted environment, there is a few special file systems that needs to be mounted so all programs behave properly.
+
+Limitation is that **/dev**, **/sys** and **/proc** are not mounted by default but needed for many tasks.
+
+Useful resources:
+
+- [Its all about Chroot](https://medium.com/@itseranga/chroot-316dc3c89584)
+- [Is there an easier way to chroot than bind-mounting?](https://askubuntu.com/questions/32418/is-there-an-easier-way-to-chroot-than-bind-mounting)
+- [What's the proper way to prepare chroot to recover a broken Linux installation?](https://superuser.com/questions/111152/whats-the-proper-way-to-prepare-chroot-to-recover-a-broken-linux-installation)
 
 </details>
 
