@@ -200,6 +200,13 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What is your experience with the production environments? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>What do the fields in <code>ls -al</code> output mean?</b></summary><br>
 
 In the order of output:
@@ -370,18 +377,6 @@ Some interpretations:
 Useful resources:
 
 - [Linux Load Averages: Solving the Mystery (original)](http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html)
-
-</details>
-
-<details>
-<summary><b>How to create partition and filesystem?</b></summary><br>
-
-1) `fdisk`, `gdisk` or `parted` - create a new partition
-2) `mkfs` - create a new filesystem
-
-Useful resources:
-
-- [Create partitions and filesystems](https://www.ibm.com/developerworks/library/l-lpic1-104-1/index.html)
 
 </details>
 
@@ -590,15 +585,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to quickly backup a file?</b></summary><br>
+<summary><b>Many basic maintenance tasks require you to edit config files. Explain ways to undo the changes you make.</b></summary><br>
 
-```bash
-cp filename{,.orig}
-```
+- manually backup of a file before editing (with brace expansion like this: `cp filename{,.orig}`)
+- manual copy of the directory structure where file is stored (e.g. `cp`, `rsync` or `tar`)
+- make a backup of original file in your editor (e.g. set rules in your editor configuration file)
+- the best solution is to use `git` (or any other version control) to keep track of configuration files (e.g. `etckeeper` for **/etc** directory)
 
 Useful resources:
 
 - [Backup file with .bak before filename extension](https://unix.stackexchange.com/questions/66376/backup-file-with-bak-before-filename-extension)
+- [Is it a good idea to use git for configuration file version controlling?](https://superuser.com/questions/1037211/is-it-a-good-idea-to-use-git-for-configuration-file-version-controlling)
 
 </details>
 
@@ -1677,7 +1674,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe your data backup process. Do you test your backups on a regular basis?</b></summary><br>
+<summary><b>Describe your data backup process. Do you test your backups on a regular basis? *</b></summary><br>
 
 To be completed.
 
@@ -2043,7 +2040,7 @@ Useful resources:
 
 To find out the main purpose of an intermediate CA, you should first learn about Root CAs, Intermediate CAs, and the SSL Certificate Chain Trust.
 
-**Root CAs** are primary CAs which typically don’t directly sign end entity/server certificates. They issue Root certificates which are usually pre-installed within all browsers, mobiles, and applications. The private key of these certificates is used to sign other subsequent certificates called intermediate certificates. Root CAs are usually kept “offline” and in a highly secure environment with stringently limited access.
+**Root CAs** are primary CAs which typically don’t directly sign end entity/server certificates. They issue Root certificates which are usually pre-installed within all browsers, mobiles, and applications. The private key of these certificates is used to sign other subsequent certificates called intermediate certificates. Root CAs are usually kept "offline” and in a highly secure environment with stringently limited access.
 
 **Intermediates CAs** are CAs that subordinate to the Root CA by one or more levels, being trusted by these to sign certificates on their behalf. The purpose of creating and using Intermediate CAs is primarily for security because if the intermediate private key is compromised, then the Root CA can revoke the intermediate certificate and create a new one with a new cryptographic key pair.
 
@@ -2138,7 +2135,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do I find all files containing specific string?</b></summary><br>
+<summary><b>Is there an easy way to search inside 1000s of files in a complex directory structure to find files which contain a specific string within the file?</b></summary><br>
 
 For example use `fgrep`:
 
@@ -2156,6 +2153,10 @@ grep -insr "pattern" *
 - `-n`  prefix each line of output with the 1-based line number within its input file
 - `-s` suppress error messages about nonexistent or unreadable files.
 - `-r` read all files under each directory, recursively.
+
+Useful resources:
+
+- [How to grep a string in a directory and all its subdirectories' files in LINUX?](https://stackoverflow.com/questions/15622328/how-to-grep-a-string-in-a-directory-and-all-its-subdirectories-files-in-linux)
 
 </details>
 
@@ -2276,28 +2277,28 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
+<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. *</b></summary><br>
 
-Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
-
-The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
-
-The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router.
-
-In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
-
-Useful resources:
-
-- [What happens when...](https://github.com/alex/what-happens-when)
-- [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
-- [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
+To be completed.
 
 </details>
 
 <details>
-<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. *</b></summary><br>
+<summary><b>Explain difference between HTTP 1.1 and HTTP 2.0.</b></summary><br>
 
-To be completed.
+<b>HTTP/2</b> supports queries multiplexing, headers compression, priority and more intelligent packet streaming management. This results in reduced latency and accelerates content download on modern web pages.
+
+Key differences with HTTP/1.1:
+
+- it is binary, instead of textual
+- fully multiplexed, instead of ordered and blocking
+- can therefore use one connection for parallelism
+- uses header compression to reduce overhead
+- allows servers to "push" responses proactively into client caches
+
+Useful resources:
+
+- [What is HTTP/2 - The Ultimate Guide](https://kinsta.com/learn/what-is-http2/)
 
 </details>
 
@@ -2398,11 +2399,19 @@ Use the:
 </details>
 
 <details>
-<summary><b>How to get fingerprint from SSH key?</b></summary><br>
+<summary><b>What mean <code>Host key verification failed</code> when you connect to the remote host? Do you accept it automatically?</b></summary><br>
 
-```bash
-ssh-keygen -lf ~/.ssh/id_rsa.pub
-```
+`Host key verification failed` means that the host key of the remote host was changed. This can easily happen when connecting to a computer who's host keys in **/etc/ssh** have changed if that computer was upgraded without copying its old host keys. The host keys here are proof when you reconnect to a remote computer with ssh that you are talking to the same computer you connected to the first time you accessed it.
+
+Whenever you connect to a server via SSH, that server's public key is stored in your home directory (or possibly in your local account settings if using a Mac or Windows desktop) file called **known_hosts**. When you reconnect to the same server, the SSH connection will verify the current public key matches the one you have saved in your **known_hosts** file. If the server's key has changed since the last time you connected to it, you will receive the above error.
+
+Don't delete the entire **known_hosts** file as recommended by some people, this totally voids the point of the warning. It's a security feature to warn you that a man in the middle attack may have happened.
+
+Before accepting the new host key, contact your/other system administrator for verification.
+
+Usefule resources:
+
+- [Git error: "Host Key Verification Failed" when connecting to remote repository](https://stackoverflow.com/questions/13363553/git-error-host-key-verification-failed-when-connecting-to-remote-repository)
 
 </details>
 
@@ -2550,7 +2559,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Analyse web server log and show only 5xx http codes. What external tools do you use?</b></summary><br>
+<summary><b>Analyse web server log and show only <code>5xx</code> http codes. What external tools do you use?</b></summary><br>
 
 ```bash
 tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
@@ -3435,7 +3444,7 @@ As "500 - Internal Server Error" says, the high number of context switches are g
 
 Useful resources:
 
-- [What does “CPU jumps” mean? (original)](https://stackoverflow.com/questions/32185607/what-does-cpu-jumps-mean)
+- [What does "CPU jumps” mean? (original)](https://stackoverflow.com/questions/32185607/what-does-cpu-jumps-mean)
 
 </details>
 
@@ -4234,17 +4243,21 @@ scp -P 1234 user2@localhost:file .
 </details>
 
 <details>
-<summary><b>Explain difference between HTTP 1.1 and HTTP 2.0.</b></summary><br>
+<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
 
-<b>HTTP/2</b> supports queries multiplexing, headers compression, priority and more intelligent packet streaming management. This results in reduced latency and accelerates content download on modern web pages.
+Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
 
-Key differences with HTTP/1.1:
+The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
 
-- it is binary, instead of textual
-- fully multiplexed, instead of ordered and blocking
-- can therefore use one connection for parallelism
-- uses header compression to reduce overhead
-- allows servers to "push" responses proactively into client caches
+The OS configured DNS servers will typically be configured by DHCP from the router where the DNS servers are likely to be the ISP's DNS servers configured by DHCP from the internet gateway to the router.
+
+In the event the router has it's own DNS servers, it may have it's own cache otherwise you should be directed straight to your ISP's DNS servers most typically as soon as the OS cache was found to be empty.
+
+Useful resources:
+
+- [What happens when...](https://github.com/alex/what-happens-when)
+- [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
+- [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
 
 </details>
 
