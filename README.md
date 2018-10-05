@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **246** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **248** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,8 +57,8 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 53 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 85 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 84 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 85 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
 
@@ -78,7 +78,7 @@
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
-- <b>How do you interact with developers: 'us vs. them' or 'all pulling together with a different approach'?</b>
+- <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
 - <b>Which question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
@@ -2228,7 +2228,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (24)
+###### Network Questions (25)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -2416,7 +2416,7 @@ Usefule resources:
 </details>
 
 <details>
-<summary><b>How to send an HTTP request using Telnet?</b></summary><br>
+<summary><b>How to send an HTTP request using <code>telnet</code>?</b></summary><br>
 
 For example:
 
@@ -2555,6 +2555,26 @@ sub vcl_recv {
 Useful resources:
 
 - [Varnish: cache only specific domain](https://stackoverflow.com/questions/3728066/varnish-cache-only-specific-domain)
+
+</details>
+
+<details>
+<summary><b>When does the web server like Apache or Nginx write info to log file? Before or after serving the request?</b></summary><br>
+
+Both servers provides very comprehensive and flexible logging capabilities - for logging everything that happens on your server, from the initial request, through the URL mapping process, to the final resolution of the connection, including any errors that may have occurred in the process.
+
+**Apache**
+
+The Apache server access log records all requests processed by the server (after the request has been completed).
+
+**Nginx**
+
+NGINX writes information about client requests in the access log right after the request is processed.
+
+Useful resources:
+
+- [When does Apache log to access.log - before or after serving the request?](https://webmasters.stackexchange.com/questions/65566/when-does-apache-log-to-access-log-before-or-after-serving-the-request)
+- [nginx log request before processing](https://serverfault.com/questions/693049/nginx-log-request-before-processing)
 
 </details>
 
@@ -4078,7 +4098,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (18)
+###### Network Questions (19)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -4121,6 +4141,19 @@ Useful resources:
 
 - [Are SSL certificates bound to the servers ip address?](https://stackoverflow.com/questions/1095780/are-ssl-certificates-bound-to-the-servers-ip-address)
 - [SSL certificate for a public IP address?](https://serverfault.com/questions/193775/ssl-certificate-for-a-public-ip-address)
+
+</details>
+
+<details>
+<summary><b>How do you do load testing and capacity planning for web sites? *</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [How do you do load testing and capacity planning for web sites? (original)](https://serverfault.com/questions/350454/how-do-you-do-load-testing-and-capacity-planning-for-web-sites)
+- [Can you help me with my capacity planning?](https://serverfault.com/questions/384686/can-you-help-me-with-my-capacity-planning)
+- [How do you do load testing and capacity planning for databases?](https://serverfault.com/questions/350458/how-do-you-do-load-testing-and-capacity-planning-for-databases)
 
 </details>
 
