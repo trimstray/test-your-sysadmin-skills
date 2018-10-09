@@ -776,7 +776,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are the default ports used for SMTP, FTP, DNS, DHCP and SSH protocols?</b></summary><br>
+<summary><b>List 5 common network ports you should know.</b></summary><br>
 
 <table style="width:100%">
   <tr>
