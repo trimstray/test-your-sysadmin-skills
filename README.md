@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **248** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **250** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -58,9 +58,9 @@
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 53 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 85 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 86 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 10 questions |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
 
 ## <a name="general-knowledge">Basic Knowledge</a>
 
@@ -2816,7 +2816,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (58)
+###### System Questions (59)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
@@ -3373,6 +3373,19 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>One of the processes runs slowly. How to check how long has been running and which tools will you use?</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [How to check how long a process has been running?](https://unix.stackexchange.com/questions/7870/how-to-check-how-long-a-process-has-been-running)
+- [Linux how long a process has been running?](https://www.cyberciti.biz/faq/how-to-check-how-long-a-process-has-been-running/)
+- [How to see system call that executed in current time by process?](https://stackoverflow.com/questions/42677724/how-to-see-system-call-that-executed-in-current-time-by-process)
+
+</details>
+
+<details>
 <summary><b>What is a file descriptor in Linux?</b></summary><br>
 
 In Unix and related computer operating systems, a file descriptor (FD, less frequently fildes) is an abstract indicator (handle) used to access a file or other input/output resource, such as a pipe or network socket. File descriptors form part of the POSIX application programming interface.
@@ -3907,171 +3920,23 @@ Now this <code>ln /etc/passwd</code> attack will not work.
 </details>
 
 <details>
-<summary><b>How profile app in Linux environment?</b></summary><br>
+<summary><b>Is it safe to attach the strace to a running process on the production? What are the consequences?</b></summary><br>
 
-> Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
+`strace` is the system call tracer for Linux. It currently uses the arcane `ptrace()` (process trace) debugging interface, which operates in a violent manner: **pausing the target process** for each syscall so that the debugger can read state. And doing this twice: when the syscall begins, and when it ends.
 
-1. You can use <code>top</code> in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
+This means `strace` pauses your application twice for each syscall, and context-switches each time between the application and `strace`. It's like putting traffic metering lights on your application.
 
-```bash
-top -b -p `pidof a.out`
-```
+Cons:
 
-or
+- can cause significant and sometimes massive performance overhead, in the worst case, slowing the target application by over 100x. This may not only make it unsuitable for production use, but any timing information may also be so distorted as to be misleading
+- can't trace multiple processes simultaneously (with the exception of followed children)
+- visibility is limited to the system call interface
 
-```bash
-top -b -p `pidof a.out` -n 100
-```
+Useful resources:
 
-2. You can use ps (for instance in a shell script):
-
-```bash
-ps --format pid,pcpu,cputime,etime,size,vsz,cmd -p `pidof a.out`
-```
-
-> I need some means of recording the performance of an application on a Linux machine.
-
-1. To record performance data:
-
-```bash
-perf record -p `pidof a.out`
-```
-
-or to record for 10 secs:
-
-```bash
-perf record -p `pidof a.out` sleep 10
-```
-
-or to record with call graph ():
-
-```bash
-perf record -g -p `pidof a.out`
-```
-
-2) To analyze the recorded data
-
-```bash
-perf report --stdio
-perf report --stdio --sort=dso -g none
-perf report --stdio -g none
-perf report --stdio -g
-```
-
-<b>This is an example of profiling a test program</b>
-
-1. I run my test program (c++):
-
-```bash
-./my_test 100000000
-```
-
-2. Then I record performance data of a running process:
-
-```bash
-perf record -g  -p `pidof my_test` -o ./my_test.perf.data sleep 30
-```
-
-3. Then I analyze load per module:
-
-```bash
-perf report --stdio -g none --sort comm,dso -i ./my_test.perf.data
-
-# Overhead  Command                 Shared Object
-# ........  .......  ............................
-#
-    70.06%  my_test  my_test
-    28.33%  my_test  libtcmalloc_minimal.so.0.1.0
-     1.61%  my_test  [kernel.kallsyms]
-```
-
-4. Then load per function is analyzed:
-
-```bash
-perf report --stdio -g none -i ./my_test.perf.data | c++filt
-
-# Overhead  Command                 Shared Object                       Symbol
-# ........  .......  ............................  ...........................
-#
-    29.30%  my_test  my_test                       [.] f2(long)
-    29.14%  my_test  my_test                       [.] f1(long)
-    15.17%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator new(unsigned long)
-    13.16%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator delete(void*)
-     9.44%  my_test  my_test                       [.] process_request(long)
-     1.01%  my_test  my_test                       [.] operator delete(void*)@plt
-     0.97%  my_test  my_test                       [.] operator new(unsigned long)@plt
-     0.20%  my_test  my_test                       [.] main
-     0.19%  my_test  [kernel.kallsyms]             [k] apic_timer_interrupt
-     0.16%  my_test  [kernel.kallsyms]             [k] _spin_lock
-     0.13%  my_test  [kernel.kallsyms]             [k] native_write_msr_safe
-
-  ...
-```
-
-5. Then call chains are analyzed:
-
-```bash
-perf report --stdio -g graph -i ./my_test.perf.data | c++filt
-
-# Overhead  Command                 Shared Object                       Symbol
-# ........  .......  ............................  ...........................
-#
-    29.30%  my_test  my_test                       [.] f2(long)
-            |
-            --- f2(long)
-               |
-                --29.01%-- process_request(long)
-                          main
-                          __libc_start_main
-
-    29.14%  my_test  my_test                       [.] f1(long)
-            |
-            --- f1(long)
-               |
-               |--15.05%-- process_request(long)
-               |          main
-               |          __libc_start_main
-               |
-                --13.79%-- f2(long)
-                          process_request(long)
-                          main
-                          __libc_start_main
-
-  ...
-```
-
-So at this point you know where your program spends time.
-
-Also the simple way to do app profile is to use the <code>pstack</code> utility or <code>lsstack</code>.
-
-Other tool is Valgrind. So this is what I recommend. Run program first:
-
-```bash
-valgrind --tool=callgrind --dump-instr=yes -v --instr-atstart=no ./binary > tmp
-```
-
-Now when it works and we want to start profiling we should run in another window:
-
-```bash
-callgrind_control -i on
-```
-
-This turns profiling on. To turn it off and stop whole task we might use:
-
-```bash
-callgrind_control -k
-```
-
-Now we have some files named callgrind.out.* in current directory. To see profiling results use:
-
-```bash
-kcachegrind callgrind.out.*
-```
-
-I recommend in next window to click on "Self" column header, otherwise it shows that "main()" is most time consuming task.
+- [strace Wow Much Syscall (original)](http://www.brendangregg.com/blog/2014-05-11/strace-wow-much-syscall.html)
 
 </details>
-
 
 <details>
 <summary><b>What is the easiest, safest and most portable way to remove <code>-rf</code> directory entry?</b></summary><br>
@@ -4490,6 +4355,176 @@ Example:
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
+
+<details>
+<summary><b>How to profile app in Linux environment?</b></summary><br>
+
+> Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
+
+1. You can use <code>top</code> in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
+
+```bash
+top -b -p `pidof a.out`
+```
+
+or
+
+```bash
+top -b -p `pidof a.out` -n 100
+```
+
+2. You can use ps (for instance in a shell script):
+
+```bash
+ps --format pid,pcpu,cputime,etime,size,vsz,cmd -p `pidof a.out`
+```
+
+> I need some means of recording the performance of an application on a Linux machine.
+
+1. To record performance data:
+
+```bash
+perf record -p `pidof a.out`
+```
+
+or to record for 10 secs:
+
+```bash
+perf record -p `pidof a.out` sleep 10
+```
+
+or to record with call graph ():
+
+```bash
+perf record -g -p `pidof a.out`
+```
+
+2) To analyze the recorded data
+
+```bash
+perf report --stdio
+perf report --stdio --sort=dso -g none
+perf report --stdio -g none
+perf report --stdio -g
+```
+
+<b>This is an example of profiling a test program</b>
+
+1. I run my test program (c++):
+
+```bash
+./my_test 100000000
+```
+
+2. Then I record performance data of a running process:
+
+```bash
+perf record -g  -p `pidof my_test` -o ./my_test.perf.data sleep 30
+```
+
+3. Then I analyze load per module:
+
+```bash
+perf report --stdio -g none --sort comm,dso -i ./my_test.perf.data
+
+# Overhead  Command                 Shared Object
+# ........  .......  ............................
+#
+    70.06%  my_test  my_test
+    28.33%  my_test  libtcmalloc_minimal.so.0.1.0
+     1.61%  my_test  [kernel.kallsyms]
+```
+
+4. Then load per function is analyzed:
+
+```bash
+perf report --stdio -g none -i ./my_test.perf.data | c++filt
+
+# Overhead  Command                 Shared Object                       Symbol
+# ........  .......  ............................  ...........................
+#
+    29.30%  my_test  my_test                       [.] f2(long)
+    29.14%  my_test  my_test                       [.] f1(long)
+    15.17%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator new(unsigned long)
+    13.16%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator delete(void*)
+     9.44%  my_test  my_test                       [.] process_request(long)
+     1.01%  my_test  my_test                       [.] operator delete(void*)@plt
+     0.97%  my_test  my_test                       [.] operator new(unsigned long)@plt
+     0.20%  my_test  my_test                       [.] main
+     0.19%  my_test  [kernel.kallsyms]             [k] apic_timer_interrupt
+     0.16%  my_test  [kernel.kallsyms]             [k] _spin_lock
+     0.13%  my_test  [kernel.kallsyms]             [k] native_write_msr_safe
+
+  ...
+```
+
+5. Then call chains are analyzed:
+
+```bash
+perf report --stdio -g graph -i ./my_test.perf.data | c++filt
+
+# Overhead  Command                 Shared Object                       Symbol
+# ........  .......  ............................  ...........................
+#
+    29.30%  my_test  my_test                       [.] f2(long)
+            |
+            --- f2(long)
+               |
+                --29.01%-- process_request(long)
+                          main
+                          __libc_start_main
+
+    29.14%  my_test  my_test                       [.] f1(long)
+            |
+            --- f1(long)
+               |
+               |--15.05%-- process_request(long)
+               |          main
+               |          __libc_start_main
+               |
+                --13.79%-- f2(long)
+                          process_request(long)
+                          main
+                          __libc_start_main
+
+  ...
+```
+
+So at this point you know where your program spends time.
+
+Also the simple way to do app profile is to use the <code>pstack</code> utility or <code>lsstack</code>.
+
+Other tool is Valgrind. So this is what I recommend. Run program first:
+
+```bash
+valgrind --tool=callgrind --dump-instr=yes -v --instr-atstart=no ./binary > tmp
+```
+
+Now when it works and we want to start profiling we should run in another window:
+
+```bash
+callgrind_control -i on
+```
+
+This turns profiling on. To turn it off and stop whole task we might use:
+
+```bash
+callgrind_control -k
+```
+
+Now we have some files named callgrind.out.* in current directory. To see profiling results use:
+
+```bash
+kcachegrind callgrind.out.*
+```
+
+I recommend in next window to click on "Self" column header, otherwise it shows that "main()" is most time consuming task.
+
+Useful resources:
+
+- [Tracing processes for fun and profit](http://techblog.rosedu.org/tracing-processes-for-fun-and-profit.html)
+
+</details>
 
 <details>
 <summary><b>Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
