@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **250** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **252** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -56,7 +56,7 @@
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 53 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 86 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
