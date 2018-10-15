@@ -1081,7 +1081,7 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (2)
+###### Devops Questions (4)
 
 <details>
 <summary><b>What is version control? Are your commit messages good looking?</b></summary><br>
@@ -1119,6 +1119,29 @@ Useful resources:
 - `git commit -m "message"` - commit changes to head
 - `git status` - list the files you've added with `git add` and also commit any files you've changed since then
 - `git push origin master` - send changes to the master branch of your remote repository
+
+</details>
+
+<details>
+<summary><b>Explain a simple Countinuos Integration pipeline.</b></summary><br>
+
+- clone repository
+- deploy stage (QA)
+- testing environment (QA)
+- deploy stage (PROD)
+
+</details>
+
+<details>
+<summary><b>Explain some basic <code>docker</code> commands.</b></summary><br>
+
+- `docker ps` - show running containers
+- `docker ps -a` - show all containers
+- `docker images` - show docker images
+- `docker logs <container-id|container-name>` - get logs from container
+- `docker network ls` - show all docker networks
+- `docker volumes ls` - show all docker volumes
+- `docker exec -it <container-id|container-name> bash` - execute bash in container with interative shell
 
 </details>
 
