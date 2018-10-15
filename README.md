@@ -1137,7 +1137,7 @@ Useful resources:
 
 - `docker ps` - show running containers
 - `docker ps -a` - show all containers
-- `docker images"` - show docker images
+- `docker images` - show docker images
 - `docker logs <container-id|container-name>` - get logs from container
 - `docker network ls` - show all docker networks
 - `docker volumes ls` - show all docker volumes
