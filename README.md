@@ -1267,7 +1267,7 @@ Useful resources:
 `top` works reasonably well, as long as you look at the right numbers.
 - **M** Sorts by current resident memory usage
 - **T** Sorts by total ( or cummulaative) CPU usage
-- **p** Sorts by current CPU usage (this is the default refresh)
+- **P** Sorts by current CPU usage (this is the default refresh)
 - **?** Displays a usage summary for all top commands
 
 This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
