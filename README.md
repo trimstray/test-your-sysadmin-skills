@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **252** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **253** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -58,7 +58,7 @@
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 86 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 87 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
 
@@ -3986,7 +3986,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (19)
+###### Network Questions (20)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -3999,6 +3999,44 @@ To be completed.
 <summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? *</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>If you try resolve hostname you get <code>NXDOMAIN</code> from <code>host</code> command. Your <code>resolv.conf</code> stores two nameservers but only second of this store this domain name. Why did not the local resolver check the second nameserver?</b></summary><br>
+
+**NXDOMAIN** is nothing but non-existent Internet or Intranet domain name. If domain name is unable to resolved using the DNS, a condition called the **NXDOMAIN** occurred.
+
+The default behavior for `resolv.conf` and the `resolver` is to try the servers in the order listed. The resolver will only try the next nameserver if the first nameserver times out.
+
+The algorithm used is to try a name server, and if the query times out, try the next, until out of name servers, then repeat trying all the name servers until a maximum number of retries are made.
+
+If a nameserver responds with **SERVFAIL** or a referral (**nofail**) or terminate query (**fail**) also only the first dns server will be used.
+
+Example:
+
+```
+nameserver 192.168.250.20   # it's not a dns
+nameserver 8.8.8.8          # not store gate.test.int
+nameserver 127.0.0.1        # store gate.test.int
+```
+
+so if you check:
+
+```
+host -v -t a gate.test.int
+Trying "gate.test.int"                        # trying first dns (192.168.250.20) but response is time out, so try the next nameserver
+Host gate.test.int not found: 3(NXDOMAIN)     # ok but response is NXDOMAIN (not found this domain name)
+Received 88 bytes from 8.8.8.8#53 in 43 ms
+Received 88 bytes from 8.8.8.8#53 in 43 ms
+                                              # so the last server in the list was not asked
+```
+
+To avoid this you can use e.g. `nslookup` command which will use the second nameserver if it receives a **SERVFAIL** from the first nameserver.
+
+Useful resources:
+
+- [Second nameserver in /etc/resolv.conf not picked up by wget](https://serverfault.com/questions/398837/second-nameserver-in-etc-resolv-conf-not-picked-up-by-wget)
 
 </details>
 
