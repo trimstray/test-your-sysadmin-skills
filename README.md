@@ -518,7 +518,8 @@ Useful resources:
 - [POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)
 - [Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)
 
-<details>
+</details>
+
 <summary><b>What does a <code>kill</code> command do?</b></summary><br>
 
 In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
@@ -1267,7 +1268,7 @@ Useful resources:
 `top` works reasonably well, as long as you look at the right numbers.
 - **M** Sorts by current resident memory usage
 - **T** Sorts by total ( or cummulaative) CPU usage
-- **P** Sorts by current CPU usage (this is the default refresh)
+- **p** Sorts by current CPU usage (this is the default refresh)
 - **?** Displays a usage summary for all top commands
 
 This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
