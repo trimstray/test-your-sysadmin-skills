@@ -518,7 +518,10 @@ Useful resources:
 - [POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)
 - [Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)
 
+</details>
+
 <details>
+
 <summary><b>What does a <code>kill</code> command do?</b></summary><br>
 
 In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
@@ -526,8 +529,6 @@ In Unix and Unix-like operating systems, kill is a command used to send a signal
 Useful resources:
 
 - [Mastering the "Kill" Command in Linux](https://www.maketecheasier.com/kill-command-in-linux/)
-
-</details>
 
 </details>
 
