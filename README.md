@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **253** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **254** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -58,7 +58,7 @@
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 87 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
 
@@ -3987,7 +3987,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (20)
+###### Network Questions (21)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -4111,6 +4111,52 @@ Useful resources:
 <summary><b>What is a reasonable TTL for cached content given the following parameters? *</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>Developer says: "<code>htaccess</code> is full of magic and it should be used". What is your opinion about using <code>htaccess</code> files? What are the consequences for web application?</b></summary><br>
+
+`.htaccess` files were born out of an era when shared host­ing was com­mon­ place:
+
+- sysad­mins need­ed a way to allow mul­ti­ple clients to access their serv­er under dif­fer­ent accounts, with dif­fer­ent con­fig­u­ra­tions for their web­sites.
+
+The `.htaccess` file allowed them to mod­i­fy how Apache works with­out hav­ing access to the entire server. These files can reside in any and every directory in the directory tree of the website and provide features to the directory and the files and folders inside it.
+
+**It’s horrible for performance**
+
+For `.htaccess` to work Apache needs to check EVERY directory in the requested path for the existence of a `.htaccess` file and if it exists it reads EVERY one of them and parses it. This happens for EVERY request. Remember that the second you change that file, it’s effective. This is because Apache reads it every time.
+
+Every sin­gle request the web­serv­er han­dles - even for the lowli­est **.png** or **.css** file - caus­es Apache to:
+
+- look for a `.htaccess` file in the direc­to­ry of the cur­rent request
+- then look for a `.htaccess` file in every direc­to­ry from there up to the serv­er root
+- coa­lesce all of these `.htaccess` files together
+- recon­fig­ure the web­serv­er using the new settings
+- final­ly, deliv­er the file
+
+Every web­page can gen­er­ate dozens of requests. This is over­head you don’t need, and what’s more, it’s com­plete­ly unnec­es­sary.
+
+**Security and permission loss**
+
+Allowing individual users to modify the configuration of a server using `.htaccess` can cause security concerns if not taken care properly. If you add any directive in the `.htaccess` file, it will be considered as they are added to Apache configuration file.
+
+This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-avaliable/site.conf` (or `httpd.conf` or whatever your server calls.
+
+**Summary**
+
+You should avoid using `.htaccess` files completely if you have access to httpd main server config file. If it worked in `.htaccess`, it will work in your virtual host `.conf` file as well.
+
+If you cannot avoid using `.htaccess` files, you should follow these rules.
+
+- use only one `.htaccess` file or as few as possible
+- place the `.htaccess` file in the site root directory
+- keep your `.htaccess` file short and simple
+
+Useful resources:
+
+- [Like Apache: .htaccess](https://www.nginx.com/resources/wiki/start/topics/examples/likeapache-htaccess/)
+- [Don't Use .htaccess Unless You Must](https://www.danielmorell.com/guides/htaccess-seo/basics/dont-use-htaccess-unless-you-must)
 
 </details>
 
