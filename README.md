@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **254** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **255** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,7 +57,7 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 86 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 87 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
@@ -851,7 +851,7 @@ Useful resources:
 
 ICMP packets are identified by the 'protocol' field in the IP datagram header. ICMP does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the ICMP message is carried directly in an IP datagram data field. ('raw' comes from how this is implemented in software, to create and send an ICMP message, one opens a 'raw' socket, builds a buffer containing the ICMP message, and then writes the buffer containing the message to the raw socket.)
 
-The IP protocol value for ICMP is 1. (The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.)
+The IP protocol value for ICMP is 1. The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.
 
 However, you could use `nmap` to see whether ports are open or not:
 
@@ -1157,7 +1157,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (50)
+###### System Questions (51)
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
@@ -1730,6 +1730,35 @@ Useful resources:
 </details>
 
 <details>
+<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove file?</b></summary><br>
+
+This problem may be more difficult to solve because several steps may be required - sometimes you have get `test/file: Permission denied`, `test/file: No such file or directory` or `test/file: Input/output error`.
+
+That happens when the user can't do a `stat()` on the files (which requires execute permissions), but can read the directory entries (which requires read access on the directory). So you get a list of files in the directory, but can't get any information on the files because they can't be read. If you have a directory which has read permission but not execute, you'll see this.
+
+Some processes like a `rsync` generates temporary files that get created and dropped fast which will cause errors if you try to call other simple file management commands like `rm`, `mv` etc.
+
+Example of output:
+
+```bash
+?????????? ? ?        ?               ?            ? sess_kee6fu9ag7tiph2jae
+```
+
+1) change permissions: `chmod 0777 sess_kee6fu9ag7tiph2jae` and try remove
+2) change owner: `chown root:root sess_kee6fu9ag7tiph2jae` and try remove
+3) change permissions and owner for directory: `chmod -R 0777 dir/ && chown -R root:root dir/` and try remove
+4) recreate file: `touch sess_kee6fu9ag7tiph2jae` and try remove
+5) watch out for other running processes on the server for example `rsync`, sometimes you can see this as a transient error when an NFS server is heavily overloaded
+6) remount (if possible) your filesystem
+7) boot system into single-user mode and repair your filesystem with `fsck`
+
+Useful resources:
+
+- [Question marks showing in ls of directory. IO errors too.](https://serverfault.com/questions/65616/question-marks-showing-in-ls-of-directory-io-errors-too)
+
+</details>
+
+<details>
 <summary><b>How to increase the size of LVM partition?</b></summary><br>
 
 Use the `lvextend` command for resize LVM partition.
@@ -2180,7 +2209,7 @@ grep -insr "pattern" *
 
 Useful resources:
 
-- [How to grep a string in a directory and all its subdirectories' files in LINUX?](https://stackoverflow.com/questions/15622328/how-to-grep-a-string-in-a-directory-and-all-its-subdirectories-files-in-linux)
+- [How to grep a string in a directory and all its subdirectories files in LINUX?](https://stackoverflow.com/questions/15622328/how-to-grep-a-string-in-a-directory-and-all-its-subdirectories-files-in-linux)
 
 </details>
 
