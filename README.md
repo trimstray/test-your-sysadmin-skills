@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **256** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **257** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -60,7 +60,7 @@
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 88 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
 
 ## <a name="general-knowledge">Basic Knowledge</a>
 
@@ -4744,6 +4744,52 @@ location /api {
 ```
 
 HTTP Status code 307 or 308 should be used instead of 301 because it changes the request method from POST to GET.
+
+</details>
+
+<details>
+<summary><b>Write two golden rules for reducing the impact of hacked system.</b></summary><br>
+
+1) **The principle of least privilege**
+
+You should configure services to run as a user with the least possible rights necessary to complete the service's tasks. This can contain a hacker even after they break in to a machine.
+
+As an example, a hacker breaking into a system using a zero-day exploit of the Apache webserver service is highly likely to be limited to just the system memory and file resources that can be accessed by that process. The hacker would be able to download your html and php source files, and probably look into your mysql database, but they should not be able to get root or extend their intrusion beyond apache-accessible files.
+
+Many default Apache webserver installations create the 'apache' user and group by default and you can easily configure the main Apache configuration file (`httpd.conf`) to run apache using those groups.
+
+2) **The principle of separation of privileges**
+
+If your web site only needs read-only access to the database, then create an account that only has read-only permissions, and only to that database.
+
+**SElinux** is a good choice for creating context for security, `app-armor` is another tool. **Bastille** was a previous choice for hardening.
+
+Reduce the consequence of any attack, by separating the power of the service that has been compromised into it own "Box".
+
+3) **Whitelist, don't blacklist**
+
+You're describing a blacklist approach. A whitelist approach would be much safer.
+
+An exclusive club will never try to list everyone who can't come in; they will list everyone who can come in and exclude those not on the list.
+
+Similarly, trying to list everything that shouldn't access a machine is doomed. Restricting access to a short list of programs/IP addresses/users would be more effective.
+
+Of course, like anything else, this involves some trade-offs. Specifically, a whitelist is massively inconvenient and requires constant maintenance.
+
+To go even further in the tradeoff, you can get great security by disconnecting the machine from the network.
+
+**Also instresting are**:
+
+Use the tools available. It's highly unlikely that you can do as well as the guys who are security experts, so use their talents to protect yourself.
+
+- public key encryption provides excellent security
+- enforce password complexity
+- understand why you are making exceptions to the rules above - review your exceptions regularly
+- hold someone to account for failure, it keeps you on your toes
+
+Useful resources:
+
+- [How to prevent zero day attacks (original)](https://serverfault.com/questions/391370/how-to-prevent-zero-day-attacks)
 
 </details>
 
