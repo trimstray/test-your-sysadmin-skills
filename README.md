@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **255** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **256** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,7 +57,7 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 87 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 88 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 11 questions |
@@ -1157,7 +1157,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (51)
+###### System Questions (52)
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
@@ -1172,7 +1172,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 - `SysV init` - init's job is "to get everything running the way it should be once the kernel is fully running. Essentially it establishes and operates the entire user space. This includes checking and mounting file systems, starting up necessary user services, and ultimately switching to a user-environment when system startup is completed.
 - `systemd` - the developers of systemd aimed to replace the Linux init system inherited from UNIX System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
-- `runint` - runit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools[13] process supervision toolkit that runs on the Linux, Mac OS X, *BSD, and Solaris operating systems.
+- `runint` - runit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools process supervision toolkit that runs on the Linux, Mac OS X, \*BSD, and Solaris operating systems.
 
 Useful resources:
 
@@ -1549,7 +1549,7 @@ Useful resources:
 **1) Main requirements - remember about this**
 
 - which users have access to the app filesystem
-- permissions for web servers, e.g. apache and app servers e.g. uwsgi
+- permissions for web servers, e.g. Apache and app servers e.g. uwsgi
 - permissions for specific directories like a **uploads**, **cache** and main app directory like a **/var/www/app01/html**
 - correct `umask` value for users and **suid**/**sgid** (only for specific situations)
 - permissions for all future files and directories
@@ -2027,6 +2027,43 @@ if (( $EUID != 0 )); then
   exit
 fi
 ```
+</details>
+
+<details>
+<summary><b>Can you give a particular example when is indicated to use <code>nobody</code> account? Tell me the differences running httpd service as a <code>nobody</code> and <code>www-data</code>.</b></summary><br>
+
+In many Unix variants, `nobody` is the conventional name of a user account which owns no files, is in no privileged groups, and has no abilities except those which every other user has.
+
+It is common to run daemons as `nobody`, especially servers, in order to limit the damage that could be done by a malicious user who gained control of them.
+
+However, the usefulness of this technique is reduced if more than one daemon is run like this, because then gaining control of one daemon would provide control of them all. The reason is that `nobody`-owned processes have the ability to send signals to each other and even debug each other, allowing them to read or even modify each other's memory.
+
+**When should I use `nobody` account?**
+
+When permissions aren't required for a program's operations. This is most notable when there isn't ever going to be any disk activity.
+
+A real world example of this is **memcached** (a key-value in-memory cache/database/thing), sitting on my computer and my server running under the nobody account. Why? Because it just doesn't need any permissions and to give it an account that did have write access to files would just be a needless risk.
+
+A good example are also web servers. Imagine if Apache ran as root and someone found a way to send custom commands to the console through Apache would have access to your entire system.
+
+`nobody` account also is used as a restricted shell for giving users filesystem access without an actual shell like bash. This should prevent them from being able to execute things.
+
+**`nobody` or `www-data` for httpd (Apache)**
+
+Upon starting Apache needs root access, but it quickly drops this and assumes the identity of a non privileged user. This user can either be `nobody` or `apache`, or `www-data`.
+
+Several applications use the user `nobody` as a default. For example you probably never really want say the Apache service to be overwriting files that belong to bind. Having a per-service account tends to be a very good idea.
+
+Getting Apache to run as `nobody:nobody` is pretty easy, just update the user and group settings. But as I mentioned above I don't really recommend that particular user/group. It is entirely possible that you may be tempted to add a service to the system at some time in the future that also runs as `nobody`, and you will forget that have given write access on the filesystem to the user `nobody`.
+
+ If somehow, `nobody` were to become compromised they could potentially have more impact than if an application isolate user, such as `www-data`. Of course a lot of this will depend on the file and group permissions. `nobody` uses the permissions of others, while an application specific user could be configured to allow file read access, but other could still be denied.
+
+Useful resources:
+
+- [What is nobody user and group?](https://unix.stackexchange.com/questions/186568/what-is-nobody-user-and-group)
+- [The Linux and Unix Nobody User](http://linuxg.net/the-linux-and-unix-nobody-user/)
+- [What is the purpose of the 'nobody' user?](https://askubuntu.com/questions/329714/what-is-the-purpose-of-the-nobody-user)
+
 </details>
 
 <details>
@@ -3726,7 +3763,7 @@ I've had file copies while in single user mode dump files into directories that 
 
 **Solution 2**
 
-On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. apache (httpd) keeping large log files in memory which had been deleted from disk.
+On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. Apache (httpd) keeping large log files in memory which had been deleted from disk.
 
 This was tracked down by running `lsof | grep "/var" | grep deleted` where **/var** was the partition I needed to clean up.
 
@@ -3736,7 +3773,7 @@ The output showed lines like this:
 httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
 ```
 
-The situation was then resolved by restarting apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
+The situation was then resolved by restarting Apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
 
 Useful resources:
 
