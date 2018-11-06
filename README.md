@@ -1513,7 +1513,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does <code>LC_ALL=C</code> before command do? In what cases, it will be useful?</b></summary><br>
+<summary><b>What does <code>LC_ALL=C</code> before command do? In what cases it will be useful?</b></summary><br>
 
 `LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
 
@@ -1672,7 +1672,7 @@ __EOF__
 </details>
 
 <details>
-<summary><b>How to add & change the kernel parameters?</b></summary><br>
+<summary><b>How to add and change the kernel parameters?</b></summary><br>
 
 To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
@@ -1698,7 +1698,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe your data backup process. Do you test your backups on a regular basis? *</b></summary><br>
+<summary><b>Describe your data backup process. How often should you test your backups? *</b></summary><br>
 
 To be completed.
 
@@ -1730,7 +1730,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove file?</b></summary><br>
+<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove "zombie" file?</b></summary><br>
 
 This problem may be more difficult to solve because several steps may be required - sometimes you have get `test/file: Permission denied`, `test/file: No such file or directory` or `test/file: Input/output error`.
 
@@ -2030,7 +2030,7 @@ fi
 </details>
 
 <details>
-<summary><b>Can you give a particular example when is indicated to use <code>nobody</code> account? Tell me the differences running httpd service as a <code>nobody</code> and <code>www-data</code>.</b></summary><br>
+<summary><b>Can you give a particular example when is indicated to use <code>nobody</code> account? Tell me the differences running httpd service as a <code>nobody</code> and <code>www-data</code> accounts.</b></summary><br>
 
 In many Unix variants, `nobody` is the conventional name of a user account which owns no files, is in no privileged groups, and has no abilities except those which every other user has.
 
@@ -2090,11 +2090,11 @@ Furthermore, if you want to append to the log file, use tee -a as:
 </details>
 
 <details>
-<summary><b>What is the preferred bash shebang and why? What is the difference between executing a file using <code>./program</code> or <code>bash program</code>?</b></summary><br>
+<summary><b>What is the preferred bash shebang and why? What is the difference between executing a file using <code>./script</code> or <code>bash script</code>?</b></summary><br>
 
 You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the `PATH`.
 
-Running `./program` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `bash program` would force it to be run under sh, instead of anything else.
+Running `./script` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `bash script` would force it to be run under sh, instead of anything else.
 
 Useful resources:
 
