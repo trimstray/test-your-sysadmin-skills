@@ -1716,11 +1716,60 @@ There are three types of journaling available in ext3/ext4 file systems:
 </details>
 
 <details>
-<summary><b>What is an inode?</b></summary><br>
+<summary><b>What is an inode? How to find file's inode number and how can you use it?</b></summary><br>
 
 An inode is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
 
 A Unix file is "stored" in two different parts of the disk - the data blocks and the inodes. (I won't get into superblocks and other esoteric information.) The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
+
+A file's inode number can easily be found by using the `ls` command, which by default lists the objects (i.e., files, links and directories) in the current directory (i.e., the directory in which the user is currently working), with its `-i` option. Thus, for example, the following will show the name of each object in the current directory together with its inode number:
+
+```bash
+ls -i
+```
+
+`df`'s `-i` option instructs it to supply information about inodes on each filesystem rather than about available space. Specifically, it tells df to return for each mounted filesystem the total number of inodes, the number of free inodes, the number of used inodes and the percentage of inodes used. This option can be used together with the `-h` option as follows to make the output easier to read:
+
+```bash
+df -hi
+```
+
+**Finding files by inodes**
+
+If you know the inode, you can find it using the find command:
+
+```bash
+find . -inum 435304 -print
+```
+
+**Deleting files with strange names**
+
+Sometimes files are created with strange characters in the filename. The Unix file system will allow any character as part of a filename except for a null (ASCII 000) or a "/". Every other character is allowed.
+
+Users can create files with characters that make it difficult to see the directory or file. They can create the directory ".. " with a space at the end, or create a file that has a backspace in the name, using:
+
+```bash
+touch `printf "aa\bb"`
+```
+
+Now what what happens when you use the `ls` command:
+
+```bash
+ls
+aa?b
+ls | grep 'a'
+ab
+```
+
+Note that when `ls` sends the result to a terminal, it places a "?" in the filename to show an unprintable character.
+
+You can get rid of this file by using `rm -i *` and it will prompt you before it deletes each file. But you can also use `find` to remove the file, once you know the inode number.
+
+```bash
+ls -i
+435304 aa?b
+find . -inum 435304 -delete
+```
 
 Useful resources:
 
@@ -1749,8 +1798,9 @@ Example of output:
 3) change permissions and owner for directory: `chmod -R 0777 dir/ && chown -R root:root dir/` and try remove
 4) recreate file: `touch sess_kee6fu9ag7tiph2jae` and try remove
 5) watch out for other running processes on the server for example `rsync`, sometimes you can see this as a transient error when an NFS server is heavily overloaded
-6) remount (if possible) your filesystem
-7) boot system into single-user mode and repair your filesystem with `fsck`
+6) find file inode: `ls -i`, and try remove: `find . -inum <inode_num> -delete`
+7) remount (if possible) your filesystem
+8) boot system into single-user mode and repair your filesystem with `fsck`
 
 Useful resources:
 
