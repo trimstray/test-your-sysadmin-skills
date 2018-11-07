@@ -1903,9 +1903,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is <code>strace</code> command? How should <code>strace</code> be used?</b></summary><br>
+<summary><b>What is <code>strace</code> command and how should be used? Explain example of connect to an already running process.</b></summary><br>
 
-`strace` is a powerful command line tool for debugging and trouble shooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
+`strace` is a powerful command line tool for debugging and troubleshooting programs in Unix-like operating systems such as Linux. It captures and records all system calls made by a process and the signals received by the process.
 
 **Strace Overview**
 
@@ -1915,9 +1915,24 @@ Useful resources:
 
 Good for when you don't have source code or don't want to be bothered to really go through it. Also, useful for your own code if you don't feel like opening up **GDB**, but are just interested in understanding external interaction.
 
+**Example of attach to the process**
+
+`strace -p <PID>` - to attach a process to strace.
+
+`strace -e trace=read,write -p <PID>` - by this you can also trace a process/program for an event, like read and write (in this example). So here it will print all such events that include read and write system calls by the process.
+
+Other such examples
+
+- `-e trace= network` - trace all the network related system calls.
+- `-e trace=signal` - trace all signal related system calls.
+- `-e trace=ipc` - trace all IPC related system calls.
+- `-e trace=desc` - trace all file descriptor related system calls.
+- `-e trace=memory` - trace all memory mapping related system calls.
+
 Useful resources:
 
 - [How should strace be used? (original)](https://stackoverflow.com/questions/174942/how-should-strace-be-used)
+- [How does strace connect to an already running process? (original)](https://stackoverflow.com/questions/7482076/how-does-strace-connect-to-an-already-running-process)
 - [strace: for fun, profit, and debugging](http://timetobleed.com/hello-world/)
 
 </details>
@@ -3622,23 +3637,128 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How does <code>strace</code> connect to an already running process?</b></summary><br>
+<summary><b>How do you trace a system call in Linux? Explain the possible methods.</b></summary><br>
 
-`strace -p <PID>` - to attach a process to strace.
+**SystemTap**
 
-`strace -e trace=read,write -p <PID>` - by this you can also trace a process/program for an event, like read and write (in this example). So here it will print all such events that include read and write system calls by the process.
+This is the most powerful method. It can even show the call arguments:
 
-Other such examples
+Usage:
 
-- `-e trace= network` - trace all the network related system calls.
-- `-e trace=signal` - trace all signal related system calls.
-- `-e trace=ipc` - trace all IPC related system calls.
-- `-e trace=desc` - trace all file descriptor related system calls.
-- `-e trace=memory` - trace all memory mapping related system calls.
+```bash
+sudo apt-get install systemtap
+sudo stap -e 'probe syscall.mkdir { printf("%s[%d] -> %s(%s)\n", execname(), pid(), name, argstr) }'
+```
+
+Then on another terminal:
+
+```bash
+sudo rm -rf /tmp/a /tmp/b
+mkdir /tmp/a
+mkdir /tmp/b
+```
+
+Sample output:
+
+```bash
+mkdir[4590] -> mkdir("/tmp/a", 0777)
+mkdir[4593] -> mkdir("/tmp/b", 0777)
+```
+
+**`strace` with `-f|-ff` params**
+
+You can use the `-f` and `-ff` option. Something like this:
+
+```bash
+strace -f -e trace=process bash -c 'ls; :
+```
+
+- `-f` : Trace child processes as they are created by currently traced processes as a result of the fork(2) system call.
+
+- `-ff` : If the `-o` filename option is in effect, each processes trace is written to filename.pid where pid is the numeric process id of each process. This is incompatible with `-c`, since no per-process counts are kept.
+
+**`ltrace -S` shows both system calls and library calls**
+
+This awesome tool therefore gives even further visibility into what executables are doing.
+
+**`ftrace` minimal runnable example**
+
+Here goes a minimal runnable example. Run with `sudo`:
+
+```bash
+#!/bin/sh
+set -eux
+
+d=debug/tracing
+
+mkdir -p debug
+if ! mountpoint -q debug; then
+  mount -t debugfs nodev debug
+fi
+
+# Stop tracing.
+echo 0 > "${d}/tracing_on"
+
+# Clear previous traces.
+echo > "${d}/trace"
+
+# Find the tracer name.
+cat "${d}/available_tracers"
+
+# Disable tracing functions, show only system call events.
+echo nop > "${d}/current_tracer"
+
+# Find the event name with.
+grep mkdir "${d}/available_events"
+
+# Enable tracing mkdir.
+# Both statements below seem to do the exact same thing,
+# just with different interfaces.
+# https://www.kernel.org/doc/html/v4.18/trace/events.html
+echo sys_enter_mkdir > "${d}/set_event"
+# echo 1 > "${d}/events/syscalls/sys_enter_mkdir/enable"
+
+# Start tracing.
+echo 1 > "${d}/tracing_on"
+
+# Generate two mkdir calls by two different processes.
+rm -rf /tmp/a /tmp/b
+mkdir /tmp/a
+mkdir /tmp/b
+
+# View the trace.
+cat "${d}/trace"
+
+# Stop tracing.
+echo 0 > "${d}/tracing_on"
+
+umount debug
+```
+
+Sample output:
+
+```bash
+# tracer: nop
+#
+#                              _-----=> irqs-offhttps://sourceware.org/systemtap/documentation.html
+#                             / _----=> need-resched
+#                            | / _---=> hardirq/softirq
+#                            || / _--=> preempt-depth
+#                            ||| /     delay
+#           TASK-PID   CPU#  ||||    TIMESTAMP  FUNCTION
+#              | |       |   ||||       |         |
+            mkdir-5619  [005] .... 10249.262531: sys_mkdir(pathname: 7fff93cbfcb0, mode: 1ff)
+            mkdir-5620  [003] .... 10249.264613: sys_mkdir(pathname: 7ffcdc91ecb0, mode: 1ff)
+```
+
+One cool thing about this method is that it shows the function call for all processes on the system at once, although you can also filter PIDs of interest with `set_ftrace_pid`.
 
 Useful resources:
 
-- [How does strace connect to an already running process? (original)](https://stackoverflow.com/questions/7482076/how-does-strace-connect-to-an-already-running-process)
+- [How do I trace a system call in Linux? (original)](https://stackoverflow.com/questions/29840213/how-do-i-trace-a-system-call-in-linux)
+- [Does ftrace allow capture of system call arguments to the Linux kernel, or only function names?](https://stackoverflow.com/questions/27608752/does-ftrace-allow-capture-of-system-call-arguments-to-the-linux-kernel-or-only)
+- [How to trace just system call events with ftrace without showing any other functions in the Linux kernel?](https://stackoverflow.com/questions/52764544/how-to-trace-just-system-call-events-with-ftrace-without-showing-any-other-funct)
+- [What system call is used to load libraries in Linux?](https://unix.stackexchange.com/questions/226524/what-system-call-is-used-to-load-libraries-in-linux)
 
 </details>
 
