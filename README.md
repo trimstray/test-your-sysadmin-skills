@@ -3628,7 +3628,7 @@ Most of this activity is "bursty", meaning processes are typically quiescent wit
 
 If you take a situation where you have a lot of such bursty processes, you get a very irregular and spiky CPU usage plot.
 
-As "500 - Internal Server Error" says, the high number of context switches are going to make the situation even worse.
+As *`500 - Internal Server Error`* says, the high number of context switches are going to make the situation even worse.
 
 Useful resources:
 
@@ -3740,7 +3740,7 @@ Sample output:
 ```bash
 # tracer: nop
 #
-#                              _-----=> irqs-offhttps://sourceware.org/systemtap/documentation.html
+#                              _-----=> irqs-off https://sourceware.org/systemtap/documentation.html
 #                             / _----=> need-resched
 #                            | / _---=> hardirq/softirq
 #                            || / _--=> preempt-depth
@@ -4128,26 +4128,51 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to create user without useradd command in Linux?</b></summary><br>
+<summary><b>What steps to add a user to a system without using <code>useradd</code>/<code>adduser</code>?</b></summary><br>
 
-1. Add an entry of user details in <code>/etc/passwd</code>
+1. Add an entry of user details in <code>/etc/passwd</code> with `vipw`:
 
 ```bash
 # username:password:UID:GID:Comments:Home_Directory:Login Shell
 user:x:501:501:test user:/home/user:/bin/bash
 ```
 
-2. You will have to create a group with same name in <code>/etc/group</code>
+  > Be careful with the syntax. Do not edit directly with an editor. `vipw` locks the file, so that other commands won't try to update it at the same time.
+
+2. You will have to create a group with same name in <code>/etc/group</code> with `vigr` (similar tool for `vipw`):
 
 ```bash
 user:x:501:
 ```
 
-3. Assign a password to the user
+3. Assign a password to the user:
 
 ```bash
 passwd user
 ```
+
+4. Create the home directory of the user with mkdir:
+
+```bash
+mkdir -m 0700 /home/user
+```
+
+5. Copy the files from `/etc/skel` to the new home directory:
+
+```bash
+rsync -av --delete /etc/skel/ /home/user
+```
+
+6. Fix ownerships and permissions with `chown` and `chmod`:
+
+```bash
+chown -R user:user /home/user
+chmod -R go-rwx /home/user
+```
+
+Useful resources:
+
+- [What steps to add a user to a system without using useradd/adduser?](https://unix.stackexchange.com/questions/153225/what-steps-to-add-a-user-to-a-system-without-using-useradd-adduser)
 
 </details>
 
