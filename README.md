@@ -73,13 +73,13 @@
 - <b>Do you contribute to any open source projects?</b>
 - <b>Describe the setup of your homelab.</b>
 - <b>What personal achievement are you most proud of?</b>
-- <b>Tell me about the biggest mistake you've made.</b>
+- <b>Tell me about the biggest mistake you've made. How you would do it differently today?</b>
 - <b>Tell me about your favorite UNIX-like system.</b>
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
 - <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
-- <b>Which question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
+- <b>Which sysadmin question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -1672,7 +1672,7 @@ __EOF__
 </details>
 
 <details>
-<summary><b>How to add and change the kernel parameters?</b></summary><br>
+<summary><b>How to change the kernel parameters? What kernel options might you need to tune?</b></summary><br>
 
 To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
