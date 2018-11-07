@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **257** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **260** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -58,7 +58,7 @@
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 54 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 89 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 91 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
 
@@ -1150,7 +1150,7 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (53)
+###### System Questions (54)
 
 <details>
 <summary><b>What is your experience with the production environments? *</b></summary><br>
@@ -1987,6 +1987,15 @@ Most UNIX-like operating systems, including Linux and BSD, provide ways to limit
 <summary><b>What are soft limits and hard limits?</b></summary><br>
 
 Hard limit is the maximum allowed to a user, set by the superuser or root. This value is set in the file **/etc/security/limits.conf**. The user can increase the soft limit on their own in times of needing more resources, but cannot set the soft limit higher than the hard limit.
+
+</details>
+
+<details>
+<summary><b>During configuration HAProxy to working with Redis you get <code>General socket error (Permission denied)</code> from log. SELinux is enable. Explain basic SELinux troubleshooting in CLI. *</b></summary><br>
+
+Useful resources:
+
+- [Basic SELinux Troubleshooting in CLI](https://access.redhat.com/articles/2191331)
 
 </details>
 
@@ -4248,7 +4257,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (21)
+###### Network Questions (22)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -4458,6 +4467,13 @@ If there is a cookie set, then the browser sends the following in its request he
 </details>
 
 <details>
+<summary><b>How to prevent processing requests in web server e.g. Nginx with undefined server names? No defined default server name rule can be security issue? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>What is the proper way to test NFS performance?
 </b></summary><br>
 
@@ -4618,7 +4634,7 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (3)
+###### Devops Questions (4)
 
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
@@ -4644,6 +4660,13 @@ Below are the advantages of containerization over virtualization:
 - containers are lightweight when compared to VMs
 - VMs have limited performance when compared to containers
 - containers have better resource utilization compared to VMs
+
+</details>
+
+<details>
+<summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. *</b></summary><br>
+
+To be completed.
 
 </details>
 
