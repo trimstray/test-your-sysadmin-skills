@@ -56,8 +56,8 @@
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 55 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 88 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 54 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 89 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 88 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
@@ -85,7 +85,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (31)
+###### System Questions (30)
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
@@ -196,13 +196,6 @@ Useful resources:
 Useful resources:
 
 - [First 5 Commands When I Connect on a Linux Server (original)](https://www.linux.com/blog/first-5-commands-when-i-connect-linux-server)
-
-</details>
-
-<details>
-<summary><b>What is your experience with the production environments? *</b></summary><br>
-
-To be completed.
 
 </details>
 
@@ -1157,7 +1150,14 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (52)
+###### System Questions (53)
+
+<details>
+<summary><b>What is your experience with the production environments? *</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>Explain the boot process of the Linux system.</b></summary><br>
