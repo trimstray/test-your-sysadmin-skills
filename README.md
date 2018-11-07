@@ -522,8 +522,7 @@ Useful resources:
 </details>
 
 <details>
-
-<summary><b>What does a <code>kill</code> command do?</b></summary><br>
+<summary><b>What does <code>kill</code> command do?</b></summary><br>
 
 In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
 
@@ -1673,7 +1672,7 @@ For example:<br>
 # cat  >filename ... - overwrite file
 # cat >>filename ... - append to file
 cat > filename << __EOF__
-data data data
+data
 __EOF__
 ```
 
@@ -4475,7 +4474,7 @@ If there is a cookie set, then the browser sends the following in its request he
 </details>
 
 <details>
-<summary><b>How to prevent processing requests in web server e.g. Nginx with undefined server names? No defined default server name rule can be security issue? *</b></summary><br>
+<summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? *</b></summary><br>
 
 To be completed.
 
@@ -4679,7 +4678,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>You have to prepare a redis cluster. How will you ensure security?</b></summary><br>
+<summary><b>You have to prepare a Redis cluster. How will you ensure security?</b></summary><br>
 
 - protect a given Redis instance from outside accesses via firewall
 - binding it to 127.0.0.1 if only local clients are accessing it
