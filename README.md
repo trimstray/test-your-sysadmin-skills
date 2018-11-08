@@ -64,7 +64,7 @@
 
 ## <a name="introduction">Introduction</a>
 
-### :diamond_shape_with_a_dot_inside: <a name="icebreaker-questions">Simple Questions</a>
+### :diamond_shape_with_a_dot_inside: <a name="icebreaker-questions">Icebreaker Questions</a>
 
 - <b>What did you learn this week?</b>
 - <b>What excites or interests you about the sysadmin world?</b>
