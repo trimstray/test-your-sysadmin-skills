@@ -52,7 +52,7 @@
 
 ## Table of Contents
 
-| <b>[Basic Knowledge](#basic-knowledge)</b> ||
+| <b>[Introduction](#introduction)</b> ||
 | :---         | :---         |
 | :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
@@ -62,9 +62,9 @@
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
 
-## <a name="general-knowledge">Basic Knowledge</a>
+## <a name="introduction">Introduction</a>
 
-### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
+### :diamond_shape_with_a_dot_inside: <a name="icebreaker-questions">Simple Questions</a>
 
 - <b>What did you learn this week?</b>
 - <b>What excites or interests you about the sysadmin world?</b>
