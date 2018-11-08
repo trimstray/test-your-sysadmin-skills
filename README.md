@@ -3567,7 +3567,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the main advantage of using <code>chroot</code>? When and why is it used? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
+<summary><b>What is the main advantage of using <code>chroot</code>? When and  why do we use it? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
 
 An advantage of having a chroot environment is the file-system is totally isolated from the physical host. `chroot` has a separate file-system inside the file-system, the difference is its uses a newly created root(/) as its root directory.
 
