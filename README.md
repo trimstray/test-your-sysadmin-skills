@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **272** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **274** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -56,9 +56,9 @@
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 60 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 61 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 94 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
 
@@ -85,7 +85,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (36)
+###### System Questions (37)
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
@@ -782,6 +782,13 @@ Key-based authentication is a kind of authentication that may be used as an alte
 Useful resources:
 
 - [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
+
+</details>
+
+<details>
+<summary><b>What is your the best command line text editor for daily working and scripting? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -4840,7 +4847,7 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (4)
+###### Devops Questions (5)
 
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
@@ -4877,6 +4884,23 @@ To be completed.
 </details>
 
 <details>
+<summary><b>Some of the common use cases of LXC and LXD come from the following requirements... Explain.</b></summary><br>
+
+- the need for an isolated development environment without polluting your host machine
+- isolation within production servers and the possibility to run more than one service in its own container
+- a need to test things with more than one version of the same software or different operating system environments
+- experimenting with different and new releases of GNU/Linux distributions without having to install them on a physical host machine
+- trying out a software or development stack that may or may not be used after some playing around
+- installing many types of software in your primary development machine or production server and maintaining them on a longer run
+- doing a dry run of any installation or maintenance task before actually executing it on production machines
+- better utilization and provisioning of server resources with multiple services running for different users or clients
+- high-density virtual private server (VPS) hosting, where isolation without the cost of full virtualization is needed
+- easy access to host hardware from a container, compared to complicated access methods from virtual machines
+- multiple build environments with different customizations in place
+
+</details>
+
+<details>
 <summary><b>You have to prepare a Redis cluster. How will you ensure security?</b></summary><br>
 
 - protect a given Redis instance from outside accesses via firewall
@@ -4886,7 +4910,7 @@ To be completed.
 - enabling **Protected Mode**
 - data encryption support (e.g. `spiped`)
 - disabling of specific commands
-- users ACLs
+- users **ACLs**
 
 Useful resources:
 
