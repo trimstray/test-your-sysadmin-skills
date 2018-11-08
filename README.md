@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **260** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **261** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,7 +57,7 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 54 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 89 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 90 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 91 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
@@ -2399,7 +2399,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (25)
+###### Network Questions (26)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
@@ -2533,6 +2533,17 @@ UDP is faster than TCP, and the simple reason is because its nonexistent acknowl
 Useful resources:
 
 - [UDP vs TCP, how much faster is it?](https://stackoverflow.com/questions/47903/udp-vs-tcp-how-much-faster-is-it)
+
+</details>
+
+<details>
+<summary><b>Which, in your opinion, are the 5 most important OpenSSH parameters that improve the security of this service? *</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [OpenSSH security and hardening](https://linux-audit.com/audit-and-harden-your-ssh-configuration/)
 
 </details>
 
@@ -3564,9 +3575,46 @@ In Unix and related computer operating systems, a file descriptor (FD, less freq
 </details>
 
 <details>
-<summary><b>What is an open file table?</b></summary><br>
+<summary><b>Which way of additionally feeding random entropy pool would you suggest for producing random passwords? How to improve it?</b></summary><br>
 
-The process table entry (aka process control block) contains a table, the file descriptor table that gives the mapping between the descriptor the process uses to refer to a file connection and the data structure inside the kernel that represents the actual file connection.
+You should use `/dev/urandom`, not `/dev/random`. The two differences between `/dev/random` and `/dev/urandom` are:
+
+ - `/dev/random` might be theoretically better _in the context of an information-theoretically secure algorithm_. This is the kind of algorithm which is secure against today's technology, and also tomorrow's technology, and technology used by aliens, and God's own iPad as well.
+
+ - `/dev/urandom` will not block, while `/dev/random` may do so. `/dev/random` maintains a counter of "how much entropy it still has" under the assumption that any bits it has produced is a lost entropy bit. Blocking induces very real issues, e.g. a server which fails to boot after an automated install because it is stalling on its SSH server key creation.
+
+So you want to use `/dev/urandom` and stop to worry about this entropy business.
+
+The trick is that `/dev/urandom` never blocks, ever, even when it should: `/dev/urandom` is secure as long as it has received enough bytes of "initial entropy" since the last boot (32 random bytes are enough). A normal Linux installation will create a random seed (from `/dev/random`) upon installation, and save it on the disk. Upon each reboot, the seed will be read, fed into `/dev/urandom`, and a new seed immediately generated (from `/dev/urandom`) to replace it. Thus, this guarantees that `/dev/urandom` will always have enough initial entropy to produce cryptographically strong alea, perfectly sufficient for any mundane cryptographic job, including password generation.
+
+Should any of these daemons require randomness when all available entropy has been exhausted, they may pause to wait for more, which can cause excessive delays in your application. Even worse, since most modern applications will either resort to using its own random seed created at program initialization, or to using `/dev/urandom` to avoid blocking, your applications will suffer from lower quality random data. This can affect the integrity of your secure communications, and can increase the chance of cryptanalysis on your private data.
+
+To check the amount of bytes of entropy currently available, use:
+
+```bash
+cat /proc/sys/kernel/random/entropy_avail
+```
+
+**rng-tools**
+
+Fedora/Rh/Centos types: `sudo yum install rng-tools`.
+
+On deb types: `sudo apt-get install rng-tools` to set it up.
+
+Then run `sudo rngd -r /dev/urandom` before generating the keys.
+
+**haveged**
+
+Fedora/Rh/Centos types: `sudo yum install haveged` and add `/usr/local/sbin/haveged -w 1024` to `/etc/rc.local`.
+
+On deb types: `sudo apt-get install haveged` and add `DAEMON_ARGS="-w 1024"` to `/etc/default/haveged` to set it up.
+
+Then run `sudo rngd -r /dev/urandom` before generating the keys.
+
+Useful resources:
+
+- [Feeding /dev/random entropy pool? (original)](https://security.stackexchange.com/questions/89/feeding-dev-random-entropy-pool)
+- [GPG does not have enough entropy](https://serverfault.com/questions/214605/gpg-does-not-have-enough-entropy)
 
 </details>
 
