@@ -54,7 +54,7 @@
 
 | <b>[Basic Knowledge](#basic-knowledge)</b> ||
 | :---         | :---         |
-| :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
+| :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 61 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions |
