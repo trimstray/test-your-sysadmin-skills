@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **261** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **272** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -56,9 +56,9 @@
 | :---         | :---         |
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 54 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 90 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 91 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 60 questions |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 94 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
 
@@ -85,7 +85,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (30)
+###### System Questions (36)
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
@@ -181,6 +181,13 @@ I also like the ZSH shell, because is much more customizable than BASH. It has t
 Useful resources:
 
 - [Comparison of command shells](https://en.wikipedia.org/wiki/Comparison_of_command_shells)
+
+</details>
+
+<details>
+<summary><b>How do you getting to know the command line? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -319,6 +326,13 @@ Useful resources:
 - [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
 - [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
 - [What is/are the advantage(s) of running applications in backgound?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
+
+</details>
+
+<details>
+<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -565,6 +579,48 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>Execute combine multiple linux commands in one line.</b></summary><br>
+
+If you want to execute each command only if the previous one succeeded, then combine them using the `&&` operator:
+
+```bash
+cd /my_folder && rm *.jar && svn co path to repo && mvn compile package install
+```
+
+If one of the commands fails, then all other commands following it won't be executed.
+
+If you want to execute all commands regardless of whether the previous ones failed or not, separate them with semicolons:
+
+```bash
+cd /my_folder; rm *.jar; svn co path to repo; mvn compile package install
+```
+
+In your case, I think you want the first case where execution of the next command depends on the success of the previous one.
+
+You can also put all commands in a script and execute that instead:
+
+```bash
+#! /bin/sh
+cd /my_folder \
+&& rm *.jar \
+&& svn co path to repo \
+&& mvn compile package install
+```
+
+Useful resources:
+
+- [Execute combine multiple linux commands in one line (original)](https://stackoverflow.com/questions/13077241/execute-combine-multiple-linux-commands-in-one-line)
+
+</details>
+
+<details>
+<summary><b>What symbolic representation can you pass to <code>chmod</code> to give all users execute access to a file without affecting other permissions? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>How can I sync two local directories?</b></summary><br>
 
 To sync the contents of dir1 to dir2 on the same system, type:
@@ -719,6 +775,17 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What is key-based authentication? Explain.</b></summary><br>
+
+Key-based authentication is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
+
+Useful resources:
+
+- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
+
+</details>
+
+<details>
 <summary><b>Why would you want to mount servers in a rack?</b></summary><br>
 
 - Protecting Hardware
@@ -733,7 +800,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (19)
+###### Network Questions (20)
 
 <details>
 <summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. *</b></summary><br>
@@ -809,6 +876,13 @@ Useful resources:
 Useful resources:
 
 - [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+
+</details>
+
+<details>
+<summary><b>What POP and IMAP are, and how to choose which of them you should implement.</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -1157,10 +1231,17 @@ Security misconfiguration is a vulnerability when a device/application/network i
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (54)
+###### System Questions (56)
 
 <details>
 <summary><b>What is your experience with the production environments? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Which distribution would you select for running a major web server? *</b></summary><br>
 
 To be completed.
 
@@ -1266,6 +1347,19 @@ To be completed.
 Useful resources:
 
 - [Linux Processes](https://www.tldp.org/LDP/tlk/kernel/processes.html)
+
+</details>
+
+<details>
+<summary><b>Explain the selected information you can see in <code>top</code> and <code>htop</code>. How to diagnose load, high user time and out-of-memory problems with these tools? *</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [top explained visually](https://www.svennd.be/top-explained-visually/)
+- [htop Explained Visually](https://codeahoy.com/2017/01/20/hhtop-explained-visually/)
+- [Explanation of everything you can see in htop/top on Linux](https://peteris.rocks/blog/htop/)
 
 </details>
 
@@ -1891,6 +1985,13 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>What is the proper way to upgrade and update a system in production? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>Present and explain the good ways of using the <code>kill</code> command.</b></summary><br>
 
 Speaking of killing processes never use `kill -9/SIGKILL` unless absolutely mandatory. This kill can cause problems because of its brute force.
@@ -1969,17 +2070,6 @@ Useful resources:
 
 - [What is the algorithm used to encrypt Linux passwords?](https://crypto.stackexchange.com/questions/40841/what-is-the-algorithm-used-to-encrypt-linux-passwords)
 - [How to find the hashing algorithm used to obfuscate passwords?](https://unix.stackexchange.com/questions/430141/how-to-find-the-hashing-algorithm-used-to-obfuscate-passwords)
-
-</details>
-
-<details>
-<summary><b>What is key-based authentication? Explain.</b></summary><br>
-
-Key-based authentication is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
-
-Useful resources:
-
-- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
 
 </details>
 
@@ -2998,7 +3088,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (59)
+###### System Questions (61)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
@@ -3082,6 +3172,13 @@ Useful resources:
 
 - [Understanding /etc/passwd File Format](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
 - [What is difference between /etc/shadow and /etc/passwd](https://askubuntu.com/questions/445361/what-is-difference-between-etc-shadow-and-etc-passwd)
+
+</details>
+
+<details>
+<summary><b>Write the most important rules for using root privileges safely for novice administrators. *</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -3619,8 +3716,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?
-</b></summary><br>
+<summary><b>What is the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?</b></summary><br>
 
 When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available'.
 
@@ -3636,8 +3732,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the meaning of the error <code>maxproc limit exceeded by uid %i ...</code> in FreeBSD?
-</b></summary><br>
+<summary><b>Which symptoms might be suffering from a disk bottleneck? *</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is the meaning of the error <code>maxproc limit exceeded by uid %i ...</code> in FreeBSD?</b></summary><br>
 
 The FreeBSD kernel will only allow a certain number of processes to exist at one time. The number is based on the **kern.maxusers** variable.
 
@@ -4312,7 +4414,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (22)
+###### Network Questions (23)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
@@ -4539,6 +4641,55 @@ But we have some good tools for testing this.
 - <b>boonie</b> - a classical performances evaluation tool tests. The main program tests database type access to a single file (or a set of files if you wish to test more than 1G of storage), and it tests creation, reading, and deleting of small files which can simulate the usage of programs such as Squid, INN, or Maildir format email.
 - <b>DBench</b> - was written to allow independent developers to debug and test SAMBA. It is heavily inspired of the original SAMBA tool.
 - <b>IOZone</b> - performance tests suite. POSIX and 64 bits compliant. This tests is the file system test from the L.S.E. Main features: POSIX async I/O, Mmap() file I/O, Normal file I/O Single stream measurement, Multiple stream measurement, Distributed file server measurements (Cluster) POSIX pthreads, Multi-process measurement Selectable measurements with fsync, O_SYNC Latency plots.
+
+</details>
+
+<details>
+<summary><b>You need to block several IP addresses from the same subnet. Which is more efficient for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
+
+If you have a system with thousands of routes defined in the routing table and nothing in the iptables rules than it might actually be more efficient to input an iptables rule.
+
+In most systems however the routing table is fairly small, in cases like this it is actually more efficient to use null routes. This is especially true if you already have extensive iptables rules in place.
+
+Assuming you're blocking based on source address and not destination, then doing the DROP in raw/PREROUTING would work well as you would essentially be able to drop the packet before any routing decision is made.
+
+Remember however that iptables rules are essentially a linked-list and for optimum performance when blocking a number of addresses you should use an `ipset`.
+
+On the other hand if blocking by destination, there is likely little difference between blocking at the routing table vs iptables EXCEPT if source IPs are spoofed in which case the blackholed entries may consume routing cache resources; in this case, raw/PREROUTING remains preferable.
+
+Your outgoing route isn't going to matter until you try to send a packet back to the attacker. By that time you will have already incurred most of the cost of socket setup and may even have a thread blocking waiting for the kernel to conclude you have no route to host, plus whatever error handling your server process does when it concludes there's a network problem.
+
+iptables or another firewall will allow you to block the incoming traffic and discard it before it reaches the daemon process on your server. It seems clearly superior in this use case.
+
+```bash
+iptables -A INPUT -s 192.168.200.0/24 -j DROP
+```
+
+When you define a route on a Linux/Unix system it tells the system in order to communicate with the specified IP address you will need to route your network communication to this specific place.
+
+When you define a null route it simply tells the system to drop the network communication that is designated to the specified IP address. What this means is any TCP based network communication will not be able to be established as your server will no longer be able to send an SYN/ACK reply. Any UDP based network communication however will still be received; however your system will no longer send any response to the originating IP.
+
+While iptables can accept tens of thousands of rules in a chain, the chains are walked sequentially until a match is found on every packet. So, lots of rules can lead to the system spending amazing amounts of CPU time walking through the rules.
+
+The routing rules are much simpler than iptables. With iptables, a match can be based on many different variables including protocols, source and destination packets, and even other packets that were sent before the current packet.
+
+In routing, all that matters is the remote IP address, so it's very easy to optimize. Also, many systems have a lot of routing rules. A typical system may only have 5 or 10, but something that's acting as a BGP router can have tens of thousands. So, for a very long time there have been extensive optimizations in selecting the right route for a particular packet.
+
+In less technical terms this means your system will receive data from the attackers but no longer respond to it.
+
+```bash
+ip route add blackhole 192.168.200.0/24
+```
+
+or
+
+```bash
+ip route add 192.168.200.0/24 via 127.0.0.1
+```
+
+Useful resources:
+
+- [The difference between iptables DROP and null-routing.](https://www.tummy.com/blogs/2006/07/27/the-difference-between-iptables-drop-and-null-routing/)
 
 </details>
 
