@@ -38,7 +38,7 @@
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: Questions marked **`*`** don't have answer yet or answer is incomplete - **make a pull request to add them**.
+:warning: Questions marked **`***`** don't have answer yet or answer is incomplete (**43** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -185,7 +185,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you getting to know the command line? *</b></summary><br>
+<summary><b>How do you getting to know the command line? ***</b></summary><br>
 
 To be completed.
 
@@ -330,7 +330,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? *</b></summary><br>
+<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? ***</b></summary><br>
 
 To be completed.
 
@@ -471,7 +471,7 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? *</b></summary><br>
+<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
 
 Useful resources:
 
@@ -614,7 +614,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What symbolic representation can you pass to <code>chmod</code> to give all users execute access to a file without affecting other permissions? *</b></summary><br>
+<summary><b>What symbolic representation can you pass to <code>chmod</code> to give all users execute access to a file without affecting other permissions? ***</b></summary><br>
 
 To be completed.
 
@@ -786,7 +786,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is your the best command line text editor for daily working and scripting? *</b></summary><br>
+<summary><b>What is your the best command line text editor for daily working and scripting? ***</b></summary><br>
 
 To be completed.
 
@@ -810,7 +810,7 @@ Useful resources:
 ###### Network Questions (20)
 
 <details>
-<summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. *</b></summary><br>
+<summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. ***</b></summary><br>
 
 To be completed.
 
@@ -1258,14 +1258,14 @@ Useful resources:
 ###### System Questions (56)
 
 <details>
-<summary><b>What is your experience with the production environments? *</b></summary><br>
+<summary><b>What is your experience with the production environments? ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Which distribution would you select for running a major web server? *</b></summary><br>
+<summary><b>Which distribution would you select for running a major web server? ***</b></summary><br>
 
 To be completed.
 
@@ -1364,7 +1364,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How the Linux kernel creates, manages and deletes the processes in the system? *</b></summary><br>
+<summary><b>How the Linux kernel creates, manages and deletes the processes in the system? ***</b></summary><br>
 
 To be completed.
 
@@ -1375,7 +1375,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain the selected information you can see in <code>top</code> and <code>htop</code>. How to diagnose load, high user time and out-of-memory problems with these tools? *</b></summary><br>
+<summary><b>Explain the selected information you can see in <code>top</code> and <code>htop</code>. How to diagnose load, high user time and out-of-memory problems with these tools? ***</b></summary><br>
 
 To be completed.
 
@@ -1567,7 +1567,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How does the sticky bit work? The **SUID/GUID** is the same?</b></summary><br>
+<summary><b>How does the sticky bit work? The <code>SUID/GUID</code> is the same?</b></summary><br>
 
 This is probably one of my most irksome things that people mess up all the time. The **SUID/GUID** bit and the **sticky-bit** are 2 completely different things.
 
@@ -1758,7 +1758,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? *</b></summary><br>
+<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? ***</b></summary><br>
 
 To be completed.
 
@@ -1823,7 +1823,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe your data backup process. How often should you test your backups? *</b></summary><br>
+<summary><b>Describe your data backup process. How often should you test your backups? ***</b></summary><br>
 
 To be completed.
 
@@ -2009,7 +2009,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to upgrade and update a system in production? *</b></summary><br>
+<summary><b>What is the proper way to upgrade and update a system in production? ***</b></summary><br>
 
 To be completed.
 
@@ -2112,7 +2112,7 @@ Most UNIX-like operating systems, including Linux and BSD, provide ways to limit
 </details>
 
 <details>
-<summary><b>During configuration HAProxy to working with Redis you get <code>General socket error (Permission denied)</code> from log. SELinux is enable. Explain basic SELinux troubleshooting in CLI. *</b></summary><br>
+<summary><b>During configuration HAProxy to working with Redis you get <code>General socket error (Permission denied)</code> from log. SELinux is enable. Explain basic SELinux troubleshooting in CLI. ***</b></summary><br>
 
 Useful resources:
 
@@ -2174,7 +2174,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>A project manager needs a new SQL Server. What do you ask her/his? *</b></summary><br>
+<summary><b>A project manager needs a new SQL Server. What do you ask her/his? ***</b></summary><br>
 
 I want the DBA to ask questions like:
 
@@ -2516,7 +2516,7 @@ Useful resources:
 ###### Network Questions (26)
 
 <details>
-<summary><b>Configure a virtual interface on your workstation. *</b></summary><br>
+<summary><b>Configure a virtual interface on your workstation. ***</b></summary><br>
 
 To be completed.
 
@@ -2548,21 +2548,21 @@ If domain not resolved it's probably probem with DNS servers.
 </details>
 
 <details>
-<summary><b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms. *</b></summary><br>
+<summary><b>Load balancing can dramatically impact server performance. Discuss several load balancing mechanisms. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>List examples of network troubleshooting tools that can degrade during DNS issues. *</b></summary><br>
+<summary><b>List examples of network troubleshooting tools that can degrade during DNS issues. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. *</b></summary><br>
+<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. ***</b></summary><br>
 
 To be completed.
 
@@ -2651,7 +2651,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Which, in your opinion, are the 5 most important OpenSSH parameters that improve the security of this service? *</b></summary><br>
+<summary><b>Which, in your opinion, are the 5 most important OpenSSH parameters that improve the security? ***</b></summary><br>
 
 To be completed.
 
@@ -3115,14 +3115,14 @@ Abiding by a set of standards set by a government/Independent party/organisation
 ###### System Questions (61)
 
 <details>
-<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. *</b></summary><br>
+<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Tell me how code gets deployed in your current production. *</b></summary><br>
+<summary><b>Tell me how code gets deployed in your current production. ***</b></summary><br>
 
 To be completed.
 
@@ -3200,7 +3200,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Write the most important rules for using root privileges safely for novice administrators. *</b></summary><br>
+<summary><b>Write the most important rules for using root privileges safely for novice administrators. ***</b></summary><br>
 
 To be completed.
 
@@ -3230,7 +3230,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What principles to follow for successful system performance tuning? *</b></summary><br>
+<summary><b>What principles to follow for successful system performance tuning? ***</b></summary><br>
 
 To be completed.
 
@@ -3350,7 +3350,7 @@ Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
 </details>
 
 <details>
-<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? *</b></summary><br>
+<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
 
 To be completed.
 
@@ -3376,7 +3376,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Can’t mount the root file system. Why? *</b></summary><br>
+<summary><b>Can’t mount the root file system. Why? ***</b></summary><br>
 
 To be completed.
 
@@ -3388,7 +3388,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have to delete 100GB files. Which method will be the most optimal? *</b></summary><br>
+<summary><b>You have to delete 100GB files. Which method will be the most optimal? ***</b></summary><br>
 
 To be completed.
 
@@ -3423,7 +3423,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What considerations come into play when designing a highly available application, both at the architecture level and the application level? *</b></summary><br>
+<summary><b>What considerations come into play when designing a highly available application, both at the architecture level and the application level? ***</b></summary><br>
 
 To be completed.
 
@@ -3480,7 +3480,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are some of the benefits of using systemd over SysV init? *</b></summary><br>
+<summary><b>What are some of the benefits of using systemd over SysV init? ***</b></summary><br>
 
 To be completed.
 
@@ -3502,7 +3502,7 @@ done
 </details>
 
 <details>
-<summary><b>You need to copy a large amount of data. Explain the most effective way. *</b></summary><br>
+<summary><b>You need to copy a large amount of data. Explain the most effective way. ***</b></summary><br>
 
 To be completed.
 
@@ -3530,7 +3530,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Python dev team in your company have a dilemma what to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? *</b></summary><br>
+<summary><b>Python dev team in your company have a dilemma what to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? ***</b></summary><br>
 
 To be completed.
 
@@ -3756,7 +3756,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Which symptoms might be suffering from a disk bottleneck? *</b></summary><br>
+<summary><b>Which symptoms might be suffering from a disk bottleneck? ***</b></summary><br>
 
 To be completed.
 
@@ -3799,7 +3799,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>The client reports that his site received a grade B in the ssllabs scanner. Prepare a checklist of best practice for ssl configuration. *</b></summary><br>
+<summary><b>The client reports that his site received a grade B in the ssllabs scanner. Prepare a checklist of best practice for ssl configuration. ***</b></summary><br>
 
 Useful resources:
 
@@ -4432,7 +4432,7 @@ rm ./-fr
 </details>
 
 <details>
-<summary><b>Write a simple bash script (or pair of scripts) to backup and restore your system. *</b></summary><br>
+<summary><b>Write a simple bash script (or pair of scripts) to backup and restore your system. ***</b></summary><br>
 
 To be completed.
 
@@ -4441,14 +4441,14 @@ To be completed.
 ###### Network Questions (23)
 
 <details>
-<summary><b>Create SPF records for your site to help control spam. *</b></summary><br>
+<summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? *</b></summary><br>
+<summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? ***</b></summary><br>
 
 To be completed.
 
@@ -4493,14 +4493,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? *</b></summary><br>
+<summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>How to find a domain based on the IP address? What techniques/tools can you use? *</b></summary><br>
+<summary><b>How to find a domain based on the IP address? What techniques/tools can you use? ***</b></summary><br>
 
 To be completed.
 
@@ -4523,7 +4523,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you do load testing and capacity planning for web sites? *</b></summary><br>
+<summary><b>How do you do load testing and capacity planning for web sites? ***</b></summary><br>
 
 To be completed.
 
@@ -4559,7 +4559,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is a reasonable TTL for cached content given the following parameters? *</b></summary><br>
+<summary><b>What is a reasonable TTL for cached content given the following parameters? ***</b></summary><br>
 
 To be completed.
 
@@ -4648,7 +4648,7 @@ If there is a cookie set, then the browser sends the following in its request he
 </details>
 
 <details>
-<summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? *</b></summary><br>
+<summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? ***</b></summary><br>
 
 To be completed.
 
@@ -4894,7 +4894,7 @@ Below are the advantages of containerization over virtualization:
 </details>
 
 <details>
-<summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. *</b></summary><br>
+<summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. ***</b></summary><br>
 
 To be completed.
 
@@ -4939,7 +4939,7 @@ Useful resources:
 ###### Cyber Security Questions (5)
 
 <details>
-<summary><b>What is OWASP Application Security Verification Standard? Explain in a few points. *</b></summary><br>
+<summary><b>What is OWASP Application Security Verification Standard? Explain in a few points. ***</b></summary><br>
 
 To be completed.
 
