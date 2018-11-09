@@ -475,6 +475,8 @@ Useful resource:
 <details>
 <summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
 
+To be completed.
+
 Useful resources:
 
 - [How to kill a script running in terminal, without closing terminal (Ctrl + C doesn't work)? (original)](https://askubuntu.com/questions/520107/how-to-kill-a-script-running-in-terminal-without-closing-terminal-ctrl-c-doe)
@@ -703,7 +705,7 @@ Useful resources:
 <details>
 <summary><b>What are the main reasons for keeping old log files?</b></summary><br>
 
-They are essential to investigate issues on the system. Log management is absolutely critical for IT security.
+They are essential to investigate issues on the system. **Log management** is absolutely critical for IT security.
 
 Servers, firewalls, and other IT equipment keep log files that record important events and transactions. This information can provide important clues about hostile activity affecting your network from within and without. Log data can also provide information for identifying and troubleshooting equipment problems including configuration problems and hardware failure.
 
@@ -932,7 +934,7 @@ Useful resources:
 
 `ping` uses **ICMP**, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with **ICMP**. Ports are associated with the two IP transport layer protocols, TCP and UDP. **ICMP**, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
 
-**ICMP** packets are identified by the 'protocol' field in the IP datagram header. **ICMP** does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the **ICMP** message is carried directly in an IP datagram data field. ('raw' comes from how this is implemented in software, to create and send an ICMP message, one opens a 'raw' socket, builds a buffer containing the **ICMP** message, and then writes the buffer containing the message to the raw socket.)
+**ICMP** packets are identified by the 'protocol' field in the IP datagram header. **ICMP** does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the **ICMP** message is carried directly in an IP datagram data field. `raw` comes from how this is implemented in software, to create and send an **ICMP** message, one opens a `raw` socket, builds a buffer containing the **ICMP** message, and then writes the buffer containing the message to the raw socket.
 
 The IP protocol value for **ICMP** is 1. The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.
 
@@ -958,9 +960,9 @@ To troubleshoot communication problems between servers, it is better to ideally 
 
 2. **Transport Layer**: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
 
-3. **Network Layer**: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+3. **Network Layer**: is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
 
-4. **Physical Layer**: Are the servers connected to a network? Are packets being lost?
+4. **Physical Layer**: are the servers connected to a network? Are packets being lost?
 
 </details>
 
@@ -1025,7 +1027,7 @@ nc -vz code42.example.com 5432
 </details>
 
 <details>
-<summary><b>Why should you avoid Telnet to administer a system remotely?</b></summary><br>
+<summary><b>Why should you avoid <code>telnet</code> to administer a system remotely?</b></summary><br>
 
 Modern operating systems have turned off all potentially insecure services by default. On the other hand, some verndors of network devices still allow to establish communication using the telnet protocol.
 
@@ -1124,7 +1126,7 @@ Useful resources:
 <details>
 <summary><b>What is the difference between a router and a gateway? What is the default gateway?</b></summary><br>
 
-**Router** describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "you set up a router as gateway". Another term is hop which describes the forwarding in between subnets.
+**Router** describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "_you set up a router as gateway_". Another term is hop which describes the forwarding in between subnets.
 
 The term **default gateway** is used to mean the router on your LAN which has the responsibility of being the first point of contact for traffic to computers outside the LAN.
 
@@ -2445,7 +2447,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Is there an easy way to search inside 1000s of files in a complex directory structure to find files which contain a specific string within the file?</b></summary><br>
+<summary><b>Is there an easy way to search inside 1000s of files in a complex directory structure to find files which contain a specific string?</b></summary><br>
 
 For example use `fgrep`:
 
@@ -2797,7 +2799,7 @@ Useful resources:
 <details>
 <summary><b>You get <code>curl: (56) TCP connection reset by peer</code>. What steps will you take to solve this problem?</b></summary><br>
 
-- check if the URL is correct, maybe you should add **www** or set correctly `Host:` header? Check also scheme (http or https)
+- check if the URL is correct, maybe you should add `www` or set correctly `Host:` header? Check also scheme (http or https)
 - check the domain is resolving into a correct IP address
 - enable debug tracing with `--trace-ascii curl.dump`. `Recv failure` is a really generic error so its hard for more info
 - use external proxy with `--proxy` for debug connection from external ip
@@ -3095,7 +3097,7 @@ git submodule update --init --recursive
 - it has got command level Atomic Operation (tx operation)
 - supports for rich data types like hashes, sets, bitmaps
 
-`redis-cli` is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.
+`redis-cli` is the **Redis** command line interface, a simple program that allows to send commands to **Redis**, and read the replies sent by the server, directly from the terminal.
 
 Useful resources:
 
