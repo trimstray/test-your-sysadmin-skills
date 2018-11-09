@@ -34,7 +34,7 @@
 
 ****
 
-:information_source: This project contains **274** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: This project contains **275** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -56,7 +56,7 @@
 | :---         | :---         |
 | :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions |
 | <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 61 questions |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 62 questions |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
@@ -225,11 +225,11 @@ In the order of output:
 
 File permissions is displayed as following:
 
-- first character is `-` or `l` or `d`, d indicates a directory, a line represents a file, l is a symlink (or soft link) - special type of file
+- first character is `-` or `l` or `d`, `d` indicates a directory, a `-` represents a file, `l` is a symlink (or soft link) - special type of file
 - three sets of characters, three times, indicating permissions for owner, group and other:
-  - r = readable
-  - w = writable
-  - x = executable
+  - `r` = readable
+  - `w` = writable
+  - `x` = executable
 
 In your example `-rwxrw-r--`, this means the line displayed is:
 
@@ -382,10 +382,10 @@ It is meant to give you an idea of the state of the system, averaged over severa
 
 Some interpretations:
 
-- if the averages are 0.0, then your system is idle.
-- if the 1 minute average is higher than the 5 or 15 minute averages, then load is increasing.
-- if the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing.
-- if they are higher than your CPU count, then you might have a performance problem (it depends).
+- if the averages are 0.0, then your system is idle
+- if the 1 minute average is higher than the 5 or 15 minute averages, then load is increasing
+- if the 1 minute average is lower than the 5 or 15 minute averages, then load is decreasing
+- if they are higher than your CPU count, then you might have a performance problem (it depends)
 
 Useful resources:
 
@@ -485,7 +485,7 @@ Useful resources:
 
 The `grep` utilities are a family of Unix tools, including `egrep` and `fgrep`.
 
-`grep` searches file patterns. If you are looking for a specific pattern in the output of another command, grep highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.
+`grep` searches file patterns. If you are looking for a specific pattern in the output of another command, `grep` highlights the relevant lines. Use this grep command for searching log files, specific processes, and more.
 
 For match multiple strings:
 
@@ -526,7 +526,7 @@ Useful resources:
 - **SIGHUP** - is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.
 - **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing `Ctrl+C`, but on some systems, the "delete" character or "break" key can be used.
 - **SIGKILL** - is sent to a process to cause it to terminate immediately (kill). In contrast to **SIGTERM** and **SIGINT**, this signal cannot be caught or ignored, and the receiving process cannot perform any clean-up upon receiving this signal.
-- **SIGTERM** - is sent to a process to request its termination. Unlike the SIGKILL signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. **SIGINT** is nearly identical to **SIGTERM**.
+- **SIGTERM** - is sent to a process to request its termination. Unlike the **SIGKILL** signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. **SIGINT** is nearly identical to **SIGTERM**.
 
 Useful resources:
 
@@ -807,7 +807,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (20)
+###### Network Questions (21)
 
 <details>
 <summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. ***</b></summary><br>
@@ -1027,7 +1027,7 @@ nc -vz code42.example.com 5432
 
 Modern operating systems have turned off all potentially insecure services by default. On the other hand, some verndors of network devices still allow to establish communication using the telnet protocol.
 
-Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
+**Telnet** uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
 
 In the case of **Telnet**, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a **Telnet** login session.
 
@@ -1154,6 +1154,27 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>Why couldn't MAC addresses be used instead of IPv4|6 for networking?</b></summary><br>
+
+The **OSI** model explains why it doesn't make sense to make routing, a **layer 3** concept, decisions based on a physical, **layer 2**, mechanism.
+
+Modern networking is broken into many different layers to accomplish your end to end communication. Your network card (what is addressed by the mac address [physical address]) needs to only be responsible for communicating with peers on it's physical network.
+
+The communication that you are allowed to accomplish with your **MAC** address is going to be limited to other devices that reside within physical contact to your machine. On the internet, for example, you are not physically connected to each machine. That's why we make use of **TCP/IP** (a **layer 3**, logical address) mechanism when we need to communicate with a machine that we are not physically connected to.
+
+**IP** is an arbitrary numbering scheme imposed in a hierarchical fashion on a group of computers to logically distinguish them as a group (that's what a subnet is). Sending messages between those groups is done by routing tables, themselves divided into multiple levels so that we don't have to keep track of every single subnet.
+
+It's also pretty easy to relate this to another pair of systems. You have a State Issued ID Number, why would you need a mailing address if that ID number is already unique to just you? You need the mailing address because it's an arbitrary system that describes where the unique destination for communications to you should go.
+
+On the other hand, the distribition of **MAC** addresses across the network is random and completely unrelated to topology. Routes grouping would be impossible, every router would need to keep track of routes for every single device that relays traffic trough it. That is what **layer 2** switches do, and that does not scale well beyond a certain number of hosts.
+
+Useful resources:
+
+- [Why couldn't MAC addresses be used instead of IPv4|6 for networking? (original)](https://serverfault.com/questions/410626/why-couldnt-mac-addresses-be-used-instead-of-ipv46-for-networking)
+
+</details>
+
+<details>
 <summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
 
 Whether you have a standard `/24` VLAN for end users, a `/30` for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a `/27` - or a subnet mask of `255.255.255.224`.
@@ -1161,6 +1182,8 @@ Whether you have a standard `/24` VLAN for end users, a `/30` for point-to-point
 Useful resources:
 
 - [How do you calculate the prefix, network, subnet, and host numbers?](https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers)
+- [The slash after an IP Address - CIDR Notation](https://networkengineering.stackexchange.com/questions/3697/the-slash-after-an-ip-address-cidr-notation)
+- [Why are there 3 ranges of private IPv4 addresses?](https://networkengineering.stackexchange.com/questions/32119/why-are-there-3-ranges-of-private-ipv4-addresses)
 - [IP Calculator](http://jodies.de/ipcalc)
 
 </details>
