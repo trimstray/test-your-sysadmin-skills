@@ -3455,10 +3455,10 @@ Useful resources:
 <details>
 <summary><b>Ordinary users are able to read <code>/etc/passwd</code>, is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
 
-Typically, the _hashed_ passwords are stored in `/etc/shadow` on most Linux systems:
+Typically, the _hashed passwords_ are stored in `/etc/shadow` on most Linux systems:
 
 ```bash
--rw-r----- 1 root shadow 1349 2011-07-03 03:54 /etc/shadow
+-rw-r----- 1 root shadow 1349 2016-07-03 03:54 /etc/shadow
 ```
 
 They are stored in `/etc/master.passwd` on BSD systems.
@@ -3466,10 +3466,10 @@ They are stored in `/etc/master.passwd` on BSD systems.
 Programs that need to perform authentication still need to run with `root` privileges:
 
 ```bash
--rwsr-xr-x 1 root root 42792 2011-02-14 14:13 /usr/bin/passwd
+-rwsr-xr-x 1 root root 42792 2016-02-14 14:13 /usr/bin/passwd
 ```
 
-If you dislike the `setuid root` programs and one single file containing all the hashed passwords on your system, you can replace it with the Openwall TCB PAM module. This provides every single user with their own file for storing their hashed password - as a result the number of `setuid root` programs on the system can be drastically reduced.
+If you dislike the `setuid root` programs and one single file containing all the hashed passwords on your system, you can replace it with the **Openwall TCB PAM module**. This provides every single user with their own file for storing their hashed password - as a result the number of `setuid root` programs on the system can be drastically reduced.
 
 Useful resources:
 
