@@ -74,7 +74,7 @@
 - <b>Describe the setup of your homelab.</b>
 - <b>What personal achievement are you most proud of?</b>
 - <b>Tell me about the biggest mistake you've made. How you would do it differently today?</b>
-- <b>Tell me about your favorite UNIX-like system.</b>
+- <b>Tell me about your favorite Unix-like system.</b>
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
@@ -396,13 +396,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Where is password file located in Linux/UNIX?</b></summary><br>
+<summary><b>Where is password file located in Linux/Unix?</b></summary><br>
 
 The passwords are not stored anywhere on the system at all. What is stored in `/etc/shadow` are so called hashes of the passwords.
 
 A hash of some text is created by performing a so called one way function on the text (password), thus creating a string to check against. By design it is "impossible" (computationally infeasible) to reverse that process.
 
-Older UNIX variants stored the encrypted passwords in `/etc/passwd` along with other information about each account.
+Older Unix variants stored the encrypted passwords in `/etc/passwd` along with other information about each account.
 
 Newer ones simply have a `*` in the relevant field in `/etc/passwd` and use `/etc/shadow` to store the password, in part to ensure nobody gets read access to the passwords when they only need the other stuff (`shadow` is usually protected more strongly than `passwd`).
 
@@ -476,7 +476,7 @@ Useful resource:
 Useful resources:
 
 - [How to kill a script running in terminal, without closing terminal (Ctrl + C doesn't work)? (original)](https://askubuntu.com/questions/520107/how-to-kill-a-script-running-in-terminal-without-closing-terminal-ctrl-c-doe)
-- [What's the difference between ^C and ^D for UNIX/Mac OS X terminal?](https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal)
+- [What's the difference between ^C and ^D for Unix/Mac OS X terminal?](https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal)
 
 </details>
 
@@ -916,7 +916,7 @@ Otherwise, the name has to be resolved. And there's no guarantee that your hosts
 
 By that I mean that, on some systems, a local hosts file can be bypassed. The `host.conf` file controls this on Linux (and many other Unices).
 
-If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have). Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take `127.0.0.1`.
+If you use a Unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have). Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take `127.0.0.1`.
 
 Useful resources:
 
@@ -1154,7 +1154,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Why couldn't MAC addresses be used instead of IPv4|6 for networking?</b></summary><br>
+<summary><b>Why couldn't MAC addresses be used instead of IPv4/6 for networking?</b></summary><br>
 
 The **OSI** model explains why it doesn't make sense to make routing, a **layer 3** concept, decisions based on a physical, **layer 2**, mechanism.
 
@@ -1306,7 +1306,7 @@ To be completed.
 **Init**: Is the parent of all processes on the system, it is executed by the kernel and is responsible for starting all other processes.
 
 - `SysV init` - init's job is "to get everything running the way it should be once the kernel is fully running. Essentially it establishes and operates the entire user space. This includes checking and mounting file systems, starting up necessary user services, and ultimately switching to a user-environment when system startup is completed.
-- `systemd` - the developers of systemd aimed to replace the Linux init system inherited from UNIX System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
+- `systemd` - the developers of systemd aimed to replace the Linux init system inherited from Unix System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
 - `runint` - runit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools process supervision toolkit that runs on the Linux, Mac OS X, \*BSD, and Solaris operating systems.
 
 Useful resources:
@@ -1822,7 +1822,7 @@ __EOF__
 <details>
 <summary><b>How to change the kernel parameters? What kernel options might you need to tune?</b></summary><br>
 
-To set the kernel parameters in UNIX-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
+To set the kernel parameters in Unix-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
 Useful resources:
 
@@ -2123,7 +2123,7 @@ Useful resources:
 <details>
 <summary><b>What is the use of ulimit in Unix-like systems?</b></summary><br>
 
-Most UNIX-like operating systems, including Linux and BSD, provide ways to limit and control the usage of system resources such as threads, files, and network connections on a per-process and per-user basis. These "**ulimits**" prevent single users from using too many system resources.
+Most Unix-like operating systems, including Linux and BSD, provide ways to limit and control the usage of system resources such as threads, files, and network connections on a per-process and per-user basis. These "**ulimits**" prevent single users from using too many system resources.
 
 </details>
 
@@ -3587,7 +3587,7 @@ Summary exceptions:
 - Zombie processes cannot be killed since they are already dead and waiting for their parent processes to reap them
 - Processes that are in the blocked state will not die until they wake up again
 - The init process is special: It does not get signals that it does not want to handle, and thus it can ignore **SIGKILL**. An exception from this exception is while init is ptraced on Linux
-- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent **SIGKILL**. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem
+- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent **SIGKILL**. This is one of the few cases in which a Unix system may have to be rebooted to solve a temporary software problem
 
 Useful resources:
 
