@@ -174,9 +174,9 @@ Useful resources:
 <details>
 <summary><b>What is your favourite shell and why?</b></summary><br>
 
-BASH is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (`>>`, `<< 2>&1`, `2>`, `1>`, etc) is similar to C++ which makes it easier for me to recognize.
+**BASH** is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (`>>`, `<< 2>&1`, `2>`, `1>`, etc) is similar to C++ which makes it easier for me to recognize.
 
-I also like the ZSH shell, because is much more customizable than BASH. It has the Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on steroids, loadable modules and more.
+I also like the **ZSH** shell, because is much more customizable than **BASH**. It has the Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on steroids, loadable modules and more.
 
 Useful resources:
 
@@ -376,7 +376,7 @@ Linux **load averages** are "system load averages" that show the running thread 
 
 These 3 numbers are not the numbers for the different CPUs. These numbers are mean values of the load number for a given period of time (of the last 1, 5 and 15 minutes).
 
-Load average is usually described as "average length of run queue". So few CPU-consuming processes or threads can raise load average above 1. There is no problem if load average is less than total number of CPU cores. But if it gets higher than number of CPUs, this means some threads/processes will stay in queue, ready to run, but waiting for free CPU.
+**Load average** is usually described as "average length of run queue". So few CPU-consuming processes or threads can raise **load average** above 1. There is no problem if **load average** is less than total number of CPU cores. But if it gets higher than number of CPUs, this means some threads/processes will stay in queue, ready to run, but waiting for free CPU.
 
 It is meant to give you an idea of the state of the system, averaged over several periods of time. Since it is averaged, it takes time for it to go back to 0 after a heavy load was placed on the system.
 
@@ -398,13 +398,13 @@ Useful resources:
 <details>
 <summary><b>Where is password file located in Linux/UNIX?</b></summary><br>
 
-The passwords are not stored anywhere on the system at all. What is stored in **/etc/shadow** are so called hashes of the passwords.
+The passwords are not stored anywhere on the system at all. What is stored in `/etc/shadow` are so called hashes of the passwords.
 
 A hash of some text is created by performing a so called one way function on the text (password), thus creating a string to check against. By design it is "impossible" (computationally infeasible) to reverse that process.
 
-Older UNIX variants stored the encrypted passwords in **/etc/passwd** along with other information about each account.
+Older UNIX variants stored the encrypted passwords in `/etc/passwd` along with other information about each account.
 
-Newer ones simply have a `*` in the relevant field in **/etc/passwd** and use **/etc/shadow** to store the password, in part to ensure nobody gets read access to the passwords when they only need the other stuff (`shadow` is usually protected more strongly than `passwd`).
+Newer ones simply have a `*` in the relevant field in `/etc/passwd` and use `/etc/shadow` to store the password, in part to ensure nobody gets read access to the passwords when they only need the other stuff (`shadow` is usually protected more strongly than `passwd`).
 
 For more info consult `man crypt`, `man shadow`, `man passwd`.
 
@@ -419,13 +419,13 @@ Useful resources:
 <details>
 <summary><b>How to recursively change permissions for all directories except files and for all files except directories?</b></summary><br>
 
-To change all the directories e.g. to 755 (drwxr-xr-x):
+To change all the directories e.g. to **755** (`drwxr-xr-x`):
 
 ```bash
 find /opt/data -type d -exec chmod 755 {} \;
 ```
 
-To change all the files e.g. to 644 (-rw-r--r--):
+To change all the files e.g. to **644** (`-rw-r--r--`):
 
 ```bash
 find /opt/data -type f -exec chmod 644 {} \;
@@ -440,7 +440,7 @@ Useful resources:
 <details>
 <summary><b>Every command fails with <code>command not found</code>. How to trace the source of the error and resolve it?</b></summary><br>
 
-It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. **/bin**, where the commands (including bash) reside.
+It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. `/bin`, where the commands (including bash) reside.
 
 One way to begin debugging your bash script or command would be to start a subshell with the `-x` option:
 
@@ -462,7 +462,7 @@ If you run this:
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 ```
 
-most commands should start working - and then you can edit **~/.bash_profile** instead of **~/.bashrc** and fix whatever is resetting `PATH` there. Default `PATH` variable values for **root** and other users is in **/etc/profile** file.
+most commands should start working - and then you can edit `~/.bash_profile` instead of `~/.bashrc` and fix whatever is resetting `PATH` there. Default `PATH` variable values for **root** and other users is in `/etc/profile` file.
 
 Useful resource:
 
@@ -524,9 +524,9 @@ Useful resources:
 <summary><b>Explain SIGHUP, SIGINT, SIGKILL and SIGTERM Posix signals.</b></summary><br>
 
 - **SIGHUP** - is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.
-- **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing Ctrl+C, but on some systems, the "delete" character or "break" key can be used.
-- **SIGKILL** - is sent to a process to cause it to terminate immediately (kill). In contrast to SIGTERM and SIGINT, this signal cannot be caught or ignored, and the receiving process cannot perform any clean-up upon receiving this signal.
-- **SIGTERM** - is sent to a process to request its termination. Unlike the SIGKILL signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. SIGINT is nearly identical to SIGTERM.
+- **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing `Ctrl+C`, but on some systems, the "delete" character or "break" key can be used.
+- **SIGKILL** - is sent to a process to cause it to terminate immediately (kill). In contrast to **SIGTERM** and **SIGINT**, this signal cannot be caught or ignored, and the receiving process cannot perform any clean-up upon receiving this signal.
+- **SIGTERM** - is sent to a process to request its termination. Unlike the SIGKILL signal, it can be caught and interpreted or ignored by the process. This allows the process to perform nice termination releasing resources and saving state if appropriate. **SIGINT** is nearly identical to **SIGTERM**.
 
 Useful resources:
 
@@ -538,7 +538,7 @@ Useful resources:
 <details>
 <summary><b>What does <code>kill</code> command do?</b></summary><br>
 
-In Unix and Unix-like operating systems, kill is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But kill is something of a misnomer; the signal sent may have nothing to do with process killing.
+In Unix and Unix-like operating systems, `kill` is a command used to send a signal to a process. By default, the message sent is the termination signal, which requests that the process exit. But `kill` is something of a misnomer; the signal sent may have nothing to do with process killing.
 
 Useful resources:
 
@@ -561,7 +561,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you list contents of archive.tgz and extract only one file?</b></summary><br>
+<summary><b>How do you list contents of <code>archive.tgz</code> and extract only one file?</b></summary><br>
 
 ```bash
 # list of conent
@@ -579,7 +579,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Execute combine multiple linux commands in one line.</b></summary><br>
+<summary><b>Execute combine multiple shell commands in one line.</b></summary><br>
 
 If you want to execute each command only if the previous one succeeded, then combine them using the `&&` operator:
 
@@ -623,7 +623,7 @@ To be completed.
 <details>
 <summary><b>How can I sync two local directories?</b></summary><br>
 
-To sync the contents of dir1 to dir2 on the same system, type:
+To sync the contents of **dir1** to **dir2** on the same system, type:
 
 ```bash
 rsync -av --progress --delete dir1/ dir2
@@ -647,7 +647,7 @@ Useful resources:
 - manually backup of a file before editing (with brace expansion like this: `cp filename{,.orig}`)
 - manual copy of the directory structure where file is stored (e.g. `cp`, `rsync` or `tar`)
 - make a backup of original file in your editor (e.g. set rules in your editor configuration file)
-- the best solution is to use `git` (or any other version control) to keep track of configuration files (e.g. `etckeeper` for **/etc** directory)
+- the best solution is to use `git` (or any other version control) to keep track of configuration files (e.g. `etckeeper` for `/etc` directory)
 
 Useful resources:
 
@@ -747,7 +747,7 @@ A **RAID** (Redundant Array of Inexpensive Disks) is a technology that is used t
 
 - **RAID0**: Also known as disk **striping**, is a technique that breaks up a file and spreads the data across all the disk drives in a RAID group. There are no safeguards against failure
 - **RAID1**: A popular disk subsystem that increases safety by writing the same data on two drives. Called "**mirroring**," RAID 1 does not increase write performance, but read performance may equal up to the sum of each disks' performance. However, if one drive fails, the second drive is used, and the failed drive is manually replaced. After replacement, the RAID controller duplicates the contents of the working drive onto the new one
-- **RAID5**: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (striping). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost
+- **RAID5**: It is disk subsystem that increases safety by computing parity data and increasing speed by interleaving data across three or more drives (**striping**). Upon failure of a single drive, subsequent reads can be calculated from the distributed parity such that no data is lost
 - **RAID6**: RAID 6 extends RAID 5 by adding another parity block. It requires a minimum of four disks and can continue to execute read and write of any two concurrent disk failures. RAID 6 does not have a performance penalty for read operations, but it does have a performance penalty on write operations because of the overhead associated with parity calculations
 - **RAID10**: Also known as **RAID 1+0**, is a RAID configuration that combines disk mirroring and disk striping to protect data. It requires a minimum of four disks, and stripes data across mirrored pairs. As long as one disk in each mirrored pair is functional, data can be retrieved. If two disks in the same mirrored pair fail, all data will be lost because there is no parity in the striped sets
 
@@ -766,7 +766,7 @@ useradd -m -g initial_group username
 
 `-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group.
 
-If not specified, the behaviour of useradd will depend on the USERGROUPS_ENAB variable contained in **/etc/login.defs**. The default behaviour (USERGROUPS_ENAB yes) is to create a group with the same name as the username, with GID equal to UID.
+If not specified, the behaviour of useradd will depend on the `USERGROUPS_ENAB` variable contained in `/etc/login.defs`. The default behaviour (`USERGROUPS_ENAB yes`) is to create a group with the same name as the username, with **GID** equal to **UID**.
 
 Useful resources:
 
@@ -777,7 +777,7 @@ Useful resources:
 <details>
 <summary><b>What is key-based authentication? Explain.</b></summary><br>
 
-Key-based authentication is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
+**Key-based authentication** is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
 
 Useful resources:
 
@@ -819,7 +819,7 @@ To be completed.
 <details>
 <summary><b>What are the most important things to understand about the OSI (or any other) model?</b></summary><br>
 
-The most important things to understand about the OSI (or any other) model are:
+The most important things to understand about the **OSI** (or any other) model are:
 
 - we can divide up the protocols into layers
 - layers provide encapsulation
@@ -835,13 +835,13 @@ Useful resources:
 <details>
 <summary><b>What is the difference between a VLAN and a subnet? Do you need a VLAN to setup a subnet?</b></summary><br>
 
-VLANs and subnets solve different problems. VLANs work at Layer 2, thereby altering broadcast domains (for instance). Whereas subnets are Layer 3 in the current context.
+**VLANs** and **subnets** solve different problems. **VLANs** work at Layer 2, thereby altering broadcast domains (for instance). Whereas **subnets** are Layer 3 in the current context.
 
-**Subnet** - is a range of IP addresses determined by part of an address (often called the network address) and a subnet mask (netmask). For example, if the netmask is 255.255.255.0 (or /24 for short), and the network address is 192.168.10.0, then that defines a range of IP addresses 192.168.10.0 through 192.168.10.255. Shorthand for writing that is 192.168.10.0/24.
+**Subnet** - is a range of IP addresses determined by part of an address (often called the network address) and a subnet mask (netmask). For example, if the netmask is `255.255.255.0` (or `/24` for short), and the network address is `192.168.10.0`, then that defines a range of IP addresses `192.168.10.0` through `192.168.10.255`. Shorthand for writing that is `192.168.10.0/24`.
 
-**VLAN** - a good way to think of this is "switch partitioning." Let's say you have an 8 port switch that is VLAN-able. You can assign 4 ports to one VLAN (say VLAN 1) and 4 ports to another VLAN (say VLAN 2). VLAN 1 won't see any of VLAN 2's traffic and vice versa, logically, you now have two separate switches. Normally on a switch, if the switch hasn't seen a MAC address it will "flood" the traffic to all other ports. VLANs prevent this.
+**VLAN** - a good way to think of this is "switch partitioning." Let's say you have an 8 port switch that is VLAN-able. You can assign 4 ports to one **VLAN** (say `VLAN 1`) and 4 ports to another **VLAN** (say `VLAN 2`). `VLAN 1` won't see any of `VLAN 2's` traffic and vice versa, logically, you now have two separate switches. Normally on a switch, if the switch hasn't seen a MAC address it will "flood" the traffic to all other ports. **VLANs** prevent this.
 
-Subnet is nothing more than an IP address range of IP addresses that help hosts communicate over layer 2 and 3. Each subnet does not require its own VLAN. VLANs are implemented for isolation (are sandbox for layer two communication, no 2 systems of 2 different VLANs may communicate but it can be done through Inter VLAN routing), ease of management and security.
+Subnet is nothing more than an IP address range of IP addresses that help hosts communicate over layer 2 and 3. Each subnet does not require its own **VLAN**. **VLANs** are implemented for isolation (are sandbox for layer two communication, no 2 systems of 2 different **VLANs** may communicate but it can be done through **Inter VLAN routing**), ease of management and security.
 
 Useful resources:
 
@@ -887,7 +887,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What POP and IMAP are, and how to choose which of them you should implement.</b></summary><br>
+<summary><b>What POP and IMAP are, and how to choose which of them you should implement?</b></summary><br>
 
 To be completed.
 
@@ -914,7 +914,7 @@ If you use `127.0.0.1`, then (intelligent) software will just turn that directly
 
 Otherwise, the name has to be resolved. And there's no guarantee that your hosts file will actually be used for that resolution (first, or at all) so `localhost` may become a totally different IP address.
 
-By that I mean that, on some systems, a local hosts file can be bypassed. The **host.conf** file controls this on Linux (and many other Unices).
+By that I mean that, on some systems, a local hosts file can be bypassed. The `host.conf` file controls this on Linux (and many other Unices).
 
 If you use a unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have). Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take `127.0.0.1`.
 
@@ -928,11 +928,11 @@ Useful resources:
 <details>
 <summary><b>Which port is used for <code>ping</code> command?</b></summary><br>
 
-`ping` uses ICMP, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with ICMP. Ports are associated with the two IP transport layer protocols, TCP and UDP. ICMP, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
+`ping` uses **ICMP**, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with **ICMP**. Ports are associated with the two IP transport layer protocols, TCP and UDP. **ICMP**, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
 
-ICMP packets are identified by the 'protocol' field in the IP datagram header. ICMP does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the ICMP message is carried directly in an IP datagram data field. ('raw' comes from how this is implemented in software, to create and send an ICMP message, one opens a 'raw' socket, builds a buffer containing the ICMP message, and then writes the buffer containing the message to the raw socket.)
+**ICMP** packets are identified by the 'protocol' field in the IP datagram header. **ICMP** does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the **ICMP** message is carried directly in an IP datagram data field. ('raw' comes from how this is implemented in software, to create and send an ICMP message, one opens a 'raw' socket, builds a buffer containing the **ICMP** message, and then writes the buffer containing the message to the raw socket.)
 
-The IP protocol value for ICMP is 1. The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.
+The IP protocol value for **ICMP** is 1. The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.
 
 However, you could use `nmap` to see whether ports are open or not:
 
@@ -952,13 +952,13 @@ Useful resources:
 
 To troubleshoot communication problems between servers, it is better to ideally follow the TCP/IP stack:
 
-1. Application Layer: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
+1. **Application Layer**: are the services up and running on both servers? Are they correctly configured (eg. bind the correct IP and correct port)? Do application and system logs show meaningful errors?
 
-2. Transport Layer: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
+2. **Transport Layer**: are the ports used by the application open (try telnet!)? Is it possible to ping the server?
 
-3. Network Layer: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
+3. **Network Layer**: Is there a firewall on the network or on the OS correctly configured? Is the IP stack correctly configured (IP, routes, dns, etc.)? Are switches and routers working (check the ARP table!)?
 
-4. Physical Layer: Are the servers connected to a network? Are packets being lost?
+4. **Physical Layer**: Are the servers connected to a network? Are packets being lost?
 
 </details>
 
@@ -996,7 +996,7 @@ To lookup the IPv6 address for a host, or:
 dig PTR ZZZ.YYY.XXX.WWW.in-addr.arpa.
 ```
 
-To lookup the hostname for IPv4 address WWW.XXX.YYY.ZZZ (note the octets are reversed), or:
+To lookup the hostname for IPv4 address `WWW.XXX.YYY.ZZZ` (note the octets are reversed), or:
 
 ```bash
 dig PTR b.a.9.8.7.6.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.
@@ -1023,13 +1023,13 @@ nc -vz code42.example.com 5432
 </details>
 
 <details>
-<summary><b>Why should you avoid telnet to administer a system remotely?</b></summary><br>
+<summary><b>Why should you avoid Telnet to administer a system remotely?</b></summary><br>
 
 Modern operating systems have turned off all potentially insecure services by default. On the other hand, some verndors of network devices still allow to establish communication using the telnet protocol.
 
 Telnet uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
 
-In the case of Telnet, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a Telnet login session.
+In the case of **Telnet**, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a **Telnet** login session.
 
 Useful resources:
 
@@ -1041,7 +1041,7 @@ Useful resources:
 <details>
 <summary><b>What is the difference between <code>wget</code> and <code>curl</code>?</b></summary><br>
 
-The main differences are: wget's major strong side compared to curl is its ability to download recursively. Wget is command line only. Curl supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
+The main differences are: `wget's` major strong side compared to `curl` is its ability to download recursively. `wget` is command line only. `curl` supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
 
 Useful resources:
 
@@ -1052,11 +1052,11 @@ Useful resources:
 <details>
 <summary><b>What is SSH and how does it work?</b></summary><br>
 
-SSH stands for Secure Shell. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
+**SSH** stands for **Secure Shell**. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
 
-An SSH connection to be established, the remote machine (server A) must be running a piece of software called an SSH daemon and the user's computer (server B) must have an SSH client.
+An **SSH** connection to be established, the remote machine (server A) must be running a piece of software called an **SSH** daemon and the user's computer (server B) must have an **SSH** client.
 
-The SSH daemon and SSH client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
+The **SSH** daemon and **SSH** client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
 
 Useful resources:
 
@@ -1067,7 +1067,24 @@ Useful resources:
 <details>
 <summary><b>What is a packet filter and how does it work?</b></summary><br>
 
-Packet filtering is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
+**Packet filtering** is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
+
+Packet filtering is appropriate where there are modest security requirements. The internal (private) networks of many organizations are not highly segmented. Highly sophisticated firewalls are not necessary for isolating one part of the organization from another.
+
+However it is prudent to provide some sort of protection of the production network from a lab or experimental network. A packet filtering device is a very appropriate measure for providing isolation of one subnet from another.
+
+Operating at the network layer and transport layer of the TCP/IP protocol stack, every packet is examined as it enters the protocol stack. The network and transport headers are examined closely for the following information:
+
+- **protocol (IP header, network layer)** - in the IP header, byte 9 (remember the byte count begins with zero) identifies the protocol of the packet. Most filter devices have the capability to differentiate between TCP, UPD, and ICMP.
+- **source address (IP header, network layer)** - the source address is the 32-bit IP address of the host which created the packet.
+- **destination address (IP header, network layer)** - the destination address is the 32-bit IP address of the host the packet is destined for.
+- **source port (TCP or UDP header, transport layer)** - each end of a TCP or UDP network connection is bound to a port. TCP ports are separate and distinct from UDP ports. Ports numbered below 1024 are reserved – they have a specifically defined use. Ports numbered above 1024 (inclusive) are known as ephemeral ports. They can be used however a vendor chooses. For a list of "well known" ports, refer to RFP1700. The source port is a pseudo-randomly assigned ephemeral port number. Thus it is often not very useful to filter on the source port.
+- **destination port (TCP or UDP header, transport layer)** - the destination port number indicates a port that the packet is sent to. Each service on the destination host listens to a port. Some well-known ports that might be filtered are 20/TCP and 21/TCP - ftp connection/data, 23/TCP - telnet, 80/TCP - http, and 53/TCP - DNS zone transfers.
+- **connection status (TCP header, transport layer)** - the connection status tells whether the packet is the first packet of the network session. The ACK bit in the TCP header is set to “false” or 0 if this is the first packet in the session. It is simple to disallow a host from establishing a connection by rejecting or discarding any packets which have the ACK bit set to "false" or 0.
+
+Useful resources:
+
+- [Building Internet Firewalls - Packet Filtering](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_01.htm)
 
 </details>
 
@@ -1107,9 +1124,9 @@ Useful resources:
 
 **Router** describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "you set up a router as gateway". Another term is hop which describes the forwarding in between subnets.
 
-It's just a matter of perspective, the device is the same.
-
 The term **default gateway** is used to mean the router on your LAN which has the responsibility of being the first point of contact for traffic to computers outside the LAN.
+
+It's just a matter of perspective, the device is the same.
 
 Useful resources:
 
@@ -1120,7 +1137,7 @@ Useful resources:
 <details>
 <summary><b>Explain the function of each of the following DNS records: SOA, PTR, A, MX, and CNAME.</b></summary><br>
 
-DNS records are basically mapping files that tell the DNS server which IP address each domain is associated with, and how to handle requests sent to each domain. Some DNS records syntax that are commonly used in nearly all DNS record configurations are A, AAAA, CNAME, MX, PTR, NS, SOA, SRV, TXT, and NAPTR.
+**DNS records** are basically mapping files that tell the DNS server which IP address each domain is associated with, and how to handle requests sent to each domain. Some **DNS records** syntax that are commonly used in nearly all DNS record configurations are `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `NS`, `SOA`, `SRV`, `TXT`, and `NAPTR`.
 
 - **SOA** - A Start Of Authority
 - **A** - Address Mapping records
@@ -1139,7 +1156,7 @@ Useful resources:
 <details>
 <summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
 
-Whether you have a standard /24 VLAN for end users, a /30 for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a /27 - or a subnet mask of `255.255.255.224`.
+Whether you have a standard `/24` VLAN for end users, a `/30` for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a `/27` - or a subnet mask of `255.255.255.224`.
 
 Useful resources:
 
@@ -1232,7 +1249,7 @@ Useful resources:
 <details>
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
 
-Security misconfiguration is a vulnerability when a device/application/network is configured in a way which can be exploited by an attacker to take advantage of it. This can be as simple as leaving the default username/password unchanged or too simple for device accounts etc.
+**Security misconfiguration** is a vulnerability when a device/application/network is configured in a way which can be exploited by an attacker to take advantage of it. This can be as simple as leaving the default username/password unchanged or too simple for device accounts etc.
 
 </details>
 
@@ -1255,7 +1272,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Explain the boot process of the Linux system.</b></summary><br>
+<summary><b>Explain in a few points the boot process of the Linux system.</b></summary><br>
 
 **BIOS**: Full form of BIOS is Basic Input or Output System that performs integrity checks and it will search and load and then it will execute the bootloader.
 
@@ -1297,15 +1314,15 @@ Usefule resources:
 <details>
 <summary><b>What does it mean when the effective user is root, but the real user ID is still your name?</b></summary><br>
 
-The real user ID is who you really are (the user who owns the process), and the effective user ID is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
+The **real user ID** is who you really are (the user who owns the process), and the **effective user ID** is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
 
-When you log in, the login shell sets both the real and effective user ID to the same value (your real user id) as supplied by the password file.
+When you log in, the login shell sets both the **real and effective user ID** to the same value (your **real user ID**) as supplied by the password file.
 
-If, for instance, you execute setuid, and besides running as another user (e.g. root) the setuid program is also supposed to do something on your behalf:
+If, for instance, you execute setuid, and besides running as another user (e.g. **root**) the setuid program is also supposed to do something on your behalf.
 
-After executing setuid, it will have your real id (since you're the process owner) and the effective user id of the file owner (for example root) since it is setuid.
+After executing setuid, it will have your **real ID** (since you're the process owner) and the effective user id of the file owner (for example **root**) since it is setuid.
 
-Let's use the case of passwd:
+Let's use the case of `passwd`:
 
 ```bash
 -rwsr-xr-x 1 root root 45396 may 25  2012 /usr/bin/passwd
@@ -1329,7 +1346,7 @@ Useful resources:
 <details>
 <summary><b>Developer added cron job which generate massive log files. How do you prevent them from getting so big?</b></summary><br>
 
-Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to **/etc/logrotate.conf** you should add your own job to **/etc/logrotate.d/**, otherwise you would have to look at more diffs of configuration files during release upgrades.
+Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to `/etc/logrotate.conf` you should add your own job to `/etc/logrotate.d/`, otherwise you would have to look at more diffs of configuration files during release upgrades.
 
 If it's actively being written to you don't really have much you can do by way of truncate. Your only options are to truncate the file:
 
@@ -1379,7 +1396,7 @@ Useful resources:
 - **P** Sorts by current CPU usage (this is the default refresh)
 - **?** Displays a usage summary for all top commands
 
-This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill / software to uninstall.
+This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill/software to uninstall.
 
 Useful resources:
 
@@ -1426,7 +1443,7 @@ Useful resources:
 
 If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. **Swap** space is located on hard drives, which have a slower access time than physical memory.
 
-Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing swappiness to 1 might not be a wise decision. Setting swappiness to 1 does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
+Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing `swappiness` to **1** might not be a wise decision. Setting `swappiness` to **1** does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
 
 - **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks arn't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
 
@@ -1460,14 +1477,14 @@ Useful resources:
 <details>
 <summary><b>What is umask? How to set it permanently for a user?</b></summary><br>
 
-On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the umask. The umask command is used to set this mask, or to show you its current value.
+On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the `umask`. The `umask` command is used to set this mask, or to show you its current value.
 
 Permanently change (set e.g. `umask 02`):
 
-- **~/.profile**
-- **~/.bashrc**
-- **~/.zshrc**
-- **~/.cshrc**
+- `~/.profile`
+- `~/.bashrc`
+- `~/.zshrc`
+- `~/.cshrc`
 
 Useful resources:
 
@@ -1481,7 +1498,7 @@ Useful resources:
 <table style="width:100%">
   <tr>
     <th>Umask</th>
-    <th>FIle result</th>
+    <th>File result</th>
     <th>Directory result</th>
   </tr>
   <tr>
@@ -1536,7 +1553,7 @@ When you delete a file it removes one link to the underlying inode. The inode is
 
 Once a hard link has been made the link is to the inode. deleting renaming or moving the original file will not affect the hard link as it links to the underlying inode. Any changes to the data on the inode is reflected in all files that refer to that inode.
 
-Note: Hard links are only valid within the same File System. Symbolic links can span file systems as they are simply the name of another file.
+Note: Hard links are only valid within the same file system. Symbolic links can span file systems as they are simply the name of another file.
 
 Differences:
 
@@ -1550,17 +1567,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How does the sticky bit work? The SUID/GUID is the same?</b></summary><br>
+<summary><b>How does the sticky bit work? The **SUID/GUID** is the same?</b></summary><br>
 
-This is probably one of my most irksome things that people mess up all the time. The SUID/GUID bit and the sticky-bit are 2 completely different things.
+This is probably one of my most irksome things that people mess up all the time. The **SUID/GUID** bit and the **sticky-bit** are 2 completely different things.
 
-If you do a `man chmod` you can read about the SUID and sticky-bits.
+If you do a `man chmod` you can read about the **SUID** and **sticky-bits**.
 
 **SUID/GUID**
 
 What the above man page is trying to say is that the position that the x bit takes in the rwxrwxrwx for the user octal (1st group of rwx) and the group octal (2nd group of rwx) can take an additional state where the x becomes an s. When this occurs this file when executed (if it's a program and not just a shell script) will run with the permissions of the owner or the group of the file.
 
-So if the file is owned by root and the SUID bit is turned on, the program will run as root. Even if you execute it as a regular user. The same thing applies to the GUID bit.
+So if the file is owned by root and the **SUID** bit is turned on, the program will run as root. Even if you execute it as a regular user. The same thing applies to the **GUID** bit.
 
 Examples:
 
@@ -1571,7 +1588,7 @@ ls -lt b.pl
 -rwxr-xr-x 1 root root 179 Jan  9 01:01 b.pl
 ```
 
-**suid & user's executable bit enabled (lowercase s)** - the bits *rwsr-x-r-x* are set.
+**suid & user's executable bit enabled (lowercase s)** - the bits `rwsr-x-r-x` are set.
 
 ```bash
 chmod u+s b.pl
@@ -1579,7 +1596,7 @@ ls -lt b.pl
 -rwsr-xr-x 1 root root 179 Jan  9 01:01 b.pl
 ```
 
-**suid enabled & executable bit disabled (uppercase S)** - the bits *rwSr-xr-x* are set.
+**suid enabled & executable bit disabled (uppercase S)** - the bits `rwSr-xr-x` are set.
 
 ```bash
 chmod u-x b.pl
@@ -1587,7 +1604,7 @@ ls -lt b.pl
 -rwSr-xr-x 1 root root 179 Jan  9 01:01 b.pl
 ```
 
-**guid & group's executable bit enabled (lowercase s)** - the bits *rwxr-sr-x* are set.
+**guid & group's executable bit enabled (lowercase s)** - the bits `rwxr-sr-x` are set.
 
 ```bash
 chmod g+s b.pl
@@ -1595,7 +1612,7 @@ ls -lt b.pl
 -rwxr-sr-x 1 root root 179 Jan  9 01:01 b.pl
 ```
 
-**guid enabled & executable bit disabled (uppercase S)** - the bits *rwxr-Sr-x* are set.
+**guid enabled & executable bit disabled (uppercase S)** - the bits `rwxr-Sr-x` are set.
 
 ```bash
 chmod g-x b.pl
@@ -1629,7 +1646,7 @@ The main reason to set `LC_ALL=C` before command is that fine to simply get Engl
 
 On the other hand, also important is to increase the speed of command execution with `LC_ALL=C` e.g. `grep` or `fgrep`. Using the `LC_ALL=C` locale increased our performance and brought command execution time down.
 
-For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the **/usr/lib/locale** directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
+For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the `/usr/lib/locale` directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
 
 If you want to restore all your normal (original) locale settings for the session:
 
@@ -1658,14 +1675,14 @@ Useful resources:
 
 - which users have access to the app filesystem
 - permissions for web servers, e.g. Apache and app servers e.g. uwsgi
-- permissions for specific directories like a **uploads**, **cache** and main app directory like a **/var/www/app01/html**
+- permissions for specific directories like a **uploads**, **cache** and main app directory like a `/var/www/app01/html`
 - correct `umask` value for users and **suid**/**sgid** (only for specific situations)
 - permissions for all future files and directories
 - permissions for cron jobs and scripts
 
 **2) Application directories**
 
-**/var/www** contains a directory for each website (isolation of the apps), e.g. **/var/www/app01**, **/var/www/app02**
+`/var/www` contains a directory for each website (isolation of the apps), e.g. `/var/www/app01`, `/var/www/app02`
 
 ```bash
 mkdir /var/www/{app01,app02}
@@ -1691,7 +1708,7 @@ id bob
 uid=2001(bob) gid=4001(bob) groups=8000(g01-prod),8001(g02-prod)
 ```
 
-So **alice** user has standard privileges for **/var/www/app01** and **bob** user has standard privileges for **/var/www/app01** and **/var/www/app02**.
+So **alice** user has standard privileges for `/var/www/app01` and **bob** user has standard privileges for `/var/www/app01` and `/var/www/app02`.
 
 **5) Web server owner and group**
 
@@ -1782,7 +1799,7 @@ __EOF__
 <details>
 <summary><b>How to change the kernel parameters? What kernel options might you need to tune?</b></summary><br>
 
-To set the kernel parameters in UNIX-like, first edit the file **/etc/sysctl.conf** after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
+To set the kernel parameters in UNIX-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
 Useful resources:
 
@@ -1815,7 +1832,7 @@ To be completed.
 <details>
 <summary><b>Explain three types of journaling in ext3/ext4.</b></summary><br>
 
-There are three types of journaling available in ext3/ext4 file systems:
+There are three types of journaling available in **ext3/ext4** file systems:
 
 - **Journal** - metadata and content are saved in the journal
 - **Ordered** - only metadata is saved in the journal. Metadata are  journaled only after writing the content to disk. This is the default
@@ -1826,17 +1843,17 @@ There are three types of journaling available in ext3/ext4 file systems:
 <details>
 <summary><b>What is an inode? How to find file's inode number and how can you use it?</b></summary><br>
 
-An inode is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
+An **inode** is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
 
 A Unix file is "stored" in two different parts of the disk - the data blocks and the inodes. (I won't get into superblocks and other esoteric information.) The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
 
-A file's inode number can easily be found by using the `ls` command, which by default lists the objects (i.e., files, links and directories) in the current directory (i.e., the directory in which the user is currently working), with its `-i` option. Thus, for example, the following will show the name of each object in the current directory together with its inode number:
+A file's inode number can easily be found by using the `ls` command, which by default lists the objects (i.e. files, links and directories) in the current directory (i.e. the directory in which the user is currently working), with its `-i` option. Thus, for example, the following will show the name of each object in the current directory together with its inode number:
 
 ```bash
 ls -i
 ```
 
-`df`'s `-i` option instructs it to supply information about inodes on each filesystem rather than about available space. Specifically, it tells df to return for each mounted filesystem the total number of inodes, the number of free inodes, the number of used inodes and the percentage of inodes used. This option can be used together with the `-h` option as follows to make the output easier to read:
+`df's` `-i` option instructs it to supply information about inodes on each filesystem rather than about available space. Specifically, it tells df to return for each mounted filesystem the total number of inodes, the number of free inodes, the number of used inodes and the percentage of inodes used. This option can be used together with the `-h` option as follows to make the output easier to read:
 
 ```bash
 df -hi
@@ -1869,7 +1886,7 @@ ls | grep 'a'
 ab
 ```
 
-Note that when `ls` sends the result to a terminal, it places a "?" in the filename to show an unprintable character.
+Note that when `ls` sends the result to a terminal, it places a "**?**" in the filename to show an unprintable character.
 
 You can get rid of this file by using `rm -i *` and it will prompt you before it deletes each file. But you can also use `find` to remove the file, once you know the inode number.
 
@@ -1981,9 +1998,9 @@ mkfs -t xfs /dev/mapper/vg0-datastore
 <details>
 <summary><b>What is a zombie/defunct process?</b></summary><br>
 
-Is a process that has completed execution (via the **exit** system call) but still has an entry in the process table: it is a process in the "Terminated state".
+Is a process that has completed execution (via the `exit` system call) but still has an entry in the process table: it is a process in the "**Terminated state**".
 
-Processes marked **<defunct>** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init if the parent process exits.
+Processes marked **defunct** are dead processes (so-called "zombies") that remain because their parent has not destroyed them properly. These processes will be destroyed by init if the parent process exits.
 
 Useful resources:
 
@@ -2055,7 +2072,7 @@ Useful resources:
 <details>
 <summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
 
-The command `setfacl` refers to Set File Access Control Lists and `getfacl` refers to Get File Access Control List. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use getfacl.
+The command `setfacl` refers to **Set File Access Control Lists** and `getfacl` refers to **Get File Access Control List**. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use `getfacl`.
 
 </details>
 
@@ -2083,14 +2100,14 @@ Useful resources:
 <details>
 <summary><b>What is the use of ulimit in Unix-like systems?</b></summary><br>
 
-Most UNIX-like operating systems, including Linux and BSD, provide ways to limit and control the usage of system resources such as threads, files, and network connections on a per-process and per-user basis. These "ulimits" prevent single users from using too many system resources.
+Most UNIX-like operating systems, including Linux and BSD, provide ways to limit and control the usage of system resources such as threads, files, and network connections on a per-process and per-user basis. These "**ulimits**" prevent single users from using too many system resources.
 
 </details>
 
 <details>
 <summary><b>What are soft limits and hard limits?</b></summary><br>
 
-Hard limit is the maximum allowed to a user, set by the superuser or root. This value is set in the file **/etc/security/limits.conf**. The user can increase the soft limit on their own in times of needing more resources, but cannot set the soft limit higher than the hard limit.
+**Hard limit** is the maximum allowed to a user, set by the superuser or root. This value is set in the file `/etc/security/limits.conf`. The user can increase the **soft limit** on their own in times of needing more resources, but cannot set the **soft limit** higher than the **hard limit**.
 
 </details>
 
@@ -2108,9 +2125,9 @@ Useful resources:
 
 **Server side**
 
-Setting `LogLevel VERBOSE` in file **/etc/ssh/sshd_config** is probably what you need, although there are higher levels:
+Setting `LogLevel VERBOSE` in file `/etc/ssh/sshd_config` is probably what you need, although there are higher levels:
 
-SSH auth failures are logged in **/var/log/auth.log**, **/var/log/secure** or **/var/log/audit/audit.log**.
+SSH auth failures are logged in `/var/log/auth.log`, `/var/log/secure` or `/var/log/audit/audit.log`.
 
 The following should give you only ssh related log lines (for example):
 
@@ -2130,7 +2147,7 @@ also useful is:
 grep "Failed\|Failure" /var/log/auth.log
 ```
 
-On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via journalctl command (ssh.service or sshd.service). For example:
+On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via `journalctl` command (`ssh.service` or `sshd.service`). For example:
 
 ```bash
 journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
@@ -2149,10 +2166,10 @@ Useful resources:
 <details>
 <summary><b>What is the difference between cron and anacron?</b></summary><br>
 
-- one of the main difference between cron and anacron jobs is that cron works on the system that are running continuously that means it is designed for the system that is running 24*7. While anacron is used for the systems that are not running continuously
-- other difference between the two is cron jobs can run every minute, but anacron jobs can be run only once a day
-- any normal user can do the scheduling of cron jobs, but the scheduling of anacron jobs can be done by the superuser only
-- cron should be used when you need to execute the job at a specific time as per the given time in cron, but anacron should be used in when there is no any restriction for the timing and can be executed at any time
+- one of the main difference between `cron` and `anacron` jobs is that `cron` works on the system that are running continuously that means it is designed for the system that is running 24\*7. While `anacron` is used for the systems that are not running continuously
+- other difference between the two is `cron` jobs can run every minute, but `anacron` jobs can be run only once a day
+- any normal user can do the scheduling of `cron` jobs, but the scheduling of `anacron` jobs can be done by the superuser only
+- `cron` should be used when you need to execute the job at a specific time as per the given time in `cron`, but `anacron` should be used in when there is no any restriction for the timing and can be executed at any time
 
 </details>
 
@@ -2197,7 +2214,7 @@ In a bash script, you have several ways to check if the running user is root.
 
 As a warning, do not check if a user is root by using the root username. Nothing guarantees that the user with ID 0 is called root. It's a very strong convention that is broadly followed but anybody could rename the superuser another name.
 
-I think the best way when using bash is to use $EUID because $UID could be changed and not reflect the real user running the script.
+I think the best way when using bash is to use `$EUID` because `$UID` could be changed and not reflect the real user running the script.
 
 ```bash
 if (( $EUID != 0 )); then
@@ -2220,7 +2237,7 @@ However, the usefulness of this technique is reduced if more than one daemon is 
 
 When permissions aren't required for a program's operations. This is most notable when there isn't ever going to be any disk activity.
 
-A real world example of this is **memcached** (a key-value in-memory cache/database/thing), sitting on my computer and my server running under the nobody account. Why? Because it just doesn't need any permissions and to give it an account that did have write access to files would just be a needless risk.
+A real world example of this is **memcached** (a key-value in-memory cache/database/thing), sitting on my computer and my server running under the `nobody` account. Why? Because it just doesn't need any permissions and to give it an account that did have write access to files would just be a needless risk.
 
 A good example are also web servers. Imagine if Apache ran as root and someone found a way to send custom commands to the console through Apache would have access to your entire system.
 
@@ -2270,9 +2287,9 @@ Furthermore, if you want to append to the log file, use tee -a as:
 <details>
 <summary><b>What is the preferred bash shebang and why? What is the difference between executing a file using <code>./script</code> or <code>bash script</code>?</b></summary><br>
 
-You should use `#!/usr/bin/env bash` for portability: different *nixes put bash in different places, and using **/usr/bin/env** is a workaround to run the first bash found on the `PATH`.
+You should use `#!/usr/bin/env bash` for portability: different \*nixes put bash in different places, and using `/usr/bin/env` is a workaround to run the first bash found on the `PATH`.
 
-Running `./script` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a bash script, an sh script, or a Perl, Python, awk, or expect script, or an actual binary executable. Running `bash script` would force it to be run under sh, instead of anything else.
+Running `./script` does exactly that, and requires execute permission on the file, but is agnostic to what type of a program it is. It might be a **bash script**, an **sh script**, or a **Perl**, **Python**, **awk**, or **expect script**, or an actual **binary executable**. Running `bash script` would force it to be run under `sh`, instead of anything else.
 
 Useful resources:
 
@@ -2290,7 +2307,7 @@ nohup long-running-process &
 exit
 ```
 
-or you want to be using GNU Screen:
+or you want to be using **GNU Screen**:
 
 ```bash
 screen -d -m long-running-process
@@ -2306,7 +2323,7 @@ Useful resources:
 <details>
 <summary><b>What is the main purpose of the intermediate certification authorities?</b></summary><br>
 
-To find out the main purpose of an intermediate CA, you should first learn about Root CAs, Intermediate CAs, and the SSL Certificate Chain Trust.
+To find out the main purpose of an intermediate CA, you should first learn about **Root CAs**, **Intermediate CAs**, and the **SSL Certificate Chain Trust**.
 
 **Root CAs** are primary CAs which typically don’t directly sign end entity/server certificates. They issue Root certificates which are usually pre-installed within all browsers, mobiles, and applications. The private key of these certificates is used to sign other subsequent certificates called intermediate certificates. Root CAs are usually kept "offline” and in a highly secure environment with stringently limited access.
 
@@ -2349,7 +2366,7 @@ SELECT pg_reload_conf();
 <details>
 <summary><b>How to restore config file in Debian GNU/Linux?</b></summary><br>
 
-Will recreate any missing configuration files, e.g. **/etc/mysql/my.cnf** in your case:
+Will recreate any missing configuration files, e.g. `/etc/mysql/my.cnf` in your case:
 
 ```bash
 dpkg -i --force-confmiss mysql-common.deb
@@ -2417,7 +2434,7 @@ or:
 grep -insr "pattern" *
 ```
 
-- `-i` ignore case distinctions in both the PATTERN and the input files
+- `-i` ignore case distinctions in both the **PATTERN** and the input files
 - `-n`  prefix each line of output with the 1-based line number within its input file
 - `-s` suppress error messages about nonexistent or unreadable files.
 - `-r` read all files under each directory, recursively.
@@ -2556,7 +2573,7 @@ To be completed.
 
 <b>HTTP/2</b> supports queries multiplexing, headers compression, priority and more intelligent packet streaming management. This results in reduced latency and accelerates content download on modern web pages.
 
-Key differences with HTTP/1.1:
+Key differences with **HTTP/1.1**:
 
 - it is binary, instead of textual
 - fully multiplexed, instead of ordered and blocking
@@ -2614,7 +2631,7 @@ Useful resources:
 
 **Handshaking** begins when one device sends a message to another device indicating that it wants to establish a communications channel. The two devices then send several messages back and forth that enable them to agree on a communications protocol.
 
-A **three-way handshake** is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange SYN and ACK (SYN, SYN-ACK, ACK) packets before actual data communication begins.
+A **three-way handshake** is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange `SYN` and `ACK` (`SYN`, `SYN-ACK`, `ACK`) packets before actual data communication begins.
 
 Useful resources:
 
@@ -2625,7 +2642,7 @@ Useful resources:
 <details>
 <summary><b>Why is UDP faster than TCP?</b></summary><br>
 
-UDP is faster than TCP, and the simple reason is because its nonexistent acknowledge packet (ACK) that permits a continuous packet stream, instead of TCP that acknowledges a set of packets, calculated by using the TCP window size and round-trip time (RTT).
+**UDP** is faster than **TCP**, and the simple reason is because its nonexistent acknowledge packet (`ACK`) that permits a continuous packet stream, instead of TCP that acknowledges a set of packets, calculated by using the TCP window size and round-trip time (`RTT`).
 
 Useful resources:
 
@@ -2647,9 +2664,9 @@ Useful resources:
 <details>
 <summary><b>What is NAT? What is it used for?</b></summary><br>
 
-It enables private IP networks that use unregistered IP addresses to connect to the Internet. NAT operates on a router, usually connecting two networks together, and translates the private (not globally unique) addresses in the internal network into legal addresses, before packets are forwarded to another network.
+It enables private IP networks that use unregistered IP addresses to connect to the Internet. **NAT** operates on a router, usually connecting two networks together, and translates the private (not globally unique) addresses in the internal network into legal addresses, before packets are forwarded to another network.
 
-Workstations or other computers requiring special access outside the network can be assigned specific external IPs using NAT, allowing them to communicate with computers and applications that require a unique public IP address. NAT is also a very important aspect of firewall security.
+Workstations or other computers requiring special access outside the network can be assigned specific external IPs using **NAT**, allowing them to communicate with computers and applications that require a unique public IP address. **NAT** is also a very important aspect of firewall security.
 
 Useful resources:
 
@@ -2660,7 +2677,7 @@ Useful resources:
 <details>
 <summary><b>What is the purpose of Spanning Tree?</b></summary><br>
 
-This protocol operates at layer 2 of the OSI model with the purpose of preventing loops on the network. Without STP, a redundant switch deployment would create broadcast storms that cripple even the most robust networks. There are several iterations based on the original IEEE 802.1D standard; each operates slightly different than the others while largely accomplishing the same loop-free goal.
+This protocol operates at layer 2 of the OSI model with the purpose of preventing loops on the network. Without **STP**, a redundant switch deployment would create broadcast storms that cripple even the most robust networks. There are several iterations based on the original IEEE 802.1D standard; each operates slightly different than the others while largely accomplishing the same loop-free goal.
 
 </details>
 
@@ -2680,7 +2697,7 @@ Use the:
 <details>
 <summary><b>What mean <code>Host key verification failed</code> when you connect to the remote host? Do you accept it automatically?</b></summary><br>
 
-`Host key verification failed` means that the host key of the remote host was changed. This can easily happen when connecting to a computer who's host keys in **/etc/ssh** have changed if that computer was upgraded without copying its old host keys. The host keys here are proof when you reconnect to a remote computer with ssh that you are talking to the same computer you connected to the first time you accessed it.
+`Host key verification failed` means that the host key of the remote host was changed. This can easily happen when connecting to a computer who's host keys in `/etc/ssh` have changed if that computer was upgraded without copying its old host keys. The host keys here are proof when you reconnect to a remote computer with ssh that you are talking to the same computer you connected to the first time you accessed it.
 
 Whenever you connect to a server via SSH, that server's public key is stored in your home directory (or possibly in your local account settings if using a Mac or Windows desktop) file called **known_hosts**. When you reconnect to the same server, the SSH connection will verify the current public key matches the one you have saved in your **known_hosts** file. If the server's key has changed since the last time you connected to it, you will receive the above error.
 
@@ -2755,9 +2772,9 @@ Useful resources:
 <details>
 <summary><b>You get <code>curl: (56) TCP connection reset by peer</code>. What steps will you take to solve this problem?</b></summary><br>
 
-- check if the URL is correct, maybe you should add **www** or set correctly **Host:** header? Check also scheme (http or https)
+- check if the URL is correct, maybe you should add **www** or set correctly `Host:` header? Check also scheme (http or https)
 - check the domain is resolving into a correct IP address
-- enable debug tracing with `--trace-ascii curl.dump`. "**Recv failure**" is a really generic error so its hard for more info
+- enable debug tracing with `--trace-ascii curl.dump`. `Recv failure` is a really generic error so its hard for more info
 - use external proxy with `--proxy` for debug connection from external ip
 - use network sniffer (e.g. `tcpdump`) for debug connection in the lower TCP/IP layers
 - check firewall rules on the production environment and on the exit point of your network, also check your NAT rules
@@ -2786,7 +2803,7 @@ For example:
 <details>
 <summary><b>How to block abusive IP addresses with <code>pf</code> in OpenBSD?</b></summary><br>
 
-The best way to do this is to define a table and create a rule to block the hosts, in **pf.conf**:
+The best way to do this is to define a table and create a rule to block the hosts, in `pf.conf`:
 
 ```bash
 table <badhosts> persist
@@ -3004,9 +3021,9 @@ At a basic level, playbooks can be used to manage configurations of and deployme
 <details>
 <summary><b>What is NRPE (Nagios Remote Plugin Executor) in Nagios?</b></summary><br>
 
-The NRPE addon is designed to allow you to execute Nagios plugins on remote Linux/Unix machines. The main reason for doing this is to allow Nagios to monitor "local" resources (like CPU load, memory usage, etc.) on remote machines.
+The **NRPE** addon is designed to allow you to execute Nagios plugins on remote Linux/Unix machines. The main reason for doing this is to allow Nagios to monitor "local" resources (like CPU load, memory usage, etc.) on remote machines.
 
-Since these public resources are not usually exposed to external machines, an agent like NRPE must be installed on the remote Linux/Unix machines.
+Since these public resources are not usually exposed to external machines, an agent like **NRPE** must be installed on the remote Linux/Unix machines.
 
 </details>
 
@@ -3068,14 +3085,14 @@ Useful resources:
 
 **Cross Site Scripting** is a JavaScript vulnerability in the web applications. The easiest way to explain this is a case when a user enters a script in the client side input fields and that input gets processed without getting validated. This leads to untrusted data getting saved and executed on the client side.
 
-Countermeasures of XSS are input validation, implementing a CSP (Content security policy) etc.
+Countermeasures of XSS are input validation, implementing a CSP (Content security policy) and other.
 
 </details>
 
 <details>
 <summary><b>HIDS vs NIDS and which one is better and why?</b></summary><br>
 
-**HIDS** is host intrusion detection system and **NIDS** is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. HIDS is placed on each host whereas NIDS is placed in the network. For an enterprise, NIDS is preferred as HIDS is difficult to manage, plus it consumes processing power of the host as well.
+**HIDS** is host intrusion detection system and **NIDS** is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. **HIDS** is placed on each host whereas **NIDS** is placed in the network. For an enterprise, **NIDS** is preferred as **HIDS** is difficult to manage, plus it consumes processing power of the host as well.
 
 </details>
 
@@ -3089,7 +3106,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 <details>
 <summary><b>What is a WAF and what are its types?</b></summary><br>
 
-**WAF** stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. WAF can be either a box type or cloud based.
+**WAF** stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. **WAF** can be either a box type or cloud based.
 
 </details>
 
@@ -3198,9 +3215,9 @@ The first is relatively obvious - it has to do with user and administrative conv
 
 If each of your users are expected to have relatively uniform access to the systems throughout the network, then they'll expect the same username and password to work on each system that they are supposed to use. If they change their password they will expect that change to be global.
 
-It also has a relationship with names and group names in Unix and Linux. They are mapped into numeric forms (UID's and GID's respectively). All file ownership (inodes) and processes use these numerics for all access and identity determination throughout the kernel and drivers. These numeric values are reverse mapped back to their corresponding principle symbolic representations (the names) by the utilities that display or process that information.
+It also has a relationship with names and group names in Unix and Linux. They are mapped into numeric forms (**UID's** and **GID's** respectively). All file ownership (inodes) and processes use these numerics for all access and identity determination throughout the kernel and drivers. These numeric values are reverse mapped back to their corresponding principle symbolic representations (the names) by the utilities that display or process that information.
 
-It is also recommended that you adopt a policy that UID's are not re-used. When a user leaves your organization you "retire" their UID (disabling their access by *'ing out their passwd, removing them from the groups maps, setting their "shell" to some /bin/denied binary and their "home" directory to a secured "graveyard" - I use **/home/.graveyard** on my systems).
+It is also recommended that you adopt a policy that **UID's** are not re-used. When a user leaves your organization you "retire" their **UID** (disabling their access by \*'ing out their passwd, removing them from the groups maps, setting their "shell" to some `/bin/denied` binary and their "home" directory to a secured "graveyard" - I use `/home/.graveyard` on my systems).
 
 The reason for this may not be obvious. However, if you are maintaining archival backups for several years (or indefinitely) you'll want to avoid any ambiguities and confusion that might result from restoring one (long gone) user's files and finding them owned by one of your new users.
 
@@ -3226,9 +3243,9 @@ Useful resources:
 <details>
 <summary><b>Describe start-up configuration files and directory in BSD systems.</b></summary><br>
 
-In BSD the primary start-up configuration file is **/etc/defaults/rc.conf**. System startup scripts such as **/etc/rc** and **/etc/rc.d** just include this file.
+In BSD the primary start-up configuration file is `/etc/defaults/rc.conf`. System startup scripts such as `/etc/rc` and `/etc/rc.d` just include this file.
 
-If you want to add other programs to system startup you need to change **/etc/rc.conf** file instead of **/etc/defaults/rc.conf**.
+If you want to add other programs to system startup you need to change `/etc/rc.conf` file instead of `/etc/defaults/rc.conf`.
 
 </details>
 
@@ -3438,13 +3455,13 @@ Useful resources:
 <details>
 <summary><b>Ordinary users are able to read <code>/etc/passwd</code>, is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
 
-Typically, the _hashed_ passwords are stored in **/etc/shadow** on most Linux systems:
+Typically, the _hashed_ passwords are stored in `/etc/shadow` on most Linux systems:
 
 ```bash
 -rw-r----- 1 root shadow 1349 2011-07-03 03:54 /etc/shadow
 ```
 
-They are stored in **/etc/master.passwd** on BSD systems.
+They are stored in `/etc/master.passwd` on BSD systems.
 
 Programs that need to perform authentication still need to run with `root` privileges:
 
@@ -3546,8 +3563,8 @@ Summary exceptions:
 
 - Zombie processes cannot be killed since they are already dead and waiting for their parent processes to reap them
 - Processes that are in the blocked state will not die until they wake up again
-- The init process is special: It does not get signals that it does not want to handle, and thus it can ignore SIGKILL. An exception from this exception is while init is ptraced on Linux
-- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent SIGKILL. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem
+- The init process is special: It does not get signals that it does not want to handle, and thus it can ignore **SIGKILL**. An exception from this exception is while init is ptraced on Linux
+- An uninterruptibly sleeping process may not terminate (and free its resources) even when sent **SIGKILL**. This is one of the few cases in which a UNIX system may have to be rebooted to solve a temporary software problem
 
 Useful resources:
 
@@ -3562,8 +3579,8 @@ Useful resources:
 <summary><b>Difference between <code>nohup</code>, <code>disown</code> and <code>&</code>. What happens when using all together?</b></summary><br>
 
 - `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
-- `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a `SIGHUP`. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
-- `nohup` disconnects the process from the terminal, redirects its output to **nohup.out** and shields it from `SIGHUP`. One of the effects (the naming one) is that the process won't receive any sent `SIGHUP`. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful)
+- `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a **SIGHUP**. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
+- `nohup` disconnects the process from the terminal, redirects its output to `nohup.out` and shields it from **SIGHUP**. One of the effects (the naming one) is that the process won't receive any sent **SIGHUP**. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful)
 
 If you use all three together, the process is running in the background, is removed from the shell's job control and is effectively disconnected from the terminal.
 
@@ -3582,7 +3599,7 @@ A chroot jail is a way to isolate a process and its children from the rest of th
 
 The idea is that you create a directory tree where you copy or link in all the system files needed for a process to run. You then use the `chroot()` system call to change the root directory to be at the base of this new tree and start the process running in that chroot'd environment. Since it can't actually reference paths outside the modified root, it can't perform operations (read/write etc.) maliciously on those locations.
 
-On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like **/lib** and **/usr/lib** while not pulling in **/usr**, for example. Just bind the directory trees you want to directories you create in the jail directory.
+On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like `/lib` and `/usr/lib` while not pulling in `/usr`, for example. Just bind the directory trees you want to directories you create in the jail directory.
 
 Chroot environment is useful for:
 
@@ -3596,7 +3613,7 @@ Chroot environment is useful for:
 
 When working in a chrooted environment, there is a few special file systems that needs to be mounted so all programs behave properly.
 
-Limitation is that **/dev**, **/sys** and **/proc** are not mounted by default but needed for many tasks.
+Limitation is that `/dev`, `/sys` and `/proc` are not mounted by default but needed for many tasks.
 
 Useful resources:
 
@@ -3610,7 +3627,7 @@ Useful resources:
 <details>
 <summary><b>What are segmentation faults (segfaults), and how can identify what's causing them?</b></summary><br>
 
-A segmentation fault (aka segfault) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
+A **segmentation fault** (aka _segfault_) is a common condition that causes programs to crash. Segfaults are caused by a program trying to read or write an illegal memory location.
 
 Program memory is divided into different segments:
 
@@ -3754,7 +3771,7 @@ The FreeBSD kernel will only allow a certain number of processes to exist at one
 
 To adjust the **kern.maxusers** value, see the File/Process Limits section of the Handbook. While that section refers to open files, the same limits apply to processes.
 
-If the machine is lightly loaded but running a very large number of processes, adjust the **kern.maxproc** tunable by defining it in **/boot/loader.conf**.
+If the machine is lightly loaded but running a very large number of processes, adjust the **kern.maxproc** tunable by defining it in `/boot/loader.conf`.
 
 </details>
 
@@ -3801,7 +3818,7 @@ Most of this activity is "bursty", meaning processes are typically quiescent wit
 
 If you take a situation where you have a lot of such bursty processes, you get a very irregular and spiky CPU usage plot.
 
-As *`500 - Internal Server Error`* says, the high number of context switches are going to make the situation even worse.
+As `500 - Internal Server Error` says, the high number of context switches are going to make the situation even worse.
 
 Useful resources:
 
@@ -3938,14 +3955,14 @@ Useful resources:
 <details>
 <summary><b>How to remove all files except some from a directory?</b></summary><br>
 
-Solution 1 - with **extglob**:
+Solution 1 - with `extglob`:
 
 ```bash
 shopt -s extglob
 rm !(textfile.txt|backup.tar.gz|script.php|database.sql|info.txt)
 ```
 
-Solution 2 - with **find**:
+Solution 2 - with `find`:
 
 ```bash
 find . -type f -not -name '*txt' -print0 | xargs -0 rm --
@@ -3970,8 +3987,8 @@ fi
 <details>
 <summary><b>Explain differences between <code>2>&-</code>, <code>2>/dev/null</code>, <code>|&</code>, <code>&>/dev/null</code> and <code>>/dev/null 2>&1</code>.</b></summary><br>
 
-- a **number 1** = standard out (i.e. STDOUT)
-- a **number 2** = standard error (i.e. STDERR)
+- a **number 1** = standard out (i.e. `STDOUT`)
+- a **number 2** = standard error (i.e. `STDERR`)
 - if a number isn't explicitly given, then **number 1** is assumed by the shell (bash)
 
 First let's tackle the function of these.
@@ -3994,11 +4011,11 @@ This is just an abbreviation for `2>&1 |`. It was added in Bash 4.
 
 `&>/dev/null`
 
-This is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (STDERR) and descriptor 1 (STDOUT) to `/dev/null`.
+This is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (`STDERR`) and descriptor 1 (`STDOUT`) to `/dev/null`.
 
 `>/dev/null`
 
-This is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (STDOUT) to `/dev/null`.
+This is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (`STDOUT`) to `/dev/null`.
 
 Useful resources:
 
@@ -4012,7 +4029,7 @@ Useful resources:
 
 Just add them in one line `command 2>> error 1>> output`.
 
-However, note that `>>` is for appending if the file already has data. Whereas, `> will overwrite any existing data in the file.
+However, note that `>>` is for appending if the file already has data. Whereas, `>` will overwrite any existing data in the file.
 
 So, `command 2> error 1> output` if you do not want to append.
 
@@ -4087,9 +4104,9 @@ Useful resources:
 <details>
 <summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
 
-Fixed the issue by reducing **max_files_per_process** e.g. to 200 from default 1000. This parameter is in **postgresql.conf** file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
+Fixed the issue by reducing `max_files_per_process` e.g. to 200 from default 1000. This parameter is in `postgresql.conf` file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
-Usually people start to edit **/etc/security/limits.conf** file, but forget that this file only apply to the actively logged in users through the pam system.
+Usually people start to edit `/etc/security/limits.conf` file, but forget that this file only apply to the actively logged in users through the pam system.
 
 </details>
 
@@ -4108,7 +4125,7 @@ I've had file copies while in single user mode dump files into directories that 
 
 On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. Apache (httpd) keeping large log files in memory which had been deleted from disk.
 
-This was tracked down by running `lsof | grep "/var" | grep deleted` where **/var** was the partition I needed to clean up.
+This was tracked down by running `lsof | grep "/var" | grep deleted` where `/var` was the partition I needed to clean up.
 
 The output showed lines like this:
 
@@ -4134,7 +4151,7 @@ Useful resources:
 <details>
 <summary><b>Should the root certificate go on the server?</b></summary><br>
 
-Self-signed root certificates need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
+**Self-signed root certificates** need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
 
 If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
 
@@ -4149,7 +4166,7 @@ Useful resources:
 
 `auditd` is the correct tool for the job here:
 
-1. Add these 2 lines to **/etc/audit/audit.rules**:
+1. Add these 2 lines to `/etc/audit/audit.rules`:
 
 ```bash
 -a exit,always -F arch=b64 -F euid=0 -S execve
@@ -4158,7 +4175,7 @@ Useful resources:
 
 These will track all commands run by root (euid=0). Why two rules? The execve syscall must be tracked in both 32 and 64 bit code.
 
-2. To get rid of `auid=4294967295` messages in logs, add `audit=1` to the kernel's cmdline (by editing **/etc/default/grub**)
+2. To get rid of `auid=4294967295` messages in logs, add `audit=1` to the kernel's cmdline (by editing `/etc/default/grub`)
 
 3. Place the line
 
@@ -4166,7 +4183,7 @@ These will track all commands run by root (euid=0). Why two rules? The execve sy
 session  required                pam_loginuid.so
 ```
 
-in all PAM config files that are relevant to login (**/etc/pam.d/{login,kdm,sshd}**), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
+in all PAM config files that are relevant to login (`/etc/pam.d/{login,kdm,sshd}`), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
 
 Restart your system now.
 
@@ -4182,7 +4199,7 @@ $ sudo su -
 [...]
 ```
 
-Now read **/var/log/audit/auditd.log** for show what has been logged in.
+Now read `/var/log/audit/auditd.log` for show what has been logged in.
 
 Useful resources:
 
@@ -4201,7 +4218,7 @@ ionice -c3 dd if=/dev/zero of=z
 
 This start the `dd` process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
 
-Of course this can still flood the buffer cache and cause freezes while the system flushes out the cache to disk. There are tunables under **/proc/sys/vm/** to influence this, particularly the `dirty_*` entries.
+Of course this can still flood the buffer cache and cause freezes while the system flushes out the cache to disk. There are tunables under `/proc/sys/vm/` to influence this, particularly the `dirty_*` entries.
 
 </details>
 
@@ -4287,7 +4304,7 @@ Useful resources:
 <summary><b><code>grub></code> vs <code>grub-rescue></code>. Explain.</b></summary><br>
 
 - `grub>` - this is the mode to which it passes if you find everything you need to run the system in addition to the configuration file. With this mode, we have access to most (if not all) modules and commands. This mode can be called from the menu by pressing the 'c' key
-- `grub-rescue` - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory **/boot/grub/i386-pc**), if its contents are damaged or if no normal module is found, contains only basic commands
+- `grub-rescue` - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory `/boot/grub/i386-pc`), if its contents are damaged or if no normal module is found, contains only basic commands
 
 </details>
 
@@ -4531,7 +4548,7 @@ A better solution to ensure load-balancing or redundacy will be a cluster of at 
 <details>
 <summary><b>What are hits, misses, and hit-for-pass in Varnish Cache?</b></summary><br>
 
-A hit is a request which is successfully served from the cache, a miss is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the hit-for-pass comes in when Varnish Cache realizes that one of the objects it has requested is uncachable and will result in a pass.
+A **hit** is a request which is successfully served from the cache, a **miss** is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the **hit-for-pass** comes in when Varnish Cache realizes that one of the objects it has requested is uncachable and will result in a pass.
 
 Useful resources:
 
@@ -4561,7 +4578,7 @@ The `.htaccess` file allowed them to mod­i­fy how Apache works with­out hav­
 
 For `.htaccess` to work Apache needs to check EVERY directory in the requested path for the existence of a `.htaccess` file and if it exists it reads EVERY one of them and parses it. This happens for EVERY request. Remember that the second you change that file, it’s effective. This is because Apache reads it every time.
 
-Every sin­gle request the web­serv­er han­dles - even for the lowli­est **.png** or **.css** file - caus­es Apache to:
+Every sin­gle request the web­serv­er han­dles - even for the lowli­est `.png` or `.css` file - caus­es Apache to:
 
 - look for a `.htaccess` file in the direc­to­ry of the cur­rent request
 - then look for a `.htaccess` file in every direc­to­ry from there up to the serv­er root
@@ -4658,11 +4675,11 @@ If you have a system with thousands of routes defined in the routing table and n
 
 In most systems however the routing table is fairly small, in cases like this it is actually more efficient to use null routes. This is especially true if you already have extensive iptables rules in place.
 
-Assuming you're blocking based on source address and not destination, then doing the DROP in raw/PREROUTING would work well as you would essentially be able to drop the packet before any routing decision is made.
+Assuming you're blocking based on source address and not destination, then doing the **DROP** in **raw/PREROUTING** would work well as you would essentially be able to drop the packet before any routing decision is made.
 
 Remember however that iptables rules are essentially a linked-list and for optimum performance when blocking a number of addresses you should use an `ipset`.
 
-On the other hand if blocking by destination, there is likely little difference between blocking at the routing table vs iptables EXCEPT if source IPs are spoofed in which case the blackholed entries may consume routing cache resources; in this case, raw/PREROUTING remains preferable.
+On the other hand if blocking by destination, there is likely little difference between blocking at the routing table vs iptables **EXCEPT** if source IPs are spoofed in which case the blackholed entries may consume routing cache resources; in this case, **raw/PREROUTING** remains preferable.
 
 Your outgoing route isn't going to matter until you try to send a packet back to the attacker. By that time you will have already incurred most of the cost of socket setup and may even have a thread blocking waiting for the kernel to conclude you have no route to host, plus whatever error handling your server process does when it concludes there's a network problem.
 
@@ -4703,19 +4720,19 @@ Useful resources:
 <details>
 <summary><b>How to run <code>scp</code> with a second remote host?</b></summary><br>
 
-With <b>ssh</b>:
+With `ssh`:
 
 ```bash
 ssh user1@remote1 'ssh user2@remote2 "cat file"' > file
 ```
 
-With <b>tar</b> (with compression):
+With `tar` (with compression):
 
 ```bash
 ssh user1@remote1 'ssh user2@remote2 "cd path2; tar cj file"' | tar xj
 ```
 
-With <b>ssh</b> and port forwarding tunnel:
+With `ssh` and port forwarding tunnel:
 
 ```bash
 # First, open the tunnel
@@ -4741,7 +4758,7 @@ scp -P 1234 user2@localhost:file .
 <details>
 <summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
 
-Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns). When this cache fails, it simply asks the OS to resolve the domain.
+Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to `chrome://net-internals/#dns`). When this cache fails, it simply asks the OS to resolve the domain.
 
 The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
 
@@ -4760,17 +4777,17 @@ Useful resources:
 <details>
 <summary><b>What is the difference between <code>Cache-Control: max-age=0</code> and <code>Cache-Control: no-cache</code>?</b></summary><br>
 
-When sent by the origin server:
+**When sent by the origin server**
 
-<code>max-age=0</code> simply tells caches (and user agents) the response is stale from the get-go and so they SHOULD revalidate the response (e.g. with the If-Not-Modified header) before using a cached copy, whereas, <code>no-cache</code> tells them they MUST revalidate before using a cached copy.
+`max-age=0` simply tells caches (and user agents) the response is stale from the get-go and so they SHOULD revalidate the response (e.g. with the If-Not-Modified header) before using a cached copy, whereas, `no-cache` tells them they MUST revalidate before using a cached copy.
 
-In other words, caches may sometimes choose to use a stale response (although I believe they have to then add a Warning header), but <code>no-cache</code> says they're not allowed to use a stale response no matter what. Maybe you'd want the SHOULD-revalidate behavior when baseball stats are generated in a page, but you'd want the MUST-revalidate behavior when you've generated the response to an e-commerce purchase.
+In other words, caches may sometimes choose to use a stale response (although I believe they have to then add a Warning header), but `no-cache` says they're not allowed to use a stale response no matter what. Maybe you'd want the SHOULD-revalidate behavior when baseball stats are generated in a page, but you'd want the MUST-revalidate behavior when you've generated the response to an e-commerce purchase.
 
-When sent by the user agent:
+**When sent by the user agent**
 
-If a user agent sends a request with <code>Cache-Control: max-age=0</code> (aka. "end-to-end revalidation"), then each cache along the way will revalidate its cache entry (e.g. with the If-Not-Modified header) all the way to the origin server. If the reply is then 304 (Not Modified), the cached entity can be used.
+If a user agent sends a request with `Cache-Control: max-age=0` (aka. "end-to-end revalidation"), then each cache along the way will revalidate its cache entry (e.g. with the If-Not-Modified header) all the way to the origin server. If the reply is then 304 (Not Modified), the cached entity can be used.
 
-On the other hand, sending a request with <code>Cache-Control: no-cache</code> (aka. "end-to-end reload") doesn't revalidate and the server MUST NOT use a cached copy when responding.
+On the other hand, sending a request with `Cache-Control: no-cache` (aka. "end-to-end reload") doesn't revalidate and the server MUST NOT use a cached copy when responding.
 
 </details>
 
@@ -4852,9 +4869,9 @@ Useful resources:
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
 
-Flapping occurs when a service or host changes state too frequently, this causes lot of problem and recovery notifications.
+**Flapping** occurs when a service or host changes state too frequently, this causes lot of problem and recovery notifications.
 
-Once you have defined Flapping, explain how Nagios detects Flapping. Whenever Nagios checks the status of a host or service, it will check to see if it has started or stopped flapping.
+Once you have defined **Flapping**, explain how Nagios detects **Flapping**. Whenever Nagios checks the status of a host or service, it will check to see if it has started or stopped flapping.
 
 Nagios follows the below given procedure to do that:
 
@@ -4931,21 +4948,21 @@ To be completed.
 <details>
 <summary><b>What is CSRF?</b></summary><br>
 
-<b>Cross Site Request Forgery</b> is a web application vulnerability in which the server does not check whether the request came from a trusted client or not. The request is just processed directly. It can be further followed by the ways to detect this, examples and countermeasures.
+**Cross Site Request Forgery** is a web application vulnerability in which the server does not check whether the request came from a trusted client or not. The request is just processed directly. It can be further followed by the ways to detect this, examples and countermeasures.
 
 </details>
 
 <details>
 <summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
 
-As <b>security policy</b> defines the security objectives and the security framework of an organisation. A <b>process</b> is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. <b>Guidelines</b> are recommendations which can be customised and used in the creation of procedures.
+As **security policy** defines the security objectives and the security framework of an organisation. A **process** is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. **Guidelines** are recommendations which can be customised and used in the creation of procedures.
 
 </details>
 
 <details>
 <summary><b>What is a false positive and false negative in case of IDS?</b></summary><br>
 
-When the device generated an alert for an intrusion which has actually not happened: this is <b>false positive</b> and if the device has not generated any alert and the intrusion has actually happened, this is the case of a <b>false negative</b>.
+When the device generated an alert for an intrusion which has actually not happened: this is **false positive** and if the device has not generated any alert and the intrusion has actually happened, this is the case of a **false negative**.
 
 </details>
 
@@ -4957,17 +4974,17 @@ Web server hardening is filtering of unnecessary services running on various por
 Example:
 
 - if machine is a new install, protect it from hostile network traffic, until the operating system is installed and hardened
-- create a separate partition with the <code>nodev</code>, <code>nosuid</code>, and <code>noexec</code> options set for <code>/tmp</code>
-- create separate partitions for <code>/var</code>, <code>/var/log</code>, <code>/var/log/audit</code>, and <code>/home</code>
+- create a separate partition with the `nodev`, `nosuid`, and `noexec` options set for `/tmp`
+- create separate partitions for `/var`, `/var/log`, `/var/log/audit`, and `/home`
 - enable randomized virtual memory region placement
-- remove legacy services (e.g., telnet-server; rsh, rlogin, rcp; ypserv, ypbind; tftp, tftp-server; talk, talk-server).
+- remove legacy services (e.g. `telnet-server`, `rsh`, `rlogin`, `rcp`, `ypserv`, `ypbind`, `tftp`, `tftp-server`, `talk`, `talk-server`).
 - limit connections to services running on the host to authorized users of the service via firewalls and other access control technologies
 - disable source routed packet acceptance
-- enable TCP/SYN cookies
+- enable **TCP/SYN** cookies
 - disable SSH root login
-- install and configure AIDE
-- install and configure OSsec HIDS
-- configure SELinux
+- install and configure **AIDE**
+- install and configure **OSsec HIDS**
+- configure **SELinux**
 - all administrator or root access must be logged
 - integrity checking of system accounts, group memberships, and their associated privileges should be enabled and tested
 - set password creation requirements
@@ -5140,7 +5157,7 @@ Now we have some files named callgrind.out.* in current directory. To see profil
 kcachegrind callgrind.out.*
 ```
 
-I recommend in next window to click on "Self" column header, otherwise it shows that "main()" is most time consuming task.
+I recommend in next window to click on **Self** column header, otherwise it shows that `main()` is most time consuming task.
 
 Useful resources:
 
@@ -5191,7 +5208,7 @@ location /api {
 }
 ```
 
-HTTP Status code 307 or 308 should be used instead of 301 because it changes the request method from POST to GET.
+HTTP Status code **307** or **308** should be used instead of **301** because it changes the request method from **POST** to **GET**.
 
 </details>
 
@@ -5267,11 +5284,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do I measure request and response times at once using cURL?</b></summary><br>
+<summary><b>How do I measure request and response times at once using <code>curl</code>?</b></summary><br>
 
-cURL supports formatted output for the details of the request (see the cURL manpage for details, under <code>-w| -write-out 'format'</code>). For our purposes we’ll focus just on the timing details that are provided.
+`curl` supports formatted output for the details of the request (see the `curl` manpage for details, under `-w| -write-out 'format'`). For our purposes we’ll focus just on the timing details that are provided.
 
-1. Create a new file, curl-format.txt, and paste in:
+1. Create a new file, `curl-format.txt`, and paste in:
 
 ```bash
     time_namelookup:  %{time_namelookup}\n
@@ -5292,10 +5309,10 @@ curl -w "@curl-format.txt" -o /dev/null -s "http://example.com/"
 
 What this does:
 
-- <code>-w "@curl-format.txt"</code> - tells cURL to use our format file
-- <code>-o /dev/null</code> - redirects the output of the request to /dev/null
-- <code>-s</code> - tells cURL not to show a progress meter
-<code>http://example.com/</code> is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
+- `-w "@curl-format.txt"` - tells cURL to use our format file
+- `-o /dev/null` - redirects the output of the request to /dev/null
+- `-s` - tells cURL not to show a progress meter
+`http://example.com/` is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
 
 </details>
 
@@ -5357,19 +5374,19 @@ location / {
 <details>
 <summary><b>Explain <code>:(){ :|:& };:</code> and how stop this code if you are already logged into a system?</b></summary><br>
 
-It's a fork bomb.
+It's a **fork bomb**.
 
-- <code>:()</code> - this defines the function. ":" is the function name and the empty parenthesis shows that it will not accept any arguments
-- <code>{ }</code> - these characters shows the beginning and end of function definition
-- <code>:|:</code> - it loads a copy of the function ":" into memory and pipe its output to another copy of the ":" function, which has to be loaded into memory
-- <code>&</code> - this will make the process as a background process, so that the child processes will not get killed eventhough the parent gets auto-killed
-- <code>:</code> - final ":" will execute the function again and hence the chain reaction begins
+- `:()` - this defines the function. `:` is the function name and the empty parenthesis shows that it will not accept any arguments
+- `{ }` - these characters shows the beginning and end of function definition
+- `:|:` - it loads a copy of the function `:` into memory and pipe its output to another copy of the `:` function, which has to be loaded into memory
+- `&` - this will make the process as a background process, so that the child processes will not get killed eventhough the parent gets auto-killed
+- `:` - final `:` will execute the function again and hence the chain reaction begins
 
-The best way to protect a multi-user system is to use PAM to limit the number of processes a user can use. We know the biggest problem with a fork bomb is the fact it takes up so many processes.
+The best way to protect a multi-user system is to use **PAM** to limit the number of processes a user can use. We know the biggest problem with a fork bomb is the fact it takes up so many processes.
 
 So we have two ways of attempting to fix this, if you are already logged into the system:
-- execute a SIGSTOP command to stop the process: <code>killall -STOP -u user1</code>
-- if you can't run at the command line you will have to use <code>exec</code> to force it to run (due to processes all being used): <code>exec killall -STOP -u user1</code>
+- execute a **SIGSTOP** command to stop the process: `killall -STOP -u user1`
+- if you can't run at the command line you will have to use `exec` to force it to run (due to processes all being used): `exec killall -STOP -u user1`
 
 With fork bombs your best method for this is preventing from being to big of an issue in the first place.
 
@@ -5380,11 +5397,11 @@ With fork bombs your best method for this is preventing from being to big of an 
 
 If a file has been deleted but is still open, that means the file still exists in the filesystem (it has an inode) but has a hard link count of 0. Since there is no link to the file, you cannot open it by name. There is no facility to open a file by inode either.
 
-Linux exposes open files through special symbolic links under <code>/proc</code>. These links are called <code>/proc/12345/fd/42</code> where 12345 is the PID of a process and 42 is the number of a file descriptor in that process. A program running as the same user as that process can access the file (the read/write/execute permissions are the same you had as when the file was deleted).
+Linux exposes open files through special symbolic links under `/proc`. These links are called `/proc/12345/fd/42` where 12345 is the **PID** of a process and 42 is the number of a file descriptor in that process. A program running as the same user as that process can access the file (the read/write/execute permissions are the same you had as when the file was deleted).
 
-The name under which the file was opened is still visible in the target of the symbolic link: if the file was <code>/var/log/apache/foo.log</code>, then the target of the link is <code>/var/log/apache/foo.log (deleted)</code>.
+The name under which the file was opened is still visible in the target of the symbolic link: if the file was `/var/log/apache/foo.log`, then the target of the link is `/var/log/apache/foo.log (deleted)`.
 
-Thus you can recover the content of an open deleted file given the PID of a process that has it open and the descriptor that it's opened on like this:
+Thus you can recover the content of an open deleted file given the **PID** of a process that has it open and the descriptor that it's opened on like this:
 
 ```bash
 recover_open_deleted_file () {
@@ -5405,7 +5422,7 @@ recover_open_deleted_file () {
 recover_open_deleted_file "/proc/$pid/fd/$fd"
 ```
 
-If you only know the process ID but not the descriptor, you can recover all files with:
+If you only know the process **ID** but not the descriptor, you can recover all files with:
 
 ```bash
 for x in /proc/$pid/fd/* ; do
@@ -5413,7 +5430,7 @@ for x in /proc/$pid/fd/* ; do
 done
 ```
 
-If you don't know the process ID either, you can search among all processes:
+If you don't know the process **ID** either, you can search among all processes:
 
 ```bash
 for x in /proc/[1-9]*/fd/* ; do
@@ -5423,14 +5440,14 @@ for x in /proc/[1-9]*/fd/* ; do
 done
 ```
 
-You can also obtain this list by parsing the output of lsof, but it isn't simpler nor more reliable nor more portable (this is Linux-specific anyhow).
+You can also obtain this list by parsing the output of `lsof`, but it isn't simpler nor more reliable nor more portable (this is Linux-specific anyhow).
 
 </details>
 
 <details>
 <summary><b>How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
 
-It is possible that the question should be: "<i>System installation from the level and in place of already other system working</i>".
+It is possible that the question should be: "_System installation from the level and in place of already other system working_".
 
 On the example of the Debian GNU/Linux distribution.
 
@@ -5442,7 +5459,7 @@ mkdir $_working_directory
 debootstrap --verbose --arch amd64 {wheezy|jessie} . http://ftp.en.debian.org/debian
 ```
 
-2. Mounting sub-systems: <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code>.
+2. Mounting sub-systems: `proc`, `sys`, `dev` and `dev/pts`.
 
 ```bash
 for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
@@ -5454,7 +5471,7 @@ for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; don
 cp system_backup_22012015.tgz $_working_directory/mnt
 ```
 
-However, it is better not to waste space and do it in a different way (assuming that the copy is in <code>/mnt/backup</code>):
+However, it is better not to waste space and do it in a different way (assuming that the copy is in `/mnt/backup`):
 
 ```bash
 _backup_directory="${_working_directory}/mnt/backup"
@@ -5473,7 +5490,7 @@ chroot $_working_directory /bin/bash
 grep -v rootfs /proc/mounts > /etc/mtab
 ```
 
-6. In the "new" system, the next thing to do is mount the disk on which the "old" system is located (e.g. <code>/dev/sda1</code>).
+6. In the "new" system, the next thing to do is mount the disk on which the "old" system is located (e.g. `/dev/sda1`).
 
 ```bash
 _working_directory="/mnt/old_system"
@@ -5493,7 +5510,7 @@ for i in $(ls | awk '!(/proc/ || /dev/ || /sys/ || /mnt/)') ; do rm -fr $i ; don
 tar xzvfp $_backup_directory/system_backup_22012015.tgz -C $_working_directory
 ```
 
-9. And mount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> in a new working directory.
+9. And mount `proc`, `sys`, `dev` and `dev/pts` in a new working directory.
 
 ```bash
 for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
@@ -5506,14 +5523,14 @@ chroot $_working_directory /bin/bash -c "grub-install --no-floppy --root-directo
 chroot $_working_directory /bin/bash -c "update-grub"
 ```
 
-11. Unmount <code>proc</code>, <code>sys</code>, <code>dev</code> and <code>dev/pts</code> filesystems.
+11. Unmount `proc`, `sys`, `dev` and `dev/pts` filesystems.
 
 ```bash
 cd
 grep $_working_directory /proc/mounts | cut -f2 -d " " | sort -r | xargs umount -n
 ```
 
-None of the available commands, i.e. <code>halt</code>, <code>shutdown</code> or <code>reboot</code>, will work. You need to reload the system configuration - to do this, use the <b>kernel debugger</b> (without the 'b' option):
+None of the available commands, i.e. `halt`, `shutdown` or `reboot`, will work. You need to reload the system configuration - to do this, use the **kernel debugger** (without the '**b**' option):
 
 ```bash
 echo 1 > /proc/sys/kernel/sysrq
@@ -5531,37 +5548,37 @@ sync ; reboot -f
 <details>
 <summary><b>How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
 
-Major distribution kernels set the default value of <code>/proc/sys/vm/overcommit_memory</code> to zero, which means that processes can request more memory than is currently free in the system.
+Major distribution kernels set the default value of `/proc/sys/vm/overcommit_memory` to zero, which means that processes can request more memory than is currently free in the system.
 
-If memory is exhaustively used up by processes, to the extent which can possibly threaten the stability of the system, then the <b>OOM killer</b> comes into the picture.
+If memory is exhaustively used up by processes, to the extent which can possibly threaten the stability of the system, then the **OOM killer** comes into the picture.
 
-NOTE: It is the task of the OOM Killer to continue killing processes until enough memory is freed for the smooth functioning of the rest of the process that the Kernel is attempting to run.
+NOTE: It is the task of the **OOM Killer** to continue killing processes until enough memory is freed for the smooth functioning of the rest of the process that the Kernel is attempting to run.
 
-The OOM Killer has to select the best process(es) to kill. Best here refers to that process which will free up the maximum memory upon killing and is also the least important to the system.
+The **OOM Killer** has to select the best process(es) to kill. Best here refers to that process which will free up the maximum memory upon killing and is also the least important to the system.
 
 The primary goal is to kill the least number of processes that minimizes the damage done and at the same time maximizing the amount of memory freed.
 
-To facilitate this, the kernel maintains an <code>oom_score</code> for each of the processes. You can see the oom_score of each of the processes in the /proc filesystem under the pid directory.
+To facilitate this, the kernel maintains an `oom_score` for each of the processes. You can see the oom_score of each of the processes in the `/proc` filesystem under the pid directory.
 
 ```bash
 cat /proc/10292/oom_score
 ```
 
-The higher the value of <code>oom_score</code> of any process, the higher is its likelihood of getting killed by the OOM Killer in an out-of-memory situation.
+The higher the value of `oom_score` of any process, the higher is its likelihood of getting killed by the **OOM Killer** in an out-of-memory situation.
 
-If you want to create a special control group containing the list of processes which should be the first to receive the OOM killer's attention, create a directory under <code>/mnt/oom-killer</code> to represent it:
+If you want to create a special control group containing the list of processes which should be the first to receive the **OOM killer's** attention, create a directory under `/mnt/oom-killer` to represent it:
 
 ```bash
 mkdir lambs
 ```
 
-Set <code>oom.priority</code> to a value high enough:
+Set `oom.priority` to a value high enough:
 
 ```bash
 echo 256 > /mnt/oom-killer/lambs/oom.priority
 ```
 
-<code>oom.priority</code> is a 64-bit unsigned integer, and can have a maximum value an nsigned 64-bit number can hold. While scanning for the process to be killed, the OOM-killer selects a process from the list of tasks with the highest <code>oom.priority</code> value.
+`oom.priority` is a 64-bit unsigned integer, and can have a maximum value an nsigned 64-bit number can hold. While scanning for the process to be killed, the **OOM-killer** selects a process from the list of tasks with the highest `oom.priority` value.
 
 Add the PID of the process to be added to the list of tasks:
 
@@ -5569,13 +5586,13 @@ Add the PID of the process to be added to the list of tasks:
 echo <pid> > /mnt/oom-killer/lambs/tasks
 ```
 
-To create a list of processes, which will not be killed by the OOM-killer, make a directory to contain the processes:
+To create a list of processes, which will not be killed by the **OOM-killer**, make a directory to contain the processes:
 
 ```bash
 mkdir invincibles
 ```
 
-Setting <code>oom.priority</code> to zero makes all the process in this cgroup to be excluded from the list of target processes to be killed.
+Setting `oom.priority` to zero makes all the process in this cgroup to be excluded from the list of target processes to be killed.
 
 ```bash
 echo 0 > /mnt/oom-killer/invincibles/oom.priority
@@ -5592,17 +5609,17 @@ echo <pid> > /mnt/oom-killer/invincibles/tasks
 <details>
 <summary><b>What are salted hashes? Generate the password with salt for the <code>/etc/shadow</code> file.</b></summary><br>
 
-<b>Salt</b> at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
+**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
 
 For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
 
-The encrypted passwords in <code>/etc/shadow</code> file are stored in the following format:
+The encrypted passwords in `/etc/shadow` file are stored in the following format:
 
 ```bash
 $ID$SALT$ENCRYPTED
 ```
 
-The <code>$ID</code> indicates the type of encryption, the <code>$SALT</code> is a random (up to 16 characters) string and <code>$ENCRYPTED</code> is a password’s hash.
+The `$ID` indicates the type of encryption, the `$SALT` is a random (up to 16 characters) string and `$ENCRYPTED` is a password’s hash.
 
 <table style="width:100%">
   <tr>
@@ -5627,21 +5644,21 @@ The <code>$ID</code> indicates the type of encryption, the <code>$SALT</code> is
   </tr>
 </table>
 
-Use the below commands from the Linux shell to generate hashed password for <code>/etc/shadow</code> with the random salt:
+Use the below commands from the Linux shell to generate hashed password for `/etc/shadow` with the random salt:
 
-- Generate <b>MD5</b> password hash
+- Generate **MD5** password hash
 
 ```bash
 python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$1\$%s\$' % randomsalt)"
 ```
 
-- Generate <b>SHA-256</b> password hash
+- Generate **SHA-256** password hash
 
 ```bash
 python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$5\$%s\$' % randomsalt)"
 ```
 
-- Generate <b>SHA-512</b> password hash
+- Generate **SHA-512** password hash
 
 ```bash
 python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
