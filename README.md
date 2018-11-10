@@ -34,19 +34,21 @@
 
 ****
 
-:information_source: This project contains **275** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+<br>
 
-:heavy_check_mark: The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
+:information_source: &nbsp;This project contains **275** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
-:warning: Questions marked **`***`** don't have answer yet or answer is incomplete (**43** questions at this moment) - **make a pull request to add them**!
+:heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:traffic_light: If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**43** questions at this moment) - **make a pull request to add them**!
+
+:traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
 <br>
 
-<div align="center">
-  All suggestions are welcome!
-</div>
+<p align="center">
+    <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b>
+</p>
 
 <br>
 
