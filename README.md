@@ -36,7 +36,7 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **276** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **277** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -61,7 +61,7 @@
 | <b>[General Knowledge](#general-knowledge)</b> |||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 62 questions | Reasonably simple and straight based on basic knowledge. |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions | Hard questions and riddles. Check it if you want to be good. |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
 
@@ -3142,7 +3142,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (60)
+###### System Questions (61)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
@@ -3276,6 +3276,25 @@ Useful resources:
 In BSD the primary start-up configuration file is `/etc/defaults/rc.conf`. System startup scripts such as `/etc/rc` and `/etc/rc.d` just include this file.
 
 If you want to add other programs to system startup you need to change `/etc/rc.conf` file instead of `/etc/defaults/rc.conf`.
+
+</details>
+
+As much as I have read about iowait, it is still mystery to me.
+
+I know it's the time spent by the CPU waiting for a IO operations to complete, but what kind of IO operations precisely? What I am also not sure, is why it so important? Can't the CPU just do something else while the IO operation completes, and then get back to processing data?
+
+Also what are the right tools to diagnose what process(es) did exactly wait for IO.
+
+And what are the ways to minimize IO wait time?
+
+<details>
+<summary><b>CPU spent the most of time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [Can anyone explain precisely what IOWait is?](https://serverfault.com/questions/12679/can-anyone-explain-precisely-what-iowait-is)
 
 </details>
 
@@ -5368,6 +5387,11 @@ What this does:
 <summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [ext4: using external journal to optimise performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
+- [How to move an ext4 journal](https://unix.stackexchange.com/questions/278998/how-to-move-an-ext4-journal)
 
 </details>
 
