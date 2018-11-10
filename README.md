@@ -5212,11 +5212,24 @@ if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 </details>
 
 <details>
-<summary><b>You should rewrite POST data with payload to external API but POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
+<summary><b>You should rewrite POST with payload to external API but POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
 
 The issue is that external redirects will never resend **POST** data. This is written into the HTTP spec (check the `3xx` section). Any client that does do this is violating the spec.
 
 **POST** data is passed in the body of the request, which gets dropped if you do a standard redirect.
+
+Look at this:
+
+```
+   +-------------------------------------------+-----------+-----------+
+   |                                           | Permanent | Temporary |
+   +-------------------------------------------+-----------+-----------+
+   | Allows changing the request method from   | 301       | 302       |
+   | POST to GET                               |           |           |
+   | Does not allow changing the request       | 308       | 307       |
+   | method from POST to GET                   |           |           |
+   +-------------------------------------------+-----------+-----------+
+```
 
 You can try with the HTTP status code **307**, a RFC compilant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
 
