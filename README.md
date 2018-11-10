@@ -3178,7 +3178,7 @@ This architecture majorly caters to the problem of ever growing size of kernel c
 
 In this architecture, all the basic OS services which are made part of user space are made to run as servers which are used by other programs in the system through inter process communication (IPC).
 
-e.g. We have servers for device drivers, network protocol stacks, file systems, graphics, etc. Microkernel servers are essentially daemon programs like any others, except that the kernel grants some of them privileges to interact with parts of physical memory that are otherwise off limits to most programs.
+Example: We have servers for device drivers, network protocol stacks, file systems, graphics, etc. Microkernel servers are essentially daemon programs like any others, except that the kernel grants some of them privileges to interact with parts of physical memory that are otherwise off limits to most programs.
 
 **Hybrid Kernels (Modular Kernels)**
 
@@ -3214,13 +3214,13 @@ Useful resources:
 <details>
 <summary><b>Explain all the fields in the <code>/etc/passwd</code> file.</b></summary><br>
 
-- **Username**: First field is the username that contains the username which is 1 to 32 length characters
-- **Password**: This field does not show the actual password as the password is encrypted. Here, x character shows that password is encrypted that is located in `/etc/shadow` file
-- **User ID (UID)**: All the users created in Linux is given a user ID whenever the user is created. UID 0 is fixed and reserved for the root user
-- **Group ID (GID)**: This field specifies the name of the group to which the user belongs. The group information is also stored in a file `/etc/group`
-- **User ID Info**: Here you can add comments and you can add any extra information related to the users like full name, contact number, etc
-- **Home directory**: This field provides the path where the user is directed after the login. For example, `/home/smith`
-- **Command/shell**: This field provides the path of a command/shell and denotes that user has access to this shell i.e. `/bin/bash`
+- **Username**: first field is the username that contains the username which is 1 to 32 length characters
+- **Password**: this field does not show the actual password as the password is encrypted. Here, `x` character shows that password is encrypted that is located in `/etc/shadow` file
+- **User ID (UID)**: all the users created in Linux is given a **user ID** whenever the user is created. **UID 0** is fixed and reserved for the root user
+- **Group ID (GID)**: this field specifies the name of the group to which the user belongs. The group information is also stored in a file `/etc/group`
+- **User ID Info**: Here you can add comments and you can add any extra information related to the users like full name, contact number and more
+- **Home directory**: this field provides the path where the user is directed after the login. For example: `/home/smith`
+- **Command/shell**: this field provides the path of a command/shell and denotes that user has access to this shell e.g. `/bin/bash`
 
 Useful resources:
 
@@ -3247,7 +3247,7 @@ If each of your users are expected to have relatively uniform access to the syst
 
 It also has a relationship with names and group names in Unix and Linux. They are mapped into numeric forms (**UID's** and **GID's** respectively). All file ownership (inodes) and processes use these numerics for all access and identity determination throughout the kernel and drivers. These numeric values are reverse mapped back to their corresponding principle symbolic representations (the names) by the utilities that display or process that information.
 
-It is also recommended that you adopt a policy that **UID's** are not re-used. When a user leaves your organization you "retire" their **UID** (disabling their access by \*'ing out their passwd, removing them from the groups maps, setting their "shell" to some `/bin/denied` binary and their "home" directory to a secured "graveyard" - I use `/home/.graveyard` on my systems).
+It is also recommended that you adopt a policy that **UID's** are not re-used. When a user leaves your organization you "retire" their **UID** (disabling their access by \*'ing out their passwd, removing them from the groups maps, setting their "shell" to some `/bin/denied` binary and their home directory to a secured _graveyard_ - I use `/home/.graveyard` on my systems).
 
 The reason for this may not be obvious. However, if you are maintaining archival backups for several years (or indefinitely) you'll want to avoid any ambiguities and confusion that might result from restoring one (long gone) user's files and finding them owned by one of your new users.
 
