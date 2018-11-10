@@ -52,15 +52,16 @@
 
 ## Table of Contents
 
-| <b>[Introduction](#introduction)</b> ||
-| :---         | :---         |
-| :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions |
-| <b>[General Knowledge](#general-knowledge)</b> ||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 62 questions |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions |
+| <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
+| :---         | :---         | :---         |
+| <b>[Introduction](#introduction)</b> |||
+| :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
+| <b>[General Knowledge](#general-knowledge)</b> |||
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 62 questions | Reasonably simple and straight based on basic knowledge. |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions | Really deep questions are to get to know Guru Sysadmin. |
 
 ## <a name="introduction">Introduction</a>
 
@@ -4133,7 +4134,7 @@ Useful resources:
 
 Fixed the issue by reducing `max_files_per_process` e.g. to 200 from default 1000. This parameter is in `postgresql.conf` file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
-Usually people start to edit `/etc/security/limits.conf` file, but forget that this file only apply to the actively logged in users through the pam system.
+Usually people start to edit `/etc/security/limits.conf` file, but forget that this file only apply to the actively logged in users through the PAM system.
 
 </details>
 
@@ -4994,9 +4995,7 @@ When the device generated an alert for an intrusion which has actually not happe
 </details>
 
 <details>
-<summary><b>5 quick points on web server hardening.</b></summary><br>
-
-Web server hardening is filtering of unnecessary services running on various ports and removal of default test scripts from the servers. Although web server hardening is a lot more than this and usually organisations have a customised checklist for hardening the servers. Any server getting created has to be hardened and hardening has to be re-confirmed on a yearly basis. Even the hardening checklist has to be reviewed on a yearly basis for new add-ons.
+<summary><b>10 quick points on web server hardening.</b></summary><br>
 
 Example:
 
@@ -5014,7 +5013,12 @@ Example:
 - configure **SELinux**
 - all administrator or root access must be logged
 - integrity checking of system accounts, group memberships, and their associated privileges should be enabled and tested
-- set password creation requirements
+- set password creation requirements (e.g. with PAM)
+
+Useful resources:
+
+- [Security Harden CentOS 7](https://highon.coffee/blog/security-harden-centos-7/)
+- [CentOS 7 Server Hardening Guide](https://www.lisenet.com/2017/centos-7-server-hardening-guide/)
 
 </details>
 
@@ -5595,7 +5599,7 @@ sync ; reboot -f
 </details>
 
 <details>
-<summary><b>How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
+<summary><b>Rsync triggered Linux OOM killer on a single 50 GB file. How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
 
 Major distribution kernels set the default value of `/proc/sys/vm/overcommit_memory` to zero, which means that processes can request more memory than is currently free in the system.
 
@@ -5608,6 +5612,8 @@ The **OOM Killer** has to select the best process(es) to kill. Best here refers 
 The primary goal is to kill the least number of processes that minimizes the damage done and at the same time maximizing the amount of memory freed.
 
 To facilitate this, the kernel maintains an `oom_score` for each of the processes. You can see the oom_score of each of the processes in the `/proc` filesystem under the pid directory.
+
+  > When analyzing OOM killer logs, it is important to look at what triggered it.
 
 ```bash
 cat /proc/10292/oom_score
@@ -5652,6 +5658,10 @@ To add more processes to this group, add the pid of the task to the list of task
 ```bash
 echo <pid> > /mnt/oom-killer/invincibles/tasks
 ```
+
+Useful resources:
+
+- [Rsync triggered Linux OOM killer on a single 50 GB file](https://serverfault.com/questions/724469/rsync-triggered-linux-oom-killer-on-a-single-50-gb-file)
 
 </details>
 
