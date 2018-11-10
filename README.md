@@ -36,11 +36,11 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **275** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **276** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**43** questions at this moment) - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**44** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -63,7 +63,7 @@
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions | Really deep questions are to get to know Guru Sysadmin. |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
 
 ## <a name="introduction">Introduction</a>
 
@@ -3142,7 +3142,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (61)
+###### System Questions (60)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
@@ -3376,13 +3376,6 @@ Useful resources:
 <summary><b>How to scan newly assigned luns on Linux box without rebooting?</b></summary><br>
 
 Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
-
-</details>
-
-<details>
-<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
-
-To be completed.
 
 </details>
 
@@ -4468,7 +4461,7 @@ To be completed.
 
 </details>
 
-###### Network Questions (23)
+###### Network Questions (24)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
@@ -4562,6 +4555,31 @@ Useful resources:
 - [How do you do load testing and capacity planning for web sites? (original)](https://serverfault.com/questions/350454/how-do-you-do-load-testing-and-capacity-planning-for-web-sites)
 - [Can you help me with my capacity planning?](https://serverfault.com/questions/384686/can-you-help-me-with-my-capacity-planning)
 - [How do you do load testing and capacity planning for databases?](https://serverfault.com/questions/350458/how-do-you-do-load-testing-and-capacity-planning-for-databases)
+
+</details>
+
+<details>
+<summary><b>Developer reports a problem with connectivity to the remote service. Use <code>/dev</code> for troubleshooting.</b></summary><br>
+
+```bash
+# <host> - set remote host
+# <port> - set destination port
+
+# 1
+timeout 1 bash -c "</dev/tcp/<host>/<port>" >/dev/null 2>&1 ; echo $?
+
+# 2
+timeout 1 bash -c 'cat < /dev/null > </dev/tcp/<host>/<port>' ; echo $?
+
+# 2
+&> echo > "</dev/tcp/<host>/<port>"
+```
+
+Useful resources:
+
+- [Advanced Bash-Scripting Guide - /dev](http://www.tldp.org/LDP/abs/html/devref1.html#DEVTCP)
+- [/dev/tcp as a weapon](https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/)
+- [Test from shell script if remote TCP port is open](https://stackoverflow.com/questions/4922943/test-from-shell-script-if-remote-tcp-port-is-open)
 
 </details>
 
@@ -5314,31 +5332,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Developer reports a problem with connectivity to the remote service. Use <code>/dev</code> for troubleshooting.</b></summary><br>
-
-```bash
-# <host> - set remote host
-# <port> - set destination port
-
-# 1
-timeout 1 bash -c "</dev/tcp/<host>/<port>" >/dev/null 2>&1 ; echo $?
-
-# 2
-timeout 1 bash -c 'cat < /dev/null > </dev/tcp/<host>/<port>' ; echo $?
-
-# 2
-&> echo > "</dev/tcp/<host>/<port>"
-```
-
-Useful resources:
-
-- [Advanced Bash-Scripting Guide - /dev](http://www.tldp.org/LDP/abs/html/devref1.html#DEVTCP)
-- [/dev/tcp as a weapon](https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/)
-- [Test from shell script if remote TCP port is open](https://stackoverflow.com/questions/4922943/test-from-shell-script-if-remote-tcp-port-is-open)
-
-</details>
-
-<details>
 <summary><b>How do I measure request and response times at once using <code>curl</code>?</b></summary><br>
 
 `curl` supports formatted output for the details of the request (see the `curl` manpage for details, under `-w| -write-out 'format'`). For our purposes we’ll focus just on the timing details that are provided.
@@ -5368,6 +5361,13 @@ What this does:
 - `-o /dev/null` - redirects the output of the request to /dev/null
 - `-s` - tells cURL not to show a progress meter
 `http://example.com/` is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
+
+</details>
+
+<details>
+<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -5724,5 +5724,16 @@ python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string
 ```bash
 python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
 ```
+
+</details>
+
+<details>
+<summary><b>You have a lot of sockets, hanging in <code>TIME_WAIT</code>. Your http service behind proxy serve a lot of small http requests. How to check and reduce <code>TIME_WAIT</code> sockets? ***</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [How to reduce number of sockets in TIME_WAIT?](https://serverfault.com/questions/212093/how-to-reduce-number-of-sockets-in-time-wait)
 
 </details>
