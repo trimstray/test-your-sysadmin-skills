@@ -50,8 +50,6 @@
     <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b>
 </p>
 
-<br>
-
 ## Table of Contents
 
 | <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
