@@ -40,7 +40,7 @@
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**44** questions at this moment) - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**45** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
