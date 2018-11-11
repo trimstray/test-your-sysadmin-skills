@@ -192,7 +192,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you getting to know the command line? ***</b></summary><br>
+<summary><b>How do you getting help the command line? ***</b></summary><br>
 
 To be completed.
 
