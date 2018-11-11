@@ -50,6 +50,8 @@
     <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b>
 </p>
 
+<br>
+
 ## Table of Contents
 
 | <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
@@ -62,6 +64,8 @@
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
+
+<br>
 
 ## <a name="introduction">Introduction</a>
 
