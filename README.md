@@ -5071,18 +5071,11 @@ Useful resources:
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
 
 <details>
-<summary><b>You're on a security conference. Members debating about putting up the OpenBSD firewall on the core of the network. Go to the podium and express your opinion about this solution. What are the pros/cons and why? ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
 <summary><b>How to profile app in Linux environment?</b></summary><br>
 
 > Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
 
-1. You can use <code>top</code> in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
+1. You can use `top`in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
 
 ```bash
 top -b -p `pidof a.out`
@@ -5129,7 +5122,7 @@ perf report --stdio -g none
 perf report --stdio -g
 ```
 
-<b>This is an example of profiling a test program</b>
+**This is an example of profiling a test program**
 
 1. I run my test program (c++):
 
@@ -5213,7 +5206,7 @@ perf report --stdio -g graph -i ./my_test.perf.data | c++filt
 
 So at this point you know where your program spends time.
 
-Also the simple way to do app profile is to use the <code>pstack</code> utility or <code>lsstack</code>.
+Also the simple way to do app profile is to use the `pstack` utility or `lsstack`.
 
 Other tool is Valgrind. So this is what I recommend. Run program first:
 
@@ -5408,6 +5401,13 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>You're on a security conference. Members debating about putting up the OpenBSD firewall on the core of the network. Go to the podium and express your opinion about this solution. What are the pros/cons and why? ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>Is there a way to allow multiple cross-domains using the Access-Control-Allow-Origin header in Nginx?</b></summary><br>
 
 To match a list of domain and subdomain this regex make it ease to work with fonts:
@@ -5536,7 +5536,7 @@ You can also obtain this list by parsing the output of `lsof`, but it isn't simp
 </details>
 
 <details>
-<summary><b>How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
+<summary><b>The team of admins needs your support. You must remotely reinstall the system on one of the servers. There is no access to the management console (e.g. iDRAC). How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
 
 It is possible that the question should be: "_System installation from the level and in place of already other system working_".
 
