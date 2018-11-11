@@ -3438,7 +3438,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain system calls used for process management.</b></summary><br>
+<summary><b>Explain each system calls used for process management in Linux.</b></summary><br>
 
 There are some system calls for process management. These are as follows:
 
