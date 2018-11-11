@@ -40,7 +40,7 @@
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**45** questions at this moment) - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**46** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -1581,7 +1581,7 @@ Underneath the file system files are represented by inodes (or is it multiple in
 
 When you delete a file it removes one link to the underlying inode. The inode is only deleted (or deletable/over-writable) when all links to the inode have been deleted.
 
-- a symbolic link is a link to another name in the file system.
+- a symbolic link is a link to another name in the file system
 
 Once a hard link has been made the link is to the inode. deleting renaming or moving the original file will not affect the hard link as it links to the underlying inode. Any changes to the data on the inode is reflected in all files that refer to that inode.
 
@@ -1613,7 +1613,7 @@ So if the file is owned by root and the **SUID** bit is turned on, the program w
 
 Examples:
 
-**no suid/guid** - just the bits *rwxr-xr-x* are set.
+**no suid/guid** - just the bits `rwxr-xr-x` are set.
 
 ```bash
 ls -lt b.pl
@@ -1661,7 +1661,7 @@ ls -l /|grep tmp
 drwxrwxrwt. 168 root root 28672 Jun 14 08:36 tmp
 ```
 
-This bit should have always been called the "restricted deletion bit" given that's what it really connotes. When this mode bit is enabled, it makes a directory such that users can only delete files & directories within it that they are the owners of.
+This bit should have always been called the _restricted deletion bit_ given that's what it really connotes. When this mode bit is enabled, it makes a directory such that users can only delete files & directories within it that they are the owners of.
 
 Useful resources:
 
@@ -1779,7 +1779,7 @@ If you allow your site to modify the files which form the code running your site
 
 A file upload tool allows users to upload a file with any name and any contents. This allows a user to upload a mail relay PHP script to your site, which they can place wherever they want to turn your server into a machine to forward unsolicited commercial email. This script could also be used to read every email address out of your database, or other personal information.
 
-If the malicious user can upload a file with any name but not control the contents, then they could easily upload a file which overwrites your index.php (or another critical file) and breaks your site.
+If the malicious user can upload a file with any name but not control the contents, then they could easily upload a file which overwrites your `index.php` (or another critical file) and breaks your site.
 
 Useful resources:
 
@@ -1790,26 +1790,33 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? ***</b></summary><br>
+<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? If you use <code>telinit 6</code> instead of <code>reboot</code> command your server will be restarted? ***</b></summary><br>
 
 To be completed.
+
+Useful resources:
+
+- [What differences it will make, if i use “telinit 6” instead of “reboot” command to restart my computer?](https://unix.stackexchange.com/questions/434560/what-differences-it-will-make-if-i-use-telinit-6-instead-of-reboot-command)
 
 </details>
 
 <details>
-<summary><b>I have forgotten the root password! What do I do in BSD?</b></summary><br>
+<summary><b>I have forgotten the root password! What do I do in BSD? What is the purpose of booting into single user mode?</b></summary><br>
 
-Restart the system, type `boot -s` at the `Boot:` prompt to enter single-user mode.
+Restart the system, type `boot -s` at the `Boot:` prompt to enter **single-user mode**.
 
-At the question about the shell to use, hit Enter which will display a # prompt.
+At the question about the shell to use, hit `Enter` which will display a `#` prompt.
 
 Enter `mount -urw /` to remount the root file system read/write, then run `mount -a` to remount all the file systems.
 
 Run `passwd root` to change the root password then run `exit` to continue booting.
 
+**Single user mode** should basically let you log in with root access & change just about anything. For example, you might use single-user mode when you are restoring a damaged master database or a system database, or when you are changing server configuration options (e.g. password recovery).
+
 Useful resources:
 
 - [FreeBSD Reset or Recover Root Password](https://www.cyberciti.biz/tips/howto-freebsd-reset-recover-root-password.html)
+- [Single User Mode Definition](http://www.linfo.org/single_user_mode.html)
 
 </details>
 
@@ -1829,7 +1836,7 @@ __EOF__
 </details>
 
 <details>
-<summary><b>How to change the kernel parameters? What kernel options might you need to tune?</b></summary><br>
+<summary><b>How to change the kernel parameters? What kernel options might you need to tune? ***</b></summary><br>
 
 To set the kernel parameters in Unix-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
@@ -2310,7 +2317,7 @@ If you want to include stderr, do:
 
 `2>&1` redirects channel 2 (stderr/standard error) into channel 1 (stdout/standard output), such that both is written as stdout. It is also directed to the given output file as of the tee command.
 
-Furthermore, if you want to append to the log file, use tee -a as:
+Furthermore, if you want to append to the log file, use `tee -a` as:
 
 `program [arguments...] 2>&1 | tee -a outfile`
 
@@ -2983,8 +2990,12 @@ There might be four types of responses:
 
 - **Open port** - few ports in the case of the firewall
 - **Closed port** - most ports are closed because of the firewall
-- **Filtered** - Nmap is not sure whether the port is open or not
-- **Unfiltered** - Nmap can access the port but is still confused about the open status of the port
+- **Filtered** - `nmap` is not sure whether the port is open or not
+- **Unfiltered** - `nmap` can access the port but is still confused about the open status of the port
+
+Useful resources:
+
+- [NMAP - Closed vs Filtered](https://security.stackexchange.com/questions/182504/nmap-closed-vs-filtered)
 
 </details>
 
@@ -3280,14 +3291,6 @@ In BSD the primary start-up configuration file is `/etc/defaults/rc.conf`. Syste
 If you want to add other programs to system startup you need to change `/etc/rc.conf` file instead of `/etc/defaults/rc.conf`.
 
 </details>
-
-As much as I have read about iowait, it is still mystery to me.
-
-I know it's the time spent by the CPU waiting for a IO operations to complete, but what kind of IO operations precisely? What I am also not sure, is why it so important? Can't the CPU just do something else while the IO operation completes, and then get back to processing data?
-
-Also what are the right tools to diagnose what process(es) did exactly wait for IO.
-
-And what are the ways to minimize IO wait time?
 
 <details>
 <summary><b>CPU spent the most of time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
