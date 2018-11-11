@@ -2233,12 +2233,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between cron and anacron?</b></summary><br>
+<summary><b>Why do most distros use ext4, as opposed to XFS or other? Why are there so many of them? ***</b></summary><br>
 
-- one of the main difference between `cron` and `anacron` jobs is that `cron` works on the system that are running continuously that means it is designed for the system that is running 24\*7. While `anacron` is used for the systems that are not running continuously
-- other difference between the two is `cron` jobs can run every minute, but `anacron` jobs can be run only once a day
-- any normal user can do the scheduling of `cron` jobs, but the scheduling of `anacron` jobs can be done by the superuser only
-- `cron` should be used when you need to execute the job at a specific time as per the given time in `cron`, but `anacron` should be used in when there is no any restriction for the timing and can be executed at any time
+To be completed.
 
 </details>
 
