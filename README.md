@@ -54,7 +54,7 @@
 
 ## Table of Contents
 
-| <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
+| <b><u>The type of chapter</u></b>&nbsp;&nbsp; | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
 | :---         | :---         | :---         |
 | <b>[Introduction](#introduction)</b> |||
 | :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
