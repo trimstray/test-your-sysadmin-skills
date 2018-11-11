@@ -3427,9 +3427,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to scan newly assigned luns on Linux box without rebooting?</b></summary><br>
+<summary><b>How to add new disk in Linux server without rebooting? How to rescan and add it in LVM?</b></summary><br>
 
-Run the command: `echo "---" >/sys/class/scsi_host/hostX/scan`
+To be completed.
+
+Useful resources:
+
+- [How to Add New Disk in Linux CentOS 7 Without Rebooting](https://linoxide.com/linux-how-to/add-new-disk-centos-7-without-rebooting/)
 
 </details>
 
