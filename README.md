@@ -36,11 +36,11 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **279** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **281** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**48** questions at this moment) - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**49** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -60,7 +60,7 @@
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 63 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 14 questions | Really deep questions are to get to know Guru Sysadmin. |
@@ -1294,7 +1294,7 @@ Useful resources:
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (56)
+###### System Questions (58)
 
 <details>
 <summary><b>What is your experience with the production environments? ***</b></summary><br>
@@ -1440,6 +1440,13 @@ This is very important information to obtain when problem solving why a computer
 Useful resources:
 
 - [How to find the process(es) which are hogging the machine](https://superuser.com/questions/326300/how-to-find-the-processes-which-are-hogging-the-machine)
+
+</details>
+
+<details>
+<summary><b>You need to upgrade <code>ntpd</code> service at 200 servers. What is the best way to go about upgrading all of these to the latest? ***</b></summary><br>
+
+To be completed.
 
 </details>
 
@@ -2058,6 +2065,22 @@ Useful resources:
 <summary><b>What is the proper way to upgrade and update a system in production? ***</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>Your friend during the configuration of the MySQL server asks you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
+
+It would be better if you run command as it provides many security options like:
+
+- You can set a password for root accounts
+- You can remove root accounts that are accessible from outside the local host
+- You can remove anonymous-user accounts
+- You can remove the test database, which by default can be accessed by anonymous users
+
+Useful resources:
+
+- [What is Purpose of using mysql_secure_installation?](https://stackoverflow.com/questions/20760908/what-is-purpose-of-using-mysql-secure-installation)
 
 </details>
 
@@ -3864,7 +3887,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does "CPU jumps" mean?</b></summary><br>
+<summary><b>What does CPU jumps mean?</b></summary><br>
 
 An OS is a very busy thing, particularly so when you have it doing something (and even when you aren't). And when we are looking at an active enterprise environment, something is always going on.
 
@@ -4645,7 +4668,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Developer says: "<code>htaccess</code> is full of magic and it should be used". What is your opinion about using <code>htaccess</code> files? What are the consequences for web application?</b></summary><br>
+<summary><b>Developer says: <i><code>htaccess</code> is full of magic and it should be used</i>. What is your opinion about using <code>htaccess</code> files? What are the consequences for web application?</b></summary><br>
 
 `.htaccess` files were born out of an era when shared host­ing was com­mon­ place:
 
