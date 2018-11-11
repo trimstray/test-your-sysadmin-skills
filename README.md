@@ -36,11 +36,11 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **277** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **278** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**46** questions at this moment) - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete (**47** questions at this moment) - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
 
@@ -63,7 +63,7 @@
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 14 questions | Really deep questions are to get to know Guru Sysadmin. |
 
 <br>
 
@@ -5069,6 +5069,13 @@ Useful resources:
 ## <a name="secret-knowledge">Secret Knowledge</a>
 
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
+
+<details>
+<summary><b>You're on a security conference. Members debating about putting up the OpenBSD firewall on the core of the network. Go to the podium and express your opinion about this solution. What are the pros/cons and why? ***</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>How to profile app in Linux environment?</b></summary><br>
