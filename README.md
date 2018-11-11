@@ -47,7 +47,7 @@
 <br>
 
 <p align="center">
-    <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b>
+  » <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b> «
 </p>
 
 <br>
