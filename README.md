@@ -54,10 +54,10 @@
 
 ## Table of Contents
 
-| <b><u>The type of chapter</u></b>&nbsp;&nbsp; | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
+| <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
 | :---         | :---         | :---         |
 | <b>[Introduction](#introduction)</b> |||
-| :small_orange_diamond: [Icebreaker Questions](#icebreaker-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
+| :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 62 questions | Reasonably simple and straight based on basic knowledge. |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 92 questions | The mid level of questions if that you have sound knowledge. |
@@ -69,7 +69,7 @@
 
 ## <a name="introduction">Introduction</a>
 
-### :diamond_shape_with_a_dot_inside: <a name="icebreaker-questions">Icebreaker Questions</a>
+### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
 
 - <b>What did you learn this week?</b>
 - <b>What excites or interests you about the sysadmin world?</b>
