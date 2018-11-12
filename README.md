@@ -36,7 +36,7 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **282** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **280** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -57,10 +57,10 @@
 | <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
 | :---         | :---         | :---         |
 | <b>[Introduction](#introduction)</b> |||
-| :small_orange_diamond: [Simple Questions](#simple-questions) | 15 questions | Relaxed, fun and simple - are great for starting everything. |
+| :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 63 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 93 questions | The mid level of questions if that you have sound knowledge. |
 | :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 14 questions | Really deep questions are to get to know Guru Sysadmin. |
@@ -78,12 +78,11 @@
 - <b>Do you contribute to any open source projects?</b>
 - <b>Describe the setup of your homelab.</b>
 - <b>What personal achievement are you most proud of?</b>
-- <b>Tell me about the biggest mistake you've made. How you would do it differently today?</b>
-- <b>Tell me about your favorite Unix-like system.</b>
+- <b>Tell me about the biggest mistake you've made. How would you do it differently today?</b>
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
-- <b>Your NOC team has the new budget for admins certifications. What certificate would you like and why?</b>
+- <b>Your NOC team has the new budget for sysadmin certifications. What certificate would you like and why?</b>
 - <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
 - <b>Which sysadmin question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
@@ -404,7 +403,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Where is password file located in Linux/Unix?</b></summary><br>
+<summary><b>Where is my password stored on Linux/Unix?</b></summary><br>
 
 The passwords are not stored anywhere on the system at all. What is stored in `/etc/shadow` are so called hashes of the passwords.
 
@@ -571,7 +570,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you list contents of <code>archive.tgz</code> and extract only one file?</b></summary><br>
+<summary><b><code>archive.tgz</code> has ~30 GB. How do you list contents of it and extract only one file?</b></summary><br>
 
 ```bash
 # list of conent
@@ -897,7 +896,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What POP and IMAP are, and how to choose which of them you should implement?</b></summary><br>
+<summary><b>What POP and IMAP are, and how to choose which of them you should implement? ***</b></summary><br>
 
 To be completed.
 
@@ -1168,7 +1167,7 @@ Useful resources:
 
 The **OSI** model explains why it doesn't make sense to make routing, a **layer 3** concept, decisions based on a physical, **layer 2**, mechanism.
 
-Modern networking is broken into many different layers to accomplish your end to end communication. Your network card (what is addressed by the mac address [physical address]) needs to only be responsible for communicating with peers on it's physical network.
+Modern networking is broken into many different layers to accomplish your end to end communication. Your network card (what is addressed by the mac address - physical address) needs to only be responsible for communicating with peers on it's physical network.
 
 The communication that you are allowed to accomplish with your **MAC** address is going to be limited to other devices that reside within physical contact to your machine. On the internet, for example, you are not physically connected to each machine. That's why we make use of **TCP/IP** (a **layer 3**, logical address) mechanism when we need to communicate with a machine that we are not physically connected to.
 
@@ -1295,7 +1294,7 @@ Useful resources:
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (58)
+###### System Questions (57)
 
 <details>
 <summary><b>What is your experience with the production environments? ***</b></summary><br>
@@ -1899,7 +1898,7 @@ There are three types of journaling available in **ext3/ext4** file systems:
 
 An **inode** is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
 
-A Unix file is "stored" in two different parts of the disk - the data blocks and the inodes. (I won't get into superblocks and other esoteric information.) The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
+A Unix file is stored in two different parts of the disk - the data blocks and the inodes. I won't get into superblocks and other esoteric information. The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
 
 A file's inode number can easily be found by using the `ls` command, which by default lists the objects (i.e. files, links and directories) in the current directory (i.e. the directory in which the user is currently working), with its `-i` option. Thus, for example, the following will show the name of each object in the current directory together with its inode number:
 
@@ -1958,7 +1957,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove "zombie" file?</b></summary><br>
+<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove "zombie" files?</b></summary><br>
 
 This problem may be more difficult to solve because several steps may be required - sometimes you have get `test/file: Permission denied`, `test/file: No such file or directory` or `test/file: Input/output error`.
 
@@ -2063,14 +2062,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to upgrade and update a system in production? ***</b></summary><br>
+<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these process? Do you set downtime for them? Write recommendation. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Your friend during the configuration of the MySQL server asks you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
+<summary><b>Your friend during the configuration of the MySQL server asked you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
 
 It would be better if you run command as it provides many security options like:
 
@@ -2140,7 +2139,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What was <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
+<summary><b>What waw <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
 
 The command `setfacl` refers to **Set File Access Control Lists** and `getfacl` refers to **Get File Access Control List**. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use `getfacl`.
 
@@ -2234,7 +2233,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Why do most distros use ext4, as opposed to XFS or other? Why are there so many of them? ***</b></summary><br>
+<summary><b>Why do most distros use ext4, as opposed to XFS or other filesystems? Why are there so many of them? ***</b></summary><br>
 
 To be completed.
 
@@ -2426,17 +2425,6 @@ Solution 3:
 
 ```
 SELECT pg_reload_conf();
-```
-
-</details>
-
-<details>
-<summary><b>How to restore config file in Debian GNU/Linux?</b></summary><br>
-
-Will recreate any missing configuration files, e.g. `/etc/mysql/my.cnf` in your case:
-
-```bash
-dpkg -i --force-confmiss mysql-common.deb
 ```
 
 </details>
@@ -3532,7 +3520,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Ordinary users are able to read <code>/etc/passwd</code>, is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
+<summary><b>Ordinary users are able to read <code>/etc/passwd</code>. Is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
 
 Typically, the _hashed passwords_ are stored in `/etc/shadow` on most Linux systems:
 
@@ -4474,7 +4462,7 @@ Now this <code>ln /etc/passwd</code> attack will not work.
 </details>
 
 <details>
-<summary><b>Is it safe to attach the strace to a running process on the production? What are the consequences?</b></summary><br>
+<summary><b>Is it safe to attach the <code>strace</code> to a running process on the production? What are the consequences?</b></summary><br>
 
 `strace` is the system call tracer for Linux. It currently uses the arcane `ptrace()` (process trace) debugging interface, which operates in a violent manner: **pausing the target process** for each syscall so that the debugger can read state. And doing this twice: when the syscall begins, and when it ends.
 
@@ -4602,7 +4590,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you do load testing and capacity planning for web sites? ***</b></summary><br>
+<summary><b>How do you do load testing and capacity planning for websites? ***</b></summary><br>
 
 To be completed.
 
@@ -4716,7 +4704,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to test connection to remote host with and without SNI?</b></summary><br>
+<summary><b>How to test connection to remote host with and without SNI? In which cases it is useful?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
@@ -5103,7 +5091,7 @@ Useful resources:
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
 
 <details>
-<summary><b>How to profile app in Linux environment?</b></summary><br>
+<summary><b>An application encounters some performance issues. You should to find the code we have to optimize. How to profile app in Linux environment?</b></summary><br>
 
 > Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
 
@@ -5568,7 +5556,7 @@ You can also obtain this list by parsing the output of `lsof`, but it isn't simp
 </details>
 
 <details>
-<summary><b>The team of admins needs your support. You must remotely reinstall the system on one of the servers. There is no access to the management console (e.g. iDRAC). How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
+<summary><b>The team of admins needs your support. You must remotely reinstall the system on one of the main servers. There is no access to the management console (e.g. iDRAC). How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
 
 It is possible that the question should be: "_System installation from the level and in place of already other system working_".
 
