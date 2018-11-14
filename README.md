@@ -80,7 +80,7 @@
 - <b>What personal achievement are you most proud of?</b>
 - <b>Tell me about the biggest mistake you've made. How would you do it differently today?</b>
 - <b>What software tools are you going to install the first day at a new job?</b>
-- <b>Tell me about how you manage your knowledge database (e.g. wikis).</b>
+- <b>Tell me about how you manage your knowledge database (e.g. wikis, files, portals).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
 - <b>Your NOC team has the new budget for sysadmin certifications. What certificate would you like and why?</b>
 - <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
