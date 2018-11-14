@@ -11,6 +11,38 @@ SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/- signed-off-by: \1/p')
 grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
 ``````
 
+## Project improvements
+
+Remember about this rules:
+
+### Remove `***` from question without answer
+
+<p align="center">
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/question_marker_01.png"
+        alt="Master">
+</p>
+
+### Remove `***` from question without answer
+
+<p align="center">
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/sub-chapter_questions_counter_01.png"
+        alt="Master">
+</p>
+
+### Update TOC counters
+
+<p align="center">
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/toc_questions_counter_01.png"
+        alt="Master">
+</p>
+
+### Update questions counter (for all Q/A)
+
+<p align="center">
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/questions_counter_01.png"
+        alt="Master">
+</p>
+
 ## Pull requests
 
 When creating pull request, please heed the following:
