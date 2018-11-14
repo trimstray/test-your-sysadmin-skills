@@ -17,28 +17,36 @@ Remember about this rules:
 
 ### Remove `***` from question without answer
 
-<p align="center">
+Example:
+
+<p align="left">
     <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/question_marker_01.png"
         alt="Master">
 </p>
 
 ### Remove `***` from question without answer
 
-<p align="center">
+Example:
+
+<p align="left">
     <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/sub-chapter_questions_counter_01.png"
         alt="Master">
 </p>
 
 ### Update TOC counters
 
-<p align="center">
+Example:
+
+<p align="left">
     <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/toc_questions_counter_01.png"
         alt="Master">
 </p>
 
 ### Update questions counter (for all Q/A)
 
-<p align="center">
+Example:
+
+<p align="left">
     <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/questions_counter_01.png"
         alt="Master">
 </p>
