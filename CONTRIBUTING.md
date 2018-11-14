@@ -15,7 +15,7 @@ grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
 
 Remember about this rules:
 
-### Remove `***` from question without answer
+#### Remove marker from question without answer
 
 Example:
 
@@ -24,7 +24,7 @@ Example:
         alt="Master">
 </p>
 
-### Remove `***` from question without answer
+#### Update sub-chapter questions counter
 
 Example:
 
@@ -33,7 +33,7 @@ Example:
         alt="Master">
 </p>
 
-### Update TOC counters
+#### Update TOC counters
 
 Example:
 
@@ -42,7 +42,7 @@ Example:
         alt="Master">
 </p>
 
-### Update questions counter (for all Q/A)
+#### Update questions counter (for all Q/A)
 
 Example:
 
