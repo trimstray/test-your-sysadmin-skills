@@ -623,9 +623,20 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What symbolic representation can you pass to <code>chmod</code> to give all users execute access to a file without affecting other permissions? ***</b></summary><br>
+<summary><b>What symbolic representation can you pass to <code>chmod</code> to give all users execute access to a file without affecting other permissions?</b></summary><br>
 
-To be completed.
+```bash
+chmod a+x /path/to/file
+```
+
+- `a` - for all users
+- `x` - for execution permission
+- `r` - for read permission
+- `w` - for write permission
+
+Useful resources:
+- [How to Set File Permissions Using chmod](https://www.washington.edu/computing/unix/permissions.html)
+- [What does "chmod +x your_file_name" do and how do I use it?](https://askubuntu.com/questions/443789/what-does-chmod-x-filename-do-and-how-do-i-use-it)
 
 </details>
 
