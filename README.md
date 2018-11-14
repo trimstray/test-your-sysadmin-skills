@@ -36,7 +36,7 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **280** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **278** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -59,9 +59,9 @@
 | <b>[Introduction](#introduction)</b> |||
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 63 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 93 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 96 questions | Hard questions and riddles. Check it if you want to be good. |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 64 questions | Reasonably simple and straight based on basic knowledge. |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 91 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
 | :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 14 questions | Really deep questions are to get to know Guru Sysadmin. |
 
@@ -82,7 +82,7 @@
 - <b>What software tools are you going to install the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis, files, portals).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
-- <b>Your NOC team has the new budget for sysadmin certifications. What certificate would you like and why?</b>
+- <b>Your NOC team has a new budget for sysadmin certifications. What certificate would you like and why?</b>
 - <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
 - <b>Which sysadmin question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
@@ -90,7 +90,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (37)
+###### System Questions (36)
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
@@ -179,7 +179,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is your favourite shell and why?</b></summary><br>
+<summary><b>What is your favorite shell and why?</b></summary><br>
 
 **BASH** is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (`>>`, `<< 2>&1`, `2>`, `1>`, etc) is similar to C++ which makes it easier for me to recognize.
 
@@ -784,17 +784,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is key-based authentication? Explain.</b></summary><br>
-
-**Key-based authentication** is a kind of authentication that may be used as an alternative to password authentication. Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
-
-Useful resources:
-
-- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
-
-</details>
-
-<details>
 <summary><b>What is your the best command line text editor for daily working and scripting? ***</b></summary><br>
 
 To be completed.
@@ -816,7 +805,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (21)
+###### Network Questions (23)
 
 <details>
 <summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. ***</b></summary><br>
@@ -972,6 +961,13 @@ To troubleshoot communication problems between servers, it is better to ideally 
 </details>
 
 <details>
+<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>How to resolve the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
 
 Examples for resolve IP address to domain name:
@@ -1070,6 +1066,24 @@ The **SSH** daemon and **SSH** client listen for connections on a specific netwo
 Useful resources:
 
 - [Understanding the SSH Encryption and Connection Process](https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process)
+
+</details>
+
+<details>
+<summary><b>Most tutorials suggest using SSH key authentication rather than password authentication. Why it is considered more secure?</b></summary><br>
+
+An **SSH key** is an access credential in the SSH protocol. Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and for implementing single sign-on by system administrators and power users.
+
+Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
+
+If your SSH service only allows public-key authentication, an attacker needs a copy of a private key corresponding to a public key stored on the server.
+
+If your SSH service allows password based authentication, then your Internet connected SSH server will be hammered day and night by bot-nets trying to guess user-names and passwords. The bot net needs no information, it can just try popular names and popular passwords. Apart from anything else this clogs your logs.
+
+Useful resources:
+
+- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
+- [SSH password vs. key authentication](https://security.stackexchange.com/questions/33381/ssh-password-vs-key-authentication)
 
 </details>
 
@@ -1987,6 +2001,23 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>To LVM or not to LVM. What benefits does it provide?</b></summary><br>
+
+- LVM makes it quite easy to move file systems around
+- you can extend a volume group onto a new physical volume
+- move any number of logical volumes of an old physical one
+- remove that volume from the volume group without needing to unmount any partitions
+- you can also make snapshots of logical volumes for making backups
+- LVM has built in mirroring support so you can have a logical volume mirrored across multiple physical volumes
+- LVM even supports TRIM
+
+Useful resources:
+
+- [What is LVM and what is it used for?](https://askubuntu.com/questions/3596/what-is-lvm-and-what-is-it-used-for)
+
+</details>
+
+<details>
 <summary><b>How to increase the size of LVM partition?</b></summary><br>
 
 Use the `lvextend` command for resize LVM partition.
@@ -2024,31 +2055,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe a process to create partition, LVM partition and filesystem.</b></summary><br>
-
-1. Create partition
-
-```bash
-fdisk /dev/sdb
-```
-
-2. Create LVM
-
-```bash
-pvcreate /dev/sdb1
-vgcreate vg0 /dev/sdb1
-lvcreate --name datastore --size 50G vg0
-```
-
-3. Create filesystem
-
-```bash
-mkfs -t xfs /dev/mapper/vg0-datastore
-```
-
-</details>
-
-<details>
 <summary><b>What is a zombie/defunct process?</b></summary><br>
 
 Is a process that has completed execution (via the `exit` system call) but still has an entry in the process table: it is a process in the "**Terminated state**".
@@ -2062,14 +2068,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these process? Do you set downtime for them? Write recommendation. ***</b></summary><br>
+<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these process? Do you set downtime for them? Write recommendations. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Your friend during the configuration of the MySQL server asked you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
+<summary><b>Your friend during configuration of the MySQL server asked you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
 
 It would be better if you run command as it provides many security options like:
 
@@ -2139,9 +2145,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What waw <code>getfacl</code> and <code>setfacl</code> commands do?</b></summary><br>
+<summary><b>When would you use access control lists instead of or in conjunction with the <code>chmod</code> command? ***</b></summary><br>
 
-The command `setfacl` refers to **Set File Access Control Lists** and `getfacl` refers to **Get File Access Control List**. Each file and directory in a Linux filesystem is created with a specific set of file permissions for its access. In order to know the access permissions of a file or directory we use `getfacl`.
+To be completed.
 
 </details>
 
@@ -2568,7 +2574,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (26)
+###### Network Questions (24)
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. ***</b></summary><br>
@@ -2611,13 +2617,6 @@ To be completed.
 
 <details>
 <summary><b>List examples of network troubleshooting tools that can degrade during DNS issues. ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. ***</b></summary><br>
 
 To be completed.
 
@@ -2871,41 +2870,6 @@ And then dynamically add/delete IP addresses from it:
 pfctl -t badhosts -T add 1.2.3.4
 pfctl -t badhosts -T delete 1.2.3.4
 ```
-
-</details>
-
-<details>
-<summary><b>How to disable cache for specific domain in Varnish?</b></summary><br>
-
-For example:
-
-```
-sub vcl_recv {
-   # don't cache foo.com or bar.com - optional www
-   if (req.host ~ "(www)?(foo|bar).com") {
-     return(pass);
-   }
-}
-```
-
-or:
-
-```
-sub vcl_recv {
-  # don't cache foo.com or bar.com - optional www
-  if (req.http.host ~ "(www\.)?(foo|bar)\.com") {
-    return(pass);
-  }
-  # cache foobar.com - optional www
-  if (req.http.host ~ "(www\.)?foobar\.com") {
-    return(hash);
-  }
-}
-```
-
-Useful resources:
-
-- [Varnish: cache only specific domain](https://stackoverflow.com/questions/3728066/varnish-cache-only-specific-domain)
 
 </details>
 
@@ -3171,7 +3135,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (61)
+###### System Questions (60)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
@@ -3237,24 +3201,6 @@ export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
 Useful resources:
 
 - [How to correctly use LD_LIBRARY_PATH](http://wiredrevolution.com/system-administration/how-to-correctly-use-ld_library_path)
-
-</details>
-
-<details>
-<summary><b>Explain all the fields in the <code>/etc/passwd</code> file.</b></summary><br>
-
-- **Username**: first field is the username that contains the username which is 1 to 32 length characters
-- **Password**: this field does not show the actual password as the password is encrypted. Here, `x` character shows that password is encrypted that is located in `/etc/shadow` file
-- **User ID (UID)**: all the users created in Linux is given a **user ID** whenever the user is created. **UID 0** is fixed and reserved for the root user
-- **Group ID (GID)**: this field specifies the name of the group to which the user belongs. The group information is also stored in a file `/etc/group`
-- **User ID Info**: Here you can add comments and you can add any extra information related to the users like full name, contact number and more
-- **Home directory**: this field provides the path where the user is directed after the login. For example: `/home/smith`
-- **Command/shell**: this field provides the path of a command/shell and denotes that user has access to this shell e.g. `/bin/bash`
-
-Useful resources:
-
-- [Understanding /etc/passwd File Format](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
-- [What is difference between /etc/shadow and /etc/passwd](https://askubuntu.com/questions/445361/what-is-difference-between-etc-shadow-and-etc-passwd)
 
 </details>
 
@@ -5261,7 +5207,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
+<summary><b>Using a Linux system with a limited number of packages installed, and telnet is not available. Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
 
 For example:
 
