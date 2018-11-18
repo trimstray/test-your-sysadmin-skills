@@ -4655,7 +4655,7 @@ Every web­page can gen­er­ate dozens of requests. This is over­head you don�
 
 Allowing individual users to modify the configuration of a server using `.htaccess` can cause security concerns if not taken care properly. If you add any directive in the `.htaccess` file, it will be considered as they are added to Apache configuration file.
 
-This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-avaliable/site.conf` (or `httpd.conf` or whatever your server calls.
+This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-avaliable/site.conf` (or `httpd.conf` or whatever your server calls).
 
 **Summary**
 
