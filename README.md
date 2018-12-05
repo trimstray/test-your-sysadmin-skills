@@ -332,7 +332,7 @@ Useful resources:
 
 - [How do I run a Unix process in the background?](https://kb.iu.edu/d/afnz)
 - [Job Control Commands](http://tldp.org/LDP/abs/html/x9644.html)
-- [What is/are the advantage(s) of running applications in backgound?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
+- [What is/are the advantage(s) of running applications in background?](https://unix.stackexchange.com/questions/162186/what-is-are-the-advantages-of-running-applications-in-backgound)
 
 </details>
 
@@ -350,7 +350,7 @@ Running (everything) as root is bad because:
 
 - **Stupidity**: nothing prevents you from making a careless mistake. If you try to change the system in any potentially harmful way, you need to use sudo, which ensures a pause (while you're entering the password) to ensure that you aren't about to make a mistake.
 
-- **Security**: harder to hack if you dont know the admin user's login account. root means you already have one half of the working set of admin credentials.
+- **Security**: harder to hack if you don't know the admin user's login account. root means you already have one half of the working set of admin credentials.
 
 - **You don't really need it**: if you need to run several commands as root, and you're annoyed by having to enter your password several times when `sudo` has expired, all you need to do is `sudo -i` and you are now root. Want to run some commands using pipes? Then use `sudo sh -c "command1 | command2"`.
 
@@ -573,7 +573,7 @@ Useful resources:
 <summary><b><code>archive.tgz</code> has ~30 GB. How do you list contents of it and extract only one file?</b></summary><br>
 
 ```bash
-# list of conent
+# list of content
 tar tf archive.tgz
 
 # extract file
@@ -1041,7 +1041,7 @@ nc -vz code42.example.com 5432
 <details>
 <summary><b>Why should you avoid <code>telnet</code> to administer a system remotely?</b></summary><br>
 
-Modern operating systems have turned off all potentially insecure services by default. On the other hand, some verndors of network devices still allow to establish communication using the telnet protocol.
+Modern operating systems have turned off all potentially insecure services by default. On the other hand, some vendors of network devices still allow to establish communication using the telnet protocol.
 
 **Telnet** uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
 
@@ -1200,7 +1200,7 @@ The communication that you are allowed to accomplish with your **MAC** address i
 
 It's also pretty easy to relate this to another pair of systems. You have a State Issued ID Number, why would you need a mailing address if that ID number is already unique to just you? You need the mailing address because it's an arbitrary system that describes where the unique destination for communications to you should go.
 
-On the other hand, the distribition of **MAC** addresses across the network is random and completely unrelated to topology. Routes grouping would be impossible, every router would need to keep track of routes for every single device that relays traffic trough it. That is what **layer 2** switches do, and that does not scale well beyond a certain number of hosts.
+On the other hand, the distribution of **MAC** addresses across the network is random and completely unrelated to topology. Routes grouping would be impossible, every router would need to keep track of routes for every single device that relays traffic trough it. That is what **layer 2** switches do, and that does not scale well beyond a certain number of hosts.
 
 Useful resources:
 
@@ -1286,7 +1286,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain a simple Countinuos Integration pipeline.</b></summary><br>
+<summary><b>Explain a simple Continuous Integration pipeline.</b></summary><br>
 
 - clone repository
 - deploy stage (QA)
@@ -1304,7 +1304,7 @@ Useful resources:
 - `docker logs <container-id|container-name>` - get logs from container
 - `docker network ls` - show all docker networks
 - `docker volumes ls` - show all docker volumes
-- `docker exec -it <container-id|container-name> bash` - execute bash in container with interative shell
+- `docker exec -it <container-id|container-name> bash` - execute bash in container with interactive shell
 
 </details>
 
@@ -1348,7 +1348,7 @@ To be completed.
 
 - `SysV init` - init's job is "to get everything running the way it should be once the kernel is fully running. Essentially it establishes and operates the entire user space. This includes checking and mounting file systems, starting up necessary user services, and ultimately switching to a user-environment when system startup is completed.
 - `systemd` - the developers of systemd aimed to replace the Linux init system inherited from Unix System V. Like init, systemd is a daemon that manages other daemons. All daemons, including systemd, are background processes. Systemd is the first daemon to start (during booting) and the last daemon to terminate (during shutdown).
-- `runint` - runit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools process supervision toolkit that runs on the Linux, Mac OS X, \*BSD, and Solaris operating systems.
+- `runinit` - runinit is an init scheme for Unix-like operating systems that initializes, supervises, and ends processes throughout the operating system. It is a reimplementation of the daemontools process supervision toolkit that runs on the Linux, Mac OS X, \*BSD, and Solaris operating systems.
 
 Useful resources:
 
@@ -1368,7 +1368,7 @@ The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, f
 
 Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference. Don't let it get there.
 
-Usefule resources:
+Useful resources:
 
 - [Proper way of interpreting system load on a 4 core 8 thread processor](https://serverfault.com/questions/618130/proper-way-of-interpreting-system-load-on-a-4-core-8-thread-processor)
 - [Understanding Linux CPU Load - when should you be worried?](http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages)
@@ -1456,7 +1456,7 @@ Useful resources:
 
 `top` works reasonably well, as long as you look at the right numbers.
 - **M** Sorts by current resident memory usage
-- **T** Sorts by total ( or cummulaative) CPU usage
+- **T** Sorts by total ( or cummulative) CPU usage
 - **P** Sorts by current CPU usage (this is the default refresh)
 - **?** Displays a usage summary for all top commands
 
@@ -1530,7 +1530,7 @@ If the system needs more memory resources and the RAM is full, inactive pages in
 
 Workload increases your RAM demand. You are running a workload that requires more memory. Usage of the entire swap indicates that. Also, changing `swappiness` to **1** might not be a wise decision. Setting `swappiness` to **1** does not indicate that swapping will not be done. It just indicates how aggressive kernel will be in respect of swapping, it does not eliminate swapping. Swapping will happen if needs to be done.
 
-- **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks arn't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
+- **Increasing the size of the swap space** - firstly, you'd have increased disk use. If your disks aren't fast enough to keep up, then your system might end up thrashing, and you'd experience slowdowns as data is swapped in and out of memory. This would result in a bottleneck.
 
 - **Adding more RAM** - the real solution is to add more memory. There's no substitute for RAM, and if you have enough memory, you'll swap less.
 
@@ -2579,7 +2579,7 @@ It is also important to make backup/snapshots of both environments.
 **Web/App servers**
 
 - sync/update system version (e.g. packages)
-- if necessary, updated kernel parametres, firewall rules and other
+- if necessary, updated kernel parameters, firewall rules and other
 - sync/update configuration files of all running/important services
 - sync/update user accounts (e.g. permissions) and their home directories
 - deploy project from git/svn repository
@@ -2621,7 +2621,7 @@ First of all check if your site is online from a other location. It then lets yo
 - you can use tools like `dig` or `host` to test DNS to see if the host name is resolving: `host www.example.org dns.example.org`
 - you can also check global public dns servers: `host www.example.com 9.9.9.9`
 
-If domain not resolved it's probably probem with DNS servers.
+If domain not resolved it's probably problem with DNS servers.
 
 **If domain resolved properly**
 
@@ -2784,7 +2784,7 @@ Don't delete the entire **known_hosts** file as recommended by some people, this
 
 Before accepting the new host key, contact your/other system administrator for verification.
 
-Usefule resources:
+Useful resources:
 
 - [Git error: "Host Key Verification Failed" when connecting to remote repository](https://stackoverflow.com/questions/13363553/git-error-host-key-verification-failed-when-connecting-to-remote-repository)
 
@@ -2857,7 +2857,7 @@ Useful resources:
 - use external proxy with `--proxy` for debug connection from external ip
 - use network sniffer (e.g. `tcpdump`) for debug connection in the lower TCP/IP layers
 - check firewall rules on the production environment and on the exit point of your network, also check your NAT rules
-- check MTU size of packets travelling over your network
+- check MTU size of packets traveling over your network
 - check SSL version with ssl/tls `curl` params if you connecting to https protocol
 - it may be a problem on the client side e.g. the netfilter drop or limit  connections from your IP address to the domain
 
@@ -2979,7 +2979,7 @@ This is the default policy of the web and prevents the user's data from being le
 
 Now with **CORS**, `example.org` could set a policy to say it will allow the origin `https://example.com` to read responses made by AJAX. This would be done if both `example.com` and `example.org` are ran by the same company and data sharing between the origins is to be allowed in the user's browser. It only affects the client-side of things, not the server-side.
 
-**CSPs** on the other hand set a policy of what content can run on the current site. For example, if JavaScript can be executed inline, or which domains `.js` files can be loaded from. This can be beneficial to act as another line of defence against **XSS** attacks, where the attacker will try and inject script into the HTML page. Normally output would be encoded, however say the developer had forgotten only on one output field. Because the policy is preventing in-line script from executing, the attack is thwarted.
+**CSPs** on the other hand set a policy of what content can run on the current site. For example, if JavaScript can be executed inline, or which domains `.js` files can be loaded from. This can be beneficial to act as another line of defense against **XSS** attacks, where the attacker will try and inject script into the HTML page. Normally output would be encoded, however say the developer had forgotten only on one output field. Because the policy is preventing in-line script from executing, the attack is thwarted.
 
 Useful resources:
 
@@ -3255,7 +3255,7 @@ Useful resources:
 
 - [UID/GID Synchronization and Management (original)](https://linuxgazette.net/issue31/tag_uidgid.html)
 - [What's the advantage of synchronizing UID/GID across Linux machines?](https://serverfault.com/questions/603987/whats-the-advantage-of-synchronizing-uid-gid-across-linux-machines)
-- [How can I keep user acccounts consistent accross multiple machines?](https://unix.stackexchange.com/questions/141023/how-can-i-keep-user-acccounts-consistent-accross-multiple-machines)
+- [How can I keep user accounts consistent across multiple machines?](https://unix.stackexchange.com/questions/141023/how-can-i-keep-user-acccounts-consistent-accross-multiple-machines)
 
 </details>
 
@@ -3355,13 +3355,13 @@ The production database should refuse connections from any server and pc which i
 
 How the hell development machines can access a production database right like that? How about a simple firewall rule to just let the servers needing the DB data access the database?
 
-**Create summmary/postmortem documents after failures**
+**Create summary/postmortem documents after failures**
 
 The post-mortem audience includes customers, direct reports, peers, the company's executive team and often investors.
 
 Explain what caused the outage on a timeline. Every incident begins with a specific trigger at a specific time, which often causes some unexpected behavior. For example, our servers were rebooted and we expected them to come back up intact, which didn't happen.
 
-Furthermore, every incident has a root cause: the reboot itself was trigger, however a bug in the driver caused the actual outage. Finally, there're consequences to every incident, the most obvious one is that the site goes down.
+Furthermore, every incident has a root cause: the reboot itself was trigger, however a bug in the driver caused the actual outage. Finally, there are consequences to every incident, the most obvious one is that the site goes down.
 
 The post-mortem answers the single most important question of what could have prevented the outage.
 
@@ -3746,7 +3746,7 @@ So you want to use `/dev/urandom` and stop to worry about this entropy business.
 
 The trick is that `/dev/urandom` never blocks, ever, even when it should: `/dev/urandom` is secure as long as it has received enough bytes of "initial entropy" since the last boot (32 random bytes are enough). A normal Linux installation will create a random seed (from `/dev/random`) upon installation, and save it on the disk. Upon each reboot, the seed will be read, fed into `/dev/urandom`, and a new seed immediately generated (from `/dev/urandom`) to replace it. Thus, this guarantees that `/dev/urandom` will always have enough initial entropy to produce cryptographically strong alea, perfectly sufficient for any mundane cryptographic job, including password generation.
 
-Should any of these daemons require randomness when all available entropy has been exhausted, they may pause to wait for more, which can cause excessive delays in your application. Even worse, since most modern applications will either resort to using its own random seed created at program initialization, or to using `/dev/urandom` to avoid blocking, your applications will suffer from lower quality random data. This can affect the integrity of your secure communications, and can increase the chance of cryptanalysis on your private data.
+Should any of these daemons require randomness when all available entropy has been exhausted, they may pause to wait for more, which can cause excessive delays in your application. Even worse, since most modern applications will either resort to using its own random seed created at program initialization, or to using `/dev/urandom` to avoid blocking, your applications will suffer from lower quality random data. This can affect the integrity of your secure communications, and can increase the chance of cryptoanalysis on your private data.
 
 To check the amount of bytes of entropy currently available, use:
 
@@ -4604,14 +4604,14 @@ Useful resources:
 It depends. Varnish is a cache server, so its purpose is to cache contents and to act as a reverse proxy, to speed up retrieval of data and to lessen the load on the webserver.
 Varnish can be also configured as a load-balancer for multiple web servers, but if we use just one Varnish server, this will become our single point of failure on our infrastructure.
 
-A better solution to ensure load-balancing or redundacy will be a cluster of at least two Varnish instances, in active-active mode or active-passive mode.
+A better solution to ensure load-balancing or redundancy will be a cluster of at least two Varnish instances, in active-active mode or active-passive mode.
 
 </details>
 
 <details>
 <summary><b>What are hits, misses, and hit-for-pass in Varnish Cache?</b></summary><br>
 
-A **hit** is a request which is successfully served from the cache, a **miss** is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the **hit-for-pass** comes in when Varnish Cache realizes that one of the objects it has requested is uncachable and will result in a pass.
+A **hit** is a request which is successfully served from the cache, a **miss** is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the **hit-for-pass** comes in when Varnish Cache realizes that one of the objects it has requested is uncacheable and will result in a pass.
 
 Useful resources:
 
@@ -4631,31 +4631,31 @@ To be completed.
 <details>
 <summary><b>Developer says: <i><code>htaccess</code> is full of magic and it should be used</i>. What is your opinion about using <code>htaccess</code> files? What are the consequences for web application?</b></summary><br>
 
-`.htaccess` files were born out of an era when shared host­ing was com­mon­ place:
+`.htaccess` files were born out of an era when shared hosting was common­place:
 
-- sysad­mins need­ed a way to allow mul­ti­ple clients to access their serv­er under dif­fer­ent accounts, with dif­fer­ent con­fig­u­ra­tions for their web­sites.
+- sysadmins needed a way to allow multiple clients to access their server under different accounts, with different configurations for their web­sites.
 
-The `.htaccess` file allowed them to mod­i­fy how Apache works with­out hav­ing access to the entire server. These files can reside in any and every directory in the directory tree of the website and provide features to the directory and the files and folders inside it.
+The `.htaccess` file allowed them to modify how Apache works without having access to the entire server. These files can reside in any and every directory in the directory tree of the website and provide features to the directory and the files and folders inside it.
 
 **It’s horrible for performance**
 
 For `.htaccess` to work Apache needs to check EVERY directory in the requested path for the existence of a `.htaccess` file and if it exists it reads EVERY one of them and parses it. This happens for EVERY request. Remember that the second you change that file, it’s effective. This is because Apache reads it every time.
 
-Every sin­gle request the web­serv­er han­dles - even for the lowli­est `.png` or `.css` file - caus­es Apache to:
+Every single request the web­server handles - even for the lowliest `.png` or `.css` file - causes Apache to:
 
-- look for a `.htaccess` file in the direc­to­ry of the cur­rent request
-- then look for a `.htaccess` file in every direc­to­ry from there up to the serv­er root
-- coa­lesce all of these `.htaccess` files together
-- recon­fig­ure the web­serv­er using the new settings
-- final­ly, deliv­er the file
+- look for a `.htaccess` file in the directory of the current request
+- then look for a `.htaccess` file in every directory from there up to the server root
+- coalesce all of these `.htaccess` files together
+- reconfigure the web­server using the new settings
+- finally, deliver the file
 
-Every web­page can gen­er­ate dozens of requests. This is over­head you don’t need, and what’s more, it’s com­plete­ly unnec­es­sary.
+Every web­page can generate dozens of requests. This is over­head you don’t need, and what’s more, it’s completely unnecessary.
 
 **Security and permission loss**
 
 Allowing individual users to modify the configuration of a server using `.htaccess` can cause security concerns if not taken care properly. If you add any directive in the `.htaccess` file, it will be considered as they are added to Apache configuration file.
 
-This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-avaliable/site.conf` (or `httpd.conf` or whatever your server calls).
+This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-available/site.conf` (or `httpd.conf` or whatever your server calls).
 
 **Summary**
 
@@ -4721,13 +4721,13 @@ To be completed.
 <summary><b>What is the proper way to test NFS performance?
 </b></summary><br>
 
-The best benchmark is always "the application(s) that you normally use". The load on a NFS system when you have 20 people simultaneously compiling a Linux kernel is comletely different from a bunch of people logging in at the same time or the accounts uses as "home directories for the local web-server".
+The best benchmark is always "the application(s) that you normally use". The load on a NFS system when you have 20 people simultaneously compiling a Linux kernel is completely different from a bunch of people logging in at the same time or the accounts uses as "home directories for the local web-server".
 
 But we have some good tools for testing this.
 
 - <b>boonie</b> - a classical performances evaluation tool tests. The main program tests database type access to a single file (or a set of files if you wish to test more than 1G of storage), and it tests creation, reading, and deleting of small files which can simulate the usage of programs such as Squid, INN, or Maildir format email.
 - <b>DBench</b> - was written to allow independent developers to debug and test SAMBA. It is heavily inspired of the original SAMBA tool.
-- <b>IOZone</b> - performance tests suite. POSIX and 64 bits compliant. This tests is the file system test from the L.S.E. Main features: POSIX async I/O, Mmap() file I/O, Normal file I/O Single stream measurement, Multiple stream measurement, Distributed file server measurements (Cluster) POSIX pthreads, Multi-process measurement Selectable measurements with fsync, O_SYNC Latency plots.
+- <b>IOZone</b> - performance tests suite. POSIX and 64 bits compliant. This tests is the file system test from the L.S.E. Main features: POSIX async I/O, Mmap() file I/O, Normal file I/O Single stream measurement, Multiple stream measurement, Distributed file server measurements (Cluster) POSIX pthreads, Multi-process measurement selectable measurements with fsync, O_SYNC Latency plots.
 
 </details>
 
@@ -5018,7 +5018,7 @@ To be completed.
 <details>
 <summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
 
-As **security policy** defines the security objectives and the security framework of an organisation. A **process** is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. **Guidelines** are recommendations which can be customised and used in the creation of procedures.
+As **security policy** defines the security objectives and the security framework of an organisation. A **process** is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. **Guidelines** are recommendations which can be customized and used in the creation of procedures.
 
 </details>
 
@@ -5270,7 +5270,7 @@ Look at this:
    +-------------------------------------------+-----------+-----------+
 ```
 
-You can try with the HTTP status code **307**, a RFC compilant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
+You can try with the HTTP status code **307**, a RFC compliant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
 
 ```bash
 location / {
@@ -5331,7 +5331,7 @@ Of course, like anything else, this involves some trade-offs. Specifically, a wh
 
 To go even further in the tradeoff, you can get great security by disconnecting the machine from the network.
 
-**Also instresting are**:
+**Also interesting are**:
 
 Use the tools available. It's highly unlikely that you can do as well as the guys who are security experts, so use their talents to protect yourself.
 
@@ -5386,7 +5386,7 @@ To be completed.
 
 Useful resources:
 
-- [ext4: using external journal to optimise performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
+- [ext4: using external journal to optimize performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
 - [How to move an ext4 journal](https://unix.stackexchange.com/questions/278998/how-to-move-an-ext4-journal)
 
 </details>
@@ -5411,7 +5411,7 @@ location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
 }
 ```
 
-More sligtly configuration:
+More slightly configuration:
 
 ```bash
 location / {
@@ -5430,7 +5430,7 @@ location / {
     }
 
     if ($cors = "true") {
-        # Catch all incase there's a request method we're not dealing with properly
+        # Catch all in case there's a request method we're not dealing with properly
         add_header 'Access-Control-Allow-Origin' "$http_origin";
     }
 
@@ -5461,7 +5461,7 @@ It's a **fork bomb**.
 - `:()` - this defines the function. `:` is the function name and the empty parenthesis shows that it will not accept any arguments
 - `{ }` - these characters shows the beginning and end of function definition
 - `:|:` - it loads a copy of the function `:` into memory and pipe its output to another copy of the `:` function, which has to be loaded into memory
-- `&` - this will make the process as a background process, so that the child processes will not get killed eventhough the parent gets auto-killed
+- `&` - this will make the process as a background process, so that the child processes will not get killed even though the parent gets auto-killed
 - `:` - final `:` will execute the function again and hence the chain reaction begins
 
 The best way to protect a multi-user system is to use **PAM** to limit the number of processes a user can use. We know the biggest problem with a fork bomb is the fact it takes up so many processes.
@@ -5662,7 +5662,7 @@ Set `oom.priority` to a value high enough:
 echo 256 > /mnt/oom-killer/lambs/oom.priority
 ```
 
-`oom.priority` is a 64-bit unsigned integer, and can have a maximum value an nsigned 64-bit number can hold. While scanning for the process to be killed, the **OOM-killer** selects a process from the list of tasks with the highest `oom.priority` value.
+`oom.priority` is a 64-bit unsigned integer, and can have a maximum value an unsigned 64-bit number can hold. While scanning for the process to be killed, the **OOM-killer** selects a process from the list of tasks with the highest `oom.priority` value.
 
 Add the PID of the process to be added to the list of tasks:
 
