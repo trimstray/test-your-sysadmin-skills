@@ -2155,7 +2155,7 @@ Good for when you don't have source code or don't want to be bothered to really 
 
 Other such examples
 
-- `-e trace= network` - trace all the network related system calls.
+- `-e trace=network` - trace all the network related system calls.
 - `-e trace=signal` - trace all signal related system calls.
 - `-e trace=ipc` - trace all IPC related system calls.
 - `-e trace=desc` - trace all file descriptor related system calls.
