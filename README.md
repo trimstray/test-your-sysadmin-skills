@@ -94,7 +94,6 @@
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
-
 - Red Hat Enterprise Linux
 - Fedora
 - CentOS
@@ -111,7 +110,8 @@
 My favorite Linux distribution:
 
 - **Arch Linux**, which offers a nice minimalist base system on which one can build a custom operating system. The beauty of it too is that it has the Arch User Repository (AUR), which when combined with its official binary repositories allows it to probably have the largest repositories of any distribution. Its packaging process is also very simple, which means if one wants a package not in its official repositories or the AUR, it should be easy to make it for oneself.
-- **Linux Mint**, which is also built from Ubuntu LTS releases, but features editions featuring a few different desktop environments, including Cinnamon, MATE and Xfce. Mint is quite polished and its aesthetics are rather appealing, I especially like its new icon theme, although I do quite dislike its GTK+ theme (too bland to my taste). I’ve also found a bug in its latest release Mint 19, that is getting quite irritating as I asked for help with it over a fortnight ago on their forums and I have received no replies so far and it is a bug that makes my life on it more difficult.
+- **Linux Mint**, which is also built from Ubuntu LTS releases, but features editions featuring a few different desktop environments, including Cinnamon, MATE and Xfce. Mint is quite polished and its aesthetics are rather appealing, I especially like its new icon theme, although I do quite dislike its GTK+ theme (too bland to my taste). I’ve also found a bug in its latest release Mint 19, that is getting quite irritating as I asked for 
+with it over a fortnight ago on their forums and I have received no replies so far and it is a bug that makes my life on it more difficult.
 - **Kali Linux**, is a Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing. Kali contains several hundred tools which are geared towards various information security tasks, such as Penetration Testing, Security research, Computer Forensics and Reverse Engineering.
 
 Useful resources:
@@ -194,7 +194,9 @@ Useful resources:
 <details>
 <summary><b>How do you getting help the command line? ***</b></summary><br>
 
-To be completed.
+- `man` [commandname] can be used to see a description of a command (ex.: `man less`, `man cat`)
+
+- `-h` or `--help` some programs will implement printing instructions when passed this parameter (ex.: `python -h` and `python --help`)
 
 </details>
 
