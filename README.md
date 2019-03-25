@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/doc/img/sysadmin_preview.png"
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/static/img/sysadmin_preview.png"
         alt="Master">
 </p>
 
@@ -1117,7 +1117,7 @@ Operating at the network layer and transport layer of the TCP/IP protocol stack,
 
 Useful resources:
 
-- [Building Internet Firewalls - Packet Filtering](http://web.deu.edu.tr/doc/oreily/networking/firewall/ch06_01.htm)
+- [Building Internet Firewalls - Packet Filtering](http://web.deu.edu.tr/static/oreily/networking/firewall/ch06_01.htm)
 
 </details>
 
@@ -3941,7 +3941,7 @@ grep mkdir "${d}/available_events"
 # Enable tracing mkdir.
 # Both statements below seem to do the exact same thing,
 # just with different interfaces.
-# https://www.kernel.org/doc/html/v4.18/trace/events.html
+# https://www.kernel.org/static/html/v4.18/trace/events.html
 echo sys_enter_mkdir > "${d}/set_event"
 # echo 1 > "${d}/events/syscalls/sys_enter_mkdir/enable"
 
