@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/static/img/sysadmin_preview.png" alt="Master">
+  <a href="https://github.com/trimstray/test-your-sysadmin-skills">
+    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/static/img/sysadmin_preview.png" alt="Master">
+  </a>
 </p>
 
 <br>
