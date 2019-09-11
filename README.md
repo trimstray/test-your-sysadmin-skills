@@ -3195,7 +3195,7 @@ Example: We have servers for device drivers, network protocol stacks, file syste
 
 **Hybrid Kernels (Modular Kernels)**
 
-This is a combination of the above two, where the key idea is that Operating System services are in Kernel Space, and and there is no message passing, no performance overhead and no reliability benefits, of having services in user space.
+This is a combination of the above two, where the key idea is that Operating System services are in Kernel Space, and there is no message passing, no performance overhead and no reliability benefits, of having services in user space.
 
 This is used by Microsoft's NT kernels, all the way up to the latest Windows version.
 
