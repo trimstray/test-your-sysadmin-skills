@@ -10,7 +10,7 @@
 
 <p align="center">"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</p>
 
-<br>
+<br>zf
 
 <p align="center">
   <a href="http://www.gnu.org/licenses/">
@@ -893,7 +893,11 @@ Useful resources:
 <details>
 <summary><b>What POP and IMAP are, and how to choose which of them you should implement? ***</b></summary><br>
 
-To be completed.
+POP and IMAP are both protocols for retrieving messages from a mail server to a mail client. 
+
+POP (Post Office Protocol) uses a one way push from mail server to client. By default this will send messages to the POP mail client and remove them from the mail server, though it is possible to configure the mail server to retain all messages. Any actions you take on the message in your mail client (labeling, deleting, moving to a folder) will not be reflected on the mail server, and thus inaccessible to other mail clients pulling from the mail server. POP uses little storage space on the mail server and can be seen as more secure since messages only exist on one mail client instead of the mail server and multiple clients.
+
+IMAP (Internet Message Access Protocol) uses two way communication between mail server and client. Deleting or labeling a message in your mail client configured with IMAP will also delete or label the message on the mail server. IMAP allows for a similar experience when accessing mail across different clients or devices since messages can existing in the same state across multiple devices. IMAP can also save disk space on the mail client by selectively syncing messages, deleting older messages from the mail client since it can sync them from the mail server later as needed.
 
 </details>
 
@@ -4483,7 +4487,7 @@ To be completed.
 <details>
 <summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? ***</b></summary><br>
 
-To be completed.
+An authoritative DNS query answer comes from the server that contains the zone files for the domain queried. This is the name server that the domain administrator set up the DNS records on. A nonauthoriative answer comes from a name server that does not host the domain zone files (for example, a commonly used name server has the answer cached such as Google's 8.8.8.8 or OpenDNS 208.67.222.222).
 
 </details>
 
