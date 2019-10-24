@@ -4252,12 +4252,12 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to prevent <code>dd</code> from freezing system?</b></summary><br>
+<summary><b>How to prevent <code>dd</code> from freezing your system?</b></summary><br>
 
 Try using ionice:
 
 ```bash
-ionice -c3 dd if=/dev/zero of=z
+ionice -c3 dd if=/dev/zero of=file
 ```
 
 This start the `dd` process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
@@ -5257,7 +5257,7 @@ if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 </details>
 
 <details>
-<summary><b>You should rewrite POST with payload to external API but POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
+<summary><b>You should rewrite POST with payload to an external API but the POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
 
 The issue is that external redirects will never resend **POST** data. This is written into the HTTP spec (check the `3xx` section). Any client that does do this is violating the spec.
 
