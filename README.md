@@ -190,7 +190,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you getting help the command line? ***</b></summary><br>
+<summary><b>How do you get help on the command line? ***</b></summary><br>
 
 - `man` [commandname] can be used to see a description of a command (ex.: `man less`, `man cat`)
 
