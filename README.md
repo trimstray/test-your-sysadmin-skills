@@ -3405,13 +3405,13 @@ Useful resources:
 
 There are some system calls for process management. These are as follows:
 
-- `Fork()`: it is used to create a new process
-- `Exec()`: it is used to execute a new process
-- `Wait()`: it is used to make the process to wait
-- `Exit()`: it is used to exit or terminate the process
-- `Getpid()`: it is used to find the unique process ID
-- `Getppid()`: it is used to check the parent process ID
-- `Nice()`: it is used to bias the currently running process property
+- `fork()`: it is used to create a new process
+- `exec()`: it is used to execute a new process
+- `wait()`: it is used to make the process to wait
+- `exit()`: it is used to exit or terminate the process
+- `getpid()`: it is used to find the unique process ID
+- `getppid()`: it is used to check the parent process ID
+- `nice()`: it is used to bias the currently running process property
 
 Useful resources:
 
