@@ -64,9 +64,9 @@
 | <b>[General Knowledge](#general-knowledge)</b> |||
 | :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 65 questions | Reasonably simple and straight based on basic knowledge. |
 | :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 98 questions | Hard questions and riddles. Check it if you want to be good. |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 99 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions | Really deep questions are to get to know Guru Sysadmin. |
 
 <br>
 
@@ -4574,7 +4574,7 @@ python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string
 
 </details>
 
-###### Network Questions (26)
+###### Network Questions (27)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
