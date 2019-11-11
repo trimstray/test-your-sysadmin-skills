@@ -1375,7 +1375,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><p>How and why Linux daemons drop privileges? Why some daemons need root permissions to start? Explain. ***</p></summary>
+<summary><b>How and why Linux daemons drop privileges? Why some daemons need root permissions to start? Explain. ***</b></summary>
 
 To be completed.
 
@@ -1514,7 +1514,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><p>How to permanently set <code>$PATH</code> on Linux/Unix? Why this variable is important? Why is this variable so important? ***</p></summary>
+<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why this variable is important? Why is this variable so important? ***</b></summary>
 
 To be completed.
 
@@ -1785,7 +1785,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><p>How to make high availability of web application? ***</p></summary>
+<summary><b>How to make high availability of web application? ***</b></summary>
 
 To be completed.
 
