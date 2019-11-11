@@ -6,9 +6,13 @@
 
 <br>
 
-<p align="center">"<i>A great Admin doesn't need to know everything, but they should be able to come up with amazing solutions to impossible projects.</i>" - cwheeler33 (ServerFault)</p>
+<p align="center">:star:</p>
 
-<p align="center">"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</p>
+<p align="center"><sup>"<i>A great Admin doesn't need to know everything, but they should be able to come up with amazing solutions to impossible projects.</i>" - cwheeler33 (ServerFault)</sup></p>
+
+<p align="center">:star:</p>
+
+<p align="center"><sup>"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</sup></p>
 
 <br>
 
@@ -33,7 +37,7 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **278** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
+:information_source: &nbsp;This project contains **284** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **\*nix System Administrator**.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -58,11 +62,11 @@
 | <b>[Introduction](#introduction)</b> |||
 | :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 64 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 91 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 95 questions | Hard questions and riddles. Check it if you want to be good. |
+| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 65 questions | Reasonably simple and straight based on basic knowledge. |
+| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 98 questions | Hard questions and riddles. Check it if you want to be good. |
 | <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 14 questions | Really deep questions are to get to know Guru Sysadmin. |
+| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 13 questions | Really deep questions are to get to know Guru Sysadmin. |
 
 <br>
 
@@ -89,7 +93,7 @@
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (36)
+###### System Questions (37)
 
 <details>
 <summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
@@ -566,6 +570,13 @@ Useful resources:
 Useful resources:
 
 - [What is the difference between `rm -r` and `rm -f`?](https://superuser.com/questions/1126206/what-is-the-difference-between-rm-r-and-rm-f)
+
+</details>
+
+<details>
+<summary><b>How do I <code>grep</code> recursively? Explain on several examples. ***</b></summary>
+
+To be completed.
 
 </details>
 
@@ -1325,7 +1336,7 @@ Useful resources:
 
 ### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
 
-###### System Questions (57)
+###### System Questions (60)
 
 <details>
 <summary><b>What is your experience with the production environments? ***</b></summary><br>
@@ -1360,6 +1371,13 @@ Useful resources:
 
 - [Analyzing the Linux boot process](https://opensource.com/article/18/1/analyzing-linux-boot-process)
 - [Systemd Boot Process a Close Look in Linux](https://linoxide.com/linux-how-to/systemd-boot-process/)
+
+</details>
+
+<details>
+<summary><p>How and why Linux daemons drop privileges? Why some daemons need root permissions to start? Explain. ***</p></summary>
+
+To be completed.
 
 </details>
 
@@ -1492,6 +1510,13 @@ In Immutable Server model, whole unit (server, container) is replaced by new upd
 Useful resources:
 
 - [Infrastructure as a Code - Chapter 8: Patterns for Updating and Changing Servers](http://shop.oreilly.com/product/0636920039297.do)
+
+</details>
+
+<details>
+<summary><p>How to permanently set <code>$PATH</code> on Linux/Unix? Why this variable is important? Why is this variable so important? ***</p></summary>
+
+To be completed.
 
 </details>
 
@@ -1756,6 +1781,13 @@ Useful resources:
 
 - [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
 - [Speed up grep searches with LC_ALL=C](https://www.inmotionhosting.com/support/website/ssh/speed-up-grep-searches-with-lc-all)
+
+</details>
+
+<details>
+<summary><p>How to make high availability of web application? ***</p></summary>
+
+To be completed.
 
 </details>
 
@@ -3166,7 +3198,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (60)
+###### System Questions (61)
 
 <details>
 <summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
@@ -4482,7 +4514,67 @@ To be completed.
 
 </details>
 
-###### Network Questions (24)
+<details>
+<summary><b>What are salted hashes? Generate the password with salt for the <code>/etc/shadow</code> file.</b></summary><br>
+
+**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
+
+For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
+
+The encrypted passwords in `/etc/shadow` file are stored in the following format:
+
+```bash
+$ID$SALT$ENCRYPTED
+```
+
+The `$ID` indicates the type of encryption, the `$SALT` is a random (up to 16 characters) string and `$ENCRYPTED` is a password’s hash.
+
+<table style="width:100%">
+  <tr>
+    <th>Hash Type</th>
+    <th>ID</th>
+    <th>Hash Length</th>
+  </tr>
+  <tr>
+    <td>MD5</td>
+    <td>$1</td>
+    <td>22 characters</td>
+  </tr>
+  <tr>
+    <td>SHA-256</td>
+    <td>$5</td>
+    <td>43 characters</td>
+  </tr>
+  <tr>
+    <td>SHA-512</td>
+    <td>$6</td>
+    <td>86 characters</td>
+  </tr>
+</table>
+
+Use the below commands from the Linux shell to generate hashed password for `/etc/shadow` with the random salt:
+
+- Generate **MD5** password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$1\$%s\$' % randomsalt)"
+```
+
+- Generate **SHA-256** password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$5\$%s\$' % randomsalt)"
+```
+
+- Generate **SHA-512** password hash
+
+```bash
+python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
+```
+
+</details>
+
+###### Network Questions (26)
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
@@ -4605,6 +4697,51 @@ Useful resources:
 </details>
 
 <details>
+<summary><b>How do I measure request and response times at once using <code>curl</code>?</b></summary><br>
+
+`curl` supports formatted output for the details of the request (see the `curl` manpage for details, under `-w| -write-out 'format'`). For our purposes we’ll focus just on the timing details that are provided.
+
+1. Create a new file, `curl-format.txt`, and paste in:
+
+```bash
+    time_namelookup:  %{time_namelookup}\n
+       time_connect:  %{time_connect}\n
+    time_appconnect:  %{time_appconnect}\n
+   time_pretransfer:  %{time_pretransfer}\n
+      time_redirect:  %{time_redirect}\n
+ time_starttransfer:  %{time_starttransfer}\n
+                    ----------\n
+         time_total:  %{time_total}\n
+```
+
+2. Make a request:
+
+```bash
+curl -w "@curl-format.txt" -o /dev/null -s "http://example.com/"
+```
+
+What this does:
+
+- `-w "@curl-format.txt"` - tells cURL to use our format file
+- `-o /dev/null` - redirects the output of the request to /dev/null
+- `-s` - tells cURL not to show a progress meter
+`http://example.com/` is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
+
+</details>
+
+<details>
+<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [ext4: using external journal to optimize performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
+- [How to move an ext4 journal](https://unix.stackexchange.com/questions/278998/how-to-move-an-ext4-journal)
+
+</details>
+
+<details>
 <summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b></summary><br>
 
 It depends. Varnish is a cache server, so its purpose is to cache contents and to act as a reverse proxy, to speed up retrieval of data and to lessen the load on the webserver.
@@ -4720,6 +4857,56 @@ If there is a cookie set, then the browser sends the following in its request he
 <summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? ***</b></summary><br>
 
 To be completed.
+
+</details>
+
+<details>
+<summary><b>You should rewrite POST with payload to an external API but the POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
+
+The issue is that external redirects will never resend **POST** data. This is written into the HTTP spec (check the `3xx` section). Any client that does do this is violating the spec.
+
+**POST** data is passed in the body of the request, which gets dropped if you do a standard redirect.
+
+Look at this:
+
+```
+   +-------------------------------------------+-----------+-----------+
+   |                                           | Permanent | Temporary |
+   +-------------------------------------------+-----------+-----------+
+   | Allows changing the request method from   | 301       | 302       |
+   | POST to GET                               |           |           |
+   | Does not allow changing the request       | 308       | 307       |
+   | method from POST to GET                   |           |           |
+   +-------------------------------------------+-----------+-----------+
+```
+
+You can try with the HTTP status code **307**, a RFC compliant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
+
+```bash
+location / {
+    proxy_pass              http://localhost:80;
+    client_max_body_size    10m;
+}
+
+location /api {
+    # HTTP 307 only for POST method.
+    if ($request_method = POST) {
+        return 307 https://api.example.com?request_uri;
+    }
+
+    # You can keep this for non-POST requests.
+    rewrite ^ https://api.example.com?request_uri permanent;
+
+    client_max_body_size    10m;
+}
+```
+
+HTTP Status code **307** or **308** should be used instead of **301** because it changes the request method from **POST** to **GET**.
+
+Useful resources:
+
+- [Redirection on Apache (Maintain POST params)](https://stackoverflow.com/questions/17295085/redirection-on-apache-maintain-post-params)
+- [Why doesn't HTTP have POST redirect?](https://softwareengineering.stackexchange.com/questions/99894/why-doesnt-http-have-post-redirect)
 
 </details>
 
@@ -5068,6 +5255,13 @@ Useful resources:
 ### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
 
 <details>
+<summary><b>Explain what is Event-Driven architecture and how it improves performance? ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>An application encounters some performance issues. You should to find the code we have to optimize. How to profile app in Linux environment?</b></summary><br>
 
 > Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
@@ -5257,56 +5451,6 @@ if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
 </details>
 
 <details>
-<summary><b>You should rewrite POST with payload to an external API but the POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
-
-The issue is that external redirects will never resend **POST** data. This is written into the HTTP spec (check the `3xx` section). Any client that does do this is violating the spec.
-
-**POST** data is passed in the body of the request, which gets dropped if you do a standard redirect.
-
-Look at this:
-
-```
-   +-------------------------------------------+-----------+-----------+
-   |                                           | Permanent | Temporary |
-   +-------------------------------------------+-----------+-----------+
-   | Allows changing the request method from   | 301       | 302       |
-   | POST to GET                               |           |           |
-   | Does not allow changing the request       | 308       | 307       |
-   | method from POST to GET                   |           |           |
-   +-------------------------------------------+-----------+-----------+
-```
-
-You can try with the HTTP status code **307**, a RFC compliant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
-
-```bash
-location / {
-    proxy_pass              http://localhost:80;
-    client_max_body_size    10m;
-}
-
-location /api {
-    # HTTP 307 only for POST method.
-    if ($request_method = POST) {
-        return 307 https://api.example.com?request_uri;
-    }
-
-    # You can keep this for non-POST requests.
-    rewrite ^ https://api.example.com?request_uri permanent;
-
-    client_max_body_size    10m;
-}
-```
-
-HTTP Status code **307** or **308** should be used instead of **301** because it changes the request method from **POST** to **GET**.
-
-Useful resources:
-
-- [Redirection on Apache (Maintain POST params)](https://stackoverflow.com/questions/17295085/redirection-on-apache-maintain-post-params)
-- [Why doesn't HTTP have POST redirect?](https://softwareengineering.stackexchange.com/questions/99894/why-doesnt-http-have-post-redirect)
-
-</details>
-
-<details>
 <summary><b>Write two golden rules for reducing the impact of hacked system.</b></summary><br>
 
 1) **The principle of least privilege**
@@ -5349,51 +5493,6 @@ Use the tools available. It's highly unlikely that you can do as well as the guy
 Useful resources:
 
 - [How to prevent zero day attacks (original)](https://serverfault.com/questions/391370/how-to-prevent-zero-day-attacks)
-
-</details>
-
-<details>
-<summary><b>How do I measure request and response times at once using <code>curl</code>?</b></summary><br>
-
-`curl` supports formatted output for the details of the request (see the `curl` manpage for details, under `-w| -write-out 'format'`). For our purposes we’ll focus just on the timing details that are provided.
-
-1. Create a new file, `curl-format.txt`, and paste in:
-
-```bash
-    time_namelookup:  %{time_namelookup}\n
-       time_connect:  %{time_connect}\n
-    time_appconnect:  %{time_appconnect}\n
-   time_pretransfer:  %{time_pretransfer}\n
-      time_redirect:  %{time_redirect}\n
- time_starttransfer:  %{time_starttransfer}\n
-                    ----------\n
-         time_total:  %{time_total}\n
-```
-
-2. Make a request:
-
-```bash
-curl -w "@curl-format.txt" -o /dev/null -s "http://example.com/"
-```
-
-What this does:
-
-- `-w "@curl-format.txt"` - tells cURL to use our format file
-- `-o /dev/null` - redirects the output of the request to /dev/null
-- `-s` - tells cURL not to show a progress meter
-`http://example.com/` is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
-
-</details>
-
-<details>
-<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [ext4: using external journal to optimize performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
-- [How to move an ext4 journal](https://unix.stackexchange.com/questions/278998/how-to-move-an-ext4-journal)
 
 </details>
 
@@ -5697,66 +5796,7 @@ echo <pid> > /mnt/oom-killer/invincibles/tasks
 Useful resources:
 
 - [Rsync triggered Linux OOM killer on a single 50 GB file](https://serverfault.com/questions/724469/rsync-triggered-linux-oom-killer-on-a-single-50-gb-file)
-
-</details>
-
-<details>
-<summary><b>What are salted hashes? Generate the password with salt for the <code>/etc/shadow</code> file.</b></summary><br>
-
-**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
-
-For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
-
-The encrypted passwords in `/etc/shadow` file are stored in the following format:
-
-```bash
-$ID$SALT$ENCRYPTED
-```
-
-The `$ID` indicates the type of encryption, the `$SALT` is a random (up to 16 characters) string and `$ENCRYPTED` is a password’s hash.
-
-<table style="width:100%">
-  <tr>
-    <th>Hash Type</th>
-    <th>ID</th>
-    <th>Hash Length</th>
-  </tr>
-  <tr>
-    <td>MD5</td>
-    <td>$1</td>
-    <td>22 characters</td>
-  </tr>
-  <tr>
-    <td>SHA-256</td>
-    <td>$5</td>
-    <td>43 characters</td>
-  </tr>
-  <tr>
-    <td>SHA-512</td>
-    <td>$6</td>
-    <td>86 characters</td>
-  </tr>
-</table>
-
-Use the below commands from the Linux shell to generate hashed password for `/etc/shadow` with the random salt:
-
-- Generate **MD5** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$1\$%s\$' % randomsalt)"
-```
-
-- Generate **SHA-256** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$5\$%s\$' % randomsalt)"
-```
-
-- Generate **SHA-512** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
-```
+- [Taming the OOM killer](https://lwn.net/Articles/317814/)
 
 </details>
 
@@ -5768,5 +5808,12 @@ To be completed.
 Useful resources:
 
 - [How to reduce number of sockets in TIME_WAIT?](https://serverfault.com/questions/212093/how-to-reduce-number-of-sockets-in-time-wait)
+
+</details>
+
+<details>
+<summary><b>How do <code>SO_REUSEADDR</code> and <code>SO_REUSEPORT</code> differ? Explain all socket implementations. ***</b></summary><br>
+
+To be completed.
 
 </details>
