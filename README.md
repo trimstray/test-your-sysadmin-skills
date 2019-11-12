@@ -43,7 +43,7 @@
 
 :warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete - **make a pull request to add them**!
 
-:traffic_light: &nbsp;If you find a question which doesn't make sense, or one of the answers doesn't seem right, or something seems really stupid; **please make a pull request**.
+:traffic_light: &nbsp;If you find something which doesn't make sense, or something doesn't seem right, **please make a pull request** and please add valid and well-reasoned explanations about your changes or comments.
 
 :books: &nbsp;In order to improve your knowledge/skills please see [devops-interview-questions](https://github.com/bregman-arie/devops-interview-questions). It looks really interesting.
 
@@ -82,7 +82,7 @@
 - <b>Describe the setup of your homelab.</b>
 - <b>What personal achievement are you most proud of?</b>
 - <b>Tell me about the biggest mistake you've made. How would you do it differently today?</b>
-- <b>What software tools are you going to install the first day at a new job?</b>
+- <b>What software tools are you going to install on the first day at a new job?</b>
 - <b>Tell me about how you manage your knowledge database (e.g. wikis, files, portals).</b>
 - <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
 - <b>Your NOC team has a new budget for sysadmin certifications. What certificate would you like and why?</b>
@@ -96,7 +96,7 @@
 ###### System Questions (37)
 
 <details>
-<summary><b>Give some examples of Linux distribution names. What is your favorite Linux distro and why?</b></summary><br>
+<summary><b>Give some examples of Linux distribution. What is your favorite distro and why?</b></summary><br>
 - Red Hat Enterprise Linux
 - Fedora
 - CentOS
@@ -124,7 +124,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are the differences between Unix, Linux, BSD and GNU?</b></summary><br>
+<summary><b>What are the differences between Unix, Linux, BSD, and GNU?</b></summary><br>
 
 **GNU** isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So **GNU** tools are basically open versions of tools that already existed, but were reimplemented to conform to principals of open software. **GNU/Linux** is a mesh of those tools and the **Linux kernel** to form a complete OS, but there are other GNUs, e.g. **GNU/Hurd**.
 
@@ -144,7 +144,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is a CLI? Tell me about your favorite CLI tools, tips and hacks.</b></summary><br>
+<summary><b>What is a CLI? Tell me about your favorite CLI tools, tips, and hacks.</b></summary><br>
 
 **CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
 
@@ -348,7 +348,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Why is it bad to run commands as root user?</b></summary><br>
+<summary><b>Running the command as root user. It is a good or bad practices?</b></summary><br>
 
 Running (everything) as root is bad because:
 
@@ -519,7 +519,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain file content commands along with the description.</b></summary><br>
+<summary><b>Explain the file content commands along with the description.</b></summary><br>
 
 - `head`: to check the starting of a file.
 - `tail`: to check the ending of the file. It is the reverse of head command.
@@ -534,7 +534,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain SIGHUP, SIGINT, SIGKILL and SIGTERM Posix signals.</b></summary><br>
+<summary><b>SIGHUP, SIGINT, SIGKILL, and SIGTERM POSIX signals. Explain.</b></summary><br>
 
 - **SIGHUP** - is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.
 - **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing `Ctrl+C`, but on some systems, the "delete" character or "break" key can be used.
@@ -581,7 +581,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b><code>archive.tgz</code> has ~30 GB. How do you list contents of it and extract only one file?</b></summary><br>
+<summary><b><code>archive.tgz</code> has ~30 GB. How do you list content of it and extract only one file?</b></summary><br>
 
 ```bash
 # list of content
@@ -688,7 +688,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have to find all files larger than 20M. How will you do this?</b></summary><br>
+<summary><b>You have to find all files larger than 20MB. How you do it?</b></summary><br>
 
 ```bash
 find / -type f -size +20M
@@ -806,7 +806,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is your the best command line text editor for daily working and scripting? ***</b></summary><br>
+<summary><b>What is your best command line text editor for daily working and scripting? ***</b></summary><br>
 
 To be completed.
 
@@ -1264,7 +1264,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is version control? Are your commit messages good looking?</b></summary><br>
+<summary><b>What is a version control? Are your commit messages good looking?</b></summary><br>
 
 It is a system that records changes to a file or set of files over time so that you can recall specific versions later. Version control systems consist of a central shared repository where teammates can commit changes to a file or set of file. Then you can mention the uses of version control.
 
@@ -1339,7 +1339,7 @@ Useful resources:
 ###### System Questions (60)
 
 <details>
-<summary><b>What is your experience with the production environments? ***</b></summary><br>
+<summary><b>Tell me about your experience with the production environments? ***</b></summary><br>
 
 To be completed.
 
@@ -1514,7 +1514,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why this variable is important? Why is this variable so important? ***</b></summary>
+<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary>
 
 To be completed.
 
@@ -1609,7 +1609,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain the differences among the following umask values: 000, 002, 022, 027, 077 and 277.</b></summary><br>
+<summary><b>Explain the differences among the following umask values: 000, 002, 022, 027, 077, and 277.</b></summary><br>
 
 <table style="width:100%">
   <tr>
@@ -1792,7 +1792,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>During server configuration one of the steps is setting the permissions to the apps directories. What steps will you take and what mistakes to avoid?</b></summary><br>
+<summary><b>You are configuring a new server. One of the steps is setting the permissions to the app directories. What steps will you take and what mistakes to avoid?</b></summary><br>
 
 **1) Main requirements - remember about this**
 
@@ -1938,7 +1938,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain <code>/proc</code> filesystem.</b></summary><br>
+<summary><b>Explain the <code>/proc</code> filesystem.</b></summary><br>
 
 `/proc` is a virtual file system that provides detailed information about kernel, hardware and running processes.
 
@@ -2034,7 +2034,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b><code>ls -l</code> shows file attributes as question marks. What does this mean and what steps will you take to remove "zombie" files?</b></summary><br>
+<summary><b><code>ls -l</code> shows file attributes as question marks. What this means and what steps will you take to remove unused "zombie" files?</b></summary><br>
 
 This problem may be more difficult to solve because several steps may be required - sometimes you have get `test/file: Permission denied`, `test/file: No such file or directory` or `test/file: Input/output error`.
 
@@ -2131,7 +2131,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these process? Do you set downtime for them? Write recommendations. ***</b></summary><br>
+<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these processes? Do you set downtime for them? Write recommendations. ***</b></summary><br>
 
 To be completed.
 
@@ -2343,7 +2343,7 @@ The command paths must be absolute! Then call `sudo -u user2 /opt/scripts/bin/ge
 </details>
 
 <details>
-<summary><b>How to check if running as root in a bash script?</b></summary><br>
+<summary><b>How to check if running as root in a bash script? What should you watch out for?</b></summary><br>
 
 In a bash script, you have several ways to check if the running user is root.
 
@@ -2799,7 +2799,7 @@ This protocol operates at layer 2 of the OSI model with the purpose of preventin
 </details>
 
 <details>
-<summary><b>How to check which ports are listening in my Linux Server?</b></summary><br>
+<summary><b>How to check which ports are listening on my Linux Server?</b></summary><br>
 
 Use the:
 
@@ -3318,7 +3318,7 @@ If you want to add other programs to system startup you need to change `/etc/rc.
 </details>
 
 <details>
-<summary><b>CPU spent the most of time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
+<summary><b>CPU spent the most of the time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
 
 To be completed.
 
@@ -3529,7 +3529,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Ordinary users are able to read <code>/etc/passwd</code>. Is this a security hole? You know alternative password shadowing scheme?</b></summary><br>
+<summary><b>Ordinary users are able to read <code>/etc/passwd</code>. Is it a security hole? Do you know other password shadowing scheme?</b></summary><br>
 
 Typically, the _hashed passwords_ are stored in `/etc/shadow` on most Linux systems:
 
@@ -3652,7 +3652,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Difference between <code>nohup</code>, <code>disown</code> and <code>&</code>. What happens when using all together?</b></summary><br>
+<summary><b>Difference between <code>nohup</code>, <code>disown</code>, and <code>&</code>. What happens when using all together?</b></summary><br>
 
 - `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
 - `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a **SIGHUP**. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
@@ -3816,7 +3816,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between <code>/sbin/nologin</code>, <code>/bin/false</code> and <code>/bin/true</code>?</b></summary><br>
+<summary><b>What is the difference between <code>/sbin/nologin</code>, <code>/bin/false</code>, and <code>/bin/true</code>?</b></summary><br>
 
 When `/sbin/nologin` is set as the shell, if user with that shell logs in, they'll get a polite message saying 'This account is currently not available'.
 
@@ -4061,7 +4061,7 @@ fi
 </details>
 
 <details>
-<summary><b>Explain differences between <code>2>&-</code>, <code>2>/dev/null</code>, <code>|&</code>, <code>&>/dev/null</code> and <code>>/dev/null 2>&1</code>.</b></summary><br>
+<summary><b>Explain differences between <code>2>&-</code>, <code>2>/dev/null</code>, <code>|&</code>, <code>&>/dev/null</code>, and <code>>/dev/null 2>&1</code>.</b></summary><br>
 
 - a **number 1** = standard out (i.e. `STDOUT`)
 - a **number 2** = standard error (i.e. `STDERR`)
@@ -4157,7 +4157,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to enforce authorization methods in SSH?</b></summary><br>
+<summary><b>How to enforce authorization methods in SSH? In what situations it would be useful?</b></summary><br>
 
 Force login with a password:
 
@@ -4394,7 +4394,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What steps to add a user to a system without using <code>useradd</code>/<code>adduser</code>?</b></summary><br>
+<summary><b>How to add new user without using <code>useradd</code>/<code>adduser</code> commands?</b></summary><br>
 
 1. Add an entry of user details in <code>/etc/passwd</code> with `vipw`:
 
@@ -4772,7 +4772,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Developer says: <i><code>htaccess</code> is full of magic and it should be used</i>. What is your opinion about using <code>htaccess</code> files? What are the consequences for web application?</b></summary><br>
+<summary><b>Developer says: <i><code>htaccess</code> is full of magic and it should be used</i>. What is your opinion about using <code>htaccess</code> files? How has this effect on the web app</b></summary><br>
 
 `.htaccess` files were born out of an era when shared hosting was common­place:
 
@@ -4818,7 +4818,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to test connection to remote host with and without SNI? In which cases it is useful?</b></summary><br>
+<summary><b>Is it safe to use SNI SSL in production? How to test connection with and without it? In which cases it is useful?</b></summary><br>
 
 With <b>OpenSSL</b>:
 
@@ -4911,7 +4911,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to test NFS performance?
+<summary><b>What is the proper way to test NFS performance? Prepare a short checklist.
 </b></summary><br>
 
 The best benchmark is always "the application(s) that you normally use". The load on a NFS system when you have 20 people simultaneously compiling a Linux kernel is completely different from a bunch of people logging in at the same time or the accounts uses as "home directories for the local web-server".
@@ -4925,7 +4925,7 @@ But we have some good tools for testing this.
 </details>
 
 <details>
-<summary><b>You need to block several IP addresses from the same subnet. Which is more efficient for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
+<summary><b>You need to block several IPs from the same subnet. What is the most efficient way for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
 
 If you have a system with thousands of routes defined in the routing table and nothing in the iptables rules than it might actually be more efficient to input an iptables rule.
 
@@ -5223,7 +5223,7 @@ When the device generated an alert for an intrusion which has actually not happe
 </details>
 
 <details>
-<summary><b>10 quick points on web server hardening.</b></summary><br>
+<summary><b>10 quick points about web server hardening.</b></summary><br>
 
 Example:
 
@@ -5580,7 +5580,7 @@ With fork bombs your best method for this is preventing from being to big of an 
 </details>
 
 <details>
-<summary><b>How to recover deleted file held open by Apache?</b></summary><br>
+<summary><b>How to recover deleted file held open e.g. by Apache?</b></summary><br>
 
 If a file has been deleted but is still open, that means the file still exists in the filesystem (it has an inode) but has a hard link count of 0. Since there is no link to the file, you cannot open it by name. There is no facility to open a file by inode either.
 
