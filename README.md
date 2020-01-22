@@ -200,11 +200,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you get help on the command line? ***</b></summary><br>
+<summary><b>How do you get help on the command line? </b></summary><br>
 
 - `man` [commandname] can be used to see a description of a command (ex.: `man less`, `man cat`)
 
 - `-h` or `--help` some programs will implement printing instructions when passed this parameter (ex.: `python -h` and `python --help`)
+- `apropos` [topic] is a good resource to get commands related to the topic.
+- `help` [bash-builtin] will show you a brief summarie of a builtin bash command (ex.: `help alias`, `help if`)
 
 </details>
 
@@ -347,9 +349,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? ***</b></summary><br>
+<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? </b></summary><br>
+  
+ 
+`ps` displays information about current running proceses (ex.: `ps aux`)
+`pidof` [processname] will show the processes ids of the process name (ex.: `pidof bash`)
+`pstree` shows running processes as a tree, use the parameter `-p` to show related PID
+`pgrep` looks up for processes based on attributes (ex.: `pgrep -u root bash` will show the PIDs of the processes called bash and owned by root, it can also be used in this way: `pgrep bash` this will show all processes named bash)
 
-To be completed.
 
 </details>
 
