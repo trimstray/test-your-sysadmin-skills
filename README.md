@@ -1035,11 +1035,19 @@ To lookup the IPv6 address for a host, or:
 dig PTR ZZZ.YYY.XXX.WWW.in-addr.arpa.
 ```
 
-To lookup the hostname for IPv4 address `WWW.XXX.YYY.ZZZ` (note the octets are reversed), or:
+To lookup the hostname for IPv4 address `WWW.XXX.YYY.ZZZ` (note the octets are reversed):
+
+```bash
+dig ptr ZZZ.YYY.XXX.WWW.in-addr.arpa.
+```
+
+For IPv6 addresses:
 
 ```bash
 dig PTR b.a.9.8.7.6.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.
 ```
+
+Keep in mind that the values of reverse DNS lookup is controlled by the targer system network administrator and may even return the domain name that is not registered or resolvable.  
 
 Useful resources:
 
@@ -1383,7 +1391,10 @@ Useful resources:
 <details>
 <summary><b>How and why Linux daemons drop privileges? Why some daemons need root permissions to start? Explain. ***</b></summary>
 
-To be completed.
+Running the daemons as a root is not secure as the whole system can be compromised in case of compromise of a single daemon. 
+There are many ways to limit the damon's permissions, but the oldest approach for a daemon is to run as root, execute actions that require root permissions, and drop the permission by assuming the uid/gid of a non-root user by calling `setuid()/setgid()`
+The common reason to start as root is binding to the privilleged network ports(number <1024).
+There are alternative ways to limit the daemon's permissions, for example cgroups and CAPABILITIES mechanisms in linux. 
 
 </details>
 
@@ -1520,9 +1531,17 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary>
+<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important?</b></summary>
 
-To be completed.
+The PATH variable defines the directories to try when looking up the executable. PATH variable allows you to type shorter shell commands - for example you dont need to type `/usr/bin/ssh` every time you want to execute ssh.
+
+PATH variable is a colon separated list of search paths.
+
+This path is commonly set by shell(such as bash) and can be configured by system-wise and user-wise shell config files, such as /etc/environment, /etc/bash.bashrc and ~/.bashrc:
+
+```bash
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+```
 
 </details>
 
@@ -1887,9 +1906,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? If you use <code>telinit 6</code> instead of <code>reboot</code> command your server will be restarted? ***</b></summary><br>
+<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? If you use <code>telinit 6</code> instead of <code>reboot</code> command your server will be restarted?</b></summary><br>
 
-To be completed.
+`telinit 1`(the same as `init 1`) will switch the target system to a single-user mode, potentially stopping certain applications in the process(defined by the configuration files in /etc/rc3.d/, /etc/rc2.d/). Single user mode is the mode with only most basic software and services running.
+
+`telinit 6` will switch to the runlevel 6, that is the "reboot" stage, steps described in /etc/rc6.d will be executed, normally stopping all the programs and services.
+The last step of this runlevel is the reboot of the system. For the practical applications, the `telinit 6` and `reboot` do the same.
+
+It should be noted that in 2021 most linux distributions come with systemd instead of init.d system, and, albeit systemd having a compatibility layer with old-style init commands, systemd itself operates with TARGETS, not runlevels.  
 
 Useful resources:
 
@@ -1935,10 +1959,34 @@ __EOF__
 <details>
 <summary><b>How to change the kernel parameters? What kernel options might you need to tune? ***</b></summary><br>
 
-To set the kernel parameters in Unix-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
+Kernel parameters are commonly known as a kernel commandline, are a set of options provided in the bootloader(such as grub2) during the system startup.
+You can check the kernel parameters of the system by inspecting /proc/cmdline:
+
+```bash
+ubuntu@free1:/$ cat /proc/cmdline
+BOOT_IMAGE=/boot/vmlinuz-5.8.0-1038-oracle root=UUID=270af732-13dc-461c-8145-e3cf41137ccb ro console=tty1 console=ttyS0 nvme.shutdown_timeout=10 libiscsi.debug_libiscsi_eh=1 crash_kexec_post_notifiers
+```
+
+Kernel parameters commonly consist of settings that are required to boot(such as a location of the root partition) or the params that architecturally cannot be changed in system run time.
+
+Common kernel params include 
+* logging/verbosity settings
+* designation of the root partition(when using LVM)
+* hardware options(like disabling some of the CPU cores)
+* memory settings(such as disabling the transparent huge pages)
+* some of the power management options
+* settings of the system task scheduler
+
+The kernel settings are stored in different places, depending on the system distribution, but normally they are stored in grub2 config files.
+
+In debian-based distributions you can edit the settings in /boot/grub2 and run update-rc.d to regenerate the grub imaage. 
+
+On redhat-based systems you can change /etc/default/grub or use the `grubby` utility to achive the same.  
+
+Kernel parameters should not be confused with systemctls, that are defined in /etc/sysclt.conf and CAN be changed during system runtime. 
 
 Useful resources:
-
+- [The kernel’s command-line parameters](https://www.kernel.org/doc/html/v5.0/admin-guide/kernel-parameters.html)
 - [How to Change Kernel Runtime Parameters in a Persistent and Non-Persistent Way](https://www.tecmint.com/change-modify-linux-kernel-runtime-parameters/)
 
 </details>
@@ -1979,7 +2027,7 @@ There are three types of journaling available in **ext3/ext4** file systems:
 <details>
 <summary><b>What is an inode? How to find file's inode number and how can you use it?</b></summary><br>
 
-An **inode** is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
+An **inode** is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name. 
 
 A Unix file is stored in two different parts of the disk - the data blocks and the inodes. I won't get into superblocks and other esoteric information. The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode.
 
@@ -2042,26 +2090,13 @@ Useful resources:
 <details>
 <summary><b><code>ls -l</code> shows file attributes as question marks. What this means and what steps will you take to remove unused "zombie" files?</b></summary><br>
 
-This problem may be more difficult to solve because several steps may be required - sometimes you have get `test/file: Permission denied`, `test/file: No such file or directory` or `test/file: Input/output error`.
-
-That happens when the user can't do a `stat()` on the files (which requires execute permissions), but can read the directory entries (which requires read access on the directory). So you get a list of files in the directory, but can't get any information on the files because they can't be read. If you have a directory which has read permission but not execute, you'll see this.
-
-Some processes like a `rsync` generates temporary files that get created and dropped fast which will cause errors if you try to call other simple file management commands like `rm`, `mv` etc.
-
 Example of output:
 
 ```bash
 ?????????? ? ?        ?               ?            ? sess_kee6fu9ag7tiph2jae
 ```
 
-1) change permissions: `chmod 0777 sess_kee6fu9ag7tiph2jae` and try remove
-2) change owner: `chown root:root sess_kee6fu9ag7tiph2jae` and try remove
-3) change permissions and owner for directory: `chmod -R 0777 dir/ && chown -R root:root dir/` and try remove
-4) recreate file: `touch sess_kee6fu9ag7tiph2jae` and try remove
-5) watch out for other running processes on the server for example `rsync`, sometimes you can see this as a transient error when an NFS server is heavily overloaded
-6) find file inode: `ls -i`, and try remove: `find . -inum <inode_num> -delete`
-7) remount (if possible) your filesystem
-8) boot system into single-user mode and repair your filesystem with `fsck`
+That happens when the user can't do a `stat()` on the files (which requires execute permissions), but can read the directory entries (which requires read access on the directory). So you get a list of files in the directory, but can't get any information on the files because file metadata can't be read. This may be caused by the security mechanisms (selinux or `seccomp`) preventing the stat() calls, file system corruption or by an underlying IO errors.
 
 Useful resources:
 
@@ -2137,9 +2172,22 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these processes? Do you set downtime for them? Write recommendations. ***</b></summary><br>
+<summary><b>What is the proper way to upgrade/update a system in production? Do you automate these processes? Do you set downtime for them? Write recommendations.</b></summary><br>
 
-To be completed.
+When working with any kind of updates, the best practice is to have a staging environment where you can test the effect of the update, as well as never deploying the updates on all of the servers at once(its better to do staggered update triage)
+
+Most the linux distributions dont require full system restart to update the applications. That paves path to automatic regularily scheduled application updates using tools such as `unattended-upgrades`.
+
+`unattended-upgrades` checks the updates in system package repositories and install them(usually daily or weekly).
+
+`unattended-upgrades` can be configured to install only specific kind of updates, such as only security, or CRITICAL updates. The tool will notify you over the email about the performed operations.
+
+Generally, you dont want to update packages in production as it can introduce the breaking changes, unless its a critical security updates. 
+
+Most linux distributions have distinct mainline and secuirity repositories. Security repositories contain only minimal changes to the system packages and security packages are mostly safe to install automatically.
+
+If you are using container images, it may be a good idea NOT to use the `:latest` version/tag of image, and rebuild Docker images yourself often, keeping the application verions stable, but applying newest security updates.
+
 
 </details>
 
@@ -2216,7 +2264,18 @@ Useful resources:
 <details>
 <summary><b>When would you use access control lists instead of or in conjunction with the <code>chmod</code> command? ***</b></summary><br>
 
-To be completed.
+Traditional UNIX file permissions only specify permissions for the user/group/others. 
+Fine grained file permissions(for example setting access per specific user) is not possible without creating large numbers of additional groups, which quickly becomes unweildy.
+UNIX permissions were lacking compared to rich file system permissions in Windows NT-based systems.
+To combat that, certain UNIX/linux file systems introduced extended permissions - ACL. ACL and traditional permissions are not mutually exclusive, and are both checked when accessing files.
+ACL allows more flexible control over the permissions, for example it allows to specify access to individual non-owner users as well as control the permissions of newly-created files in directory
+To enable ACL, the filesystem must be mounted with the acl option. 
+The ACL can be modified using the setfacl command.
+To show permissions, use getfacl.
+
+Useful resources:
+
+- [Access Control Lists](https://wiki.archlinux.org/title/Access_Control_Lists)
 
 </details>
 
@@ -2230,6 +2289,7 @@ Typical current algorithms are:
 
 both should not be used for cryptographic/security purposes any more!!
 
+- Blowfish (used as a hashing algorithm, not encryption)
 - SHA-256
 - SHA-512
 - SHA-3 (KECCAK was announced the winner in the competition for a new federal approved hash algorithm in October 2012)
@@ -2267,6 +2327,10 @@ Useful resources:
 <details>
 <summary><b>You have configured an RSA key login but your server show <code>Server refused our key</code> as expected. Where will you look for the cause of the problem?</b></summary><br>
 
+Commonly, this can happen if either the public key authentication or specific cryptographic mechanisms are disabled in the sshd_config. The problem is becoming prevalent in 2021 as RSA keys are quickly getting phased-out in favor of DH or EC keys.
+
+The other common reason for public keys not working are missing/inaccessible or overly-accessible ~/.ssh/authorized_keys file. This file should be readable by sshd daemon, but is required to have the `600` permissions. 
+
 **Server side**
 
 Setting `LogLevel VERBOSE` in file `/etc/ssh/sshd_config` is probably what you need, although there are higher levels:
@@ -2294,7 +2358,7 @@ grep "Failed\|Failure" /var/log/auth.log
 On newer Linux distributions you can query the runtime log file maintained by Systemd daemon via `journalctl` command (`ssh.service` or `sshd.service`). For example:
 
 ```bash
-journalctl _SYSTEMD_UNIT=ssh.service | egrep "Failed|Failure"
+journalctl -u ssh.service | egrep "Failed|Failure"
 ```
 
 **Client side**
@@ -2304,13 +2368,6 @@ Also you should run SSH client with `-v|--verbose` - it is in first level of ver
 Useful resources:
 
 - [Enable Debugging Mode in SSH to Troubleshoot Connectivity Issues](https://www.tecmint.com/enable-debugging-mode-in-ssh/)
-
-</details>
-
-<details>
-<summary><b>Why do most distros use ext4, as opposed to XFS or other filesystems? Why are there so many of them? ***</b></summary><br>
-
-To be completed.
 
 </details>
 
@@ -2444,11 +2501,11 @@ Useful resources:
 Use `nohup` to make your process ignore the hangup signal:
 
 ```bash
-nohup long-running-process &
+nohup long-running-process
 exit
 ```
 
-or you want to be using **GNU Screen**:
+or you want to be using **GNU Screen** or `tmux`:
 
 ```bash
 screen -d -m long-running-process
@@ -2696,7 +2753,7 @@ To be completed.
 
 <b>HTTP/2</b> supports queries multiplexing, headers compression, priority and more intelligent packet streaming management. This results in reduced latency and accelerates content download on modern web pages.
 
-Key differences with **HTTP/1.1**:
+Key differences of **HTTP/2**:
 
 - it is binary, instead of textual
 - fully multiplexed, instead of ordered and blocking
@@ -2756,6 +2813,8 @@ Useful resources:
 
 A **three-way handshake** is a method used in a TCP/IP network to create a connection between a local host/client and server. It is a three-step method that requires both the client and server to exchange `SYN` and `ACK` (`SYN`, `SYN-ACK`, `ACK`) packets before actual data communication begins.
 
+A three-way handshake establish that bi-directional communication channel is available and prevents certain types of network attacks, such as address spoofing, and from that - amplification attacks.
+
 Useful resources:
 
 - [Why do we need a 3-way handshake? Why not just 2-way?](https://networkengineering.stackexchange.com/questions/24068/why-do-we-need-a-3-way-handshake-why-not-just-2-way)
@@ -2765,7 +2824,11 @@ Useful resources:
 <details>
 <summary><b>Why is UDP faster than TCP?</b></summary><br>
 
-**UDP** is faster than **TCP**, and the simple reason is because its nonexistent acknowledge packet (`ACK`) that permits a continuous packet stream, instead of TCP that acknowledges a set of packets, calculated by using the TCP window size and round-trip time (`RTT`).
+UDP is faster than TCP because there is no three-way handshake during the establishing of the connection.
+
+Additionally, TCP delivers the packets to the application in an ordered manner - if the packets are re-ordered the TCP/IP stack have to wait for previous packets to arrive before processing anything further, or either request packets re-send(and this incurs RTT latency penalty, plus Window size reset) if some packets are lost.
+
+On top of that, TCP flow control limits how many packets can be in-flight, that can become a problem if you need to handle "bursty" transmissions.
 
 Useful resources:
 
@@ -2776,7 +2839,11 @@ Useful resources:
 <details>
 <summary><b>Which, in your opinion, are the 5 most important OpenSSH parameters that improve the security? ***</b></summary><br>
 
-To be completed.
+- PasswordAuthentication - passwords are inherently less secure than publickey or token auth. You should better keep the pass auth off.
+- PermitRootLogin - disables root user login. Normally, you should login as a non-privileged user and elevate the permissions only when necessary. Also, helps against bruteforcing well-known root account.
+- MaxAuthTries - limits the number of auth tries. Helps against the brute force probing. (fail2ban provides extra protection, though)
+- AllowAgentForwarding - client side security. Connecting to a rougue ssh server, your personal ssh credentials can be captured and re-used to connect to different hosts.
+- AcceptEnv - setting LD_* related env variables could lead to login shell to become vulnerable. There are existing exploits for this in the wild.
 
 Useful resources:
 
@@ -3324,13 +3391,30 @@ If you want to add other programs to system startup you need to change `/etc/rc.
 </details>
 
 <details>
-<summary><b>CPU spent the most of the time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
+<summary><b>CPU spent the most of the time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time?</b></summary><br>
 
-To be completed.
+You can use SystemTap to monitor file accesses and the latency numbers - you can use one of the supplied example scripts.
+
+If you dont want to write any code you can use existing tools:
+- ioping - shows disk latency in the same way as ping command shows network latency
+- iotop - shows IO bandwith and latency by process
+- iostat - shows IO bandwith and latency by disk device
+
+You can also use bcc tools from Brendan Gregg - namely biolatency and biosnoop.
+If nothing else work, you can use strace and log the latency of read/write calls - `strace -e read,write`
+
+The IO latency can be improved by using faster underlying storage: 
+- prefer local disks instead of networked FS
+- unless required, consider not using advanced RAID levels
+- if using hardware RAID devices, consider using battery-backed cache
+- prefer SSD to spinning HDD
+- prefer NVME to SATA ssd
+- if your file system allows, and you can survive single node outage(for example you have a redundant replicated setup), consider disabling barriers/fsync.
 
 Useful resources:
 
 - [Can anyone explain precisely what IOWait is?](https://serverfault.com/questions/12679/can-anyone-explain-precisely-what-iowait-is)
+- [Linux Performance](https://www.brendangregg.com/linuxperf.html)
 
 </details>
 
@@ -3430,7 +3514,12 @@ Useful resources:
 <details>
 <summary><b>How to add new disk in Linux server without rebooting? How to rescan and add it in LVM?</b></summary><br>
 
-To be completed.
+Firstly, check that your server supports disk hot-plug. While SATA, SAS and U.2 disks do support hotplug, the backplane hotplug support can vary. Dont forget to enable the hot plug in BIOS.
+
+Usually, the disks appear in /dev as they are added, if that is not the case, you can trigger a scsi rescan: `echo "- - -" >> /sys/class/scsi_host/host_$i/scan`. '
+Trigger lvm rescan if necessary(for example to check if there is existing LVM metadata on disk) with `lvmdiskscan`.
+
+After that, you can mark the disk as LVM with `pvadd` and extend the lv/vg with vgextend/lvextend, if necessary.
 
 Useful resources:
 
@@ -3470,14 +3559,28 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have to delete 100GB files. Which method will be the most optimal? ***</b></summary><br>
+<summary><b>You have to delete 100GB files. Which method will be the most optimal?</b></summary><br>
 
-To be completed.
+Generally, the size of the files deleted dont affect the removal time as much as NUMBER of files deleted. 
+Removing the file from disk does not zero out the file content, only update the metadata, so deleting 100GB file should be as fast as deleting empty file.
+Use ionice if you want to execute the deletion operation with lowest possible priority, so to have mimimal IO effect on other processes.
 
 Useful resources:
 
 - [Is there a way to delete 100GB file on Linux without thrashing IO/load?](https://serverfault.com/questions/336917/is-there-a-way-to-delete-100gb-file-on-linux-without-thrashing-io-load)
 - [rm on a directory with millions of files](https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files)
+
+</details>
+
+<details>
+<summary><b>How to delete hundred thousand files from a large directory?</b></summary><br>
+
+If you need to delete hundred thousand files, usual approaches, like `rm *` may hit either shell expansion limits.
+Using a combination of `ls | xargs rm` may be slow as ls sorts the file list.
+
+Usually, `rm -r` is smart enough to read the file list and delete in batches - it will work 99% of time.
+If it does not work for you, you may want to write your own one-liner(perl, ruby, even php) to list and delete files one by one. 
+Prefer readdir() call - it returns the file list as-is and does not waste any time processing the file list `perl -e 'chdir "PATH" ; opendir D, "."; while ($n = readdir D) { unlink $n }'`
 
 </details>
 
@@ -3562,9 +3665,21 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are some of the benefits of using systemd over SysV init? ***</b></summary><br>
+<summary><b>What are some of the benefits of using systemd over SysV init?</b></summary><br>
 
-To be completed.
+Advantages of the Systemd are the following:
+- It starts services in parallel mode.
+- It automatically resolves dependencies.
+- It can respawn processes.
+- It can track and relate processes together by using Linux control groups.
+- It can log events.
+
+From the user standpoint, systemd allows faster system startup and shutdown, and systemd services are declarative and require less code. 
+Systemd services work uniformely, while every sysv startup script can be written differently and support different feature set.
+
+Useful resources:
+
+- [Differences between SysVinit, Upstart and Systemd](https://www.computernetworkingnotes.com/linux-tutorials/differences-between-sysvinit-upstart-and-systemd.html)
 
 </details>
 
@@ -3584,9 +3699,15 @@ done
 </details>
 
 <details>
-<summary><b>You need to copy a large amount of data. Explain the most effective way. ***</b></summary><br>
+<summary><b>You need to copy a large amount of data. Explain the most effective way.</b></summary><br>
 
-To be completed.
+If you need to copy large amount of files, locally or remotely, rsync can do it effectively. 
+
+Rsync compares the contents of the files and dont copy the files that are the same, rsync can also compress the files in transit and copy the files in parallel.
+
+Rsync also have a large set of parameters that can control what files should be copied and when to overwrite the files and when not.
+
+If you are faced with a problem of copying of hundred thousand files over the network or between the local disks, creating and transferring a tar archive will greatly speed up the process.
 
 Useful resources:
 
@@ -3597,13 +3718,13 @@ Useful resources:
 <details>
 <summary><b>Tell me about the dangers and caveats of LVM.</b></summary><br>
 
-**Risks of using LVM**
+LVM is extremely stable technology that have been trusted by enterprise linux distributions for years(RHEL, Oracle Linux, SLES).
+LVM have been a default disk setup since at least RHEL 6, released in 2010. You should probably use LVM, since its benefits heavily outweight any possible risks.
 
-- Vulnerable to write caching issues with SSD or VM hypervisor
-- Harder to recover data due to more complex on-disk structures
-- Harder to resize filesystems correctly
-- Snapshots are hard to use, slow and buggy
-- Requires some skill to configure correctly given these issues
+Possible risks of LVM include:
+- If disk is physically damaged, data recovery may be more complicated as a result of more complex data organization
+- While there are 3rd party tools to read ext3/xfs file system in Windows/MacOS, these tools may not support LVM, so you cant take out the disk to read on the other operating systems
+- System administrators need to learn the new tool, and the scope of LVM is quite broad
 
 Useful resources:
 
@@ -3614,11 +3735,24 @@ Useful resources:
 <details>
 <summary><b>Python dev team in your company have a dilemma what to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? ***</b></summary><br>
 
-To be completed.
+Gunicorn and uwsgi have more in common than different:
+- Both are application-servers that can run more than just python apps
+- Both are extensible and support advanced http features
+- Both are using wsgi interface for python web apps
+- Both servers are actively maintained and developed
+- The servers are trading blows in terms of performance and request handling latency
+
+uWSGI supports more evented runtime models(twisted) and is written in C, while gunicorn is written in python and mostly follows sync/prefork model. These differences dont result in much performance gap.
+
+From a practical standpoint both servers can run the same applications and are not that different from the configuration standpoint.
+You can choose one of them based on your developer's familiarity with a specific tool. Gunicorn is historically slightly more popular.
 
 Useful resources:
 
 - [uWSGI vs. Gunicorn, or How to Make Python Go Faster than Node](https://blog.kgriffs.com/2012/12/18/uwsgi-vs-gunicorn-vs-node-benchmarks.html)
+- [A Comparison of Web Servers for Python Based Web Applications](https://www.digitalocean.com/community/tutorials/a-comparison-of-web-servers-for-python-based-web-applications)
+- [fcgi vs. gunicorn vs. uWSGI - OLD ARTICLE](https://www.peterbe.com/plog/fcgi-vs-gunicorn-vs-uwsgi)
+- [Ignore All Web Performance Benchmarks, Including This One](https://blog.miguelgrinberg.com/post/ignore-all-web-performance-benchmarks-including-this-one)
 
 </details>
 
@@ -3760,7 +3894,8 @@ Useful resources:
 <details>
 <summary><b>One of the processes runs slowly. How to check how long has been running and which tools will you use?</b></summary><br>
 
-To be completed.
+If you want to know when the process was started, the information is available in both ps and top: `ps -o stime $$`.
+Check the process folder creationg time in /proc if you need low-level interface to the same data: `stat -c%X /proc/PID`
 
 Useful resources:
 
@@ -3773,7 +3908,8 @@ Useful resources:
 <details>
 <summary><b>What is a file descriptor in Linux?</b></summary><br>
 
-In Unix and related computer operating systems, a file descriptor (FD, less frequently fildes) is an abstract indicator (handle) used to access a file or other input/output resource, such as a pipe or network socket. File descriptors form part of the POSIX application programming interface.
+In Unix and related computer operating systems, a file descriptor (FD) is a number used to identify a file or other input/output resource, such as a pipe or network socket in a running program.
+File descriptors form part of the POSIX application programming interface.
 
 </details>
 
@@ -3838,7 +3974,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Which symptoms might be suffering from a disk bottleneck? ***</b></summary><br>
+<summary><b>Which symptoms might be indicating that you have a disk bottleneck? ***</b></summary><br>
 
 To be completed.
 
@@ -3888,23 +4024,6 @@ Useful resources:
 - [Getting a Perfect SSL Labs Score](https://michael.lustfield.net/nginx/getting-a-perfect-ssl-labs-score)
 - [17 small suggestions how to improve ssllabs.com/ssltest/](https://community.qualys.com/thread/14023)
 - [How do you score A+ with 100 on all categories on SSL Labs test with Let's Encrypt and Nginx?](https://stackoverflow.com/questions/41930060/how-do-you-score-a-with-100-on-all-categories-on-ssl-labs-test-with-lets-encry)
-
-</details>
-
-<details>
-<summary><b>What does CPU jumps mean?</b></summary><br>
-
-An OS is a very busy thing, particularly so when you have it doing something (and even when you aren't). And when we are looking at an active enterprise environment, something is always going on.
-
-Most of this activity is "bursty", meaning processes are typically quiescent with short periods of intense activity. This is certainly true of any type of network-based activity (e.g. processing PHP requests), but also applies to OS maintenance (e.g. file system maintenance, page reclamation, disk I/O requests).
-
-If you take a situation where you have a lot of such bursty processes, you get a very irregular and spiky CPU usage plot.
-
-As `500 - Internal Server Error` says, the high number of context switches are going to make the situation even worse.
-
-Useful resources:
-
-- [What does "CPU jumps” mean? (original)](https://stackoverflow.com/questions/32185607/what-does-cpu-jumps-mean)
 
 </details>
 
@@ -4190,6 +4309,8 @@ Fixed the issue by reducing `max_files_per_process` e.g. to 200 from default 100
 
 Usually people start to edit `/etc/security/limits.conf` file, but forget that this file only apply to the actively logged in users through the PAM system.
 
+If you are using systemd to run your postgresql service, limits.conf are not applied, you need to adjust the limits in a service file: `LimitNOFILE=500000`
+
 </details>
 
 <details>
@@ -4231,7 +4352,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Should the root certificate go on the server?</b></summary><br>
+<summary><b>Should you include self-signed root CA certificate in the certificate chain for HTTPS clients?</b></summary><br>
 
 **Self-signed root certificates** need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
 
@@ -4240,6 +4361,7 @@ If the client does not have the root in their trust store, then it won't trust t
 Useful resources:
 
 - [SSL root certificate optional?](https://security.stackexchange.com/questions/65332/ssl-root-certificate-optional)
+- [Why is openssl complaining that my certificate chain is self-signed?](https://security.stackexchange.com/questions/211085/why-is-openssl-complaining-that-my-certificate-chain-is-self-signed)
 
 </details>
 
@@ -4585,7 +4707,16 @@ python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string
 <details>
 <summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
 
-To be completed.
+SPF(Sender policy framework) is a TXT DNS record that defines what hosts can send emails for this domain name.
+
+In a SPF record you can specify the IP4/IP6 addresses, recursive lookup sources, and indirect a, mx, ptr, exists records to check email sender against.  
+
+Lets examine one of the SPF records: "v=spf1 include:_spf.google.com ip4:38.104.1.101/29 ~all"
+this records shows that additional SPF records are available if you query DNS against _spf.google.com, 38.104.1.101/29 subnet is allowed to send emails.
+The rest of the senders are marked "suspicious" and the decision to allow such emails is left to a receiving MTA.
+
+Useful resources:
+- [Email Authenticity 101: DKIM, DMARC, and SPF](https://www.alexblackie.com/articles/email-authenticity-dkim-spf-dmarc/)
 
 </details>
 
@@ -4644,7 +4775,11 @@ To be completed.
 <details>
 <summary><b>How to find a domain based on the IP address? What techniques/tools can you use? ***</b></summary><br>
 
-To be completed.
+You can use `dig PTR ZZZ.YYY.XXX.WWW.in-addr.arpa.` to get a reverse domain record for a ip WWW.XXX.YYY.ZZZ.
+
+The returned values can be spoofed by an owner of this IP address block - you can receive fake or even non-resolvable domain name in the result.
+
+The alternative source are services similar to domaintools and shodan that keep their own database of internet adressses.
 
 </details>
 
@@ -4653,7 +4788,7 @@ To be completed.
 
 It is possible (but rarely used) as long as it is a public IP address.
 
-An SSL certificate is typically issued to a Fully Qualified Domain Name (FQDN) such as `https://www.domain.com`. However, some organizations need an SSL certificate issued to a public IP address. This option allows you to specify a public IP address as the Common Name in your Certificate Signing Request (CSR). The issued certificate can then be used to secure connections directly with the public IP address (e.g. `https://1.1.1.1`.).
+An SSL certificate is typically issued to a Fully Qualified Domain Name (FQDN) such as `www.domain.com`. However, some organizations need an SSL certificate issued to a public IP address. This option allows you to specify a public IP address as the Common Name in your Certificate Signing Request (CSR). The issued certificate can then be used to secure connections directly with the public IP address (e.g. `https://1.1.1.1`.).
 
 According to the CA Browser forum, there may be compatibility issues with certificates for IP addresses unless the IP address is in both the commonName and subjectAltName fields. This is due to legacy SSL implementations which are not aligned with RFC 5280, notably, Windows OS prior to Windows 10.
 
@@ -4826,6 +4961,10 @@ Useful resources:
 <details>
 <summary><b>Is it safe to use SNI SSL in production? How to test connection with and without it? In which cases it is useful?</b></summary><br>
 
+SNI SSL allows you to expose multiple SSL enabled web sites on the same IP address. When SNI is enabled, the client sends the requested host name in the SSL handshake, unencrypted.
+For the fact that hostname is leaked creates a minor privacy issue - intermediary can learn what site is the client visiting.
+As of 2021, Encrypted Client Hello (ECH) is being proposed as an TLS extension that encrypts the host name in a TLS hello.
+
 With <b>OpenSSL</b>:
 
 ```bash
@@ -4862,7 +5001,9 @@ If there is a cookie set, then the browser sends the following in its request he
 <details>
 <summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? ***</b></summary><br>
 
-To be completed.
+Generally, missing "Host:" in request is not an attack and does is not a significant security issue, apart from possibly being used to probe the available http services on a specific IP address.
+In apache, a default VirtualHost is the host without a specified ServerName. If the request does not contain a "Host:" header, the default VirtualHost is used.
+In nginx, a special empty("") server will respond to the request if the "Host:" header is missing.
 
 </details>
 
@@ -5158,7 +5299,16 @@ Below are the advantages of containerization over virtualization:
 <details>
 <summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. ***</b></summary><br>
 
-To be completed.
+Docker images from Docker hub are usually supported by the team behind the software and usually follow the best security practices, so unless you make any customizations to the image, you are fine using the public official images.
+Keep in mind that you need to find a balance between running the images with all the security patches but not running the images that may break some old behavior. The best solution is to use branches.
+For example, if you use docker image apache:2.4, you will receive 2.4.X versions, updated to include security fixes.
+
+The case is different if you create your own docker images for the enterprise. You should not push these images to public docker repositories - you dont want to leak the details of company infrastructure. 
+Host your own registry or use a private cloud registry in such cases.
+
+Useful resources:
+
+- [Top 20 Dockerfile best practices](https://sysdig.com/blog/dockerfile-best-practices/) 
 
 </details>
 
@@ -5565,15 +5715,15 @@ location / {
 </details>
 
 <details>
-<summary><b>Explain <code>:(){ :|:& };:</code> and how stop this code if you are already logged into a system?</b></summary><br>
+<summary><b>Explain <code>A(){ A|A& };A</code> and how stop this code if you are already logged into a system?</b></summary><br>
 
 It's a **fork bomb**.
 
-- `:()` - this defines the function. `:` is the function name and the empty parenthesis shows that it will not accept any arguments
+- `A()` - this defines the function. `A` is the function name and the empty parenthesis shows that it will not accept any arguments
 - `{ }` - these characters shows the beginning and end of function definition
-- `:|:` - it loads a copy of the function `:` into memory and pipe its output to another copy of the `:` function, which has to be loaded into memory
+- `A|A` - it loads a copy of the function `:` into memory and pipe its output to another copy of the `A` function, which has to be loaded into memory
 - `&` - this will make the process as a background process, so that the child processes will not get killed even though the parent gets auto-killed
-- `:` - final `:` will execute the function again and hence the chain reaction begins
+- `A` - final `A` will execute the function again and hence the chain reaction begins
 
 The best way to protect a multi-user system is to use **PAM** to limit the number of processes a user can use. We know the biggest problem with a fork bomb is the fact it takes up so many processes.
 
@@ -5809,7 +5959,13 @@ Useful resources:
 <details>
 <summary><b>You have a lot of sockets, hanging in <code>TIME_WAIT</code>. Your http service behind proxy serve a lot of small http requests. How to check and reduce <code>TIME_WAIT</code> sockets? ***</b></summary><br>
 
-To be completed.
+TIME_WAIT is one of the state of a network socket being closed. 
+Your local linux machine is waiting for 2*MSL(maximum segment life, on linux machines MSL = 60 by default) before moving the socket to a CLOSED state.
+It waits for time to pass to be sure the remote TCP received the acknowledgement of its connection termination request.
+Having a large number of TIME_WAIT sockets is normal, but you can reduce the MSL timeout so these sockets are recycled quicker.
+`echo 10 > /proc/sys/net/ipv4/tcp_fin_timeout`
+Or permanently by adding it to /etc/sysctl.conf
+`net.ipv4.tcp_fin_timeout=10`
 
 Useful resources:
 
