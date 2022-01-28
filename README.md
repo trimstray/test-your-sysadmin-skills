@@ -580,9 +580,36 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do I <code>grep</code> recursively? Explain on several examples. ***</b></summary>
+<summary><b>How do I <code>grep</code> recursively? Explain on several examples.</b></summary><br>
 
-To be completed.
+use `-r` or `-R` to search recursively in a specific directory, the results will show the filenames and the matching line in the corresponding file
+
+```bash
+# grep -r -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" /etc/openldap/
+
+/etc/openldap/schema/collective.ldif:2.5.4.7
+/etc/openldap/schema/collective.ldif:2.5.4.8
+/etc/openldap/schema/collective.ldif:2.5.4.9
+/etc/openldap/schema/collective.ldif:2.5.4.10
+/etc/openldap/schema/collective.ldif:2.5.4.11
+/etc/openldap/schema/collective.ldif:2.5.4.16
+/etc/openldap/schema/collective.ldif:2.5.4.17
+/etc/openldap/schema/collective.ldif:2.5.4.18
+/etc/openldap/schema/collective.ldif:2.5.4.19
+/etc/openldap/schema/collective.ldif:2.5.4.20
+/etc/openldap/schema/collective.ldif:2.5.4.21
+/etc/openldap/schema/collective.ldif:2.5.4.23
+/etc/openldap/schema/collective.ldif:2.5.4.25
+/etc/openldap/schema/collective.schema:2.5.4.7
+/etc/openldap/schema/collective.schema:2.5.4.8
+/etc/openldap/schema/collective.schema:2.5.4.9
+/etc/openldap/schema/collective.schema:2.5.4.10
+/etc/openldap/schema/collective.schema:2.5.4.11
+/etc/openldap/schema/collective.schema:2.5.4.16
+/etc/openldap/schema/collective.schema:2.5.4.17
+/etc/openldap/schema/collective.schema:2.5.4.18
+
+```
 
 </details>
 
