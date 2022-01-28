@@ -591,23 +591,10 @@ use `-r` or `-R` to search recursively in a specific directory, the results will
 /etc/openldap/schema/collective.ldif:2.5.4.8
 /etc/openldap/schema/collective.ldif:2.5.4.9
 /etc/openldap/schema/collective.ldif:2.5.4.10
-/etc/openldap/schema/collective.ldif:2.5.4.11
-/etc/openldap/schema/collective.ldif:2.5.4.16
-/etc/openldap/schema/collective.ldif:2.5.4.17
-/etc/openldap/schema/collective.ldif:2.5.4.18
-/etc/openldap/schema/collective.ldif:2.5.4.19
-/etc/openldap/schema/collective.ldif:2.5.4.20
-/etc/openldap/schema/collective.ldif:2.5.4.21
-/etc/openldap/schema/collective.ldif:2.5.4.23
-/etc/openldap/schema/collective.ldif:2.5.4.25
 /etc/openldap/schema/collective.schema:2.5.4.7
 /etc/openldap/schema/collective.schema:2.5.4.8
 /etc/openldap/schema/collective.schema:2.5.4.9
 /etc/openldap/schema/collective.schema:2.5.4.10
-/etc/openldap/schema/collective.schema:2.5.4.11
-/etc/openldap/schema/collective.schema:2.5.4.16
-/etc/openldap/schema/collective.schema:2.5.4.17
-/etc/openldap/schema/collective.schema:2.5.4.18
 
 ```
 
