@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://github.com/trimstray/test-your-sysadmin-skills">
-    <img src="https://github.com/trimstray/test-your-sysadmin-skills/blob/master/static/img/sysadmin_preview.png" alt="Master">
-  </a>
+    <img src="./sysadmin_preview.png" alt="sysadmin logo">
 </p>
 
 <br>
@@ -12,12 +10,12 @@
 
 <p align="center">:star:</p>
 
-<p align="center">"<i>My skills are making things work, not knowing a billion facts. [...] If I need to fix a system I’ll identify the problem, check the logs and look up the errors. If I need to implement a solution I’ll research the right solution, implement and document it, the later on only really have a general idea of how it works unless I interact with it frequently... it’s why it’s documented.</i>" - Sparcrypt (Reddit)</p>
+<p align="center">"<i>Systems Administration... [is about] acting as a force multiplier to optimize the effectiveness of other employees. </i>" - Unknown</p>
 
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/test-your-sysadmin-skills/pulls">
+  <a href="https://github.com/dfuentes87/test-your-sysadmin-skills/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?longCache=true" alt="Pull Requests">
   </a>
   <a href="LICENSE.md">
@@ -25,16 +23,8 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="https://twitter.com/trimstray" target="_blank">
-    <img src="https://img.shields.io/twitter/follow/trimstray.svg?logo=twitter">
-  </a>
-</p>
-
 <div align="center">
-  <sub>Created by
-  <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/test-your-sysadmin-skills/graphs/contributors">contributors</a>
+  <sub>Forked from <a href="https://github.com/trimstray/test-your-sysadmin-skills/graphs/contributors">trimstray</a>; Brought back to life and updated by <a href="https://github.com/dfuentes87/test-your-sysadmin-skills/graphs/contributors">dfuentes87</a>
 </div>
 
 <br>
@@ -43,7 +33,8 @@
 
 <br>
 
-:information_source: &nbsp;This project contains **284** test questions and answers that can be used as a test your knowledge or during an interview/exam for position such as **Linux (\*nix) System Administrator**.
+:information_source: &nbsp;This project contains over **200** questions and answers that can be used to test your general knowledge for becoming a **Linux System Administrator**, or to ask someone interviewing for such a position.<br><br>
+This repo is not meant to be a list of facts to memorize and not knowing all these does not mean you are not a good Linux SysAdmin. It is instead a general guide of knowledge most should understand, even if you have to look up the exact answer once in a while (e.g. Redis port or the flags to properly use tar)
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -51,49 +42,19 @@
 
 :traffic_light: &nbsp;If you find something which doesn't make sense, or something doesn't seem right, **please make a pull request** and please add valid and well-reasoned explanations about your changes or comments.
 
-:books: &nbsp;In order to improve your knowledge/skills please see [devops-interview-questions](https://github.com/bregman-arie/devops-interview-questions). It looks really interesting.
-
-<br>
-
-<p align="center">
-  » <b><code><a href="https://github.com/trimstray/test-your-sysadmin-skills/issues">All suggestions are welcome</a></code></b> «
-</p>
-
 <br>
 
 ## Table of Contents
 
 | <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
 | :---         | :---         | :---         |
-| <b>[Introduction](#introduction)</b> |||
-| :small_orange_diamond: [Simple Questions](#simple-questions) | 14 questions | Relaxed, fun and simple - are great for starting everything. |
 | <b>[General Knowledge](#general-knowledge)</b> |||
-| :small_orange_diamond: [Junior Sysadmin](#junior-sysadmin) | 65 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Regular Sysadmin](#regular-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior Sysadmin](#senior-sysadmin) | 99 questions | Hard questions and riddles. Check it if you want to be good. |
-| <b>[Secret Knowledge](#secret-knowledge)</b> ||
-| :small_orange_diamond: [Guru Sysadmin](#guru-sysadmin) | 12 questions | Really deep questions are to get to know Guru Sysadmin. |
+| :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | 65 questions | Reasonably simple and straight based on basic knowledge. |
+| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
+| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | 99 questions | Hard questions and riddles. Check it if you want to be good. |
+| <b>[Extra Knowledge](#extra-knowledge)</b> ||
 
 <br>
-
-## <a name="introduction">Introduction</a>
-
-### :diamond_shape_with_a_dot_inside: <a name="simple-questions">Simple Questions</a>
-
-- <b>What did you learn this week?</b>
-- <b>What excites or interests you about the sysadmin world?</b>
-- <b>What is a recent technical challenge you experienced and how did you solve it?</b>
-- <b>Tell me about the last major project you finished.</b>
-- <b>Do you contribute to any open source projects?</b>
-- <b>Describe the setup of your homelab.</b>
-- <b>What personal achievement are you most proud of?</b>
-- <b>Tell me about the biggest mistake you've made. How would you do it differently today?</b>
-- <b>What software tools are you going to install on the first day at a new job?</b>
-- <b>Tell me about how you manage your knowledge database (e.g. wikis, files, portals).</b>
-- <b>What news sources do you check daily? (sysadmin, security-related or other)</b>
-- <b>Your NOC team has a new budget for sysadmin certifications. What certificate would you like and why?</b>
-- <b>How do you interact with developers: *us vs. them* or *all pulling together with a different approach*?</b>
-- <b>Which sysadmin question would you ask, if you were interviewing me, to know, how good I'm with non-standard situations?</b>
 
 ## <a name="general-knowledge">General Knowledge</a>
 
@@ -102,45 +63,38 @@
 ###### System Questions (37)
 
 <details>
-<summary><b>Give some examples of Linux distribution. What is your favorite distro and why?</b></summary><br>
+<summary><b>Give some examples of Linux distributions. Describe what makes them unique.</b></summary>
+
 - Red Hat Enterprise Linux
-- Fedora
-- CentOS
+
+- AlmaLinux
+
 - Debian
+
 - Ubuntu
-- Mint
-- SUSE Linux Enterprise Server (SLES)
-- SUSE Linux Enterprise Desktop (SLED)
-- Slackware
+
 - Arch
+
 - Kali
-- Backbox
 
-My favorite Linux distribution:
+- OpenBSD (Unix, not Linux)
 
-- **Arch Linux**, which offers a nice minimalist base system on which one can build a custom operating system. The beauty of it too is that it has the Arch User Repository (AUR), which when combined with its official binary repositories allows it to probably have the largest repositories of any distribution. Its packaging process is also very simple, which means if one wants a package not in its official repositories or the AUR, it should be easy to make it for oneself.
-- **Linux Mint**, which is also built from Ubuntu LTS releases, but features editions featuring a few different desktop environments, including Cinnamon, MATE and Xfce. Mint is quite polished and its aesthetics are rather appealing, I especially like its new icon theme, although I do quite dislike its GTK+ theme (too bland to my taste). I’ve also found a bug in its latest release Mint 19, that is getting quite irritating as I asked for with it over a fortnight ago on their forums and I have received no replies so far and it is a bug that makes my life on it more difficult.
-- **Kali Linux**, is a Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing. Kali contains several hundred tools which are geared towards various information security tasks, such as Penetration Testing, Security research, Computer Forensics and Reverse Engineering.
+- **Arch Linux** offers a minimalist base system on which one can build a custom operating system. The beauty of it is that it has the Arch User Repository (AUR), which when combined with its official binary repositories allows it to probably have the largest repositories of any distribution. Its packaging process is also very simple, which means if one wants a package not in its official repositories or the AUR, it should be easy to make it for oneself.
+- **Kali Linux** is a Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing. Kali contains several hundred tools which are geared towards various information security tasks, such as Penetration Testing, Security research, Computer Forensics and Reverse Engineering.
+
+**Follow-up question:** What is your favorite distro and why?
 
 Useful resources:
 
 - [List of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions)
-- [What is your favorite Linux distro and why?](https://www.quora.com/What-is-your-favorite-Linux-distro-and-why)
+- [Distro Watch](https://distrowatch.com/)
 
 </details>
 
 <details>
-<summary><b>What are the differences between Unix, Linux, BSD, and GNU?</b></summary><br>
+<summary><b>What are the differences between Unix, Linux, BSD, and GNU? ***</b></summary><br>
 
-**GNU** isn't really an OS. It's more of a set of rules or philosophies that govern free software, that at the same time gave birth to a bunch of tools while trying to create an OS. So **GNU** tools are basically open versions of tools that already existed, but were reimplemented to conform to principals of open software. **GNU/Linux** is a mesh of those tools and the **Linux kernel** to form a complete OS, but there are other GNUs, e.g. **GNU/Hurd**.
-
-**Unix** and **BSD** are "older" implementations of POSIX that are various levels of "closed source". **Unix** is usually totally closed source, but there are as many flavors of **Unix** as there are **Linux** (if not more). **BSD** is not usually considered "open", but it was considered to be very open when it was released. Its licensing also allowed for commercial use with far fewer restrictions than the more "open" licenses of the time allowed.
-
-**Linux** is the newest of the four. Strictly speaking, it's "just a kernel"; however, in general, it's thought of as a full OS when combined with GNU Tools and several other core components.
-
-The main governing differences between these are their ideals. **Unix**, **Linux**, and **BSD** have different ideals that they implement. They are all POSIX, and are all basically interchangeable. They do solve some of the same problems in different ways. So other then ideals and how they choose to implement POSIX standards, there is little difference.
-
-For more info I suggest your read a brief article on the creation of **GNU**, **OSS**, **Linux**, **BSD**, and **UNIX**. They will be slanted towards their individual ideas, but those articles should give you a better idea of the differences.
+*Pending rewrite*
 
 Useful resources:
 
@@ -150,15 +104,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is a CLI? Tell me about your favorite CLI tools, tips, and hacks.</b></summary><br>
+<summary><b>What is a CLI? Name some common or well-known CLI tools, tips, and hacks.</b></summary><br>
 
-**CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer.
-
-In Unix like systems, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
+**CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer. In Unix like systems, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
 
 The **CLI** allows you to do manipulations with your system’s internals and with code in a much more fine-tuned way. It offers greater flexibility and control than a GUI regardless of what OS is used. Many programs that you might want to use in your software that are hosted on say Github also require running some commands on the **CLI** in order to get them running.
 
-**My favorite tools**
+**Common/Well-known tools**
 
 - `screen` - free terminal multiplexer, I can start a session and My terminals will be saved even when you connection is lost, so you can resume later or from home
 - `ssh` - the most valuable over-all command to learn, I can use it to do some amazing things:
@@ -187,11 +139,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is your favorite shell and why?</b></summary><br>
+<summary><b>What is BASH? ***</b></summary><br>
 
-**BASH** is my favorite. It’s really a preferential kind of thing, where I love the syntax and it just "clicks" for me. The input/output redirection syntax (`>>`, `<< 2>&1`, `2>`, `1>`, etc) is similar to C++ which makes it easier for me to recognize.
-
-I also like the **ZSH** shell, because is much more customizable than **BASH**. It has the Oh-My-Zsh framework, powerful context based tab completion, pattern matching/globbing on steroids, loadable modules and more.
+*Pending rewrite*
 
 Useful resources:
 
@@ -200,7 +150,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you get help on the command line? ***</b></summary><br>
+<summary><b>How do you get help on the command line?</b></summary><br>
 
 - `man` [commandname] can be used to see a description of a command (ex.: `man less`, `man cat`)
 
@@ -354,7 +304,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Running the command as root user. It is a good or bad practices?</b></summary><br>
+<summary><b>Is running processes as root a good or bad practice?</b></summary><br>
 
 Running (everything) as root is bad because:
 
@@ -375,7 +325,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to check memory stats and CPU stats?</b></summary><br>
+<summary><b>How to check memory stats and CPU stats? ***</b></summary><br>
+
+*Answer needs more details*
 
 You'd use `top/htop` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
 
@@ -413,7 +365,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Where is my password stored on Linux/Unix?</b></summary><br>
+<summary><b>Where are user passwords stored on Linux/Unix systems?</b></summary><br>
 
 The passwords are not stored anywhere on the system at all. What is stored in `/etc/shadow` are so called hashes of the passwords.
 
@@ -455,7 +407,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Every command fails with <code>command not found</code>. How to trace the source of the error and resolve it?</b></summary><br>
+<summary><b>Every command fails with <code>command not found</code>. How can you trace the source of the error and resolve it?</b></summary><br>
 
 It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. `/bin`, where the commands (including bash) reside.
 
@@ -488,7 +440,7 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
+<summary><b>You type <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
 
 To be completed.
 
@@ -500,7 +452,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is <code>grep</code> command? How to match multiple strings in the same line?</b></summary><br>
+<summary><b>What is <code>grep</code> command? How do you match multiple strings in the same line?</b></summary><br>
 
 The `grep` utilities are a family of Unix tools, including `egrep` and `fgrep`.
 
@@ -535,12 +487,12 @@ Useful resources:
 
 Useful resources:
 
-- [Viewing text files from the shell prompt](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-viewingtext-terminal.html)
+- [5 Commands to View the Content of a File in Linux Command Line](https://linuxhandbook.com/view-file-linux/)
 
 </details>
 
 <details>
-<summary><b>SIGHUP, SIGINT, SIGKILL, and SIGTERM POSIX signals. Explain.</b></summary><br>
+<summary><b>Explain the SIGHUP, SIGINT, SIGKILL, and SIGTERM signals.</b></summary><br>
 
 - **SIGHUP** - is sent to a process when its controlling terminal is closed. It was originally designed to notify the process of a serial line drop (a hangup). Many daemons will reload their configuration files and reopen their logfiles instead of exiting when receiving this signal.
 - **SIGINT** - is sent to a process by its controlling terminal when a user wishes to interrupt the process. This is typically initiated by pressing `Ctrl+C`, but on some systems, the "delete" character or "break" key can be used.
@@ -549,8 +501,7 @@ Useful resources:
 
 Useful resources:
 
-- [POSIX signals](https://dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html)
-- [Introduction To Unix Signals Programming](http://titania.ctie.monash.edu.au/signals/)
+- [A list of signals and what they mean](https://www-uxsup.csx.cam.ac.uk/courses/moved.Building/signals.pdf)
 
 </details>
 
@@ -571,7 +522,7 @@ Useful resources:
 `rm` only deletes the named files (and not directories). With `-rf` as you say:
 
 - `-r`, `-R`, `--recursive` recursively deletes content of a directory, including hidden files and sub directories
-- `-f`, `--force` ignore nonexistent files, never prompt
+- `-f`, `--force` ignore nonexistent files, never prompt, silent errors
 
 Useful resources:
 
@@ -605,7 +556,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Execute combine multiple shell commands in one line.</b></summary><br>
+<summary><b>Combine multiple shell commands in one line.</b></summary><br>
 
 If you want to execute each command only if the previous one succeeded, then combine them using the `&&` operator:
 
@@ -836,14 +787,14 @@ Useful resources:
 ###### Network Questions (23)
 
 <details>
-<summary><b>Draw me a simple network diagram: you have 20 systems, 1 router, 4 switches, 5 servers, and a small IP block. ***</b></summary><br>
+<summary><b>Show a simple network diagram: you have 3 systems, 1 router, 1 switches, 1 servers, and the Internet. ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>What are the most important things to understand about the OSI (or any other) model?</b></summary><br>
+<summary><b>What are the most important things to understand about the OSI model?</b></summary><br>
 
 The most important things to understand about the **OSI** (or any other) model are:
 
@@ -1340,7 +1291,7 @@ Useful resources:
 
 </details>
 
-### :diamond_shape_with_a_dot_inside: <a name="regular-sysadmin">Regular Sysadmin</a>
+### :diamond_shape_with_a_dot_inside: <a name="proficient-sysadmin">Proficient Sysadmin</a>
 
 ###### System Questions (60)
 
@@ -5256,9 +5207,7 @@ Useful resources:
 
 </details>
 
-## <a name="secret-knowledge">Secret Knowledge</a>
-
-### :diamond_shape_with_a_dot_inside: <a name="guru-sysadmin">Guru Sysadmin</a>
+## <a name="extra-knowledge">Extra Knowledge</a>
 
 <details>
 <summary><b>Explain what is Event-Driven architecture and how it improves performance? ***</b></summary><br>
