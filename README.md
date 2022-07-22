@@ -10,7 +10,7 @@
 
 <p align="center">:star:</p>
 
-<p align="center">"<i>Systems Administration... [is about] acting as a force multiplier to optimize the effectiveness of other employees. </i>" - Unknown</p>
+<p align="center">"<i>Systems Administration... [is about] acting as a force multiplier to optimize the effectiveness of other employees.</i>" <br>- Unknown</p>
 
 <br>
 
@@ -24,7 +24,7 @@
 </p>
 
 <div align="center">
-  <sub>Forked from <a href="https://github.com/trimstray/test-your-sysadmin-skills/graphs/contributors">trimstray</a>; Brought back to life and updated by <a href="https://github.com/dfuentes87/test-your-sysadmin-skills/graphs/contributors">dfuentes87</a>
+  <sub>Forked from <a href="https://github.com/trimstray/test-your-sysadmin-skills">trimstray</a>; Brought back to life and updated by <a href="https://github.com/dfuentes87/linux-sysadmin-questions">dfuentes87</a>
 </div>
 
 <br>
@@ -33,26 +33,54 @@
 
 <br>
 
-:information_source: &nbsp;This project contains over **200** questions and answers that can be used to test your general knowledge for becoming a **Linux System Administrator**, or to ask someone interviewing for such a position.<br><br>
+:information_source: &nbsp;This project contains over **200** questions and answers that can be used to test your general knowledge as a **Linux System Administrator**, or to ask someone interviewing for such a position.
+
 This repo is not meant to be a list of facts to memorize and not knowing all these does not mean you are not a good Linux SysAdmin. It is instead a general guide of knowledge most should understand, even if you have to look up the exact answer once in a while (e.g. Redis port or the flags to properly use tar)
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
-:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer is incomplete - **make a pull request to add them**!
+:warning: &nbsp;Questions marked **`***`** don't have answer yet or answer the is incomplete - **make a pull request to add them**!
 
 :traffic_light: &nbsp;If you find something which doesn't make sense, or something doesn't seem right, **please make a pull request** and please add valid and well-reasoned explanations about your changes or comments.
+
+
+### Contributing
+
+If you would like to support this project, have an interesting idea how to improve the operation of this tool, or if you found some errors - fork this, add your fixes, and add a pull request of your branch to the **master branch**.
+
+#### Using the issue tracker
+
+The [issue tracker](https://github.com/dfuentes87/linux-sysadmin-questions/issues) is
+the preferred channel for bug reports, features requests and submitting pull requests, but please respect the following restrictions:
+
+* Please **do not** use the issue tracker for personal tech support requests.
+
+* Please **do not** derail or troll issues. Keep the discussion on topic and
+  respect the opinions of others.
+
+#### Pull requests
+
+When creating a pull request, please heed the following:
+
+- Base your code on the latest master branch.
+- Code review may ensue in order to help shape your proposal
+- Explain the problem and your proposed solution in detail
+
+<br>
+
+***
 
 <br>
 
 ## Table of Contents
 
-| <b><u>The type of chapter</u></b> | <b><u>Number of questions</u></b> | <b><u>Short description</u></b> |
-| :---         | :---         | :---         |
-| <b>[General Knowledge](#general-knowledge)</b> |||
-| :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | 65 questions | Reasonably simple and straight based on basic knowledge. |
-| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | 94 questions | The mid level of questions if that you have sound knowledge. |
-| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | 99 questions | Hard questions and riddles. Check it if you want to be good. |
-| <b>[Extra Knowledge](#extra-knowledge)</b> ||
+| <b><u>The type of chapter</u></b> | <b><u>Short description</u></b> |
+| :---         | :---         |
+| <b>[General Knowledge](#general-knowledge)</b> ||
+| :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | Reasonably simple questions based on basic knowledge. |
+| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5 years. |
+| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | Advanced questions which may be open-ended, require actual experience to fully understand, or are unique scenarios. |
+| <b>[Extra Knowledge](#extra-knowledge)</b> |
 
 <br>
 
@@ -60,7 +88,7 @@ This repo is not meant to be a list of facts to memorize and not knowing all the
 
 ### :diamond_shape_with_a_dot_inside: <a name="junior-sysadmin">Junior Sysadmin</a>
 
-###### System Questions (37)
+###### System Questions
 
 <details>
 <summary><b>Give some examples of Linux distributions. Describe what makes them unique.</b></summary>
@@ -155,21 +183,6 @@ Useful resources:
 - `man` [commandname] can be used to see a description of a command (ex.: `man less`, `man cat`)
 
 - `-h` or `--help` some programs will implement printing instructions when passed this parameter (ex.: `python -h` and `python --help`)
-
-</details>
-
-<details>
-<summary><b>Your first 5 commands on a *nix server after login.</b></summary><br>
-
-- `w` - a lot of great information in there with the server uptime
-- `top` - you can see all running processes, then order them by CPU, memory utilization and more
-- `netstat` - to know on what port and IP your server is listening on and what processes are using those
-- `df` - reports the amount of available disk space being used by file systems
-- `history` - tell you what was previously run by the user you are currently connected to
-
-Useful resources:
-
-- [First 5 Commands When I Connect on a Linux Server (original)](https://www.linux.com/blog/first-5-commands-when-i-connect-linux-server)
 
 </details>
 
@@ -407,39 +420,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Every command fails with <code>command not found</code>. How can you trace the source of the error and resolve it?</b></summary><br>
-
-It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. `/bin`, where the commands (including bash) reside.
-
-One way to begin debugging your bash script or command would be to start a subshell with the `-x` option:
-
-```bash
-bash --login -x
-```
-
-This will show you every command, and its arguments, which is executed when starting that shell.
-
-Also very helpful is show `PATH` variable values:
-
-```bash
-echo $PATH
-```
-
-If you run this:
-
-```bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
-```
-
-most commands should start working - and then you can edit `~/.bash_profile` instead of `~/.bashrc` and fix whatever is resetting `PATH` there. Default `PATH` variable values for **root** and other users is in `/etc/profile` file.
-
-Useful resource:
-
-- [How to correctly add a path to PATH?](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path)
-
-</details>
-
-<details>
 <summary><b>You type <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
 
 To be completed.
@@ -517,41 +497,16 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between <code>rm</code> and <code>rm -rf</code>?</b></summary><br>
-
-`rm` only deletes the named files (and not directories). With `-rf` as you say:
-
-- `-r`, `-R`, `--recursive` recursively deletes content of a directory, including hidden files and sub directories
-- `-f`, `--force` ignore nonexistent files, never prompt, silent errors
-
-Useful resources:
-
-- [What is the difference between `rm -r` and `rm -f`?](https://superuser.com/questions/1126206/what-is-the-difference-between-rm-r-and-rm-f)
-
-</details>
-
-<details>
-<summary><b>How do I <code>grep</code> recursively? Explain on several examples. ***</b></summary>
+<summary><b>When would you want to use <code>-f</code> for <code>rm</code>? ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b><code>archive.tgz</code> has ~30 GB. How do you list content of it and extract only one file?</b></summary><br>
+<summary><b>How can I chmod files using the <code>find</code> command? ***</b></summary>
 
-```bash
-# list of content
-tar tf archive.tgz
-
-# extract file
-tar xf archive.tgz filename
-```
-
-Useful resources:
-
-- [List the contents of a tar or tar.gz file](https://www.cyberciti.biz/faq/list-the-contents-of-a-tar-or-targz-file/)
-- [How to extract specific file(s) from tar.gz](https://unix.stackexchange.com/questions/61461/how-to-extract-specific-files-from-tar-gz)
+To be completed.
 
 </details>
 
@@ -784,7 +739,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (23)
+###### Network Questions
 
 <details>
 <summary><b>Show a simple network diagram: you have 3 systems, 1 router, 1 switches, 1 servers, and the Internet. ***</b></summary><br>
@@ -1178,7 +1133,7 @@ Useful resources:
 
 </details>
 
-###### DevOps Questions (5)
+###### DevOps Questions
 
 <details>
 <summary><b>What is DevOps?</b></summary><br>
@@ -1241,7 +1196,7 @@ Useful resources:
 
 </details>
 
-###### Cyber Security Questions (1)
+###### Cyber Security Questions
 
 <details>
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
@@ -1252,7 +1207,40 @@ Useful resources:
 
 ### :diamond_shape_with_a_dot_inside: <a name="proficient-sysadmin">Proficient Sysadmin</a>
 
-###### System Questions (59)
+###### System Questions
+
+<details>
+<summary><b>Every command fails with <code>command not found</code>. How can you trace the source of the error and resolve it?</b></summary><br>
+
+It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. `/bin`, where the commands (including bash) reside.
+
+One way to begin debugging your bash script or command would be to start a subshell with the `-x` option:
+
+```bash
+bash --login -x
+```
+
+This will show you every command, and its arguments, which is executed when starting that shell.
+
+Also very helpful is show `PATH` variable values:
+
+```bash
+echo $PATH
+```
+
+If you run this:
+
+```bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+```
+
+most commands should start working - and then you can edit `~/.bash_profile` instead of `~/.bashrc` and fix whatever is resetting `PATH` there. Default `PATH` variable values for **root** and other users is in `/etc/profile` file.
+
+Useful resource:
+
+- [How to correctly add a path to PATH?](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path)
+
+</details>
 
 <details>
 <summary><b>How are different production enviornments used and why? ***</b></summary><br>
@@ -1262,7 +1250,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Explain how an SSL works. ***</b></summary><br>
+<summary><b>Provide a general explanation of how SSL works. ***</b></summary><br>
 
 To be completed.
 
@@ -1298,15 +1286,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Why is a load of 1.00 not ideal on a single-core machine?</b></summary><br>
+<summary><b>Is 1.00 CPU load on a four-core processor a bad thing?</b></summary><br>
 
-The problem with a load of 1.00 is that you have no headroom. In practice, many sysadmins will draw a line at 0.70.
-
-The "Need to Look into it" Rule of Thumb: 0.70 If your load average is staying above > 0.70, it's time to investigate before things get worse.
-
-The "Fix this now" Rule of Thumb: 1.00. If your load average stays above 1.00, find the problem and fix it now. Otherwise, you're going to get woken up in the middle of the night, and it's not going to be fun.
-
-Rule of Thumb: 5.0. If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference. Don't let it get there.
+To be completed.
 
 Useful resources:
 
@@ -2526,7 +2508,7 @@ Useful resources:
 
 </details>
 
-###### Network Questions (24)
+###### Network Questions
 
 <details>
 <summary><b>Configure a virtual interface on your workstation. ***</b></summary><br>
@@ -2899,7 +2881,7 @@ tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
 
 </details>
 
-###### Devops Questions (3)
+###### Devops Questions
 
 <details>
 <summary><b>What some of the top DevOps tools? How do all these tools work together?</b></summary><br>
@@ -2937,7 +2919,7 @@ To be completed.
 
 </details>
 
-###### Cyber Security Questions (6)
+###### Cyber Security Questions
 
 <details>
 <summary><b>What are some golden rules for reducing the impact of hacked system.</b></summary><br>
@@ -3066,7 +3048,7 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (40)
+###### System Questions
 
 <details>
 <summary><b>What is the difference between EXT4, XFS, and ZFS? ***</b></summary><br>
@@ -3777,7 +3759,7 @@ rm ./-fr
 
 </details>
 
-###### Network Questions (27)
+###### Network Questions
 
 <details>
 <summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
@@ -4323,7 +4305,7 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (5)
+###### Devops Questions
 
 <details>
 <summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
@@ -4395,7 +4377,7 @@ Useful resources:
 
 </details>
 
-###### Cyber Security Questions (2)
+###### Cyber Security Questions
 
 <details>
 <summary><b>What are salted hashes?</b></summary><br>
