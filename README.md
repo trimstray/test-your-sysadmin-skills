@@ -946,14 +946,14 @@ To troubleshoot communication problems between servers, it is better to ideally 
 </details>
 
 <details>
-<summary><b>Why won’t the hostnames resolve on your server? Fix this issue. ***</b></summary><br>
+<summary><b>Why wouldn't hostnames resolve on your server and how would you troubleshoot the issue? ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>How to resolve the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
+<summary><b>How can you resolve the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
 
 Examples for resolve IP address to domain name:
 
@@ -1000,7 +1000,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to test port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
+<summary><b>How do you test port connectivity with <code>telnet</code> or <code>nc</code>?</b></summary><br>
 
 ```bash
 # with telnet command:
@@ -1013,29 +1013,16 @@ nc -vz code42.example.com 5432
 </details>
 
 <details>
-<summary><b>Why should you avoid <code>telnet</code> to administer a system remotely?</b></summary><br>
+<summary><b>What are the ports used for FTP and SFTP, and how is each used? ***</b></summary><br>
 
-Modern operating systems have turned off all potentially insecure services by default. On the other hand, some vendors of network devices still allow to establish communication using the telnet protocol.
-
-**Telnet** uses most insecure method for communication. It sends data across the network in plain text format and anybody can easily find out the password using the network tool.
-
-In the case of **Telnet**, these include the passing of login credentials in plain text, which means anyone running a sniffer on your network can find the information he needs to take control of a device in a few seconds by eavesdropping on a **Telnet** login session.
-
-Useful resources:
-
-- [Telnet and SSH as a secure alternative](https://www.ssh.com/ssh/telnet)
-- [How to telnet to an IP address on a specific port?](https://superuser.com/questions/339107/how-to-telnet-to-an-ip-address-on-a-specific-port)
+To be completed.
 
 </details>
 
 <details>
-<summary><b>What is the difference between <code>wget</code> and <code>curl</code>?</b></summary><br>
+<summary><b>What is the difference between a Switch and a Router? ***</b></summary><br>
 
-The main differences are: `wget's` major strong side compared to `curl` is its ability to download recursively. `wget` is command line only. `curl` supports FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE, POP3, IMAP, SMTP, RTMP and RTSP.
-
-Useful resources:
-
-- [What is the difference between curl and wget? (original)](https://unix.stackexchange.com/questions/47434/what-is-the-difference-between-curl-and-wget)
+To be completed.
 
 </details>
 
@@ -1055,7 +1042,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Most tutorials suggest using SSH key authentication rather than password authentication. Why it is considered more secure?</b></summary><br>
+<summary><b>Most tutorials suggest using SSH key authentication rather than password authentication. Why is it considered more secure?</b></summary><br>
 
 An **SSH key** is an access credential in the SSH protocol. Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and for implementing single sign-on by system administrators and power users.
 
@@ -1092,7 +1079,7 @@ Operating at the network layer and transport layer of the TCP/IP protocol stack,
 
 Useful resources:
 
-- [Building Internet Firewalls - Packet Filtering](http://web.deu.edu.tr/static/oreily/networking/firewall/ch06_01.htm)
+- [How does a packet filters work?](https://www.tutorialspoint.com/how-does-a-packet-filters-work)
 
 </details>
 
@@ -1128,17 +1115,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between a router and a gateway? What is the default gateway?</b></summary><br>
+<summary><b>What are IP classes? How is it different from CIDR (classless)?</b></summary><br>
 
-**Router** describes the general technical function (layer-3 forwarding) or a hardware device intended for that purpose, while gateway describes the function for the local segment (providing connectivity to elsewhere). You could also state that "_you set up a router as gateway_". Another term is hop which describes the forwarding in between subnets.
-
-The term **default gateway** is used to mean the router on your LAN which has the responsibility of being the first point of contact for traffic to computers outside the LAN.
-
-It's just a matter of perspective, the device is the same.
-
-Useful resources:
-
-- [Difference between router and gateway (orignal)](https://networkengineering.stackexchange.com/questions/51426/difference-between-router-and-gateway)
+To be completed.
 
 </details>
 
@@ -1162,23 +1141,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Why couldn't MAC addresses be used instead of IPv4/6 for networking?</b></summary><br>
+<summary><b>What is a MAC address and how is it determined? ***</b></summary><br>
 
-The **OSI** model explains why it doesn't make sense to make routing, a **layer 3** concept, decisions based on a physical, **layer 2**, mechanism.
+To be completed.
 
-Modern networking is broken into many different layers to accomplish your end to end communication. Your network card (what is addressed by the mac address - physical address) needs to only be responsible for communicating with peers on it's physical network.
-
-The communication that you are allowed to accomplish with your **MAC** address is going to be limited to other devices that reside within physical contact to your machine. On the internet, for example, you are not physically connected to each machine. That's why we make use of **TCP/IP** (a **layer 3**, logical address) mechanism when we need to communicate with a machine that we are not physically connected to.
-
-**IP** is an arbitrary numbering scheme imposed in a hierarchical fashion on a group of computers to logically distinguish them as a group (that's what a subnet is). Sending messages between those groups is done by routing tables, themselves divided into multiple levels so that we don't have to keep track of every single subnet.
-
-It's also pretty easy to relate this to another pair of systems. You have a State Issued ID Number, why would you need a mailing address if that ID number is already unique to just you? You need the mailing address because it's an arbitrary system that describes where the unique destination for communications to you should go.
-
-On the other hand, the distribution of **MAC** addresses across the network is random and completely unrelated to topology. Routes grouping would be impossible, every router would need to keep track of routes for every single device that relays traffic trough it. That is what **layer 2** switches do, and that does not scale well beyond a certain number of hosts.
-
-Useful resources:
-
-- [Why couldn't MAC addresses be used instead of IPv4|6 for networking? (original)](https://serverfault.com/questions/410626/why-couldnt-mac-addresses-be-used-instead-of-ipv46-for-networking)
+- [How is the MAC address on a computer determined?](https://superuser.com/questions/504770/how-is-the-mac-address-on-a-computer-determined)
 
 </details>
 
@@ -1211,17 +1178,17 @@ Useful resources:
 
 </details>
 
-###### Devops Questions (5)
+###### DevOps Questions (5)
 
 <details>
-<summary><b>What is DevOps? Which is more important to the success of any DevOps community: how people communicate or the tools that you choose to deploy? ***</b></summary><br>
+<summary><b>What is DevOps?</b></summary><br>
 
 **DevOps** is a cohesive team that engages in both Development and Operations tasks, or it's individual Operations and Development teams that work very closely together. It's more of a "way" of working collaboratively with other departments to achieve common goals.
 
 </details>
 
 <details>
-<summary><b>What is a version control? Are your commit messages good looking?</b></summary><br>
+<summary><b>What is a version control? What are atomic commits? ***</b></summary><br>
 
 It is a system that records changes to a file or set of files over time so that you can recall specific versions later. Version control systems consist of a central shared repository where teammates can commit changes to a file or set of file. Then you can mention the uses of version control.
 
@@ -1233,15 +1200,7 @@ Version control allows you to:
 - see who last modified something that might be causing a problem
 - who introduced an issue and when
 
-The seven rules of a great commit message:
-
-- separate subject from body with a blank line
-- limit the subject line to 50 characters
-- capitalize the subject line
-- do not end the subject line with a period
-- use the imperative mood in the subject line
-- wrap the body at 72 characters
-- use the body to explain what and why vs. how
+*Answer atomic commits question*
 
 Useful resources:
 
@@ -1270,7 +1229,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain some basic <code>docker</code> commands.</b></summary><br>
+<summary><b>Explain some basic <code>Docker</code> commands.</b></summary><br>
 
 - `docker ps` - show running containers
 - `docker ps -a` - show all containers
@@ -1293,17 +1252,17 @@ Useful resources:
 
 ### :diamond_shape_with_a_dot_inside: <a name="proficient-sysadmin">Proficient Sysadmin</a>
 
-###### System Questions (60)
+###### System Questions (59)
 
 <details>
-<summary><b>Tell me about your experience with the production environments? ***</b></summary><br>
+<summary><b>How are different production enviornments used and why? ***</b></summary><br>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>Which distribution would you select for running a major web server? ***</b></summary><br>
+<summary><b>Explain how an SSL works. ***</b></summary><br>
 
 To be completed.
 
@@ -1332,7 +1291,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How and why Linux daemons drop privileges? Why some daemons need root permissions to start? Explain. ***</b></summary>
+<summary><b>What is SELinux and how does it work? ***</b></summary>
 
 To be completed.
 
@@ -1357,7 +1316,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does it mean when the effective user is root, but the real user ID is still your name?</b></summary><br>
+<summary><b>What does it mean when the effective user is root, but the real user ID is still your username?</b></summary><br>
 
 The **real user ID** is who you really are (the user who owns the process), and the **effective user ID** is what the operating system looks at to make a decision whether or not you are allowed to do something (most of the time, there are some exceptions).
 
@@ -1389,17 +1348,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Developer added cron job which generate massive log files. How do you prevent them from getting so big?</b></summary><br>
+<summary><b>How do you prevent logs from getting too big?</b></summary><br>
 
-Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to `/etc/logrotate.conf` you should add your own job to `/etc/logrotate.d/`, otherwise you would have to look at more diffs of configuration files during release upgrades.
-
-If it's actively being written to you don't really have much you can do by way of truncate. Your only options are to truncate the file:
-
-```bash
-: >/var/log/massive-logfile
-```
-
-It's very helpful, because it's truncate the file without disrupting the processes.
+Using `logrotate` is the usual way of dealing with logfiles. But instead of adding content to `/etc/logrotate.conf` you should add your own job to `/etc/logrotate.d/`, to avoid issues between release upgrades and to better organize different tasks rather than searching through a large logrotate.conf file.
 
 Useful resources:
 
@@ -1409,7 +1360,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How the Linux kernel creates, manages and deletes the processes in the system? ***</b></summary><br>
+<summary><b>How can you see what files are associated with a running process? What is one example of why you would use this command? ***</b></summary><br>
 
 To be completed.
 
@@ -1420,32 +1371,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain the selected information you can see in <code>top</code> and <code>htop</code>. How to diagnose load, high user time and out-of-memory problems with these tools? ***</b></summary><br>
+<summary><b>What kind of information can you see with the <code>top</code> command and how is it they useful? ***</b></summary><br>
 
 To be completed.
 
 Useful resources:
 
-- [top explained visually](https://www.svennd.be/top-explained-visually/)
-- [htop Explained Visually](https://codeahoy.com/2017/01/20/hhtop-explained-visually/)
-- [Explanation of everything you can see in htop/top on Linux](https://peteris.rocks/blog/htop/)
-
-</details>
-
-<details>
-<summary><b>How would you recognize a process that is hogging resources? </b></summary><br>
-
-`top` works reasonably well, as long as you look at the right numbers.
-- **M** Sorts by current resident memory usage
-- **T** Sorts by total ( or cummulative) CPU usage
-- **P** Sorts by current CPU usage (this is the default refresh)
-- **?** Displays a usage summary for all top commands
-
-This is very important information to obtain when problem solving why a computer process is running slowly and making decisions on what processes to kill/software to uninstall.
-
-Useful resources:
-
-- [How to find the process(es) which are hogging the machine](https://superuser.com/questions/326300/how-to-find-the-processes-which-are-hogging-the-machine)
+- [top explained visually](https://svennd.be/top-explained-visually/)
 
 </details>
 
@@ -2932,58 +2864,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Developer uses private key on the server to deploy app through ssh. Why it is incorrect behavior and what is the better (but not ideal) solution in such situations?</b></summary><br>
-
-You have the private key for your personal account. The server needs your public key so that it can verify that your private key for the account you are trying to use is authorized.
-
-The whole point with private keys is that they are private, meaning only you have your private key. If someone takes over your private key, it will be able to impersonate you any time he wants.
-
-A better solutions is the use of ssh key forwarding. An essence, you need to create a `~/.ssh/config` file, if it doesn't exist. Then, add the hosts (either domain name or IP address in the file and set `ForwardAgent yes`). Example:
-
-```bash
-Host git.example.com
-    User john
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_rsa.git.example.com
-    ForwardAgent yes
-```
-
-Your remote server must allow SSH agent forwarding on inbound connections and your local `ssh-agent` must be running.
-
-Forwarding an ssh agent carries its own security risk. If someone on the remote machine can gain access to your forwarded ssh agent connection, they can still make use of your keys. However, this is better than storing keys on remote machines: the attacker can only use the ssh agent connection, not the key itself. Thus, only while you're logged into the remote machine can they do anything. If you store the key on the remote machine, they can make a copy of it and use it whenever they want.
-
-If you use ssh keys remember about passphrases which is strongly recommended to reduce risk of keys accidentally leaking.
-
-Useful resources:
-
-- [How to forward local keypair in a SSH session?](https://stackoverflow.com/questions/12257968/how-to-forward-local-keypair-in-a-ssh-session)
-- [Using SSH agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/)
-- [SSH Agent Forwarding considered harmful](https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/)
-- [Security Consideration while using ssh-agent](https://www.commandprompt.com/blog/security_considerations_while_using_ssh-agent/)
-
-</details>
-
-<details>
-<summary><b>What is the difference between CORS and CSPs?</b></summary><br>
-
-**CORS** allows the **Same Origin Policy** to be relaxed for a domain.
-
-e.g. normally if the user logs into both `example.com` and `example.org`, the Same Origin Policy prevents `example.com` from making an AJAX request to `example.org/current_user/full_user_details` and gaining access to the response.
-
-This is the default policy of the web and prevents the user's data from being leaked when logged into multiple sites at the same time.
-
-Now with **CORS**, `example.org` could set a policy to say it will allow the origin `https://example.com` to read responses made by AJAX. This would be done if both `example.com` and `example.org` are ran by the same company and data sharing between the origins is to be allowed in the user's browser. It only affects the client-side of things, not the server-side.
-
-**CSPs** on the other hand set a policy of what content can run on the current site. For example, if JavaScript can be executed inline, or which domains `.js` files can be loaded from. This can be beneficial to act as another line of defense against **XSS** attacks, where the attacker will try and inject script into the HTML page. Normally output would be encoded, however say the developer had forgotten only on one output field. Because the policy is preventing in-line script from executing, the attack is thwarted.
-
-Useful resources:
-
-- [What is the difference between CORS and CSPs? (original)](https://stackoverflow.com/questions/39488241/what-is-the-difference-between-cors-and-csps)
-- [CSP, SRI and CORS](https://colorblindprogramming.com/csp-sri-and-cors)
-
-</details>
-
-<details>
 <summary><b>Explain four types of responses from firewall when scanning with <code>nmap</code>.</b></summary><br>
 
 There might be four types of responses:
@@ -3019,10 +2899,10 @@ tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
 
 </details>
 
-###### Devops Questions (7)
+###### Devops Questions (3)
 
 <details>
-<summary><b>Which are the top DevOps tools? Which tools have you worked on?</b></summary><br>
+<summary><b>What some of the top DevOps tools? How do all these tools work together?</b></summary><br>
 
 The most popular DevOps tools are mentioned below:
 
@@ -3030,15 +2910,8 @@ The most popular DevOps tools are mentioned below:
 - **Jenkins** : Continuous Integration tool
 - **Selenium** : Continuous Testing tool
 - **Puppet**, **Chef**, **Ansible** : Configuration Management and Deployment tools
-- **Nagios** : Continuous Monitoring tool
+- **Nagios**, **Zabbix** : Continuous Monitoring tool
 - **Docker** : Containerization tool
-
-</details>
-
-<details>
-<summary><b>How do all these tools work together?</b></summary><br>
-
-The most popular DevOps tools are mentioned below:
 
 - Developers develop the code and this source code is managed by Version Control System tools like Git etc.
 - Developers send this code to the Git repository and any changes made in the code is committed to this Repository
@@ -3051,237 +2924,154 @@ The most popular DevOps tools are mentioned below:
 </details>
 
 <details>
-<summary><b>What are playbooks in Ansible?</b></summary><br>
+<summary><b>What is Agile and how is it beneficial?</b></summary><br>
 
-Playbooks are Ansible’s configuration, deployment, and orchestration language.
-
-They can describe a policy you want your remote systems to enforce, or a set of steps in a general IT process. Playbooks are designed to be human-readable and are developed in a basic text language.
-
-At a basic level, playbooks can be used to manage configurations of and deployments to remote machines.
+To be completed.
 
 </details>
 
 <details>
-<summary><b>What is NRPE (Nagios Remote Plugin Executor) in Nagios?</b></summary><br>
+<summary><b>What is Continuous Integration and Continous Deployment?</b></summary><br>
 
-The **NRPE** addon is designed to allow you to execute Nagios plugins on remote Linux/Unix machines. The main reason for doing this is to allow Nagios to monitor "local" resources (like CPU load, memory usage, etc.) on remote machines.
-
-Since these public resources are not usually exposed to external machines, an agent like **NRPE** must be installed on the remote Linux/Unix machines.
+To be completed.
 
 </details>
 
-<details>
-<summary><b>What is the difference between Active and Passive check in Nagios?</b></summary><br>
-
-The major difference between Active and Passive checks is that Active checks are initiated and performed by Nagios, while passive checks are performed by external applications.
-
-Passive checks are useful for monitoring services that are:
-
-- asynchronous in nature and cannot be monitored effectively by polling their status on a regularly scheduled basis.
-- located behind a firewall and cannot be checked actively from the monitoring host.
-
-The main features of Actives checks are as follows:
-
-- active checks are initiated by the Nagios process.
-- active checks are run on a regularly scheduled basis.
-
-</details>
+###### Cyber Security Questions (6)
 
 <details>
-<summary><b>How to <code>git clone</code> including submodules?</b></summary><br>
+<summary><b>What are some golden rules for reducing the impact of hacked system.</b></summary><br>
 
-For example:
+1) **The principle of least privilege**
 
-```bash
-# With -j8 - performance optimization
-git clone --recurse-submodules -j8 git://github.com/foo/bar.git
+You should configure services to run as a user with the least possible rights necessary to complete the service's tasks. This can contain a hacker even after they break in to a machine.
 
-# For already cloned repos or older Git versions
-git clone git://github.com/foo/bar.git
-cd bar
-git submodule update --init --recursive
-```
+As an example, a hacker breaking into a system using a zero-day exploit of the Apache webserver service is highly likely to be limited to just the system memory and file resources that can be accessed by that process. The hacker would be able to download your html and php source files, and probably look into your mysql database, but they should not be able to get root or extend their intrusion beyond apache-accessible files.
 
-</details>
+Many default Apache webserver installations create the 'apache' user and group by default and you can easily configure the main Apache configuration file (`httpd.conf`) to run apache using those groups.
 
-<details>
-<summary><b>Mention what are the advantages of using Redis? What is <code>redis-cli</code>? </b></summary><br>
+2) **The principle of separation of privileges**
 
-- it provides high speed (exceptionally faster than others)
-- it supports a server-side locking
-- it has got lots of client lib
-- it has got command level Atomic Operation (tx operation)
-- supports for rich data types like hashes, sets, bitmaps
+If your web site only needs read-only access to the database, then create an account that only has read-only permissions, and only to that database.
 
-`redis-cli` is the **Redis** command line interface, a simple program that allows to send commands to **Redis**, and read the replies sent by the server, directly from the terminal.
+**SElinux** is a good choice for creating context for security, `app-armor` is another tool. **Bastille** was a previous choice for hardening.
+
+Reduce the consequence of any attack, by separating the power of the service that has been compromised into it own "Box".
+
+3) **Whitelist, don't blacklist**
+
+You're describing a blacklist approach. A whitelist approach would be much safer.
+
+An exclusive club will never try to list everyone who can't come in; they will list everyone who can come in and exclude those not on the list.
+
+Similarly, trying to list everything that shouldn't access a machine is doomed. Restricting access to a short list of programs/IP addresses/users would be more effective.
+
+Of course, like anything else, this involves some trade-offs. Specifically, a whitelist is massively inconvenient and requires constant maintenance.
+
+To go even further in the tradeoff, you can get great security by disconnecting the machine from the network.
+
+**Also interesting are**:
+
+Use the tools available. It's highly unlikely that you can do as well as the guys who are security experts, so use their talents to protect yourself.
+
+- public key encryption provides excellent security
+- enforce password complexity
+- understand why you are making exceptions to the rules above - review your exceptions regularly
+- hold someone to account for failure, it keeps you on your toes
 
 Useful resources:
 
-- [10 Advantages of Redis](https://dzone.com/articles/10-traits-of-redis)
-
-</details>
-
-###### Cyber Security Questions (4)
-
-<details>
-<summary><b>What is XSS, how will you mitigate it?</b></summary><br>
-
-**Cross Site Scripting** is a JavaScript vulnerability in the web applications. The easiest way to explain this is a case when a user enters a script in the client side input fields and that input gets processed without getting validated. This leads to untrusted data getting saved and executed on the client side.
-
-Countermeasures of XSS are input validation, implementing a CSP (Content security policy) and other.
+- [How to prevent zero day attacks (original)](https://serverfault.com/questions/391370/how-to-prevent-zero-day-attacks)
 
 </details>
 
 <details>
-<summary><b>HIDS vs NIDS and which one is better and why?</b></summary><br>
+<summary><b>Developer uses private key on the server to deploy app through ssh. Why is this a security risk and what is the better, but not ideal, solution in such situations?</b></summary><br>
 
-**HIDS** is host intrusion detection system and **NIDS** is network intrusion detection system. Both the systems work on the similar lines. It’s just that the placement in different. **HIDS** is placed on each host whereas **NIDS** is placed in the network. For an enterprise, **NIDS** is preferred as **HIDS** is difficult to manage, plus it consumes processing power of the host as well.
+You have the private key for your personal account. The server needs your public key so that it can verify that your private key for the account you are trying to use is authorized.
+
+The whole point with private keys is that they are private, meaning only you have your private key. If someone takes over your private key, it will be able to impersonate you any time he wants.
+
+A better solutions is the use of ssh key forwarding. An essence, you need to create a `~/.ssh/config` file, if it doesn't exist. Then, add the hosts (either domain name or IP address in the file and set `ForwardAgent yes`). Example:
+
+```bash
+Host git.example.com
+    User john
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.git.example.com
+    ForwardAgent yes
+```
+
+Your remote server must allow SSH agent forwarding on inbound connections and your local `ssh-agent` must be running.
+
+Forwarding an ssh agent carries its own security risk. If someone on the remote machine can gain access to your forwarded ssh agent connection, they can still make use of your keys. However, this is better than storing keys on remote machines: the attacker can only use the ssh agent connection, not the key itself. Thus, only while you're logged into the remote machine can they do anything. If you store the key on the remote machine, they can make a copy of it and use it whenever they want.
+
+If you use ssh keys remember about passphrases which is strongly recommended to reduce risk of keys accidentally leaking.
+
+Useful resources:
+
+- [How to forward local keypair in a SSH session?](https://stackoverflow.com/questions/12257968/how-to-forward-local-keypair-in-a-ssh-session)
+- [Using SSH agent forwarding](https://developer.github.com/v3/guides/using-ssh-agent-forwarding/)
+- [SSH Agent Forwarding considered harmful](https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/)
+- [Security Consideration while using ssh-agent](https://www.commandprompt.com/blog/security_considerations_while_using_ssh-agent/)
 
 </details>
 
 <details>
-<summary><b>What is compliance?</b></summary><br>
+<summary><b>How would you secure a newly provisioned server?</b></summary><br>
+
+- if machine is a new install, protect it from hostile network traffic, until the operating system is installed and hardened
+- create a separate partition with the `nodev`, `nosuid`, and `noexec` options set for `/tmp`
+- create separate partitions for `/var`, `/var/log`, `/var/log/audit`, and `/home`
+- enable randomized virtual memory region placement
+- remove legacy services (e.g. `telnet-server`, `rsh`, `rlogin`, `rcp`, `ypserv`, `ypbind`, `tftp`, `tftp-server`, `talk`, `talk-server`).
+- limit connections to services running on the host to authorized users of the service via firewalls and other access control technologies
+- disable source routed packet acceptance
+- enable **TCP/SYN** cookies
+- disable SSH root login
+- install and configure **AIDE**
+- install and configure **OSsec HIDS**
+- configure **SELinux**
+- all administrator or root access must be logged
+- integrity checking of system accounts, group memberships, and their associated privileges should be enabled and tested
+- set password creation requirements (e.g. with PAM)
+
+Useful resources:
+
+- [Security Harden CentOS 7](https://highon.coffee/blog/security-harden-centos-7/)
+- [CentOS 7 Server Hardening Guide](https://www.lisenet.com/2017/centos-7-server-hardening-guide/)
+
+</details>
+
+<details>
+<summary><b>What is the difference between Host Intrusion Detection and Network Intrusion Detection? Is one better than the other?</b></summary><br>
+
+Host Intrusion Detection system runs on individual hosts, such as an anti-virus, while Network Intrusion Detection system oversees the network. One is not "better" than the other as they have similar but different functions. A **HIDS** is important to monitor and protect individual hosts generally from user actions, while a **NIDS** is important to monitor and protect hosts from each other as well as from outside networks.
+
+</details>
+
+<details>
+<summary><b>What is Compliance?</b></summary><br>
 
 Abiding by a set of standards set by a government/Independent party/organisation, e.g. an industry which stores, processes or transmits Payment related information needs to be complied with PCI DSS (Payment card Industry Data Security Standard). Other compliance examples can be an organisation complying with its own policies.
 
 </details>
 
 <details>
-<summary><b>What is a WAF and what are its types?</b></summary><br>
+<summary><b>What is the difference between hashing and encryption?</b></summary><br>
 
-**WAF** stands for web application firewall. It is used to protect the application by filtering legitimate traffic from malicious traffic. **WAF** can be either a box type or cloud based.
+**Hashing** is a form of cryptographic security which differs from **encryption** whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
 
 </details>
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
-###### System Questions (61)
+###### System Questions (40)
 
 <details>
-<summary><b>Explain the current architecture you’re responsible for and point out where it’s scalable or fault-tolerant. ***</b></summary><br>
+<summary><b>What is the difference between EXT4, XFS, and ZFS? ***</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>Tell me how code gets deployed in your current production. ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>What are the different types of kernels? Explain.</b></summary><br>
-
-**Monolithic Kernels**
-
-Earlier in this type of kernel architecture, all the basic system services like a process and memory management, interrupt handling etc were packaged into a single module in kernel space. This type of architecture led to some serious drawbacks like:
-
-- the size of the kernel, which was huge
-- poor maintainability, which means bug fixing or addition of new features resulted in recompilation of the whole kernel which could consume hours
-
-In a modern day approach to monolithic architecture, the kernel consists of different modules which can be dynamically loaded and unloaded. This modular approach allows easy extension of OS's capabilities. With this approach, maintainability of kernel became very easy as only the concerned module needs to be loaded and unloaded every time there is a change or bug fix in a particular module.
-
-Linux follows the monolithic modular approach.
-
-**Microkernels**
-
-This architecture majorly caters to the problem of ever growing size of kernel code which we could not control in the monolithic approach. This architecture allows some basic services like device driver management, protocol stack, file system etc to run in user space.
-
-In this architecture, all the basic OS services which are made part of user space are made to run as servers which are used by other programs in the system through inter process communication (IPC).
-
-Example: We have servers for device drivers, network protocol stacks, file systems, graphics, etc. Microkernel servers are essentially daemon programs like any others, except that the kernel grants some of them privileges to interact with parts of physical memory that are otherwise off limits to most programs.
-
-**Hybrid Kernels (Modular Kernels)**
-
-This is a combination of the above two, where the key idea is that Operating System services are in Kernel Space, and there is no message passing, no performance overhead and no reliability benefits, of having services in user space.
-
-This is used by Microsoft's NT kernels, all the way up to the latest Windows version.
-
-Useful resources:
-
-- [An Introduction to Kernels. The Heart of Computing Devices. (original)](https://keetmalin.wixsite.com/keetmalin/single-post/2017/08/24/An-Introduction-to-Kernels-The-Heart-of-Computing-Devices)
-
-</details>
-
-<details>
-<summary><b>The program returns the error of the missing library. How to provide dynamically linkable libraries?</b></summary><br>
-
-Environment variable `LD_LIBRARY_PATH` is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories; this is useful when debugging a new library or using a nonstandard library for special purposes.
-
-The best way to use `LD_LIBRARY_PATH` is to set it on the command line or script immediately before executing the program. This way the new `LD_LIBRARY_PATH` isolated from the rest of your system.
-
-Example of use:
-
-```bash
-export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
-```
-
-Useful resources:
-
-- [How to correctly use LD_LIBRARY_PATH](http://wiredrevolution.com/system-administration/how-to-correctly-use-ld_library_path)
-
-</details>
-
-<details>
-<summary><b>Write the most important rules for using root privileges safely for novice administrators. ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>What is the advantage of synchronizing UID/GID across multiple systems?</b></summary><br>
-
-There are several principle reasons why you want to co-ordinate the **user/UID** and **group/GID** management across your network.
-
-The first is relatively obvious - it has to do with user and administrative convenience.
-
-If each of your users are expected to have relatively uniform access to the systems throughout the network, then they'll expect the same username and password to work on each system that they are supposed to use. If they change their password they will expect that change to be global.
-
-It also has a relationship with names and group names in Unix and Linux. They are mapped into numeric forms (**UID's** and **GID's** respectively). All file ownership (inodes) and processes use these numerics for all access and identity determination throughout the kernel and drivers. These numeric values are reverse mapped back to their corresponding principle symbolic representations (the names) by the utilities that display or process that information.
-
-It is also recommended that you adopt a policy that **UID's** are not re-used. When a user leaves your organization you "retire" their **UID** (disabling their access by \*'ing out their passwd, removing them from the groups maps, setting their "shell" to some `/bin/denied` binary and their home directory to a secured _graveyard_ - I use `/home/.graveyard` on my systems).
-
-The reason for this may not be obvious. However, if you are maintaining archival backups for several years (or indefinitely) you'll want to avoid any ambiguities and confusion that might result from restoring one (long gone) user's files and finding them owned by one of your new users.
-
-Useful resources:
-
-- [UID/GID Synchronization and Management (original)](https://linuxgazette.net/issue31/tag_uidgid.html)
-- [What's the advantage of synchronizing UID/GID across Linux machines?](https://serverfault.com/questions/603987/whats-the-advantage-of-synchronizing-uid-gid-across-linux-machines)
-- [How can I keep user accounts consistent across multiple machines?](https://unix.stackexchange.com/questions/141023/how-can-i-keep-user-acccounts-consistent-accross-multiple-machines)
-
-</details>
-
-<details>
-<summary><b>What principles to follow for successful system performance tuning? ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [An Introduction to Performance Tuning](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/ch01.html)
-
-</details>
-
-<details>
-<summary><b>Describe start-up configuration files and directory in BSD systems.</b></summary><br>
-
-In BSD the primary start-up configuration file is `/etc/defaults/rc.conf`. System startup scripts such as `/etc/rc` and `/etc/rc.d` just include this file.
-
-If you want to add other programs to system startup you need to change `/etc/rc.conf` file instead of `/etc/defaults/rc.conf`.
-
-</details>
-
-<details>
-<summary><b>CPU spent the most of the time for a IO operations to complete. Which tools do you use for diagnose what process(es) did exactly wait for IO? How to minimize IO wait time? ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [Can anyone explain precisely what IOWait is?](https://serverfault.com/questions/12679/can-anyone-explain-precisely-what-iowait-is)
 
 </details>
 
@@ -3421,37 +3211,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have to delete 100GB files. Which method will be the most optimal? ***</b></summary><br>
+<summary><b>A bare metal server's root partition is full and will not boot. How do you troubleshoot and fix the issue? ***</b></summary><br>
 
 To be completed.
-
-Useful resources:
-
-- [Is there a way to delete 100GB file on Linux without thrashing IO/load?](https://serverfault.com/questions/336917/is-there-a-way-to-delete-100gb-file-on-linux-without-thrashing-io-load)
-- [rm on a directory with millions of files](https://serverfault.com/questions/183821/rm-on-a-directory-with-millions-of-files)
-
-</details>
-
-<details>
-<summary><b>Explain interrupts and interrupt handlers in Linux.</b></summary><br>
-
-Here's a high-level view of the low-level processing. I'm describing a simple typical architecture, real architectures can be more complex or differ in ways that don't matter at this level of detail.
-
-When an **interrupt** occurs, the processor looks if interrupts are masked. If they are, nothing happens until they are unmasked. When interrupts become unmasked, if there are any pending interrupts, the processor picks one.
-
-Then the processor executes the interrupt by branching to a particular address in memory. The code at that address is called the **interrupt handler**. When the processor branches there, it masks interrupts (so the interrupt handler has exclusive control) and saves the contents of some registers in some place (typically other registers).
-
-The interrupt handler does what it must do, typically by communicating with the peripheral that triggered the interrupt to send or receive data. If the interrupt was raised by the timer, the handler might trigger the OS scheduler, to switch to a different thread. When the handler finishes executing, it executes a special return-from-interrupt instruction that restores the saved registers and unmasks interrupts.
-
-The interrupt handler must run quickly, because it's preventing any other interrupt from running. In the Linux kernel, interrupt processing is divided in two parts:
-
-- The "top half" is the interrupt handler. It does the minimum necessary, typically communicate with the hardware and set a flag somewhere in kernel memory.
-- The "bottom half" does any other necessary processing, for example copying data into process memory, updating kernel data structures, etc. It can take its time and even block waiting for some other part of the system since it runs with interrupts enabled.
-
-Useful resources:
-
-- [How is an Interrupt handled in Linux? (original)](https://unix.stackexchange.com/questions/5788/how-is-an-interrupt-handled-in-linux)
-- [Interrupts and Interrupt Handlers](https://notes.shichao.io/lkd/ch7/)
 
 </details>
 
@@ -3463,85 +3225,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What fields are stored in an inode?</b></summary><br>
-
-Within a POSIX system, a file has the following attributes which may be retrieved by the stat system call:
-
-- **Device ID** (this identifies the device containing the file; that is, the scope of uniqueness of the serial number).
-File serial numbers
-- The **file mode** which determines the file type and how the file's owner, its group, and others can access the file
-- A **link count** telling how many hard links point to the inode
-- The **User ID** of the file's owner
-- The **Group ID** of the file
-- The **device ID** of the file if it is a device file.
-- The **size of the file** in bytes
-- **Timestamps** telling when the inode itself was last modified (ctime, inode change time), the file content last modified (mtime, modification time), and last accessed (atime, access time)
-- The preferred **I/O block size**
-- The **number of blocks** allocated to this file
-
-Useful resources:
-
-- [Inodes - an Introduction](http://www.grymoire.com/Unix/Inodes.html)
-
-</details>
-
-<details>
-<summary><b>Ordinary users are able to read <code>/etc/passwd</code>. Is it a security hole? Do you know other password shadowing scheme?</b></summary><br>
-
-Typically, the _hashed passwords_ are stored in `/etc/shadow` on most Linux systems:
-
-```bash
--rw-r----- 1 root shadow 1349 2016-07-03 03:54 /etc/shadow
-```
-
-They are stored in `/etc/master.passwd` on BSD systems.
-
-Programs that need to perform authentication still need to run with `root` privileges:
-
-```bash
--rwsr-xr-x 1 root root 42792 2016-02-14 14:13 /usr/bin/passwd
-```
-
-If you dislike the `setuid root` programs and one single file containing all the hashed passwords on your system, you can replace it with the **Openwall TCB PAM module**. This provides every single user with their own file for storing their hashed password - as a result the number of `setuid root` programs on the system can be drastically reduced.
-
-Useful resources:
-
-- [Ordinary users are able to read /etc/passwd, is this a security hole? (original)](https://serverfault.com/questions/286654/ordinary-users-are-able-to-read-etc-passwd-is-this-a-security-hole/286657#286657)
-- [tcb - the alternative to /etc/shadow](https://www.openwall.com/tcb/)
-- [Why shadow your passwd file?](https://www.tldp.org/HOWTO/Shadow-Password-HOWTO-2.html)
-
-</details>
-
-<details>
-<summary><b>What are some of the benefits of using systemd over SysV init? ***</b></summary><br>
+<summary><b>How would you break into a system? How would you prevent these attacks?</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>How do you run command every time a file is modified?</b></summary><br>
-
-For example:
-
-```bash
-while inotifywait -e close_write filename ; do
-
-  echo "changed" >> /var/log/changed
-
-done
-```
-
-</details>
-
-<details>
-<summary><b>You need to copy a large amount of data. Explain the most effective way. ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [Copying a large directory tree locally? cp or rsync?](https://serverfault.com/questions/43014/copying-a-large-directory-tree-locally-cp-or-rsync)
 
 </details>
 
@@ -3563,13 +3249,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Python dev team in your company have a dilemma what to choose: uwsgi or gunicorn. What are the pros/cons of each of the solutions from the admin's perspective? ***</b></summary><br>
+<summary><b>Pick two different computer languages. Describe when you would use one over the other. ***</b></summary><br>
 
 To be completed.
-
-Useful resources:
-
-- [uWSGI vs. Gunicorn, or How to Make Python Go Faster than Node](https://blog.kgriffs.com/2012/12/18/uwsgi-vs-gunicorn-vs-node-benchmarks.html)
 
 </details>
 
@@ -3624,7 +3306,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the main advantage of using <code>chroot</code>? When and  why do we use it? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
+<summary><b>What is the main advantage of using <code>chroot</code>? When and why do we use it? What is the purpose of the mount dev, proc, sys in a chroot environment?</b></summary><br>
 
 An advantage of having a chroot environment is the file-system is totally isolated from the physical host. `chroot` has a separate file-system inside the file-system, the difference is its uses a newly created root(/) as its root directory.
 
@@ -3709,31 +3391,18 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>One of the processes runs slowly. How to check how long has been running and which tools will you use?</b></summary><br>
+<summary><b>In terms of *nix systems, what does it mean when we say everything is a file?</b></summary><br>
 
 To be completed.
 
-Useful resources:
-
-- [How to check how long a process has been running?](https://unix.stackexchange.com/questions/7870/how-to-check-how-long-a-process-has-been-running)
-- [Linux how long a process has been running?](https://www.cyberciti.biz/faq/how-to-check-how-long-a-process-has-been-running/)
-- [How to see system call that executed in current time by process?](https://stackoverflow.com/questions/42677724/how-to-see-system-call-that-executed-in-current-time-by-process)
-
 </details>
 
 <details>
-<summary><b>What is a file descriptor in Linux?</b></summary><br>
+<summary><b>What is the difference between /dev/random and /dev/urandom ?</b></summary><br>
 
-In Unix and related computer operating systems, a file descriptor (FD, less frequently fildes) is an abstract indicator (handle) used to access a file or other input/output resource, such as a pipe or network socket. File descriptors form part of the POSIX application programming interface.
+You should use `/dev/urandom`, not `/dev/random`. The differences between `/dev/random` and `/dev/urandom` are:
 
-</details>
-
-<details>
-<summary><b>Which way of additionally feeding random entropy pool would you suggest for producing random passwords? How to improve it?</b></summary><br>
-
-You should use `/dev/urandom`, not `/dev/random`. The two differences between `/dev/random` and `/dev/urandom` are:
-
- - `/dev/random` might be theoretically better _in the context of an information-theoretically secure algorithm_. This is the kind of algorithm which is secure against today's technology, and also tomorrow's technology, and technology used by aliens, and God's own iPad as well.
+ - `/dev/random` might be theoretically better _in the context of an information-theoretically secure algorithm_. This is the kind of algorithm which is secure against today's technology, and also tomorrow's technology, and technology used by aliens.
 
  - `/dev/urandom` will not block, while `/dev/random` may do so. `/dev/random` maintains a counter of "how much entropy it still has" under the assumption that any bits it has produced is a lost entropy bit. Blocking induces very real issues, e.g. a server which fails to boot after an automated install because it is stalling on its SSH server key creation.
 
@@ -3743,32 +3412,9 @@ The trick is that `/dev/urandom` never blocks, ever, even when it should: `/dev/
 
 Should any of these daemons require randomness when all available entropy has been exhausted, they may pause to wait for more, which can cause excessive delays in your application. Even worse, since most modern applications will either resort to using its own random seed created at program initialization, or to using `/dev/urandom` to avoid blocking, your applications will suffer from lower quality random data. This can affect the integrity of your secure communications, and can increase the chance of cryptoanalysis on your private data.
 
-To check the amount of bytes of entropy currently available, use:
-
-```bash
-cat /proc/sys/kernel/random/entropy_avail
-```
-
-**rng-tools**
-
-Fedora/Rh/Centos types: `sudo yum install rng-tools`.
-
-On deb types: `sudo apt-get install rng-tools` to set it up.
-
-Then run `sudo rngd -r /dev/urandom` before generating the keys.
-
-**haveged**
-
-Fedora/Rh/Centos types: `sudo yum install haveged` and add `/usr/local/sbin/haveged -w 1024` to `/etc/rc.local`.
-
-On deb types: `sudo apt-get install haveged` and add `DAEMON_ARGS="-w 1024"` to `/etc/default/haveged` to set it up.
-
-Then run `sudo rngd -r /dev/urandom` before generating the keys.
-
 Useful resources:
 
-- [Feeding /dev/random entropy pool? (original)](https://security.stackexchange.com/questions/89/feeding-dev-random-entropy-pool)
-- [GPG does not have enough entropy](https://serverfault.com/questions/214605/gpg-does-not-have-enough-entropy)
+- [When to use /dev/random vs /dev/urandom](https://unix.stackexchange.com/questions/324209/when-to-use-dev-random-vs-dev-urandom)
 
 </details>
 
@@ -3839,149 +3485,6 @@ Useful resources:
 - [Getting a Perfect SSL Labs Score](https://michael.lustfield.net/nginx/getting-a-perfect-ssl-labs-score)
 - [17 small suggestions how to improve ssllabs.com/ssltest/](https://community.qualys.com/thread/14023)
 - [How do you score A+ with 100 on all categories on SSL Labs test with Let's Encrypt and Nginx?](https://stackoverflow.com/questions/41930060/how-do-you-score-a-with-100-on-all-categories-on-ssl-labs-test-with-lets-encry)
-
-</details>
-
-<details>
-<summary><b>What does CPU jumps mean?</b></summary><br>
-
-An OS is a very busy thing, particularly so when you have it doing something (and even when you aren't). And when we are looking at an active enterprise environment, something is always going on.
-
-Most of this activity is "bursty", meaning processes are typically quiescent with short periods of intense activity. This is certainly true of any type of network-based activity (e.g. processing PHP requests), but also applies to OS maintenance (e.g. file system maintenance, page reclamation, disk I/O requests).
-
-If you take a situation where you have a lot of such bursty processes, you get a very irregular and spiky CPU usage plot.
-
-As `500 - Internal Server Error` says, the high number of context switches are going to make the situation even worse.
-
-Useful resources:
-
-- [What does "CPU jumps” mean? (original)](https://stackoverflow.com/questions/32185607/what-does-cpu-jumps-mean)
-
-</details>
-
-<details>
-<summary><b>How do you trace a system call in Linux? Explain the possible methods.</b></summary><br>
-
-**SystemTap**
-
-This is the most powerful method. It can even show the call arguments:
-
-Usage:
-
-```bash
-sudo apt-get install systemtap
-sudo stap -e 'probe syscall.mkdir { printf("%s[%d] -> %s(%s)\n", execname(), pid(), name, argstr) }'
-```
-
-Then on another terminal:
-
-```bash
-sudo rm -rf /tmp/a /tmp/b
-mkdir /tmp/a
-mkdir /tmp/b
-```
-
-Sample output:
-
-```bash
-mkdir[4590] -> mkdir("/tmp/a", 0777)
-mkdir[4593] -> mkdir("/tmp/b", 0777)
-```
-
-**`strace` with `-f|-ff` params**
-
-You can use the `-f` and `-ff` option. Something like this:
-
-```bash
-strace -f -e trace=process bash -c 'ls; :
-```
-
-- `-f` : Trace child processes as they are created by currently traced processes as a result of the fork(2) system call.
-
-- `-ff` : If the `-o` filename option is in effect, each processes trace is written to filename.pid where pid is the numeric process id of each process. This is incompatible with `-c`, since no per-process counts are kept.
-
-**`ltrace -S` shows both system calls and library calls**
-
-This awesome tool therefore gives even further visibility into what executables are doing.
-
-**`ftrace` minimal runnable example**
-
-Here goes a minimal runnable example. Run with `sudo`:
-
-```bash
-#!/bin/sh
-set -eux
-
-d=debug/tracing
-
-mkdir -p debug
-if ! mountpoint -q debug; then
-  mount -t debugfs nodev debug
-fi
-
-# Stop tracing.
-echo 0 > "${d}/tracing_on"
-
-# Clear previous traces.
-echo > "${d}/trace"
-
-# Find the tracer name.
-cat "${d}/available_tracers"
-
-# Disable tracing functions, show only system call events.
-echo nop > "${d}/current_tracer"
-
-# Find the event name with.
-grep mkdir "${d}/available_events"
-
-# Enable tracing mkdir.
-# Both statements below seem to do the exact same thing,
-# just with different interfaces.
-# https://www.kernel.org/static/html/v4.18/trace/events.html
-echo sys_enter_mkdir > "${d}/set_event"
-# echo 1 > "${d}/events/syscalls/sys_enter_mkdir/enable"
-
-# Start tracing.
-echo 1 > "${d}/tracing_on"
-
-# Generate two mkdir calls by two different processes.
-rm -rf /tmp/a /tmp/b
-mkdir /tmp/a
-mkdir /tmp/b
-
-# View the trace.
-cat "${d}/trace"
-
-# Stop tracing.
-echo 0 > "${d}/tracing_on"
-
-umount debug
-```
-
-Sample output:
-
-```bash
-# tracer: nop
-#
-#                              _-----=> irqs-off https://sourceware.org/systemtap/documentation.html
-#                             / _----=> need-resched
-#                            | / _---=> hardirq/softirq
-#                            || / _--=> preempt-depth
-#                            ||| /     delay
-#           TASK-PID   CPU#  ||||    TIMESTAMP  FUNCTION
-#              | |       |   ||||       |         |
-            mkdir-5619  [005] .... 10249.262531: sys_mkdir(pathname: 7fff93cbfcb0, mode: 1ff)
-            mkdir-5620  [003] .... 10249.264613: sys_mkdir(pathname: 7ffcdc91ecb0, mode: 1ff)
-```
-
-One cool thing about this method is that it shows the function call for all processes on the system at once, although you can also filter PIDs of interest with `set_ftrace_pid`.
-
-Useful resources:
-
-- [How do I trace a system call in Linux? (original)](https://stackoverflow.com/questions/29840213/how-do-i-trace-a-system-call-in-linux)
-- [Does ftrace allow capture of system call arguments to the Linux kernel, or only function names?](https://stackoverflow.com/questions/27608752/does-ftrace-allow-capture-of-system-call-arguments-to-the-linux-kernel-or-only)
-- [How to trace just system call events with ftrace without showing any other functions in the Linux kernel?](https://stackoverflow.com/questions/52764544/how-to-trace-just-system-call-events-with-ftrace-without-showing-any-other-funct)
-- [What system call is used to load libraries in Linux?](https://unix.stackexchange.com/questions/226524/what-system-call-is-used-to-load-libraries-in-linux)
 
 </details>
 
@@ -4114,28 +3617,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to enforce authorization methods in SSH? In what situations it would be useful?</b></summary><br>
-
-Force login with a password:
-
-```bash
-ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no user@remote_host
-```
-
-Force login using the key:
-
-```bash
-ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i id_rsa user@remote_host
-```
-
-Useful resources:
-
-- [How to force ssh client to use only password auth?](https://unix.stackexchange.com/questions/15138/how-to-force-ssh-client-to-use-only-password-auth)
-
-</details>
-
-<details>
-<summary><b>Getting <code>Too many Open files</code> error for Postgres. How to resolve it?</b></summary><br>
+<summary><b>Getting <code>Too many Open files</code> error for Postgres. How do you resolve it?</b></summary><br>
 
 Fixed the issue by reducing `max_files_per_process` e.g. to 200 from default 1000. This parameter is in `postgresql.conf` file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
 
@@ -4175,178 +3657,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between encryption and hashing?</b></summary><br>
+<summary><b>You have a LAMP stack with Nginx as a reverse proxy. Going to the site served by this web server results in a 500 Internal Server Error. List the possible causes for this issue.</b></summary><br>
 
-**Hashing**: Finally, hashing is a form of cryptographic security which differs from **encryption** whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
-
-</details>
-
-<details>
-<summary><b>Should the root certificate go on the server?</b></summary><br>
-
-**Self-signed root certificates** need not/should not be included in web server configuration. They serve no purpose (clients will always ignore them) and they incur a slight performance (latency) penalty because they increase the size of the SSL handshake.
-
-If the client does not have the root in their trust store, then it won't trust the web site, and there is no way to work around that problem. Having the web server send the root certificate will not help - the root certificate has to come from a trusted 3rd party (in most cases the browser vendor).
-
-Useful resources:
-
-- [SSL root certificate optional?](https://security.stackexchange.com/questions/65332/ssl-root-certificate-optional)
-
-</details>
-
-<details>
-<summary><b>How to log all commands run by root on production servers?</b></summary><br>
-
-`auditd` is the correct tool for the job here:
-
-1. Add these 2 lines to `/etc/audit/audit.rules`:
-
-```bash
--a exit,always -F arch=b64 -F euid=0 -S execve
--a exit,always -F arch=b32 -F euid=0 -S execve
-```
-
-These will track all commands run by root (euid=0). Why two rules? The execve syscall must be tracked in both 32 and 64 bit code.
-
-2. To get rid of `auid=4294967295` messages in logs, add `audit=1` to the kernel's cmdline (by editing `/etc/default/grub`)
-
-3. Place the line
-
-```bash
-session  required                pam_loginuid.so
-```
-
-in all PAM config files that are relevant to login (`/etc/pam.d/{login,kdm,sshd}`), but not in the files that are relevant to su or sudo. This will allow auditd to get the calling user's uid correctly when calling sudo or su.
-
-Restart your system now.
-
-Let's login and run some commands:
-
-```bash
-$ id -u
-1000
-$ sudo ls /
-bin  boot  data  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  scratch  seLinux  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
-$ sudo su -
-# ls /etc
-[...]
-```
-
-Now read `/var/log/audit/auditd.log` for show what has been logged in.
-
-Useful resources:
-
-- [Log all commands run by admins on production servers](https://serverfault.com/questions/470755/log-all-commands-run-by-admins-on-production-servers)
-
-</details>
-
-<details>
-<summary><b>How to prevent <code>dd</code> from freezing your system?</b></summary><br>
-
-Try using ionice:
-
-```bash
-ionice -c3 dd if=/dev/zero of=file
-```
-
-This start the `dd` process with the "idle" IO priority: it only gets disk time when no other process is using disk IO for a certain amount of time.
-
-Of course this can still flood the buffer cache and cause freezes while the system flushes out the cache to disk. There are tunables under `/proc/sys/vm/` to influence this, particularly the `dirty_*` entries.
-
-</details>
-
-<details>
-<summary><b>How to limit processes to not exceed more than X% of CPU usage?</b></summary><br>
-
-**nice/renice**
-
-nice is a great tool for 'one off' tweaks to a system:
-
-```bash
-nice COMMAND
-```
-
-**cpulimit**
-
-cpulimit if you need to run a CPU intensive job and having free CPU time is essential for the responsiveness of a system:
-
-```bash
-cpulimit -l 50 COMMAND
-```
-
-**cgroups**
-
-cgroups apply limits to a set of processes, rather than to just one:
-
-```bash
-cgcreate -g cpu:/cpulimited
-cgset -r cpu.shares=512 cpulimited
-cgexec -g cpu:cpulimited COMMAND_1
-cgexec -g cpu:cpulimited COMMAND_2
-cgexec -g cpu:cpulimited COMMAND_3
-```
-
-</details>
-
-<details>
-<summary><b>How mount a temporary ram partition?</b></summary><br>
-
-```bash
-# -t - filesystem type
-# -o - mount options
-mount -t tmpfs tmpfs /mnt -o size=64M
-```
-
-</details>
-
-<details>
-<summary><b>How to kills a process that is locking a file?</b></summary><br>
-
-```bash
-fuser -k filename
-```
-
-</details>
-
-<details>
-<summary><b>Other admin trying to debug a server accidentally typed: <code>chmod -x /bin/chmod</code>. How to reset permissions back to default?</b></summary><br>
-
-```bash
-# 1:
-cp /bin/ls chmod.01
-cp /bin/chmod chmod.01
-./chmod.01 700 file
-
-# 2:
-/bin/busybox chmod 0700 /bin/chmod
-
-# 3:
-setfacl --set u::rwx,g::---,o::--- /bin/chmod
-
-# 4:
-/usr/lib/ld*.so /bin/chmod 0700 /bin/chmod
-```
-
-Useful resources:
-
-- [What can you do when you can't chmod chmod?](https://www.networkworld.com/article/3002286/operating-systems/what-can-you-do-when-you-cant-chmod-chmod.html)
-
-</details>
-
-<details>
-<summary><b><code>grub></code> vs <code>grub-rescue></code>. Explain.</b></summary><br>
-
-- `grub>` - this is the mode to which it passes if you find everything you need to run the system in addition to the configuration file. With this mode, we have access to most (if not all) modules and commands. This mode can be called from the menu by pressing the 'c' key
-- `grub-rescue` - this is the mode to which it passes if it is impossible to find its own directory (especially the directory with modules and additional commands, e.g. directory `/boot/grub/i386-pc`), if its contents are damaged or if no normal module is found, contains only basic commands
-
-</details>
-
-<details>
-<summary><b>How to check whether the private key and the certificate match?</b></summary><br>
-
-```bash
-(openssl rsa -noout -modulus -in private.key | openssl md5 ; openssl x509 -noout -modulus -in certificate.crt | openssl md5) | uniq
-```
+To be completed.
 
 </details>
 
@@ -4460,73 +3773,6 @@ The most portable solution:
 
 ```bash
 rm ./-fr
-```
-
-</details>
-
-<details>
-<summary><b>Write a simple bash script (or pair of scripts) to backup and restore your system. ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>What are salted hashes? Generate the password with salt for the <code>/etc/shadow</code> file.</b></summary><br>
-
-**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
-
-For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
-
-The encrypted passwords in `/etc/shadow` file are stored in the following format:
-
-```bash
-$ID$SALT$ENCRYPTED
-```
-
-The `$ID` indicates the type of encryption, the `$SALT` is a random (up to 16 characters) string and `$ENCRYPTED` is a password’s hash.
-
-<table style="width:100%">
-  <tr>
-    <th>Hash Type</th>
-    <th>ID</th>
-    <th>Hash Length</th>
-  </tr>
-  <tr>
-    <td>MD5</td>
-    <td>$1</td>
-    <td>22 characters</td>
-  </tr>
-  <tr>
-    <td>SHA-256</td>
-    <td>$5</td>
-    <td>43 characters</td>
-  </tr>
-  <tr>
-    <td>SHA-512</td>
-    <td>$6</td>
-    <td>86 characters</td>
-  </tr>
-</table>
-
-Use the below commands from the Linux shell to generate hashed password for `/etc/shadow` with the random salt:
-
-- Generate **MD5** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$1\$%s\$' % randomsalt)"
-```
-
-- Generate **SHA-256** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$5\$%s\$' % randomsalt)"
-```
-
-- Generate **SHA-512** password hash
-
-```bash
-python -c "import random,string,crypt; randomsalt = ''.join(random.sample(string.ascii_letters,8)); print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
 ```
 
 </details>
@@ -5149,19 +4395,22 @@ Useful resources:
 
 </details>
 
-###### Cyber Security Questions (5)
+###### Cyber Security Questions (2)
 
 <details>
-<summary><b>What is OWASP Application Security Verification Standard? Explain in a few points. ***</b></summary><br>
+<summary><b>What are salted hashes?</b></summary><br>
 
-To be completed.
+**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
 
-</details>
+For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
 
-<details>
-<summary><b>What is CSRF?</b></summary><br>
+The encrypted passwords in `/etc/shadow` file are stored in the following format:
 
-**Cross Site Request Forgery** is a web application vulnerability in which the server does not check whether the request came from a trusted client or not. The request is just processed directly. It can be further followed by the ways to detect this, examples and countermeasures.
+```bash
+$ID$SALT$ENCRYPTED
+```
+
+The `$ID` indicates the type of encryption, the `$SALT` is a random string (up to 16 characters) and `$ENCRYPTED` is a password’s hash.
 
 </details>
 
@@ -5169,41 +4418,6 @@ To be completed.
 <summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
 
 As **security policy** defines the security objectives and the security framework of an organisation. A **process** is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. **Guidelines** are recommendations which can be customized and used in the creation of procedures.
-
-</details>
-
-<details>
-<summary><b>What is a false positive and false negative in case of IDS?</b></summary><br>
-
-When the device generated an alert for an intrusion which has actually not happened: this is **false positive** and if the device has not generated any alert and the intrusion has actually happened, this is the case of a **false negative**.
-
-</details>
-
-<details>
-<summary><b>10 quick points about web server hardening.</b></summary><br>
-
-Example:
-
-- if machine is a new install, protect it from hostile network traffic, until the operating system is installed and hardened
-- create a separate partition with the `nodev`, `nosuid`, and `noexec` options set for `/tmp`
-- create separate partitions for `/var`, `/var/log`, `/var/log/audit`, and `/home`
-- enable randomized virtual memory region placement
-- remove legacy services (e.g. `telnet-server`, `rsh`, `rlogin`, `rcp`, `ypserv`, `ypbind`, `tftp`, `tftp-server`, `talk`, `talk-server`).
-- limit connections to services running on the host to authorized users of the service via firewalls and other access control technologies
-- disable source routed packet acceptance
-- enable **TCP/SYN** cookies
-- disable SSH root login
-- install and configure **AIDE**
-- install and configure **OSsec HIDS**
-- configure **SELinux**
-- all administrator or root access must be logged
-- integrity checking of system accounts, group memberships, and their associated privileges should be enabled and tested
-- set password creation requirements (e.g. with PAM)
-
-Useful resources:
-
-- [Security Harden CentOS 7](https://highon.coffee/blog/security-harden-centos-7/)
-- [CentOS 7 Server Hardening Guide](https://www.lisenet.com/2017/centos-7-server-hardening-guide/)
 
 </details>
 
@@ -5387,129 +4601,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Using a Linux system with a limited number of packages installed, and telnet is not available. Use sysfs virtual filesystem to test connection on all interfaces (without loopback).</b></summary><br>
-
-For example:
-
-```bash
-#!/usr/bin/bash
-
-for iface in $(ls /sys/class/net/ | grep -v lo) ; do
-
-  if [[ $(cat /sys/class/net/$iface/carrier) = 1 ]] ; then state=1 ; fi
-
-done
-
-if [[ $state -ne 0 ]] ; then echo "not connection" > /dev/stderr ; exit ; fi
-```
-
-</details>
-
-<details>
-<summary><b>Write two golden rules for reducing the impact of hacked system.</b></summary><br>
-
-1) **The principle of least privilege**
-
-You should configure services to run as a user with the least possible rights necessary to complete the service's tasks. This can contain a hacker even after they break in to a machine.
-
-As an example, a hacker breaking into a system using a zero-day exploit of the Apache webserver service is highly likely to be limited to just the system memory and file resources that can be accessed by that process. The hacker would be able to download your html and php source files, and probably look into your mysql database, but they should not be able to get root or extend their intrusion beyond apache-accessible files.
-
-Many default Apache webserver installations create the 'apache' user and group by default and you can easily configure the main Apache configuration file (`httpd.conf`) to run apache using those groups.
-
-2) **The principle of separation of privileges**
-
-If your web site only needs read-only access to the database, then create an account that only has read-only permissions, and only to that database.
-
-**SElinux** is a good choice for creating context for security, `app-armor` is another tool. **Bastille** was a previous choice for hardening.
-
-Reduce the consequence of any attack, by separating the power of the service that has been compromised into it own "Box".
-
-3) **Whitelist, don't blacklist**
-
-You're describing a blacklist approach. A whitelist approach would be much safer.
-
-An exclusive club will never try to list everyone who can't come in; they will list everyone who can come in and exclude those not on the list.
-
-Similarly, trying to list everything that shouldn't access a machine is doomed. Restricting access to a short list of programs/IP addresses/users would be more effective.
-
-Of course, like anything else, this involves some trade-offs. Specifically, a whitelist is massively inconvenient and requires constant maintenance.
-
-To go even further in the tradeoff, you can get great security by disconnecting the machine from the network.
-
-**Also interesting are**:
-
-Use the tools available. It's highly unlikely that you can do as well as the guys who are security experts, so use their talents to protect yourself.
-
-- public key encryption provides excellent security
-- enforce password complexity
-- understand why you are making exceptions to the rules above - review your exceptions regularly
-- hold someone to account for failure, it keeps you on your toes
-
-Useful resources:
-
-- [How to prevent zero day attacks (original)](https://serverfault.com/questions/391370/how-to-prevent-zero-day-attacks)
-
-</details>
-
-<details>
 <summary><b>You're on a security conference. Members debating about putting up the OpenBSD firewall on the core of the network. Go to the podium and express your opinion about this solution. What are the pros/cons and why? ***</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>Is there a way to allow multiple cross-domains using the Access-Control-Allow-Origin header in Nginx?</b></summary><br>
-
-To match a list of domain and subdomain this regex make it ease to work with fonts:
-
-```bash
-location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
-   if ( $http_origin ~* (https?://(.+\.)?(domain1|domain2|domain3)\.(?:me|co|com)$) ) {
-      add_header "Access-Control-Allow-Origin" "$http_origin";
-   }
-}
-```
-
-More slightly configuration:
-
-```bash
-location / {
-
-    if ($http_origin ~* (^https?://([^/]+\.)*(domainone|domaintwo)\.com$)) {
-        set $cors "true";
-    }
-
-    # Nginx doesn't support nested If statements. This is where things get slightly nasty.
-    # Determine the HTTP request method used
-    if ($request_method = 'GET') {
-        set $cors "${cors}get";
-    }
-    if ($request_method = 'POST') {
-        set $cors "${cors}post";
-    }
-
-    if ($cors = "true") {
-        # Catch all in case there's a request method we're not dealing with properly
-        add_header 'Access-Control-Allow-Origin' "$http_origin";
-    }
-
-    if ($cors = "trueget") {
-        add_header 'Access-Control-Allow-Origin' "$http_origin";
-        add_header 'Access-Control-Allow-Credentials' 'true';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
-    }
-
-    if ($cors = "truepost") {
-        add_header 'Access-Control-Allow-Origin' "$http_origin";
-        add_header 'Access-Control-Allow-Credentials' 'true';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
-    }
-
-}
-```
 
 </details>
 
@@ -5587,7 +4681,7 @@ You can also obtain this list by parsing the output of `lsof`, but it isn't simp
 </details>
 
 <details>
-<summary><b>The team of admins needs your support. You must remotely reinstall the system on one of the main servers. There is no access to the management console (e.g. iDRAC). How to install Linux on disk, from and where other Linux exist and running?</b></summary><br>
+<summary><b>You must remotely reinstall the system on one of the main servers. There is no access to the management console (e.g. iDRAC). How do you install Linux on disk, from and where other Linux exist and running?</b></summary><br>
 
 It is possible that the question should be: "_System installation from the level and in place of already other system working_".
 
@@ -5766,9 +4860,3 @@ Useful resources:
 
 </details>
 
-<details>
-<summary><b>How do <code>SO_REUSEADDR</code> and <code>SO_REUSEPORT</code> differ? Explain all socket implementations. ***</b></summary><br>
-
-To be completed.
-
-</details>
