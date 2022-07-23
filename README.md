@@ -74,8 +74,8 @@ When creating a pull request, please heed the following:
 
 ## Table of Contents
 
-| <b><u>The type of chapter</u></b> | <b><u>Short description</u></b> |
-| :---         | :---         |
+| <b><u>The type of chapter</u></b>    | <b><u>Short description</u></b> |
+| :---            | :---         |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | Reasonably simple questions based on basic knowledge. |
 | :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5 years. |
@@ -91,7 +91,7 @@ When creating a pull request, please heed the following:
 ###### System Questions
 
 <details>
-<summary><b>Give some examples of Linux distributions. Describe what makes them unique.</b></summary>
+<summary><b>Give some examples of Unix or Linux distributions. Describe what makes them unique.</b></summary>
 
 - Red Hat Enterprise Linux
 
@@ -105,12 +105,13 @@ When creating a pull request, please heed the following:
 
 - Kali
 
-- OpenBSD (Unix, not Linux)
+- OpenBSD
 
 - **Arch Linux** offers a minimalist base system on which one can build a custom operating system. The beauty of it is that it has the Arch User Repository (AUR), which when combined with its official binary repositories allows it to probably have the largest repositories of any distribution. Its packaging process is also very simple, which means if one wants a package not in its official repositories or the AUR, it should be easy to make it for oneself.
+
 - **Kali Linux** is a Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing. Kali contains several hundred tools which are geared towards various information security tasks, such as Penetration Testing, Security research, Computer Forensics and Reverse Engineering.
 
-**Follow-up question:** What is your favorite distro and why?
+- **OpenBSD** is a security-focused OS which emphasizes adherence to strictly open source licensing, sane initial settings, and excellent documentation for everything. It is known for it's superior packet filter firewall and much of the OpenSSH codebase.
 
 Useful resources:
 
@@ -338,11 +339,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to check memory stats and CPU stats? ***</b></summary><br>
+<summary><b>How can you check memory and CPU resource usage? ***</b></summary><br>
 
 *Answer needs more details*
 
-You'd use `top/htop` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
+You can use `top` for both. Using `free` and `vmstat` command we can display the physical and virtual memory statistics respectively. With the help of `sar` command we see the CPU utilization & other stats (but `sar` isn't even installed in most systems).
 
 Useful resources:
 
@@ -395,27 +396,6 @@ Useful resources:
 - [Where is my password stored on Linux?](https://security.stackexchange.com/questions/37050/where-is-my-password-stored-on-linux)
 - [Where are the passwords of the users located in Linux?](https://www.cyberciti.biz/faq/where-are-the-passwords-of-the-users-located-in-linux/)
 - [Linux Password & Shadow File Formats](https://www.tldp.org/LDP/lame/LAME/linux-admin-made-easy/shadow-file-formats.html)
-
-</details>
-
-<details>
-<summary><b>How to recursively change permissions for all directories except files and for all files except directories?</b></summary><br>
-
-To change all the directories e.g. to **755** (`drwxr-xr-x`):
-
-```bash
-find /opt/data -type d -exec chmod 755 {} \;
-```
-
-To change all the files e.g. to **644** (`-rw-r--r--`):
-
-```bash
-find /opt/data -type f -exec chmod 644 {} \;
-```
-
-Useful resources:
-
-- [How do I set chmod for a folder and all of its subfolders and files? (original)](https://stackoverflow.com/questions/3740152/how-do-i-set-chmod-for-a-folder-and-all-of-its-subfolders-and-files?rq=1)
 
 </details>
 
@@ -564,7 +544,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How can I sync two local directories?</b></summary><br>
+<summary><b>How can you mirror the contents of two directories?</b></summary><br>
 
 To sync the contents of **dir1** to **dir2** on the same system, type:
 
@@ -615,29 +595,14 @@ Useful resources:
 <details>
 <summary><b>Why do we use <code>sudo su -</code> and not just <code>sudo su</code>?</b></summary><br>
 
-`sudo` is in most modern Linux distributions where (but not always) the root user is disabled and has no password set. Therefore you cannot switch to the root user with `su` (you can try). You have to call `sudo` with root privileges: `sudo su`.
+`su` switches the user providing a normal shell with an environment nearly the same as with the user invoking the command.
 
-`su` just switches the user, providing a normal shell with an environment nearly the same as with the old user.
-
-`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base.
+`su -` invokes a login shell after switching the user. A login shell resets most environment variables, providing a clean base. This is a safer method because it prevents a malicious enviornment from being brought to the new user during the temporary session. It also allows the use of the new enviornment variables.
 
 Useful resources:
 
 - [su vs sudo -s vs sudo -i vs sudo bash](https://unix.stackexchange.com/questions/35338/su-vs-sudo-s-vs-sudo-i-vs-sudo-bash)
 - [Why do we use su - and not just su? (original)](https://unix.stackexchange.com/questions/7013/why-do-we-use-su-and-not-just-su)
-
-</details>
-
-<details>
-<summary><b>How to find files that have been modified on your system in the past 60 minutes?</b></summary><br>
-
-```bash
-find / -mmin -60 -type f
-```
-
-Useful resources:
-
-- [Get all files modified in last 30 days in a directory (orignal)](https://stackoverflow.com/questions/23070245/get-all-files-modified-in-last-30-days-in-a-directory)
 
 </details>
 
@@ -701,30 +666,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How is a user’s default group determined? How would you change it? </b></summary><br>
-
-```bash
-useradd -m -g initial_group username
-```
-
-`-g/--gid`: defines the group name or number of the user's initial login group. If specified, the group name must exist; if a group number is provided, it must refer to an already existing group.
-
-If not specified, the behaviour of useradd will depend on the `USERGROUPS_ENAB` variable contained in `/etc/login.defs`. The default behaviour (`USERGROUPS_ENAB yes`) is to create a group with the same name as the username, with **GID** equal to **UID**.
-
-Useful resources:
-
-- [How can I change a user's default group in Linux?](https://unix.stackexchange.com/questions/26675/how-can-i-change-a-users-default-group-in-linux)
-
-</details>
-
-<details>
-<summary><b>What is your best command line text editor for daily working and scripting? ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
 <summary><b>Why would you want to mount servers in a rack?</b></summary><br>
 
 - Protecting Hardware
@@ -742,9 +683,19 @@ Useful resources:
 ###### Network Questions
 
 <details>
-<summary><b>Show a simple network diagram: you have 3 systems, 1 router, 1 switches, 1 servers, and the Internet. ***</b></summary><br>
+<summary><b>Describe the steps for a successful DHCP handshake process.</b></summary><br>
 
-To be completed.
+1. Discover - The DHCP client broadcasts a DHCPDISCOVER message on the network subnet using the destination address 255.255.255.255 (limited broadcast) or the specific subnet broadcast address (directed broadcast). A DHCP client may also request its last known IP address.
+
+2. Offer - When a DHCP server receives a DHCPDISCOVER message from a client, the DHCP server reserves an IP address for the client and makes a lease offer by sending a DHCPOFFER message to the client.
+
+3. Request - In response to the DHCP offer, the client replies with a DHCPREQUEST message, broadcast to the server, requesting the offered address. Before claiming an IP address, the client will broadcast an ARP request, in order to find if there is another host present in the network with the proposed IP address. If there is no reply, this address does not conflict with that of another host, so it is free to be used. 
+
+4. Acknowledge - The DHCP server sends a DHCPACK packet to the client. This packet includes the lease duration and any other configuration information that the client might have requested. At this point, the IP configuration process is completed. 
+
+Useful resources:
+
+- [DHCP Operation](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Operation)
 
 </details>
 
@@ -765,74 +716,21 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between a VLAN and a subnet? Do you need a VLAN to setup a subnet?</b></summary><br>
+<summary><b>What is the difference between TCP and UDP? When is one better used than the other? ***</b></summary><br>
 
-**VLANs** and **subnets** solve different problems. **VLANs** work at Layer 2, thereby altering broadcast domains (for instance). Whereas **subnets** are Layer 3 in the current context.
-
-**Subnet** - is a range of IP addresses determined by part of an address (often called the network address) and a subnet mask (netmask). For example, if the netmask is `255.255.255.0` (or `/24` for short), and the network address is `192.168.10.0`, then that defines a range of IP addresses `192.168.10.0` through `192.168.10.255`. Shorthand for writing that is `192.168.10.0/24`.
-
-**VLAN** - a good way to think of this is "switch partitioning." Let's say you have an 8 port switch that is VLAN-able. You can assign 4 ports to one **VLAN** (say `VLAN 1`) and 4 ports to another **VLAN** (say `VLAN 2`). `VLAN 1` won't see any of `VLAN 2's` traffic and vice versa, logically, you now have two separate switches. Normally on a switch, if the switch hasn't seen a MAC address it will "flood" the traffic to all other ports. **VLANs** prevent this.
-
-Subnet is nothing more than an IP address range of IP addresses that help hosts communicate over layer 2 and 3. Each subnet does not require its own **VLAN**. **VLANs** are implemented for isolation (are sandbox for layer two communication, no 2 systems of 2 different **VLANs** may communicate but it can be done through **Inter VLAN routing**), ease of management and security.
-
-Useful resources:
-
-- [What is the difference between a VLAN and a subnet? (original)](https://superuser.com/questions/353664/what-is-the-difference-between-a-vlan-and-a-subnet)
-- [VLANS vs. subnets for network security and segmentation](https://networkengineering.stackexchange.com/questions/46899/vlans-vs-subnets-for-network-security-and-segmentation)
+To be completed.
 
 </details>
 
 <details>
-<summary><b>List 5 common network ports you should know.</b></summary><br>
+<summary><b>What is a Proxy Server? ***</b></summary><br>
 
-<table style="width:100%">
-  <tr>
-    <th>SERVICE</th>
-    <th>PORT</th>
-  </tr>
-  <tr>
-    <td>SMTP</td>
-    <td>25</td>
-  </tr>
-  <tr>
-    <td>FTP</td>
-    <td>20 for data transfer and 21 for connection established</td>
-  </tr>
-  <tr>
-    <td>DNS</td>
-    <td>53</td>
-  </tr>
-  <tr>
-    <td>DHCP</td>
-    <td>67/UDP for DHCP server, 68/UDP for DHCP client</td>
-  </tr>
-  <tr>
-    <td>SSH</td>
-    <td>22</td>
-  </tr>
-</table>
-
-Useful resources:
-
-- [Red Hat Enterprise Linux 4: Security Guide - Common Ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+To be completed.
 
 </details>
 
 <details>
-<summary><b>What POP and IMAP are, and how to choose which of them you should implement?</b></summary><br>
-
-POP and IMAP are both protocols for retrieving messages from a mail server to a mail client.
-
-**POP** (_Post Office Protocol_) uses a one way push from mail server to client. By default this will send messages to the POP mail client and remove them from the mail server, though it is possible to configure the mail server to retain all messages. Any actions you take on the message in your mail client (labeling, deleting, moving to a folder) will not be reflected on the mail server, and thus inaccessible to other mail clients pulling from the mail server. POP uses little storage space on the mail server and can be seen as more secure since messages only exist on one mail client instead of the mail server and multiple clients.
-
-**IMAP** (_Internet Message Access Protocol_) uses two way communication between mail server and client. Deleting or labeling a message in your mail client configured with IMAP will also delete or label the message on the mail server. IMAP allows for a similar experience when accessing mail across different clients or devices since messages can existing in the same state across multiple devices. IMAP can also save disk space on the mail client by selectively syncing messages, deleting older messages from the mail client since it can sync them from the mail server later as needed.
-
-Choose IMAP if you need to access messages across multiple devices and you want to save disk space on your client device. Choose POP if you want to save disk space on your mail server, only access messages from one client device, and ensure that messages do not exist on multiple systems.
-
-</details>
-
-<details>
-<summary><b>How to check default route and routing table?</b></summary><br>
+<summary><b>How do you check default route and routing table?</b></summary><br>
 
 Using the commands `netstat -nr`, `route -n` or `ip route show` we can see the default route and routing tables.
 
@@ -844,44 +742,16 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the difference between 127.0.0.1 and localhost?</b></summary><br>
+<summary><b>What are 127.0.0.1 and localhost?</b></summary><br>
 
-Well, the most likely difference is that you still have to do an actual lookup of localhost somewhere.
+127.0.0.1 is the loopback connection on your network interface card (NIC); pinging this address will see if it is responding. If the ping is successful, then the hardware is good. If the ping isn't successful, the NIC may have issues.
 
-If you use `127.0.0.1`, then (intelligent) software will just turn that directly into an IP address and use it. Some implementations of `gethostbyname` will detect the dotted format (and presumably the equivalent IPv6 format) and not do a lookup at all.
-
-Otherwise, the name has to be resolved. And there's no guarantee that your hosts file will actually be used for that resolution (first, or at all) so `localhost` may become a totally different IP address.
-
-By that I mean that, on some systems, a local hosts file can be bypassed. The `host.conf` file controls this on Linux (and many other Unices).
-
-If you use a Unix domain socket it'll be slightly faster than using TCP/IP (because of the less overhead you have). Windows is using TCP/IP as a default, whereas Linux tries to use a Unix Domain Socket if you choose localhost and TCP/IP if you take `127.0.0.1`.
+127.0.0.1 and localhost mean the same thing in most cases, but can be treated differently in some situations. The main difference is that you still have to do an actual lookup of localhost somewhere. If you use `127.0.0.1`, the request is directly against the IP address. Otherwise, the name has to be resolved.
 
 Useful resources:
 
 - [What is the difference between 127.0.0.1 and localhost?](https://stackoverflow.com/questions/7382602/what-is-the-difference-between-127-0-0-1-and-localhost)
 - [localhost vs. 127.0.0.1](https://stackoverflow.com/questions/3715925/localhost-vs-127-0-0-1)
-
-</details>
-
-<details>
-<summary><b>Which port is used for <code>ping</code> command?</b></summary><br>
-
-`ping` uses **ICMP**, specifically **ICMP echo request** and **ICMP echo reply** packets. There is no 'port' associated with **ICMP**. Ports are associated with the two IP transport layer protocols, TCP and UDP. **ICMP**, TCP, and UDP are "siblings"; they are not based on each other, but are three separate protocols that run on top of IP.
-
-**ICMP** packets are identified by the 'protocol' field in the IP datagram header. **ICMP** does not use either UDP or TCP communications services, it uses raw IP communications services. This means that the **ICMP** message is carried directly in an IP datagram data field. `raw` comes from how this is implemented in software, to create and send an **ICMP** message, one opens a `raw` socket, builds a buffer containing the **ICMP** message, and then writes the buffer containing the message to the raw socket.
-
-The IP protocol value for **ICMP** is 1. The protocol field is part of the IP header and identifies what is in the data portion of the IP datagram.
-
-However, you could use `nmap` to see whether ports are open or not:
-
-```bash
-nmap -p 80 example.com
-```
-
-Useful resources:
-
-- [Ping Port Number](https://networkengineering.stackexchange.com/questions/42463/ping-port-number)
-- [Is it possible to ping an address:port?](https://superuser.com/questions/769541/is-it-possible-to-ping-an-addressport)
 
 </details>
 
@@ -901,16 +771,9 @@ To troubleshoot communication problems between servers, it is better to ideally 
 </details>
 
 <details>
-<summary><b>Why wouldn't hostnames resolve on your server and how would you troubleshoot the issue? ***</b></summary><br>
+<summary><b>How can you resolve a domain name, using external dns, with CLI? Can IPs be resolved to domain names?</b></summary><br>
 
-To be completed.
-
-</details>
-
-<details>
-<summary><b>How can you resolve the domain name (using external dns) with CLI? Can IPs be resolved to domain names?</b></summary><br>
-
-Examples for resolve IP address to domain name:
+Examples to a resolve an IP address from a domain name:
 
 ```bash
 # with host command:
@@ -923,28 +786,16 @@ dig @9.9.9.9 google.com
 nslookup domain.com 8.8.8.8
 ```
 
-You can (sometimes) resolve an IP Address back to a hostname. IP Address can be stored against a **PTR** record. You can then do:
+You can resolve an IP Address back to a hostname if the IP Address is stored in a **PTR** DNS record.
 
 ```bash
-dig A <hostname>
+dig -x 1.2.3.4
 ```
 
-To lookup the IPv4 address for a host, or:
+To lookup the IPv6 address for a host:
 
 ```bash
-dig AAAA <hostname>
-```
-
-To lookup the IPv6 address for a host, or:
-
-```bash
-dig PTR ZZZ.YYY.XXX.WWW.in-addr.arpa.
-```
-
-To lookup the hostname for IPv4 address `WWW.XXX.YYY.ZZZ` (note the octets are reversed), or:
-
-```bash
-dig PTR b.a.9.8.7.6.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.
+dig AAAA domain.com
 ```
 
 Useful resources:
@@ -984,88 +835,15 @@ To be completed.
 <details>
 <summary><b>What is SSH and how does it work?</b></summary><br>
 
-**SSH** stands for **Secure Shell**. It is a protocol that lets you drop from a server "A" into a shell session to a server "B". It allows you interact with your server "B".
+**SSH** stands for **Secure Shell**. It is a protocol that lets you access another machine through a shell session.
 
-An **SSH** connection to be established, the remote machine (server A) must be running a piece of software called an **SSH** daemon and the user's computer (server B) must have an **SSH** client.
+An **SSH** connection to be established, the remote machine (server A) must be running an **SSH** daemon and the user's computer must have an **SSH** client.
 
 The **SSH** daemon and **SSH** client listen for connections on a specific network port (default 22), authenticates connection requests, and spawns the appropriate environment if the user provides the correct credentials.
 
 Useful resources:
 
 - [Understanding the SSH Encryption and Connection Process](https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process)
-
-</details>
-
-<details>
-<summary><b>Most tutorials suggest using SSH key authentication rather than password authentication. Why is it considered more secure?</b></summary><br>
-
-An **SSH key** is an access credential in the SSH protocol. Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and for implementing single sign-on by system administrators and power users.
-
-Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
-
-If your SSH service only allows public-key authentication, an attacker needs a copy of a private key corresponding to a public key stored on the server.
-
-If your SSH service allows password based authentication, then your Internet connected SSH server will be hammered day and night by bot-nets trying to guess user-names and passwords. The bot net needs no information, it can just try popular names and popular passwords. Apart from anything else this clogs your logs.
-
-Useful resources:
-
-- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
-- [SSH password vs. key authentication](https://security.stackexchange.com/questions/33381/ssh-password-vs-key-authentication)
-
-</details>
-
-<details>
-<summary><b>What is a packet filter and how does it work?</b></summary><br>
-
-**Packet filtering** is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
-
-Packet filtering is appropriate where there are modest security requirements. The internal (private) networks of many organizations are not highly segmented. Highly sophisticated firewalls are not necessary for isolating one part of the organization from another.
-
-However it is prudent to provide some sort of protection of the production network from a lab or experimental network. A packet filtering device is a very appropriate measure for providing isolation of one subnet from another.
-
-Operating at the network layer and transport layer of the TCP/IP protocol stack, every packet is examined as it enters the protocol stack. The network and transport headers are examined closely for the following information:
-
-- **protocol (IP header, network layer)** - in the IP header, byte 9 (remember the byte count begins with zero) identifies the protocol of the packet. Most filter devices have the capability to differentiate between TCP, UPD, and ICMP.
-- **source address (IP header, network layer)** - the source address is the 32-bit IP address of the host which created the packet.
-- **destination address (IP header, network layer)** - the destination address is the 32-bit IP address of the host the packet is destined for.
-- **source port (TCP or UDP header, transport layer)** - each end of a TCP or UDP network connection is bound to a port. TCP ports are separate and distinct from UDP ports. Ports numbered below 1024 are reserved – they have a specifically defined use. Ports numbered above 1024 (inclusive) are known as ephemeral ports. They can be used however a vendor chooses. For a list of "well known" ports, refer to RFP1700. The source port is a pseudo-randomly assigned ephemeral port number. Thus it is often not very useful to filter on the source port.
-- **destination port (TCP or UDP header, transport layer)** - the destination port number indicates a port that the packet is sent to. Each service on the destination host listens to a port. Some well-known ports that might be filtered are 20/TCP and 21/TCP - ftp connection/data, 23/TCP - telnet, 80/TCP - http, and 53/TCP - DNS zone transfers.
-- **connection status (TCP header, transport layer)** - the connection status tells whether the packet is the first packet of the network session. The ACK bit in the TCP header is set to “false” or 0 if this is the first packet in the session. It is simple to disallow a host from establishing a connection by rejecting or discarding any packets which have the ACK bit set to "false" or 0.
-
-Useful resources:
-
-- [How does a packet filters work?](https://www.tutorialspoint.com/how-does-a-packet-filters-work)
-
-</details>
-
-<details>
-<summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
-
-**Hide the topology and characteristics of your back-end servers**
-
-The **reverse proxy server** can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.
-
-**Allows transparent maintenance of backend servers**
-
-Changes you make to servers running behind a reverse proxy are going to be completely transparent to your end users.
-
-**Load Balancing**
-
-The reverse proxy will then enforce a load balancing algorithm like round robin, weighted round robin, least connections, weighted least connections, or random, to distribute the load among the servers in the cluster.
-
-When a server goes down, the system will automatically failover to the next server up and users can continue with their secure file transfer activities.
-
-**SSL offloading/termination**
-
-Handles incoming HTTPS connections, decrypting the requests and passing unencrypted requests on to the web servers.
-
-**IP masking**
-
-Using a single ip but different URLs to route to different back end servers.
-
-Useful resources:
-
-- [The Benefits of a Reverse Proxy](https://dzone.com/articles/benefits-reverse-proxy)
 
 </details>
 
@@ -1105,15 +883,14 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the smallest IPv4 subnet mask that can be applied to a network containing up to 30 devices?</b></summary><br>
+<summary><b>What is the smallest IPv4 subnet that can be applied to a network containing up to 200 devices? ***</b></summary><br>
 
-Whether you have a standard `/24` VLAN for end users, a `/30` for point-to-point links, or something in between and subnet that must contain up to 30 devices works out to be a `/27` - or a subnet mask of `255.255.255.224`.
+
 
 Useful resources:
 
 - [How do you calculate the prefix, network, subnet, and host numbers?](https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers)
 - [The slash after an IP Address - CIDR Notation](https://networkengineering.stackexchange.com/questions/3697/the-slash-after-an-ip-address-cidr-notation)
-- [Why are there 3 ranges of private IPv4 addresses?](https://networkengineering.stackexchange.com/questions/32119/why-are-there-3-ranges-of-private-ipv4-addresses)
 - [IP Calculator](http://jodies.de/ipcalc)
 
 </details>
@@ -1202,6 +979,24 @@ Useful resources:
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
 
 **Security misconfiguration** is a vulnerability when a device/application/network is configured in a way which can be exploited by an attacker to take advantage of it. This can be as simple as leaving the default username/password unchanged or too simple for device accounts etc.
+
+</details>
+
+<details>
+<summary><b>Most tutorials suggest using SSH key authentication rather than password authentication. Why is it considered more secure?</b></summary><br>
+
+An **SSH key** is an access credential in the SSH protocol. Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and for implementing single sign-on by system administrators and power users.
+
+Instead of requiring a user's password, it is possible to confirm the client's identity by using asymmetric cryptography algorithms, with public and private keys.
+
+If your SSH service only allows public-key authentication, an attacker needs a copy of a private key corresponding to a public key stored on the server.
+
+If your SSH service allows password based authentication, then your Internet connected SSH server will be hammered day and night by bot-nets trying to guess user-names and passwords. The bot net needs no information, it can just try popular names and popular passwords. Apart from anything else this clogs your logs.
+
+Useful resources:
+
+- [Key-Based Authentication (Public Key Authentication)](http://www.crypto-it.net/eng/tools/key-based-authentication.html)
+- [SSH password vs. key authentication](https://security.stackexchange.com/questions/33381/ssh-password-vs-key-authentication)
 
 </details>
 
@@ -1385,14 +1180,14 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary>
+<summary><b>How do you permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary>
 
 To be completed.
 
 </details>
 
 <details>
-<summary><b>When your server is booting up some errors appears on the console. How to examine boot messages and where are they stored?</b></summary><br>
+<summary><b>When your server is booting up some errors appears on the console. How do you examine the system boot log and where are they stored?</b></summary><br>
 
 Your console has two types of messages:
 
@@ -1424,7 +1219,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Swap usage too high. What are the reasons for this and how to resolve swapping problems?</b></summary><br>
+<summary><b>Swap usage too high. What are the reasons for this and how do you resolve swapping problems?</b></summary><br>
 
 **Swap** space is a restricted amount of physical memory that is allocated for use by the operating system when available memory has been fully utilized. It is memory management that involves swapping sections of memory to and from physical storage.
 
@@ -1462,7 +1257,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is umask? How to set it permanently for a user?</b></summary><br>
+<summary><b>What is umask? How do you set it permanently for a user?</b></summary><br>
 
 On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the `umask`. The `umask` command is used to set this mask, or to show you its current value.
 
@@ -1656,7 +1451,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to make high availability of web application? ***</b></summary>
+<summary><b>How do you make a server or application high availabile? ***</b></summary>
 
 To be completed.
 
@@ -1763,22 +1558,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>I have forgotten the root password! What do I do in BSD? What is the purpose of booting into single user mode?</b></summary><br>
+<summary><b>The root password has been forgotten and you are locked out of the system. How can you reset the root password?</b></summary><br>
 
-Restart the system, type `boot -s` at the `Boot:` prompt to enter **single-user mode**.
-
-At the question about the shell to use, hit `Enter` which will display a `#` prompt.
-
-Enter `mount -urw /` to remount the root file system read/write, then run `mount -a` to remount all the file systems.
-
-Run `passwd root` to change the root password then run `exit` to continue booting.
-
-**Single user mode** should basically let you log in with root access & change just about anything. For example, you might use single-user mode when you are restoring a damaged master database or a system database, or when you are changing server configuration options (e.g. password recovery).
-
-Useful resources:
-
-- [FreeBSD Reset or Recover Root Password](https://www.cyberciti.biz/tips/howto-freebsd-reset-recover-root-password.html)
-- [Single User Mode Definition](http://www.linfo.org/single_user_mode.html)
+To be completed.
 
 </details>
 
@@ -1798,7 +1580,7 @@ __EOF__
 </details>
 
 <details>
-<summary><b>How to change the kernel parameters? What kernel options might you need to tune? ***</b></summary><br>
+<summary><b>How do you change kernel parameters? What kernel options might you need to tune? ***</b></summary><br>
 
 To set the kernel parameters in Unix-like, first edit the file `/etc/sysctl.conf` after making the changes save the file and run the command `sysctl -p`, this command will make the changes permanently without rebooting the machine.
 
@@ -1842,7 +1624,7 @@ There are three types of journaling available in **ext3/ext4** file systems:
 </details>
 
 <details>
-<summary><b>What is an inode? How to find file's inode number and how can you use it?</b></summary><br>
+<summary><b>What is an inode? How do you find a file's inode number and how can you use it?</b></summary><br>
 
 An **inode** is a data structure on a filesystem on Linux and other Unix-like operating systems that stores all the information about a file except its name and its actual data. A data structure is a way of storing data so that it can be used efficiently.
 
@@ -1952,7 +1734,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to increase the size of LVM partition?</b></summary><br>
+<summary><b>How do you increase the size of LVM partition?</b></summary><br>
 
 Use the `lvextend` command for resize LVM partition.
 
@@ -2005,22 +1787,6 @@ Useful resources:
 <summary><b>What is the proper way to upgrade/update a system in production? Do you automate these processes? Do you set downtime for them? Write recommendations. ***</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>Your friend during configuration of the MySQL server asked you: <i>Should I run <code>sudo mysql_secure_installation</code> after installing mysql?</i> What do you think about it? </b></summary><br>
-
-It would be better if you run command as it provides many security options like:
-
-- You can set a password for root accounts
-- You can remove root accounts that are accessible from outside the local host
-- You can remove anonymous-user accounts
-- You can remove the test database, which by default can be accessed by anonymous users
-
-Useful resources:
-
-- [What is Purpose of using mysql_secure_installation?](https://stackoverflow.com/questions/20760908/what-is-purpose-of-using-mysql-secure-installation)
 
 </details>
 
@@ -2121,15 +1887,6 @@ Most Unix-like operating systems, including Linux and BSD, provide ways to limit
 </details>
 
 <details>
-<summary><b>During configuration HAProxy to working with Redis you get <code>General socket error (Permission denied)</code> from log. SELinux is enable. Explain basic SELinux troubleshooting in CLI. ***</b></summary><br>
-
-Useful resources:
-
-- [Basic SELinux Troubleshooting in CLI](https://access.redhat.com/articles/2191331)
-
-</details>
-
-<details>
 <summary><b>You have configured an RSA key login but your server show <code>Server refused our key</code> as expected. Where will you look for the cause of the problem?</b></summary><br>
 
 **Server side**
@@ -2201,7 +1958,7 @@ cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 100 > /path/to/file
 </details>
 
 <details>
-<summary><b>How to run script as another user without password?</b></summary><br>
+<summary><b>How do you run a script as another user without password?</b></summary><br>
 
 For example (with `visudo` command):
 
@@ -2211,23 +1968,6 @@ user1 ALL=(user2) NOPASSWD: /opt/scripts/bin/generate.sh
 
 The command paths must be absolute! Then call `sudo -u user2 /opt/scripts/bin/generate.sh` from a user1 shell.
 
-</details>
-
-<details>
-<summary><b>How to check if running as root in a bash script? What should you watch out for?</b></summary><br>
-
-In a bash script, you have several ways to check if the running user is root.
-
-As a warning, do not check if a user is root by using the root username. Nothing guarantees that the user with ID 0 is called root. It's a very strong convention that is broadly followed but anybody could rename the superuser another name.
-
-I think the best way when using bash is to use `$EUID` because `$UID` could be changed and not reflect the real user running the script.
-
-```bash
-if (( $EUID != 0 )); then
-  echo "Please run as root"
-  exit
-fi
-```
 </details>
 
 <details>
@@ -2304,7 +2044,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You must run command that will be performed for a very long time. How to prevent killing this process after the ssh session drops?</b></summary><br>
+<summary><b>You must run command that will be performed for a very long time. How do you prevent killing this process after the ssh session drops?</b></summary><br>
 
 Use `nohup` to make your process ignore the hangup signal:
 
@@ -2346,30 +2086,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to reload PostgreSQL after configuration changes?</b></summary><br>
-
-Solution 1:
-
-```bash
-systemctl reload postgresql
-```
-
-Solution 2:
-
-```
-su - postgres
-/usr/bin/pg_ctl reload
-```
-
-Solution 3:
-
-```
-SELECT pg_reload_conf();
-```
-
-</details>
-
-<details>
 <summary><b>You have added several aliases to <code>.profile</code>. How to reload shell without exit?</b></summary><br>
 
 The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good (but other) solution is `. ~/.profile`.
@@ -2377,25 +2093,6 @@ The best way is `exec $SHELL -l` because `exec` replaces the current process wit
 Useful resources:
 
 - [How to reload .bash_profile from the command line?](https://stackoverflow.com/questions/4608187/how-to-reload-bash-profile-from-the-command-line)
-
-</details>
-
-<details>
-<summary><b>How to exit without saving shell history?</b></summary><br>
-
-```bash
-kill -9 $$
-```
-
-or
-
-```bash
-unset HISTFILE && exit
-```
-
-Useful resources:
-
-- [How do I close a terminal without saving the history?](https://unix.stackexchange.com/questions/25049/how-do-i-close-a-terminal-without-saving-the-history)
 
 </details>
 
@@ -2441,7 +2138,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to find out the dynamic libraries executables loads when run?</b></summary><br>
+<summary><b>How do you find out what dynamic libraries executables load when run?</b></summary><br>
 
 You can do this with `ldd` command:
 
@@ -2511,7 +2208,62 @@ Useful resources:
 ###### Network Questions
 
 <details>
-<summary><b>Configure a virtual interface on your workstation. ***</b></summary><br>
+<summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
+
+**Hide the topology and characteristics of your back-end servers**
+
+The **reverse proxy server** can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.
+
+**Allows transparent maintenance of backend servers**
+
+Changes you make to servers running behind a reverse proxy are going to be completely transparent to your end users.
+
+**Load Balancing**
+
+The reverse proxy will then enforce a load balancing algorithm like round robin, weighted round robin, least connections, weighted least connections, or random, to distribute the load among the servers in the cluster.
+
+When a server goes down, the system will automatically failover to the next server up and users can continue with their secure file transfer activities.
+
+**SSL offloading/termination**
+
+Handles incoming HTTPS connections, decrypting the requests and passing unencrypted requests on to the web servers.
+
+**IP masking**
+
+Using a single ip but different URLs to route to different back end servers.
+
+Useful resources:
+
+- [The Benefits of a Reverse Proxy](https://dzone.com/articles/benefits-reverse-proxy)
+
+</details>
+
+<details>
+<summary><b>What is a packet filter and how does it work?</b></summary><br>
+
+**Packet filtering** is a firewall technique used to control network access by monitoring outgoing and incoming packets and allowing them to pass or halt based on the source and destination Internet Protocol (IP) addresses, protocols and ports.
+
+Packet filtering is appropriate where there are modest security requirements. The internal (private) networks of many organizations are not highly segmented. Highly sophisticated firewalls are not necessary for isolating one part of the organization from another.
+
+However it is prudent to provide some sort of protection of the production network from a lab or experimental network. A packet filtering device is a very appropriate measure for providing isolation of one subnet from another.
+
+Operating at the network layer and transport layer of the TCP/IP protocol stack, every packet is examined as it enters the protocol stack. The network and transport headers are examined closely for the following information:
+
+- **protocol (IP header, network layer)** - in the IP header, byte 9 (remember the byte count begins with zero) identifies the protocol of the packet. Most filter devices have the capability to differentiate between TCP, UPD, and ICMP.
+- **source address (IP header, network layer)** - the source address is the 32-bit IP address of the host which created the packet.
+- **destination address (IP header, network layer)** - the destination address is the 32-bit IP address of the host the packet is destined for.
+- **source port (TCP or UDP header, transport layer)** - each end of a TCP or UDP network connection is bound to a port. TCP ports are separate and distinct from UDP ports. Ports numbered below 1024 are reserved – they have a specifically defined use. Ports numbered above 1024 (inclusive) are known as ephemeral ports. They can be used however a vendor chooses. For a list of "well known" ports, refer to RFP1700. The source port is a pseudo-randomly assigned ephemeral port number. Thus it is often not very useful to filter on the source port.
+- **destination port (TCP or UDP header, transport layer)** - the destination port number indicates a port that the packet is sent to. Each service on the destination host listens to a port. Some well-known ports that might be filtered are 20/TCP and 21/TCP - ftp connection/data, 23/TCP - telnet, 80/TCP - http, and 53/TCP - DNS zone transfers.
+- **connection status (TCP header, transport layer)** - the connection status tells whether the packet is the first packet of the network session. The ACK bit in the TCP header is set to “false” or 0 if this is the first packet in the session. It is simple to disallow a host from establishing a connection by rejecting or discarding any packets which have the ACK bit set to "false" or 0.
+
+Useful resources:
+
+- [How does a packet filters work?](https://www.tutorialspoint.com/how-does-a-packet-filters-work)
+
+</details>
+
+<details>
+<summary><b>Why wouldn't hostnames resolve on your server and how would you troubleshoot the issue? ***</b></summary><br>
 
 To be completed.
 
@@ -2576,45 +2328,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Dev team reports an error: <code>POST http://ws.int/api/v1/Submit/ resulted in a 413 Request Entity Too Large</code>. What's wrong?</b></summary><br>
-
-**Modify NGINX configuration file for domain**
-
-Set correct `client_max_body_size` variable value:
-
-```bash
-client_max_body_size 20M;
-```
-
-Restart Nginx to apply the changes.
-
-**Modify php.ini file for upload limits**
-
-It’s not needed on all configurations, but you may also have to modify the PHP upload settings as well to ensure that nothing is going out of limit by php configurations.
-
-Now find following directives one by one:
-
-```bash
-upload_max_filesize
-post_max_size
-```
-
-and increase its limit to 20M, by default they are 8M and 2M:
-
-```bash
-upload_max_filesize = 20M
-post_max_size = 20M
-```
-
-Finally save it and restart PHP.
-
-Useful resources:
-
-- [413 Request Entity Too Large in Nginx with client_max_body_size set](https://serverfault.com/questions/814767/413-request-entity-too-large-in-nginx-with-client-max-body-size-set)
-
-</details>
-
-<details>
 <summary><b>What is handshake mechanism and why do we need 3 way handshake?</b></summary><br>
 
 **Handshaking** begins when one device sends a message to another device indicating that it wants to establish a communications channel. The two devices then send several messages back and forth that enable them to agree on a communications protocol.
@@ -2670,14 +2383,14 @@ This protocol operates at layer 2 of the OSI model with the purpose of preventin
 </details>
 
 <details>
-<summary><b>How to check which ports are listening on my Linux Server?</b></summary><br>
+<summary><b>How do you check which ports are listening?</b></summary><br>
 
 Use the:
 
 - `lsof -i`
 - `ss -l`
-- `netstat -atn` - for tcp
-- `netstat -aun` - for udp
+- `netstat -atn` (for tcp)
+- `netstat -aun` (for udp)
 - `netstat -tulapn`
 
 </details>
@@ -2700,22 +2413,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to send an HTTP request using <code>telnet</code>?</b></summary><br>
+<summary><b>How do you connect to a mail server using <code>telnet</code>? ***</b></summary><br>
 
-For example:
-
-```bash
-telnet example.com 80
-Trying 192.168.252.10...
-Connected to example.com.
-Escape character is '^]'.
-GET /questions HTTP/1.0
-Host: example.com
-
-HTTP/1.1 200 OK
-Content-Type: text/html; charset=utf-8
-...
-```
+To be completed.
 
 </details>
 
@@ -2777,7 +2477,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to allow traffic to/from specific IP with iptables?</b></summary><br>
+<summary><b>How do you allow traffic to/from specific IP with iptables?</b></summary><br>
 
 For example:
 
@@ -2785,45 +2485,6 @@ For example:
 /sbin/iptables -A INPUT -p tcp -s XXX.XXX.XXX.XXX -j ACCEPT
 /sbin/iptables -A OUTPUT -p tcp -d  XXX.XXX.XXX.XXX -j ACCEPT
 ```
-
-</details>
-
-<details>
-<summary><b>How to block abusive IP addresses with <code>pf</code> in OpenBSD?</b></summary><br>
-
-The best way to do this is to define a table and create a rule to block the hosts, in `pf.conf`:
-
-```bash
-table <badhosts> persist
-block on fxp0 from <badhosts> to any
-```
-
-And then dynamically add/delete IP addresses from it:
-
-```bash
-pfctl -t badhosts -T add 1.2.3.4
-pfctl -t badhosts -T delete 1.2.3.4
-```
-
-</details>
-
-<details>
-<summary><b>When does the web server like Apache or Nginx write info to log file? Before or after serving the request?</b></summary><br>
-
-Both servers provides very comprehensive and flexible logging capabilities - for logging everything that happens on your server, from the initial request, through the URL mapping process, to the final resolution of the connection, including any errors that may have occurred in the process.
-
-**Apache**
-
-The Apache server access log records all requests processed by the server (after the request has been completed).
-
-**Nginx**
-
-NGINX writes information about client requests in the access log right after the request is processed.
-
-Useful resources:
-
-- [When does Apache log to access.log - before or after serving the request?](https://webmasters.stackexchange.com/questions/65566/when-does-apache-log-to-access-log-before-or-after-serving-the-request)
-- [nginx log request before processing](https://serverfault.com/questions/693049/nginx-log-request-before-processing)
 
 </details>
 
@@ -2862,22 +2523,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does a <code>tcpdump</code> do? How to capture only incoming traffic to your interface?</b></summary><br>
+<summary><b>What does <code>tcpdump</code> do and what are some examples for its use? ***</b></summary><br>
 
-`tcpdump` is a most powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
+`tcpdump` is a powerful and widely used command-line packets sniffer or package analyzer tool which is used to capture or filter TCP/IP packets that received or transferred over a network on a specific interface.
 
 `tcpdump` puts your network card into promiscuous mode, which basically tells it to accept every packet it receives. It allows the user to see all traffic being passed over the network. Wireshark uses pcap to capture packets.
-
-If you want to view only packets that come to your interface you should:
-
-- `-Q in` - for Linux `tcpdump` version
-- `-D in` - for BSD `tcpdump` version
-
-Both params set send/receive direction direction for which packets should be captured.
-
-```bash
-tcpdump -nei eth0 -Q in host 192.168.252.125 and port 8080
-```
 
 </details>
 
@@ -3151,7 +2801,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to add new disk in Linux server without rebooting? How to rescan and add it in LVM?</b></summary><br>
+<summary><b>How do you add new disk in Linux server without rebooting? How do you rescan and add it in LVM?</b></summary><br>
 
 To be completed.
 
@@ -3181,7 +2831,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Can’t mount the root file system. Why? ***</b></summary><br>
+<summary><b>What does it mean to mount the root file system? ***</b></summary><br>
 
 To be completed.
 
@@ -3214,7 +2864,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Tell me about the dangers and caveats of LVM.</b></summary><br>
+<summary><b>Explain the risks and caveats of LVM. ***</b></summary><br>
 
 **Risks of using LVM**
 
@@ -3437,29 +3087,6 @@ If the machine is lightly loaded but running a very large number of processes, a
 </details>
 
 <details>
-<summary><b>How to read a file line by line and assigning the value to a variable?</b></summary><br>
-
-For example:
-
-```bash
-while IFS='' read -r line || [[ -n "$line" ]] ; do
-  echo "Text read from file: $line"
-done < "/path/to/filename"
-```
-
-Explanation:
-
-- `IFS=''` (or `IFS=`) prevents leading/trailing whitespace from being trimmed.
-- `-r` prevents backslash escapes from being interpreted.
-- `|| [[ -n $line ]]` prevents the last line from being ignored if it doesn't end with a `\n` (since  read returns a non-zero exit code when it encounters EOF).
-
-Useful resources:
-
-- [Read a file line by line assigning the value to a variable](https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable)
-
-</details>
-
-<details>
 <summary><b>The client reports that his site received a grade B in the ssllabs scanner. Prepare a checklist of best practice for ssl configuration. ***</b></summary><br>
 
 Useful resources:
@@ -3467,38 +3094,6 @@ Useful resources:
 - [Getting a Perfect SSL Labs Score](https://michael.lustfield.net/nginx/getting-a-perfect-ssl-labs-score)
 - [17 small suggestions how to improve ssllabs.com/ssltest/](https://community.qualys.com/thread/14023)
 - [How do you score A+ with 100 on all categories on SSL Labs test with Let's Encrypt and Nginx?](https://stackoverflow.com/questions/41930060/how-do-you-score-a-with-100-on-all-categories-on-ssl-labs-test-with-lets-encry)
-
-</details>
-
-<details>
-<summary><b>How to remove all files except some from a directory?</b></summary><br>
-
-Solution 1 - with `extglob`:
-
-```bash
-shopt -s extglob
-rm !(textfile.txt|backup.tar.gz|script.php|database.sql|info.txt)
-```
-
-Solution 2 - with `find`:
-
-```bash
-find . -type f -not -name '*txt' -print0 | xargs -0 rm --
-```
-
-</details>
-
-<details>
-<summary><b>How to check if a string contains a substring in Bash?</b></summary><br>
-
-You can use `*` (wildcards) outside a case statement, too, if you use double brackets:
-
-```bash
-string='some text'
-if [[ $string = *"My long"* ]] ; then
-  true
-fi
-```
 
 </details>
 
@@ -3543,22 +3138,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How to redirect stderr and stdout to different files in the same line?</b></summary><br>
-
-Just add them in one line `command 2>> error 1>> output`.
-
-However, note that `>>` is for appending if the file already has data. Whereas, `>` will overwrite any existing data in the file.
-
-So, `command 2> error 1> output` if you do not want to append.
-
-Just for completion's sake, you can write `1>` as just `>` since the default file descriptor is the output. so `1>` and `>` is the same thing.
-
-So, `command 2> error 1> output` becomes, `command 2> error > output`.
-
-</details>
-
-<details>
-<summary><b>Load averages are above 30 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How to debug and fixed?</b></summary><br>
+<summary><b>Load averages are above 30 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How can this be debugged and fixed?</b></summary><br>
 
 Requests which involve disk I/O can be slowed greatly if cpu(s) needs to wait on the disk to read or write data. I/O Wait, is the percentage of time the CPU has to wait on disk.
 
@@ -3645,57 +3225,9 @@ To be completed.
 
 </details>
 
-<details>
-<summary><b>How to add new user without using <code>useradd</code>/<code>adduser</code> commands?</b></summary><br>
-
-1. Add an entry of user details in <code>/etc/passwd</code> with `vipw`:
-
-```bash
-# username:password:UID:GID:Comments:Home_Directory:Login Shell
-user:x:501:501:test user:/home/user:/bin/bash
-```
-
-  > Be careful with the syntax. Do not edit directly with an editor. `vipw` locks the file, so that other commands won't try to update it at the same time.
-
-2. You will have to create a group with same name in <code>/etc/group</code> with `vigr` (similar tool for `vipw`):
-
-```bash
-user:x:501:
-```
-
-3. Assign a password to the user:
-
-```bash
-passwd user
-```
-
-4. Create the home directory of the user with mkdir:
-
-```bash
-mkdir -m 0700 /home/user
-```
-
-5. Copy the files from `/etc/skel` to the new home directory:
-
-```bash
-rsync -av --delete /etc/skel/ /home/user
-```
-
-6. Fix ownerships and permissions with `chown` and `chmod`:
-
-```bash
-chown -R user:user /home/user
-chmod -R go-rwx /home/user
-```
-
-Useful resources:
-
-- [What steps to add a user to a system without using useradd/adduser?](https://unix.stackexchange.com/questions/153225/what-steps-to-add-a-user-to-a-system-without-using-useradd-adduser)
-
-</details>
 
 <details>
-<summary><b>Why do we need <code>mktemp</code> command? Present an example of use.</b></summary><br>
+<summary><b>Why is the <code>mktemp</code> command useful? Present an example of use.</b></summary><br>
 
 <code>mktemp</code> randomizes the name. It is very important from the security point of view.
 
@@ -3761,12 +3293,7 @@ rm ./-fr
 
 ###### Network Questions
 
-<details>
-<summary><b>Create SPF records for your site to help control spam. ***</b></summary><br>
 
-To be completed.
-
-</details>
 
 <details>
 <summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? ***</b></summary><br>
@@ -3815,13 +3342,6 @@ Useful resources:
 
 <details>
 <summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>How to find a domain based on the IP address? What techniques/tools can you use? ***</b></summary><br>
 
 To be completed.
 
@@ -4003,25 +3523,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Is it safe to use SNI SSL in production? How to test connection with and without it? In which cases it is useful?</b></summary><br>
+<summary><b>What is SNI SSL and in which cases it is useful?</b></summary><br>
 
-With <b>OpenSSL</b>:
-
-```bash
-# Testing connection to remote host (with SNI support)
-echo | openssl s_client -showcerts -servername google.com -connect google.com:443
-# Testing connection to remote host (without SNI support)
-echo | openssl s_client -connect google.com:443 -showcerts
-```
-
-With <b>GnuTLS</b>:
-
-```bash
-# Testing connection to remote host (with SNI support)
-gnutls-cli -p 443 google.com
-# Testing connection to remote host (without SNI support)
-gnutls-cli --disable-sni -p 443 google.com
-```
+To be completed.
 
 </details>
 
@@ -4035,13 +3539,6 @@ The server sends the following in its response header to set a cookie field:
 If there is a cookie set, then the browser sends the following in its request header:
 
 `Cookie:name=value`
-
-</details>
-
-<details>
-<summary><b>How to prevent processing requests in web server with undefined server names? No defined default server name rule can be security issue? ***</b></summary><br>
-
-To be completed.
 
 </details>
 
@@ -4096,20 +3593,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the proper way to test NFS performance? Prepare a short checklist.
-</b></summary><br>
-
-The best benchmark is always "the application(s) that you normally use". The load on a NFS system when you have 20 people simultaneously compiling a Linux kernel is completely different from a bunch of people logging in at the same time or the accounts uses as "home directories for the local web-server".
-
-But we have some good tools for testing this.
-
-- <b>boonie</b> - a classical performances evaluation tool tests. The main program tests database type access to a single file (or a set of files if you wish to test more than 1G of storage), and it tests creation, reading, and deleting of small files which can simulate the usage of programs such as Squid, INN, or Maildir format email.
-- <b>DBench</b> - was written to allow independent developers to debug and test SAMBA. It is heavily inspired of the original SAMBA tool.
-- <b>IOZone</b> - performance tests suite. POSIX and 64 bits compliant. This tests is the file system test from the L.S.E. Main features: POSIX async I/O, Mmap() file I/O, Normal file I/O Single stream measurement, Multiple stream measurement, Distributed file server measurements (Cluster) POSIX pthreads, Multi-process measurement selectable measurements with fsync, O_SYNC Latency plots.
-
-</details>
-
-<details>
 <summary><b>You need to block several IPs from the same subnet. What is the most efficient way for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
 
 If you have a system with thousands of routes defined in the routing table and nothing in the iptables rules than it might actually be more efficient to input an iptables rule.
@@ -4155,33 +3638,6 @@ ip route add 192.168.200.0/24 via 127.0.0.1
 Useful resources:
 
 - [The difference between iptables DROP and null-routing.](https://www.tummy.com/blogs/2006/07/27/the-difference-between-iptables-drop-and-null-routing/)
-
-</details>
-
-<details>
-<summary><b>How to run <code>scp</code> with a second remote host?</b></summary><br>
-
-With `ssh`:
-
-```bash
-ssh user1@remote1 'ssh user2@remote2 "cat file"' > file
-```
-
-With `tar` (with compression):
-
-```bash
-ssh user1@remote1 'ssh user2@remote2 "cd path2; tar cj file"' | tar xj
-```
-
-With `ssh` and port forwarding tunnel:
-
-```bash
-# First, open the tunnel
-ssh -L 1234:remote2:22 -p 45678 user1@remote1
-
-# Then, use the tunnel to copy the file directly from remote2
-scp -P 1234 user2@localhost:file .
-```
 
 </details>
 
@@ -4358,25 +3814,6 @@ To be completed.
 
 </details>
 
-<details>
-<summary><b>You have to prepare a Redis cluster. How will you ensure security?</b></summary><br>
-
-- protect a given Redis instance from outside accesses via firewall
-- binding it to 127.0.0.1 if only local clients are accessing it
-- sandboxed environment
-- enabling **AUTH**
-- enabling **Protected Mode**
-- data encryption support (e.g. `spiped`)
-- disabling of specific commands
-- users **ACLs**
-
-Useful resources:
-
-- [Redis Security](https://redis.io/topics/security)
-- [A few things about Redis security](http://antirez.com/news/96)
-
-</details>
-
 ###### Cyber Security Questions
 
 <details>
@@ -4406,186 +3843,9 @@ As **security policy** defines the security objectives and the security framewor
 ## <a name="extra-knowledge">Extra Knowledge</a>
 
 <details>
-<summary><b>Explain what is Event-Driven architecture and how it improves performance? ***</b></summary><br>
+<summary><b>Explain what is Event-Driven architecture and how it improves performance?</b></summary><br>
 
-To be completed.
-
-</details>
-
-<details>
-<summary><b>An application encounters some performance issues. You should to find the code we have to optimize. How to profile app in Linux environment?</b></summary><br>
-
-> Ideally, I need an app that will attach to a process and log periodic snapshots of: memory usage number of threads CPU usage.
-
-1. You can use `top`in batch mode. It runs in the batch mode either until it is killed or until N iterations is done:
-
-```bash
-top -b -p `pidof a.out`
-```
-
-or
-
-```bash
-top -b -p `pidof a.out` -n 100
-```
-
-2. You can use ps (for instance in a shell script):
-
-```bash
-ps --format pid,pcpu,cputime,etime,size,vsz,cmd -p `pidof a.out`
-```
-
-> I need some means of recording the performance of an application on a Linux machine.
-
-1. To record performance data:
-
-```bash
-perf record -p `pidof a.out`
-```
-
-or to record for 10 secs:
-
-```bash
-perf record -p `pidof a.out` sleep 10
-```
-
-or to record with call graph ():
-
-```bash
-perf record -g -p `pidof a.out`
-```
-
-2) To analyze the recorded data
-
-```bash
-perf report --stdio
-perf report --stdio --sort=dso -g none
-perf report --stdio -g none
-perf report --stdio -g
-```
-
-**This is an example of profiling a test program**
-
-1. I run my test program (c++):
-
-```bash
-./my_test 100000000
-```
-
-2. Then I record performance data of a running process:
-
-```bash
-perf record -g  -p `pidof my_test` -o ./my_test.perf.data sleep 30
-```
-
-3. Then I analyze load per module:
-
-```bash
-perf report --stdio -g none --sort comm,dso -i ./my_test.perf.data
-
-# Overhead  Command                 Shared Object
-# ........  .......  ............................
-#
-    70.06%  my_test  my_test
-    28.33%  my_test  libtcmalloc_minimal.so.0.1.0
-     1.61%  my_test  [kernel.kallsyms]
-```
-
-4. Then load per function is analyzed:
-
-```bash
-perf report --stdio -g none -i ./my_test.perf.data | c++filt
-
-# Overhead  Command                 Shared Object                       Symbol
-# ........  .......  ............................  ...........................
-#
-    29.30%  my_test  my_test                       [.] f2(long)
-    29.14%  my_test  my_test                       [.] f1(long)
-    15.17%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator new(unsigned long)
-    13.16%  my_test  libtcmalloc_minimal.so.0.1.0  [.] operator delete(void*)
-     9.44%  my_test  my_test                       [.] process_request(long)
-     1.01%  my_test  my_test                       [.] operator delete(void*)@plt
-     0.97%  my_test  my_test                       [.] operator new(unsigned long)@plt
-     0.20%  my_test  my_test                       [.] main
-     0.19%  my_test  [kernel.kallsyms]             [k] apic_timer_interrupt
-     0.16%  my_test  [kernel.kallsyms]             [k] _spin_lock
-     0.13%  my_test  [kernel.kallsyms]             [k] native_write_msr_safe
-
-  ...
-```
-
-5. Then call chains are analyzed:
-
-```bash
-perf report --stdio -g graph -i ./my_test.perf.data | c++filt
-
-# Overhead  Command                 Shared Object                       Symbol
-# ........  .......  ............................  ...........................
-#
-    29.30%  my_test  my_test                       [.] f2(long)
-            |
-            --- f2(long)
-               |
-                --29.01%-- process_request(long)
-                          main
-                          __libc_start_main
-
-    29.14%  my_test  my_test                       [.] f1(long)
-            |
-            --- f1(long)
-               |
-               |--15.05%-- process_request(long)
-               |          main
-               |          __libc_start_main
-               |
-                --13.79%-- f2(long)
-                          process_request(long)
-                          main
-                          __libc_start_main
-
-  ...
-```
-
-So at this point you know where your program spends time.
-
-Also the simple way to do app profile is to use the `pstack` utility or `lsstack`.
-
-Other tool is Valgrind. So this is what I recommend. Run program first:
-
-```bash
-valgrind --tool=callgrind --dump-instr=yes -v --instr-atstart=no ./binary > tmp
-```
-
-Now when it works and we want to start profiling we should run in another window:
-
-```bash
-callgrind_control -i on
-```
-
-This turns profiling on. To turn it off and stop whole task we might use:
-
-```bash
-callgrind_control -k
-```
-
-Now we have some files named callgrind.out.* in current directory. To see profiling results use:
-
-```bash
-kcachegrind callgrind.out.*
-```
-
-I recommend in next window to click on **Self** column header, otherwise it shows that `main()` is most time consuming task.
-
-Useful resources:
-
-- [Tracing processes for fun and profit](http://techblog.rosedu.org/tracing-processes-for-fun-and-profit.html)
-
-</details>
-
-<details>
-<summary><b>You're on a security conference. Members debating about putting up the OpenBSD firewall on the core of the network. Go to the podium and express your opinion about this solution. What are the pros/cons and why? ***</b></summary><br>
-
-To be completed.
+An event-driven architecture uses events to trigger and communicate between decoupled services; an event being a change in state. Event-driven architecture allows for proper and easier decoupling of services, less resource usage by being push-based, and easier to add consumers to scale.
 
 </details>
 
@@ -4606,12 +3866,12 @@ So we have two ways of attempting to fix this, if you are already logged into th
 - execute a **SIGSTOP** command to stop the process: `killall -STOP -u user1`
 - if you can't run at the command line you will have to use `exec` to force it to run (due to processes all being used): `exec killall -STOP -u user1`
 
-With fork bombs your best method for this is preventing from being to big of an issue in the first place.
+With fork bombs, the best thing to do is preventing it from being an issue in the first place.
 
 </details>
 
 <details>
-<summary><b>How to recover deleted file held open e.g. by Apache?</b></summary><br>
+<summary><b>How do you recover a deleted file still held open, e.g. by Apache?</b></summary><br>
 
 If a file has been deleted but is still open, that means the file still exists in the filesystem (it has an inode) but has a hard link count of 0. Since there is no link to the file, you cannot open it by name. There is no facility to open a file by inode either.
 
@@ -4663,108 +3923,7 @@ You can also obtain this list by parsing the output of `lsof`, but it isn't simp
 </details>
 
 <details>
-<summary><b>You must remotely reinstall the system on one of the main servers. There is no access to the management console (e.g. iDRAC). How do you install Linux on disk, from and where other Linux exist and running?</b></summary><br>
-
-It is possible that the question should be: "_System installation from the level and in place of already other system working_".
-
-On the example of the Debian GNU/Linux distribution.
-
-1. Creating a working directory and downloading the system using the debootstrap tool.
-
-```bash
-_working_directory="/mnt/system"
-mkdir $_working_directory
-debootstrap --verbose --arch amd64 {wheezy|jessie} . http://ftp.en.debian.org/debian
-```
-
-2. Mounting sub-systems: `proc`, `sys`, `dev` and `dev/pts`.
-
-```bash
-for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
-```
-
-3. Copy system backup for restore.
-
-```bash
-cp system_backup_22012015.tgz $_working_directory/mnt
-```
-
-However, it is better not to waste space and do it in a different way (assuming that the copy is in `/mnt/backup`):
-
-```bash
-_backup_directory="${_working_directory}/mnt/backup"
-mkdir $_backup_directory && mount --bind /mnt/backup $_backup_directory
-```
-
-4. Chroot to "new" system.
-
-```bash
-chroot $_working_directory /bin/bash
-```
-
-5. Updating information about mounted devices.
-
-```bash
-grep -v rootfs /proc/mounts > /etc/mtab
-```
-
-6. In the "new" system, the next thing to do is mount the disk on which the "old" system is located (e.g. `/dev/sda1`).
-
-```bash
-_working_directory="/mnt/old_system"
-_backup_directory="/mnt/backup"
-mkdir $_working_directory && mount /dev/sda1 $_working_directory
-```
-
-7. Remove all files of the old system.
-
-```bash
-for i in $(ls | awk '!(/proc/ || /dev/ || /sys/ || /mnt/)') ; do rm -fr $i ; done
-```
-
-8. The next step is to restore the system from a backup.
-
-```bash
-tar xzvfp $_backup_directory/system_backup_22012015.tgz -C $_working_directory
-```
-
-9. And mount `proc`, `sys`, `dev` and `dev/pts` in a new working directory.
-
-```bash
-for i in proc sys dev dev/pts ; do mount -o bind $i $_working_directory/$i ; done
-```
-
-10. Install and update grub configuration.
-
-```bash
-chroot $_working_directory /bin/bash -c "grub-install --no-floppy --root-directory=/ /dev/sda"
-chroot $_working_directory /bin/bash -c "update-grub"
-```
-
-11. Unmount `proc`, `sys`, `dev` and `dev/pts` filesystems.
-
-```bash
-cd
-grep $_working_directory /proc/mounts | cut -f2 -d " " | sort -r | xargs umount -n
-```
-
-None of the available commands, i.e. `halt`, `shutdown` or `reboot`, will work. You need to reload the system configuration - to do this, use the **kernel debugger** (without the '**b**' option):
-
-```bash
-echo 1 > /proc/sys/kernel/sysrq
-echo reisu > /proc/sysrq-trigger
-```
-
-Of course, it is recommended to fully restart the machine in order to completely load the current system. To do this:
-
-```bash
-sync ; reboot -f
-```
-
-</details>
-
-<details>
-<summary><b>Rsync triggered Linux OOM killer on a single 50 GB file. How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
+<summary><b>Rsync triggered the Linux OOM killer on a single 50 GB file. How does the OOM killer decide which process to kill first? How to control this?</b></summary><br>
 
 Major distribution kernels set the default value of `/proc/sys/vm/overcommit_memory` to zero, which means that processes can request more memory than is currently free in the system.
 
@@ -4832,7 +3991,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have a lot of sockets, hanging in <code>TIME_WAIT</code>. Your http service behind proxy serve a lot of small http requests. How to check and reduce <code>TIME_WAIT</code> sockets? ***</b></summary><br>
+<summary><b>You have a lot of sockets hanging in <code>TIME_WAIT</code>. Your http service behind proxy serve a lot of small http requests. How to check and reduce <code>TIME_WAIT</code> sockets? ***</b></summary><br>
 
 To be completed.
 
