@@ -75,7 +75,7 @@ When creating a pull request, please heed the following:
 ## Table of Contents
 
 | <b><u>The type of chapter</u></b>    | <b><u>Short description</u></b> |
-| :---            | :---         |
+| :---:            | :---         |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | Reasonably simple questions based on basic knowledge. |
 | :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5 years. |
@@ -121,14 +121,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are the differences between Unix, Linux, BSD, and GNU? ***</b></summary><br>
+<summary><b>In SQL, what is a Primary key? What implicit constraint does it have? ***</b></summary><br>
 
-*Pending rewrite*
-
-Useful resources:
-
-- [What is the difference between Unix, Linux, BSD and GNU? (original)](https://unix.stackexchange.com/questions/104714/what-is-the-difference-between-unix-linux-bsd-and-gnu)
-- [The Great Debate: Is it Linux or GNU/Linux?](https://www.howtogeek.com/139287/the-great-debate-is-it-linux-or-gnulinux/)
+A primary key is a combination of fields which uniquely specify a row. A Unique key constraint uniquely identified each record in the database. This provides uniqueness for the column or set of columns. This is a special kind of unique key, and it has implicit NOT NULL constraint. It means, Primary key values cannot be NULL.
 
 </details>
 
@@ -226,32 +221,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you get a list of logged-in users?</b></summary><br>
+<summary><b>In SQL, how do you restrict your query to a certain number of rows, aside from using specific <code>where</code> clauses? ***</b></summary><br>
 
-For a summary of logged-in users, including each login of a username, the terminal users are attached to, the date/time they logged in, and possibly the computer from which they are making the connection, enter:
-
-```bash
-# It uses /var/run/utmp and /var/log/wtmp files to get the details.
-who
-```
-
-For extensive information, including username, terminal, IP number of the source computer, the time the login began, any idle time, process CPU cycles, job CPU cycles, and the currently running command, enter:
-
-```bash
-# It uses /var/run/utmp, and their processes /proc.
-w
-```
-
-Also important for displays a list of last logged in users, enter:
-
-```bash
-# It uses /var/log/wtmp.
-last
-```
-
-Useful resources:
-
-- [4 Ways to Identify Who is Logged-In on Your Linux System](https://www.thegeekstuff.com/2009/03/4-ways-to-identify-who-is-logged-in-on-your-linux-system/)
+To be completed.
 
 </details>
 
@@ -311,9 +283,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? ***</b></summary><br>
+<summary><b>How can you reduce load time of a dynamic website?</b></summary><br>
 
-To be completed.
+- website optimization
+- compressed files
+- Apache/Nginx tuning
+- server-side "caching" (Squid, Varnish, Redis)
+- external caching (e.g. Cloudflare)
 
 </details>
 
@@ -437,11 +413,12 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain the file content commands along with the description.</b></summary><br>
+<summary><b>Explain a few commands to read files without editing them.</b></summary><br>
 
 - `head`: to check the starting of a file.
 - `tail`: to check the ending of the file. It is the reverse of head command.
 - `cat`: used to view, create, concatenate the files.
+- `tac`: same as `cat` but the contents are shown starting from the bottom
 - `more`: used to display the text in the terminal window in pager form.
 - `less`: used to view the text in the backward direction and also provides single line movement.
 
@@ -565,12 +542,10 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Many basic maintenance tasks require you to edit config files. Explain ways to undo the changes you make.</b></summary><br>
+<summary><b>Many basic maintenance or troubleshooting tasks require you to edit config files. Explain ways to undo the changes you make.</b></summary><br>
 
-- manually backup of a file before editing (with brace expansion like this: `cp filename{,.orig}`)
-- manual copy of the directory structure where file is stored (e.g. `cp`, `rsync` or `tar`)
-- make a backup of original file in your editor (e.g. set rules in your editor configuration file)
-- the best solution is to use `git` (or any other version control) to keep track of configuration files (e.g. `etckeeper` for `/etc` directory)
+- manually make a copy of the file or entire directory before editing using tools such as cp or tar
+- for more permanent changes, the best solution is to use version control such as git to keep track of changes
 
 Useful resources:
 
@@ -885,7 +860,7 @@ To be completed.
 <details>
 <summary><b>What is the smallest IPv4 subnet that can be applied to a network containing up to 200 devices? ***</b></summary><br>
 
-
+To be completed.
 
 Useful resources:
 
@@ -976,6 +951,17 @@ Useful resources:
 ###### Cyber Security Questions
 
 <details>
+<summary><b>What makes a password very strong? ***</b></summary><br>
+
+To be completed.
+
+Useful resources:
+- [Password Strength](https://xkcd.com/936/)
+- [Short complex password, or long dictionary passphrase?](https://security.stackexchange.com/questions/6095/xkcd-936-short-complex-password-or-long-dictionary-passphrase)
+
+</details>
+
+<details>
 <summary><b>What is a Security Misconfiguration?</b></summary><br>
 
 **Security misconfiguration** is a vulnerability when a device/application/network is configured in a way which can be exploited by an attacker to take advantage of it. This can be as simple as leaving the default username/password unchanged or too simple for device accounts etc.
@@ -999,6 +985,29 @@ Useful resources:
 - [SSH password vs. key authentication](https://security.stackexchange.com/questions/33381/ssh-password-vs-key-authentication)
 
 </details>
+
+<details>
+<summary><b>Define the three major terms in cybersecurity (Confidentiality, Integrity, and Availability). ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>What is the difference between threats, vulnerabilities, and attacks? ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Describe Threat Modeling. ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<br>
 
 ### :diamond_shape_with_a_dot_inside: <a name="proficient-sysadmin">Proficient Sysadmin</a>
 
@@ -1257,16 +1266,11 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is umask? How do you set it permanently for a user?</b></summary><br>
+<summary><b>What is umask? Describe a scenario where you might need to change it for a user. ***</b></summary><br>
 
 On Linux and other Unix-like operating systems, new files are created with a default set of permissions. Specifically, a new file's permissions may be restricted in a specific way by applying a permissions "mask" called the `umask`. The `umask` command is used to set this mask, or to show you its current value.
 
-Permanently change (set e.g. `umask 02`):
-
-- `~/.profile`
-- `~/.bashrc`
-- `~/.zshrc`
-- `~/.cshrc`
+To be completed.
 
 Useful resources:
 
@@ -1275,49 +1279,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain the differences among the following umask values: 000, 002, 022, 027, 077, and 277.</b></summary><br>
+<summary><b>In SQL, how can you combine rows from two or more tables, based on a related column between them? ***</b></summary><br>
 
-<table style="width:100%">
-  <tr>
-    <th>Umask</th>
-    <th>File result</th>
-    <th>Directory result</th>
-  </tr>
-  <tr>
-    <td>000</td>
-    <td>666 rw- rw- rw-</td>
-    <td>777 rwx rwx rwx</td>
-  </tr>
- <tr>
-    <td>002</td>
-    <td>664 rw- rw- r--</td>
-    <td>775 rwx rwx r-x</td>
-  </tr>
-  <tr>
-    <td>022</td>
-    <td>644 rw- r-- r--</td>
-    <td>755 rwx r-x r-x</td>
-  </tr>
-<tr>
-    <td>027</td>
-    <td>640 rw- r-- ---</td>
-    <td>750 rwx r-x ---</td>
-  </tr>
-<tr>
-    <td>077</td>
-    <td>600 rw---- ---</td>
-    <td>700 rwx --- ---</td>
-  </tr>
-<tr>
-    <td>277</td>
-    <td>400 r-- --- ---</td>
-    <td>500 r-x --- ---</td>
-  </tr>
-</table>
-
-Useful resources:
-
-- [What is Umask and How To Setup Default umask Under Linux?](https://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html)
+To be completed.
 
 </details>
 
@@ -1349,15 +1313,13 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How does the sticky bit work? The <code>SUID/GUID</code> is the same?</b></summary><br>
+<summary><b>How does the sticky bit work? Is <code>SUID/GUID</code> is the same?</b></summary><br>
 
-This is probably one of my most irksome things that people mess up all the time. The **SUID/GUID** bit and the **sticky-bit** are 2 completely different things.
-
-If you do a `man chmod` you can read about the **SUID** and **sticky-bits**.
+The **SUID/GUID** bit and the **sticky-bit** are 2 completely different things.
 
 **SUID/GUID**
 
-What the above man page is trying to say is that the position that the x bit takes in the rwxrwxrwx for the user octal (1st group of rwx) and the group octal (2nd group of rwx) can take an additional state where the x becomes an s. When this occurs this file when executed (if it's a program and not just a shell script) will run with the permissions of the owner or the group of the file.
+The position that the x bit takes in the rwxrwxrwx for the user octal (1st group of rwx) and the group octal (2nd group of rwx) can take an additional state where the x becomes an s. When this occurs this file when executed (if it's a program and not just a shell script) will run with the permissions of the owner or the group of the file.
 
 So if the file is owned by root and the **SUID** bit is turned on, the program will run as root. Even if you execute it as a regular user. The same thing applies to the **GUID** bit.
 
@@ -1420,33 +1382,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What does <code>LC_ALL=C</code> before command do? In what cases it will be useful?</b></summary><br>
+<summary><b>In SQL, what is the difference between <code>REPLACE</code> and <code>INSERT</code>? ***</b></summary><br>
 
-`LC_ALL` is the environment variable that overrides all the other localisation settings. This sets all `LC_` type variables at once to a specified locale.
-
-The main reason to set `LC_ALL=C` before command is that fine to simply get English output (general change the locale used by the command).
-
-On the other hand, also important is to increase the speed of command execution with `LC_ALL=C` e.g. `grep` or `fgrep`. Using the `LC_ALL=C` locale increased our performance and brought command execution time down.
-
-For example, if you set `LC_ALL=en_US.utf8` your system opened multiple files from the `/usr/lib/locale` directory. For `LC_ALL=C` a minimum amount of open and read operations is performed.
-
-If you want to restore all your normal (original) locale settings for the session:
-
-```bash
-LC_ALL=
-```
-
-If `LC_ALL` does not work, try using `LANG` (if that still does not work, try `LANGUAGE`):
-
-```bash
-LANG=C date +%A
-Monday
-```
-
-Useful resources:
-
-- [What does LC_ALL=C do? (original)](https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do)
-- [Speed up grep searches with LC_ALL=C](https://www.inmotionhosting.com/support/website/ssh/speed-up-grep-searches-with-lc-all)
+To be completed.
 
 </details>
 
@@ -1547,13 +1485,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What steps will be taken by init when you run <code>telinit 1</code> from run level 3? What will be the final result of this? If you use <code>telinit 6</code> instead of <code>reboot</code> command your server will be restarted? ***</b></summary><br>
+<summary><b>How do you change system runlevels? What are some reasons you would need to? ***</b></summary><br>
 
 To be completed.
-
-Useful resources:
-
-- [What differences it will make, if i use “telinit 6” instead of “reboot” command to restart my computer?](https://unix.stackexchange.com/questions/434560/what-differences-it-will-make-if-i-use-telinit-6-instead-of-reboot-command)
 
 </details>
 
@@ -1587,6 +1521,15 @@ To set the kernel parameters in Unix-like, first edit the file `/etc/sysctl.conf
 Useful resources:
 
 - [How to Change Kernel Runtime Parameters in a Persistent and Non-Persistent Way](https://www.tecmint.com/change-modify-linux-kernel-runtime-parameters/)
+
+</details>
+
+<details>
+<summary><b>What is the best way to remove a directory named<code>-rf</code>? Explain the issue. ***</b></summary><br>
+
+- <code>rm -- -fr</code>
+- <code>rm ./-rf</code>
+- <code>perl -le 'unlink("-fr");'</code>
 
 </details>
 
@@ -1717,7 +1660,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>To LVM or not to LVM. What benefits does it provide?</b></summary><br>
+<summary><b>What benefits does LVM provide?</b></summary><br>
 
 - LVM makes it quite easy to move file systems around
 - you can extend a volume group onto a new physical volume
@@ -2086,9 +2029,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>You have added several aliases to <code>.profile</code>. How to reload shell without exit?</b></summary><br>
+<summary><b>You have added several aliases to <code>.bash_profile</code>. How can you reload shell without exiting?</b></summary><br>
 
-The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Also good (but other) solution is `. ~/.profile`.
+The best way is `exec $SHELL -l` because `exec` replaces the current process with a new one. Another solution is to simply source the file `. ~/.profile`.
 
 Useful resources:
 
@@ -2149,63 +2092,31 @@ ldd /bin/ls
 </details>
 
 <details>
-<summary><b>You have the task of sync the testing and production environments. What steps will you take?</b></summary><br>
+<summary><b>What is the difference between a container and a VM? Mention some benefits of each. ***</b></summary><br>
 
-It's easy to get dragged down into bikeshedding about cloning environments and miss the real point:
+To be completed.
 
-- only production is production
+Below are the advantages of containerization over virtualization:
 
-and every time you deploy there you are testing a unique combination of deploy code + software + environment.
-
-Every once in a while a good solution is regular cloning of the production servers to create testing servers. You can create instances with an exact copy of your production environment under a dev/test with snapshots, for example:
-
-- generate a snapshot of production
-- copy the snapshot to staging (or other)
-- create a new disk using this snapshot
-
-Sure, you can spin up clones of various system components or entire systems, and capture real traffic to replay offline (the gold standard of systems testing). But many systems are too big, complex, and cost-prohibitive to clone.
-
-Before environment synchronization a good way is keeping track of every change that you make to the testing environment and provide a way for propagating this to the production environment, so that you do not skip any step and do it as smoothly as possible.
-
-Also structure comparison tool or deploy scripts that update the testing environment from production environment is a good solution.
-
-**Presync tasks**
-
-First of all is informing developers and clients about not making changes on the test environment (if possible, disabling test domains that target this environment or set static pages with information about synchronization).
-
-It is also important to make backup/snapshots of both environments.
-
-**Database servers**
-
-- sync/update system version (e.g. packages)
-- create dump file from database on production db server
-- import dump file on testing db server
-- if necessary, syncs login permissions, roles, database permissions, open connections to the database and other
-
-**Web/App servers**
-
-- sync/update system version (e.g. packages)
-- if necessary, updated kernel parameters, firewall rules and other
-- sync/update configuration files of all running/important services
-- sync/update user accounts (e.g. permissions) and their home directories
-- deploy project from git/svn repository
-- sync/update important directories existing in project, e.g. **static**, **asset** and other
-- sync/update permissions for project directory
-- remove/update all webhooks
-- update cron jobs
-
-**Others tasks**
-
-- updated configurations of load balancers for testing domains and specific urls
-- updated configurations of queues, session and storage instances
+containers provide real-time provisioning and scalability but VMs provide slow provisioning
+containers are lightweight when compared to VMs
+VMs have limited performance when compared to containers
+containers have better resource utilization compared to VMs
 
 Useful resources:
 
-- [Keeping testing and production server environments clean, in sync, and consistent](https://stackoverflow.com/questions/639668/keeping-testing-and-production-server-environments-clean-in-sync-and-consisten)
+- [RedHat: Containers vs VMs](https://www.redhat.com/en/topics/containers/containers-vs-vms)
 
 </details>
 
 ###### Network Questions
+
+<details>
+<summary><b>What is Boot to LAN?</b></summary><br>
+
+Boot to LAN is most often used when you are doing a fresh install on a system. What you would do is setup a network-based installer capable of network-booting via PXE. Boot to LAN enables this by allowing a pre-boot environment to look for a DHCP server and connect to the broadcasting network installation server. Environments that have very large numbers of systems more often than not have the capability of pushing out images via the network. This reduces the amount of hands-on time that is required on each system, and keeps the installs more consistent.
+
+</details>
 
 <details>
 <summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
@@ -2572,6 +2483,13 @@ To be completed.
 ###### Cyber Security Questions
 
 <details>
+<summary><b>Explain the four types of access control. ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
 <summary><b>What are some golden rules for reducing the impact of hacked system.</b></summary><br>
 
 1) **The principle of least privilege**
@@ -2695,6 +2613,8 @@ Abiding by a set of standards set by a government/Independent party/organisation
 **Hashing** is a form of cryptographic security which differs from **encryption** whereas **encryption** is a two step process used to first encrypt and then decrypt a message, **hashing** condenses a message into an irreversible fixed-length value, or hash.
 
 </details>
+
+<br>
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
@@ -3179,11 +3099,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Getting <code>Too many Open files</code> error for Postgres. How do you resolve it?</b></summary><br>
+<summary><b>You have just discovered a server you manage for the company you work at has been hacked. Go through the steps of what you do and recover from this.</b></summary><br>
 
-Fixed the issue by reducing `max_files_per_process` e.g. to 200 from default 1000. This parameter is in `postgresql.conf` file and this sets the maximum number of simultaneously open files allowed to each server subprocess.
-
-Usually people start to edit `/etc/security/limits.conf` file, but forget that this file only apply to the actively logged in users through the PAM system.
+To be completed.
 
 </details>
 
@@ -3274,31 +3192,20 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is the easiest, safest and most portable way to remove <code>-rf</code> directory entry?</b></summary><br>
+<summary><b>MySQL replication for one Slave is failing. How can you troubleshoot the issue? ***</b></summary><br>
 
-They're effective but not optimally portable:
+Useful resources:
 
-- <code>rm -- -fr</code>
-- <code>perl -le 'unlink("-fr");'</code>
-
-People who go on about shell command line quoting and character escaping are almost as dangerous as those who simply don't even recognize why a file name like that poses any problem at all.
-
-The most portable solution:
-
-```bash
-rm ./-fr
-```
+- [MySQL: Troubleshooting Replication](https://dev.mysql.com/doc/mysql-replication-excerpt/8.0/en/replication-problems.html)
 
 </details>
 
 ###### Network Questions
 
-
-
 <details>
-<summary><b>What is the difference between an authoritative and a nonauthoritative answer to a DNS query? ***</b></summary><br>
+<summary><b>What is ARP?</b></summary><br>
 
-An authoritative DNS query answer comes from the server that contains the zone files for the domain queried. This is the name server that the domain administrator set up the DNS records on. A nonauthoriative answer comes from a name server that does not host the domain zone files (for example, a commonly used name server has the answer cached such as Google's 8.8.8.8 or OpenDNS 208.67.222.222).
+ARP, or Address Resolution Protocol can be likened to DNS for MAC Addresses. Standard DNS allows for the mapping of human-friendly URLs to IP addresses, while ARP allows for the mapping of IP addresses to MAC addresses. In this way it lets systems go from a regular domain name down to the actual piece of hardware it resides upon.
 
 </details>
 
@@ -3340,12 +3247,7 @@ Useful resources:
 
 </details>
 
-<details>
-<summary><b>Explore the current MTA configuration at your site. What are some of the special features of the MTA that are in use? ***</b></summary><br>
 
-To be completed.
-
-</details>
 
 <details>
 <summary><b>Is it possible to have SSL certificate for IP address, not domain name?</b></summary><br>
@@ -3543,56 +3445,6 @@ If there is a cookie set, then the browser sends the following in its request he
 </details>
 
 <details>
-<summary><b>You should rewrite POST with payload to an external API but the POST requests loose the parameters passed on the URL. How to fix this problem (e.g. in Nginx) and what are the reasons for this behavior?</b></summary><br>
-
-The issue is that external redirects will never resend **POST** data. This is written into the HTTP spec (check the `3xx` section). Any client that does do this is violating the spec.
-
-**POST** data is passed in the body of the request, which gets dropped if you do a standard redirect.
-
-Look at this:
-
-```
-   +-------------------------------------------+-----------+-----------+
-   |                                           | Permanent | Temporary |
-   +-------------------------------------------+-----------+-----------+
-   | Allows changing the request method from   | 301       | 302       |
-   | POST to GET                               |           |           |
-   | Does not allow changing the request       | 308       | 307       |
-   | method from POST to GET                   |           |           |
-   +-------------------------------------------+-----------+-----------+
-```
-
-You can try with the HTTP status code **307**, a RFC compliant browser should repeat the post request. You just need to write a Nginx rewrite rule with HTTP status code **307** or **308**:
-
-```bash
-location / {
-    proxy_pass              http://localhost:80;
-    client_max_body_size    10m;
-}
-
-location /api {
-    # HTTP 307 only for POST method.
-    if ($request_method = POST) {
-        return 307 https://api.example.com?request_uri;
-    }
-
-    # You can keep this for non-POST requests.
-    rewrite ^ https://api.example.com?request_uri permanent;
-
-    client_max_body_size    10m;
-}
-```
-
-HTTP Status code **307** or **308** should be used instead of **301** because it changes the request method from **POST** to **GET**.
-
-Useful resources:
-
-- [Redirection on Apache (Maintain POST params)](https://stackoverflow.com/questions/17295085/redirection-on-apache-maintain-post-params)
-- [Why doesn't HTTP have POST redirect?](https://softwareengineering.stackexchange.com/questions/99894/why-doesnt-http-have-post-redirect)
-
-</details>
-
-<details>
 <summary><b>You need to block several IPs from the same subnet. What is the most efficient way for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
 
 If you have a system with thousands of routes defined in the routing table and nothing in the iptables rules than it might actually be more efficient to input an iptables rule.
@@ -3642,20 +3494,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How can you reduce load time of a dynamic website?</b></summary><br>
+<summary><b>What types of DNS cache are being checked when you type example.com in your browser and press return?</b></summary><br>
 
-- webpage optimization
-- cached web pages
-- quality web hosting
-- compressed text files
-- apache/nginx tuning
-
-</details>
-
-<details>
-<summary><b>What types of dns cache working when you type api.example.com in your browser and press return?</b></summary><br>
-
-Browser checks if the domain is in its cache (to see the DNS Cache in Chrome, go to `chrome://net-internals/#dns`). When this cache fails, it simply asks the OS to resolve the domain.
+Browser checks if the domain is in its cache. When this cache fails, it simply asks the OS to resolve the domain.
 
 The OS resolver has it's own cache which it will check. If it fails this, it resorts to asking the OS configured DNS servers.
 
@@ -3668,23 +3509,6 @@ Useful resources:
 - [What happens when...](https://github.com/alex/what-happens-when)
 - [DNS Explained - How Your Browser Finds Websites](https://scotch.io/tutorials/dns-explained-how-your-browser-finds-websites)
 - [Firefox invalidate dns cache](https://stackoverflow.com/questions/13063496/firefox-invalidate-dns-cache)
-
-</details>
-
-<details>
-<summary><b>What is the difference between <code>Cache-Control: max-age=0</code> and <code>Cache-Control: no-cache</code>?</b></summary><br>
-
-**When sent by the origin server**
-
-`max-age=0` simply tells caches (and user agents) the response is stale from the get-go and so they SHOULD revalidate the response (e.g. with the If-Not-Modified header) before using a cached copy, whereas, `no-cache` tells them they MUST revalidate before using a cached copy.
-
-In other words, caches may sometimes choose to use a stale response (although I believe they have to then add a Warning header), but `no-cache` says they're not allowed to use a stale response no matter what. Maybe you'd want the SHOULD-revalidate behavior when baseball stats are generated in a page, but you'd want the MUST-revalidate behavior when you've generated the response to an e-commerce purchase.
-
-**When sent by the user agent**
-
-If a user agent sends a request with `Cache-Control: max-age=0` (aka. "end-to-end revalidation"), then each cache along the way will revalidate its cache entry (e.g. with the If-Not-Modified header) all the way to the origin server. If the reply is then 304 (Not Modified), the cached entity can be used.
-
-On the other hand, sending a request with `Cache-Control: no-cache` (aka. "end-to-end reload") doesn't revalidate and the server MUST NOT use a cached copy when responding.
 
 </details>
 
@@ -3779,18 +3603,6 @@ Nagios follows the below given procedure to do that:
 </details>
 
 <details>
-<summary><b>What are the advantages that Containerization provides over Virtualization?</b></summary><br>
-
-Below are the advantages of containerization over virtualization:
-
-- containers provide real-time provisioning and scalability but VMs provide slow provisioning
-- containers are lightweight when compared to VMs
-- VMs have limited performance when compared to containers
-- containers have better resource utilization compared to VMs
-
-</details>
-
-<details>
 <summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. ***</b></summary><br>
 
 To be completed.
@@ -3839,6 +3651,8 @@ The `$ID` indicates the type of encryption, the `$SALT` is a random string (up t
 As **security policy** defines the security objectives and the security framework of an organisation. A **process** is a detailed step by step how to document that specifies the exact action which will be necessary to implement important security mechanism. **Guidelines** are recommendations which can be customized and used in the creation of procedures.
 
 </details>
+
+<br>
 
 ## <a name="extra-knowledge">Extra Knowledge</a>
 
