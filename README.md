@@ -75,8 +75,8 @@ When creating a pull request, please heed the following:
 | :---         | :---         |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | Reasonably simple questions based on basic knowledge. |
-| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5 years. |
-| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | Advanced questions which may be open-ended, require actual experience to fully understand,<br> or are unique scenarios. |
+| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5<br> years. |
+| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | Advanced questions which may be open-ended, require actual experience<br> to fully understand, or are unique scenarios. |
 | <b>[Extra Knowledge](#extra-knowledge)</b> |
 
 <br>
