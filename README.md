@@ -43,15 +43,13 @@ This repo is not meant to be a list of facts to memorize and not knowing all the
 
 :traffic_light: &nbsp;If you find something which doesn't make sense, or something doesn't seem right, **please make a pull request** and please add valid and well-reasoned explanations about your changes or comments.
 
+<br>
 
 ### Contributing
 
-If you would like to support this project, have an interesting idea how to improve the operation of this tool, or if you found some errors - fork this, add your fixes, and add a pull request of your branch to the **master branch**.
+If you would like to answer questions or you found an error - fork the repo, add your fixes, and submit a pull request.
 
 #### Using the issue tracker
-
-The [issue tracker](https://github.com/dfuentes87/linux-sysadmin-questions/issues) is
-the preferred channel for bug reports, features requests and submitting pull requests, but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal tech support requests.
 
@@ -62,9 +60,8 @@ the preferred channel for bug reports, features requests and submitting pull req
 
 When creating a pull request, please heed the following:
 
-- Base your code on the latest master branch.
-- Code review may ensue in order to help shape your proposal
-- Explain the problem and your proposed solution in detail
+- For new answers: try to give an objective, clear, and concise response, including an example if appropriate.
+- For changes to answers: explain why you believe the current answer is incorrect and a better response and/or solution. 
 
 <br>
 
@@ -75,11 +72,11 @@ When creating a pull request, please heed the following:
 ## Table of Contents
 
 | <b><u>The type of chapter</u></b>    | <b><u>Short description</u></b> |
-| :---:            | :---         |
+| :---         | :---         |
 | <b>[General Knowledge](#general-knowledge)</b> ||
 | :small_orange_diamond: [Junior SysAdmin](#junior-sysadmin) | Reasonably simple questions based on basic knowledge. |
-| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during your first 5 years. |
-| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | Advanced questions which may be open-ended, require actual experience to fully understand, or are unique scenarios. |
+| :small_orange_diamond: [Proficient SysAdmin](#proficient-sysadmin) | Mid-level questions that you will probably come across during <br>your first 5 years. |
+| :small_orange_diamond: [Senior SysAdmin](#senior-sysadmin) | Advanced questions which may be open-ended, require actual <br>experience to fully understand, or are unique scenarios. |
 | <b>[Extra Knowledge](#extra-knowledge)</b> |
 
 <br>
