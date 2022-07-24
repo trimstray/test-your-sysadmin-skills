@@ -35,7 +35,7 @@
 
 :information_source: &nbsp;This project contains over **200** questions and answers that can be used to test your general knowledge as a **Linux System Administrator**, or to ask someone interviewing for such a position.
 
-This repo is not meant to be a list of facts to memorize and not knowing all these does not mean you are not a good Linux SysAdmin. It is instead a general guide of knowledge most should understand, even if you have to look up the exact answer once in a while (e.g. Redis port or the flags to properly use tar)
+These questions are not meant to be a list of arbitrary facts, such as port numbers that you'll maybe deal with once a year, situations or commands that are rarely encountered, or issues specific to a certain application. Instead these are geared towards real world situations that are common and good to know in general, however not knowing all these does not mean you are not a good Linux SysAdmin.
 
 :heavy_check_mark: &nbsp;The answers are only **examples** and do not exhaust the whole topic. Most of them contains **useful resources** for a deeper understanding.
 
@@ -88,7 +88,7 @@ When creating a pull request, please heed the following:
 ###### System Questions
 
 <details>
-<summary><b>Give some examples of Unix or Linux distributions. Describe what makes them unique.</b></summary>
+<summary><b>Give some examples of Unix or Linux distributions. Describe what makes them unique.</b></summary><br>
 
 - Red Hat Enterprise Linux
 
@@ -225,9 +225,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the advantage of executing the running processes in the background? How can you do that?</b></summary><br>
+<summary><b>What is the advantage of executing a process in the background? How can you do that?</b></summary><br>
 
-The most significant advantage of executing the running process in the background is that you can do any other task simultaneously while other processes are running in the background. So, more processes can be completed in the background while you are working on different processes. It can be achieved by adding a special character `&` at the end of the command.
+The advantage of executing processes in the background is that you can do any other task simultaneously. You can do this by adding the special character `&` at the end of the command.
 
 Generally applications that take too long to execute and doesn't require user interaction are sent to background so that we can continue our work in terminal.
 
@@ -458,7 +458,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How can I chmod files using the <code>find</code> command? ***</b></summary>
+<summary><b>How can I chmod files using the <code>find</code> command? ***</b></summary><br>
 
 To be completed.
 
@@ -674,9 +674,9 @@ Useful resources:
 <details>
 <summary><b>What are the most important things to understand about the OSI model?</b></summary><br>
 
-The most important things to understand about the **OSI** (or any other) model are:
+The most important things to understand about the **OSI** model are:
 
-- we can divide up the protocols into layers
+- we can divide up protocols into layers
 - layers provide encapsulation
 - layers provide abstraction
 - layers decouple functions from others
@@ -690,7 +690,14 @@ Useful resources:
 <details>
 <summary><b>What is the difference between TCP and UDP? When is one better used than the other? ***</b></summary><br>
 
-To be completed.
+| TCP | UDP |
+| :--- | :--- |
+| TCP stands for Transmission Control Protocol | UDP is stands for User Datagram Protocol or Universal Datagram Protocol |
+| Once the connection is setup, data can be sent bi-directional, i.e. TCP is a connection oriented protocol | UDP is connectionless, simple protocol. Using UDP, messages are sent as packets |
+| TCP is slower than UDP | UDP is faster compared to TCP |
+| TCP is used for applications where time is not critical part of data transmission | UDP is suitable for the applications which require fast transmission of data and time is crucial in this case. |
+| TCP transmission occurs in a sequential manner | UDP does not guarantee data is received in the same order when it reaches the destination |
+| TCP tracks the data sent to ensure no data loss during data transmission | UDP does not ensure whether receiver receives packets are not. If packets are misses then they are just lost |
 
 </details>
 
@@ -709,7 +716,6 @@ Using the commands `netstat -nr`, `route -n` or `ip route show` we can see the d
 Useful resources:
 
 - [How to check routes (routing table) in linux](https://howto.lintel.in/how-to-check-routes-routing-table-in-linux/)
-- [FreeBSD Set a Default Route/Gateway](https://www.cyberciti.biz/faq/freebsd-setup-default-routing-with-route-command/)
 
 </details>
 
@@ -798,7 +804,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the difference between a Switch and a Router? ***</b></summary><br>
+<summary><b>What is the difference between Hub, Switch, and Router? ***</b></summary><br>
 
 To be completed.
 
@@ -1011,6 +1017,87 @@ To be completed.
 ###### System Questions
 
 <details>
+<summary><b>Difference between <code>nohup</code>, <code>disown</code>, and <code>&</code>. What happens when using all together?</b></summary><br>
+
+- `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
+- `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a **SIGHUP**. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
+- `nohup` disconnects the process from the terminal, redirects its output to `nohup.out` and shields it from **SIGHUP**. One of the effects (the naming one) is that the process won't receive any sent **SIGHUP**. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful)
+
+If you use all three together, the process is running in the background, is removed from the shell's job control and is effectively disconnected from the terminal.
+
+Useful resources:
+
+- [Difference between nohup, disown and & (original)](https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and)
+
+</details>
+
+<details>
+<summary><b>Pick two different computer languages. Describe when you would use one over the other. ***</b></summary><br>
+
+To be completed.
+
+</details>
+
+<details>
+<summary><b>Why is the <code>mktemp</code> command useful? Present an example of use.</b></summary><br>
+
+<code>mktemp</code> randomizes the name. It is very important from the security point of view.
+
+Just imagine that you do something like:
+
+```bash
+echo "random_string" > /tmp/temp-file
+```
+
+in your root-running script. And someone (who has read your script) does
+
+```bash
+ln -s /etc/passwd /tmp/temp-file
+```
+
+The <code>mktemp</code> command could help you in this situation:
+
+```bash
+TEMP=$(mktemp /tmp/temp-file.XXXXXXXX)
+echo "random_string" > ${TEMP}
+```
+
+Now this <code>ln /etc/passwd</code> attack will not work.
+
+</details>
+
+<details>
+<summary><b>In what circumstance can <code>df</code> and <code>du</code> disagree on available disk space? How do you solve it?</b></summary><br>
+
+`du` checks usage of directories, but `df` checks free'd inodes, and files can be held open and take space after they're deleted.
+
+**Solution 1**
+
+Check for files on located under mount points. Frequently if you mount a directory (say a sambafs) onto a filesystem that already had a file or directories under it, you lose the ability to see those files, but they're still consuming space on the underlying disk.
+
+I've had file copies while in single user mode dump files into directories that I couldn't see except in single usermode (due to other directory systems being mounted on top of them).
+
+**Solution 2**
+
+On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. Apache (httpd) keeping large log files in memory which had been deleted from disk.
+
+This was tracked down by running `lsof | grep "/var" | grep deleted` where `/var` was the partition I needed to clean up.
+
+The output showed lines like this:
+
+```
+httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
+```
+
+The situation was then resolved by restarting Apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
+
+Useful resources:
+
+- [Why du and df display different values in Linux and Unix](https://linuxshellaccount.blogspot.com/2008/12/why-du-and-df-display-different-values.html)
+
+</details>
+
+<details>
 <summary><b>Every command fails with <code>command not found</code>. How can you trace the source of the error and resolve it?</b></summary><br>
 
 It looks that at one point or another are overwriting the default `PATH` environment variable. The type of errors you have, indicates that `PATH` does not contain e.g. `/bin`, where the commands (including bash) reside.
@@ -1080,7 +1167,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is SELinux and how does it work? ***</b></summary>
+<summary><b>What is SELinux and how does it work? ***</b></summary><br>
 
 To be completed.
 
@@ -1186,7 +1273,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary>
+<summary><b>How do you permanently set <code>$PATH</code> on Linux/Unix? Why is this variable so important? ***</b></summary><br>
 
 To be completed.
 
@@ -1386,7 +1473,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How do you make a server or application high availabile? ***</b></summary>
+<summary><b>How do you make a server or application high availabile? ***</b></summary><br>
 
 To be completed.
 
@@ -2037,17 +2124,33 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What is this UID 0 toor account? Have I been compromised?</b></summary><br>
+<summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
 
-**toor** is an alternative superuser account, where toor is root spelled backwards. It is intended to be used with a non-standard shell so the default shell for root does not need to change.
+**Hide the topology and characteristics of your back-end servers**
 
-This is important as shells which are not part of the base distribution, but are instead installed from ports or packages, are installed in `/usr/local/bin` which, by default, resides on a different file system. If root's shell is located in `/usr/local/bin` and the file system containing `/usr/local/bin`) is not mounted, root will not be able to log in to fix a problem and will have to reboot into single-user mode in order to enter the path to a shell.
+The **reverse proxy server** can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.
 
-Some people use toor for day-to-day root tasks with a non-standard shell, leaving root, with a standard shell, for single-user mode or emergencies. By default, a user cannot log in using toor as it does not have a password, so log in as root and set a password for toor before using it to login.
+**Allows transparent maintenance of backend servers**
+
+Changes you make to servers running behind a reverse proxy are going to be completely transparent to your end users.
+
+**Load Balancing**
+
+The reverse proxy will then enforce a load balancing algorithm like round robin, weighted round robin, least connections, weighted least connections, or random, to distribute the load among the servers in the cluster.
+
+When a server goes down, the system will automatically failover to the next server up and users can continue with their secure file transfer activities.
+
+**SSL offloading/termination**
+
+Handles incoming HTTPS connections, decrypting the requests and passing unencrypted requests on to the web servers.
+
+**IP masking**
+
+Using a single ip but different URLs to route to different back end servers.
 
 Useful resources:
 
-- [The root account (and toor)](https://administratosphere.wordpress.com/2007/10/04/the-root-account-and-toor/)
+- [The Benefits of a Reverse Proxy](https://dzone.com/articles/benefits-reverse-proxy)
 
 </details>
 
@@ -2106,6 +2209,13 @@ Useful resources:
 
 </details>
 
+<details>
+<summary><b>Why wouldn't hostnames resolve on your server and how would you troubleshoot the issue? ***</b></summary><br>
+
+To be completed.
+
+</details>
+
 ###### Network Questions
 
 <details>
@@ -2116,33 +2226,13 @@ Boot to LAN is most often used when you are doing a fresh install on a system. W
 </details>
 
 <details>
-<summary><b>What are the advantages of using a reverse proxy server?</b></summary><br>
+<summary><b>What is the difference between the Internet, Intranet, and Extranet?</b></summary><br>
 
-**Hide the topology and characteristics of your back-end servers**
+The terminologies Internet, Intranet, and Extranet are used to define how the applications in the network can be accessed. They use similar TCP/IP technology but differ in terms of access levels for each user inside the network and outside the network.
 
-The **reverse proxy server** can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.
-
-**Allows transparent maintenance of backend servers**
-
-Changes you make to servers running behind a reverse proxy are going to be completely transparent to your end users.
-
-**Load Balancing**
-
-The reverse proxy will then enforce a load balancing algorithm like round robin, weighted round robin, least connections, weighted least connections, or random, to distribute the load among the servers in the cluster.
-
-When a server goes down, the system will automatically failover to the next server up and users can continue with their secure file transfer activities.
-
-**SSL offloading/termination**
-
-Handles incoming HTTPS connections, decrypting the requests and passing unencrypted requests on to the web servers.
-
-**IP masking**
-
-Using a single ip but different URLs to route to different back end servers.
-
-Useful resources:
-
-- [The Benefits of a Reverse Proxy](https://dzone.com/articles/benefits-reverse-proxy)
+- Internet: Applications are accessed by anyone from any location using the web.
+- Intranet: It allows limited access to users in the same organization.
+- Extranet: External users are allowed or provided with access to use the network application of the organization.
 
 </details>
 
@@ -2171,7 +2261,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Why wouldn't hostnames resolve on your server and how would you troubleshoot the issue? ***</b></summary><br>
+<summary><b>What is a VPN? Describe briefly how it works. ***</b></summary><br>
 
 To be completed.
 
@@ -2480,6 +2570,23 @@ To be completed.
 ###### Cyber Security Questions
 
 <details>
+<summary><b>What are salted hashes?</b></summary><br>
+
+**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
+
+For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
+
+The encrypted passwords in `/etc/shadow` file are stored in the following format:
+
+```bash
+$ID$SALT$ENCRYPTED
+```
+
+The `$ID` indicates the type of encryption, the `$SALT` is a random string (up to 16 characters) and `$ENCRYPTED` is a password’s hash.
+
+</details>
+
+<details>
 <summary><b>Explain the four types of access control. ***</b></summary><br>
 
 To be completed.
@@ -2616,6 +2723,13 @@ Abiding by a set of standards set by a government/Independent party/organisation
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
 ###### System Questions
+
+<details>
+<summary><b>How would you remotely provision a blank server in a datacenter to be a LAMP stack web server with predefined users and configurations? Assume all datacenter hardware has been setup and networking side of things is also ready (e.g. VLAN tag). ***</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>What is the difference between EXT4, XFS, and ZFS? ***</b></summary><br>
@@ -2798,13 +2912,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Pick two different computer languages. Describe when you would use one over the other. ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
 <summary><b>What if <code>kill -9</code> does not work? Describe exceptions for which the use of SIGKILL is insufficient.</b></summary><br>
 
 `kill -9` (`SIGKILL`) always works, provided you have the permission to kill the process. Basically either the process must be started by you and not be setuid or setgid, or you must be root. There is one exception: even root cannot send a fatal signal to PID 1 (the init process).
@@ -2836,21 +2943,6 @@ Useful resources:
 - [How to kill a process in Linux if kill -9 has no effect](https://serverfault.com/questions/458261/how-to-kill-a-process-in-linux-if-kill-9-has-no-effect)
 - [When should I not kill -9 a process?](https://unix.stackexchange.com/questions/8916/when-should-i-not-kill-9-a-process)
 - [SIGTERM vs. SIGKILL](https://major.io/2010/03/18/sigterm-vs-sigkill/)
-
-</details>
-
-<details>
-<summary><b>Difference between <code>nohup</code>, <code>disown</code>, and <code>&</code>. What happens when using all together?</b></summary><br>
-
-- `&` puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion
-- `disown` removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a **SIGHUP**. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running
-- `nohup` disconnects the process from the terminal, redirects its output to `nohup.out` and shields it from **SIGHUP**. One of the effects (the naming one) is that the process won't receive any sent **SIGHUP**. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful)
-
-If you use all three together, the process is running in the background, is removed from the shell's job control and is effectively disconnected from the terminal.
-
-Useful resources:
-
-- [Difference between nohup, disown and & (original)](https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and)
 
 </details>
 
@@ -2991,70 +3083,6 @@ To be completed.
 </details>
 
 <details>
-<summary><b>What is the meaning of the error <code>maxproc limit exceeded by uid %i ...</code> in FreeBSD?</b></summary><br>
-
-The FreeBSD kernel will only allow a certain number of processes to exist at one time. The number is based on the **kern.maxusers** variable.
-
-**kern.maxusers** also affects various other in-kernel limits, such as network buffers. If the machine is heavily loaded, increase **kern.maxusers**. This will increase these other system limits in addition to the maximum number of processes.
-
-To adjust the **kern.maxusers** value, see the File/Process Limits section of the Handbook. While that section refers to open files, the same limits apply to processes.
-
-If the machine is lightly loaded but running a very large number of processes, adjust the **kern.maxproc** tunable by defining it in `/boot/loader.conf`.
-
-</details>
-
-<details>
-<summary><b>The client reports that his site received a grade B in the ssllabs scanner. Prepare a checklist of best practice for ssl configuration. ***</b></summary><br>
-
-Useful resources:
-
-- [Getting a Perfect SSL Labs Score](https://michael.lustfield.net/nginx/getting-a-perfect-ssl-labs-score)
-- [17 small suggestions how to improve ssllabs.com/ssltest/](https://community.qualys.com/thread/14023)
-- [How do you score A+ with 100 on all categories on SSL Labs test with Let's Encrypt and Nginx?](https://stackoverflow.com/questions/41930060/how-do-you-score-a-with-100-on-all-categories-on-ssl-labs-test-with-lets-encry)
-
-</details>
-
-<details>
-<summary><b>Explain differences between <code>2>&-</code>, <code>2>/dev/null</code>, <code>|&</code>, <code>&>/dev/null</code>, and <code>>/dev/null 2>&1</code>.</b></summary><br>
-
-- a **number 1** = standard out (i.e. `STDOUT`)
-- a **number 2** = standard error (i.e. `STDERR`)
-- if a number isn't explicitly given, then **number 1** is assumed by the shell (bash)
-
-First let's tackle the function of these.
-
-`2>&-`
-
-The general form of this one is `M>&-`, where **"M"** is a file descriptor number. This will close output for whichever file descriptor is referenced, i.e. **"M"**.
-
-`2>/dev/null`
-
-The general form of this one is `M>/dev/null`, where **"M"** is a file descriptor number. This will redirect the file descriptor, **"M"**, to `/dev/null`.
-
-`2>&1`
-
-The general form of this one is `M>&N`, where **"M"** & **"N"** are file descriptor numbers. It combines the output of file descriptors **"M"** and **"N"** into a single stream.
-
-`|&`
-
-This is just an abbreviation for `2>&1 |`. It was added in Bash 4.
-
-`&>/dev/null`
-
-This is just an abbreviation for `>/dev/null 2>&1`. It redirects file descriptor 2 (`STDERR`) and descriptor 1 (`STDOUT`) to `/dev/null`.
-
-`>/dev/null`
-
-This is just an abbreviation for `1>/dev/null`. It redirects file descriptor 1 (`STDOUT`) to `/dev/null`.
-
-Useful resources:
-
-- [Difference between 2>&-, 2>/dev/null, |&, &>/dev/null and >/dev/null 2>&1](https://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21)
-- [Chapter 20. I/O Redirection](http://www.tldp.org/LDP/abs/html/io-redirection.html)
-
-</details>
-
-<details>
 <summary><b>Load averages are above 30 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How can this be debugged and fixed?</b></summary><br>
 
 Requests which involve disk I/O can be slowed greatly if cpu(s) needs to wait on the disk to read or write data. I/O Wait, is the percentage of time the CPU has to wait on disk.
@@ -3103,69 +3131,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>In what circumstance can <code>df</code> and <code>du</code> disagree on available disk space? How do you solve it?</b></summary><br>
-
-`du` checks usage of directories, but `df` checks free'd inodes, and files can be held open and take space after they're deleted.
-
-**Solution 1**
-
-Check for files on located under mount points. Frequently if you mount a directory (say a sambafs) onto a filesystem that already had a file or directories under it, you lose the ability to see those files, but they're still consuming space on the underlying disk.
-
-I've had file copies while in single user mode dump files into directories that I couldn't see except in single usermode (due to other directory systems being mounted on top of them).
-
-**Solution 2**
-
-On the other hand `df -h` and `du -sh` could mismatched by about 50% of the hard disk size. This was caused by e.g. Apache (httpd) keeping large log files in memory which had been deleted from disk.
-
-This was tracked down by running `lsof | grep "/var" | grep deleted` where `/var` was the partition I needed to clean up.
-
-The output showed lines like this:
-
-```
-httpd     32617    nobody  106w      REG        9,4 1835222944     688166 /var/log/apache/awstats_log (deleted)
-```
-
-The situation was then resolved by restarting Apache (`service httpd restart`) and cleared of disk space, by allowing the locks on deleted files to be cleared.
-
-Useful resources:
-
-- [Why du and df display different values in Linux and Unix](https://linuxshellaccount.blogspot.com/2008/12/why-du-and-df-display-different-values.html)
-
-</details>
-
-<details>
 <summary><b>You have a LAMP stack with Nginx as a reverse proxy. Going to the site served by this web server results in a 500 Internal Server Error. List the possible causes for this issue.</b></summary><br>
 
 To be completed.
-
-</details>
-
-
-<details>
-<summary><b>Why is the <code>mktemp</code> command useful? Present an example of use.</b></summary><br>
-
-<code>mktemp</code> randomizes the name. It is very important from the security point of view.
-
-Just imagine that you do something like:
-
-```bash
-echo "random_string" > /tmp/temp-file
-```
-
-in your root-running script. And someone (who has read your script) does
-
-```bash
-ln -s /etc/passwd /tmp/temp-file
-```
-
-The <code>mktemp</code> command could help you in this situation:
-
-```bash
-TEMP=$(mktemp /tmp/temp-file.XXXXXXXX)
-echo "random_string" > ${TEMP}
-```
-
-Now this <code>ln /etc/passwd</code> attack will not work.
 
 </details>
 
@@ -3189,7 +3157,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>MySQL replication for one Slave is failing. How can you troubleshoot the issue? ***</b></summary><br>
+<summary><b>MySQL replication for one Slave is failing. How do you troubleshoot the issue? ***</b></summary><br>
 
 Useful resources:
 
@@ -3198,6 +3166,17 @@ Useful resources:
 </details>
 
 ###### Network Questions
+
+<details>
+<summary><b>Is it better to set <code>-j REJECT</code> or <code>-j DROP</code> in iptables? ***</b></summary><br>
+
+To be completed.
+
+Useful resources:
+- [https://unix.stackexchange.com/questions/109459/is-it-better-to-set-j-reject-or-j-drop-in-iptables](https://unix.stackexchange.com/questions/109459/is-it-better-to-set-j-reject-or-j-drop-in-iptables)
+- [Drop versus Reject](https://www.chiark.greenend.org.uk/~peterb/network/drop-vs-reject)
+
+</details>
 
 <details>
 <summary><b>What is ARP?</b></summary><br>
@@ -3244,24 +3223,6 @@ Useful resources:
 
 </details>
 
-
-
-<details>
-<summary><b>Is it possible to have SSL certificate for IP address, not domain name?</b></summary><br>
-
-It is possible (but rarely used) as long as it is a public IP address.
-
-An SSL certificate is typically issued to a Fully Qualified Domain Name (FQDN) such as `https://www.domain.com`. However, some organizations need an SSL certificate issued to a public IP address. This option allows you to specify a public IP address as the Common Name in your Certificate Signing Request (CSR). The issued certificate can then be used to secure connections directly with the public IP address (e.g. `https://1.1.1.1`.).
-
-According to the CA Browser forum, there may be compatibility issues with certificates for IP addresses unless the IP address is in both the commonName and subjectAltName fields. This is due to legacy SSL implementations which are not aligned with RFC 5280, notably, Windows OS prior to Windows 10.
-
-Useful resources:
-
-- [Are SSL certificates bound to the servers ip address?](https://stackoverflow.com/questions/1095780/are-ssl-certificates-bound-to-the-servers-ip-address)
-- [SSL certificate for a public IP address?](https://serverfault.com/questions/193775/ssl-certificate-for-a-public-ip-address)
-
-</details>
-
 <details>
 <summary><b>How do you do load testing and capacity planning for websites? ***</b></summary><br>
 
@@ -3276,27 +3237,9 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Developer reports a problem with connectivity to the remote service. Use <code>/dev</code> for troubleshooting.</b></summary><br>
+<summary><b>A client of the company you work at reports their server has stopped receiving data from your server. Go through the steps of troubleshooting the issue both on your end and your communications with them.</b></summary><br>
 
-```bash
-# <host> - set remote host
-# <port> - set destination port
-
-# 1
-timeout 1 bash -c "</dev/tcp/<host>/<port>" >/dev/null 2>&1 ; echo $?
-
-# 2
-timeout 1 bash -c 'cat < /dev/null > </dev/tcp/<host>/<port>' ; echo $?
-
-# 2
-&> echo > "</dev/tcp/<host>/<port>"
-```
-
-Useful resources:
-
-- [Advanced Bash-Scripting Guide - /dev](http://www.tldp.org/LDP/abs/html/devref1.html#DEVTCP)
-- [/dev/tcp as a weapon](https://securityreliks.wordpress.com/2010/08/20/devtcp-as-a-weapon/)
-- [Test from shell script if remote TCP port is open](https://stackoverflow.com/questions/4922943/test-from-shell-script-if-remote-tcp-port-is-open)
+To be completed.
 
 </details>
 
@@ -3442,51 +3385,14 @@ If there is a cookie set, then the browser sends the following in its request he
 </details>
 
 <details>
-<summary><b>You need to block several IPs from the same subnet. What is the most efficient way for the system to traverse the iptables rule set or the black-hole route?</b></summary><br>
+<summary><b>In the context of mail servers, is :fail: or :blackhole: better? ***</b></summary><br>
 
-If you have a system with thousands of routes defined in the routing table and nothing in the iptables rules than it might actually be more efficient to input an iptables rule.
-
-In most systems however the routing table is fairly small, in cases like this it is actually more efficient to use null routes. This is especially true if you already have extensive iptables rules in place.
-
-Assuming you're blocking based on source address and not destination, then doing the **DROP** in **raw/PREROUTING** would work well as you would essentially be able to drop the packet before any routing decision is made.
-
-Remember however that iptables rules are essentially a linked-list and for optimum performance when blocking a number of addresses you should use an `ipset`.
-
-On the other hand if blocking by destination, there is likely little difference between blocking at the routing table vs iptables **EXCEPT** if source IPs are spoofed in which case the blackholed entries may consume routing cache resources; in this case, **raw/PREROUTING** remains preferable.
-
-Your outgoing route isn't going to matter until you try to send a packet back to the attacker. By that time you will have already incurred most of the cost of socket setup and may even have a thread blocking waiting for the kernel to conclude you have no route to host, plus whatever error handling your server process does when it concludes there's a network problem.
-
-iptables or another firewall will allow you to block the incoming traffic and discard it before it reaches the daemon process on your server. It seems clearly superior in this use case.
-
-```bash
-iptables -A INPUT -s 192.168.200.0/24 -j DROP
-```
-
-When you define a route on a Linux/Unix system it tells the system in order to communicate with the specified IP address you will need to route your network communication to this specific place.
-
-When you define a null route it simply tells the system to drop the network communication that is designated to the specified IP address. What this means is any TCP based network communication will not be able to be established as your server will no longer be able to send an SYN/ACK reply. Any UDP based network communication however will still be received; however your system will no longer send any response to the originating IP.
-
-While iptables can accept tens of thousands of rules in a chain, the chains are walked sequentially until a match is found on every packet. So, lots of rules can lead to the system spending amazing amounts of CPU time walking through the rules.
-
-The routing rules are much simpler than iptables. With iptables, a match can be based on many different variables including protocols, source and destination packets, and even other packets that were sent before the current packet.
-
-In routing, all that matters is the remote IP address, so it's very easy to optimize. Also, many systems have a lot of routing rules. A typical system may only have 5 or 10, but something that's acting as a BGP router can have tens of thousands. So, for a very long time there have been extensive optimizations in selecting the right route for a particular packet.
-
-In less technical terms this means your system will receive data from the attackers but no longer respond to it.
-
-```bash
-ip route add blackhole 192.168.200.0/24
-```
-
-or
-
-```bash
-ip route add 192.168.200.0/24 via 127.0.0.1
-```
+To be completed.
 
 Useful resources:
 
-- [The difference between iptables DROP and null-routing.](https://www.tummy.com/blogs/2006/07/27/the-difference-between-iptables-drop-and-null-routing/)
+- [Why you should use :fail:](https://www.configserver.com/free/fail.html)
+- [Should I let email bounce or send it to a blackhole?](https://serverfault.com/questions/607568/should-i-let-email-bounce-or-send-it-to-a-blackhole)
 
 </details>
 
@@ -3510,97 +3416,28 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>What are the security risks of setting <code>Access-Control-Allow-Origin</code>?</b></summary><br>
+<summary><b>What are the layers in OSI Reference Models? Describe each layer briefly.</b></summary><br>
 
-By responding with <code>Access-Control-Allow-Origin: *</code>, the requested resource allows sharing with every origin. This basically means that any site can send an XHR request to your site and access the server’s response which would not be the case if you hadn’t implemented this CORS response.
+a) <b>Physical Layer (Layer 1)</b>: It converts data bits into electrical impulses or radio signals. Example: Ethernet.
 
-So any site can make a request to your site on behalf of their visitors and process its response. If you have something implemented like an authentication or authorization scheme that is based on something that is automatically provided by the browser (cookies, cookie-based sessions, etc.), the requests triggered by the third party sites will use them too.
+b) <b>Data Link Layer (Layer 2)</b>: At the Data Link layer, data packets are encoded and decoded into bits and it provides a node to node data transfer. This layer also detects the errors that occurred at Layer 1.
 
-</details>
+c) <b>Network Layer (Layer 3)</b>: This layer transfers variable length data sequence from one node to another node in the same network. This variable-length data sequence is also known as “Datagrams”.
 
-<details>
-<summary><b>Create a single-use TCP or UDP proxy with <code>netcat</code>.</b></summary><br>
+d) <b>Transport Layer (Layer 4)</b>: It transfers data between nodes and also provides acknowledgment of successful data transmission. It keeps track of transmission and sends the segments again if the transmission fails.
 
-```bash
-### TCP -> TCP
-nc -l -p 2000 -c "nc [ip|hostname] 3000"
+e) <b>Session Layer (Layer 5)</b>: This layer manages and controls the connections between computers. It establishes, coordinates, exchange and terminates the connections between local and remote applications.
 
-### TCP -> UDP
-nc -l -p 2000 -c "nc -u [ip|hostname] 3000"
+f) <b>Presentation Layer (Layer 6)</b>: It is also called as “Syntax Layer”. Layer 6 transforms the data into the form in which the application layer accepts.
 
-### UDP -> UDP
-nc -l -u -p 2000 -c "nc -u [ip|hostname] 3000"
-
-### UDP -> TCP
-nc -l -u -p 2000 -c "nc [ip|hostname] 3000"
-```
-
-</details>
-
-<details>
-<summary><b>Explain 3 techniques for avoiding firewalls with <code>nmap</code>.</b></summary><br>
-
-**Use Decoy addresses**
-
-```bash
-# Generates a random number of decoys.
-nmap -D RND:10 [target]
-
-# Manually specify the IP addresses of the decoys.
-nmap -D decoy1,decoy2,decoy3
-```
-
-In this type of scan you can instruct Nmap to spoof packets from other hosts.In the firewall logs it will be not only our IP address but also and the IP addresses of the decoys so it will be much harder to determine from which system the scan started.
-
-**Source port number specification**
-
-```bash
-nmap --source-port 53 [target]
-```
-
-A common error that many administrators are doing when configuring firewalls is to set up a rule to allow all incoming traffic that comes from a specific port number.The <code>--source-port</code> option of Nmap can be used to exploit this misconfiguration.Common ports that you can use for this type of scan are: 20, 53 and 67.
-
-**Append Random Data**
-
-```bash
-nmap --data-length 25 [target]
-```
-
-Many firewalls are inspecting packets by looking at their size in order to identify a potential port scan.This is because many scanners are sending packets that have specific size.In order to avoid that kind of detection you can use the command <code>--data-length</code> to add additional data and to send packets with different size than the default.
-
-**TCP ACK Scan**
-
-```bash
-nmap -sA [target]
-```
-
-It is always good to send the ACK packets rather than the SYN packets because if there is any active firewall working on the remote computer then because of the ACK packets the firewall cannot create the log, since firewalls treat ACK packet as the response of the SYN packet.
-
-Useful resources:
-
-- [Nmap - Techniques for Avoiding Firewalls](https://pentestlab.blog/2012/04/02/nmap-techniques-for-avoiding-firewalls/)
+g) <b>Application Layer (Layer 7)</b>: This is the last layer of the OSI Reference Model and is the one that is close to the end-user. Both end-user and application layer interacts with the software application. This layer provides services for email, file transfer, etc.
 
 </details>
 
 ###### Devops Questions
 
 <details>
-<summary><b>Explain how Flap Detection works in Nagios?</b></summary><br>
-
-**Flapping** occurs when a service or host changes state too frequently, this causes lot of problem and recovery notifications.
-
-Once you have defined **Flapping**, explain how Nagios detects **Flapping**. Whenever Nagios checks the status of a host or service, it will check to see if it has started or stopped flapping.
-
-Nagios follows the below given procedure to do that:
-
-- storing the results of the last 21 checks of the host or service analyzing the historical check results and determine where state changes/transitions occur
-- using the state transitions to determine a percent state change value (a measure of change) for the host or service
-- comparing the percent state change value against low and high flapping thresholds
-
-</details>
-
-<details>
-<summary><b>Is the way of distributing Docker apps (e.g. Apache, MySQL) from Docker Hub is good for production environments? Describe security problems and possible solutions. ***</b></summary><br>
+<summary><b>In what situations is Docker and Kubernetes viable for production? When are they not the proper solutions for production? ***</b></summary><br>
 
 To be completed.
 
@@ -3624,23 +3461,6 @@ To be completed.
 </details>
 
 ###### Cyber Security Questions
-
-<details>
-<summary><b>What are salted hashes?</b></summary><br>
-
-**Salt** at its most fundamental level is random data. When a properly protected password system receives a new password, it will create a hashed value for that password, create a new random salt value, and then store that combined value in its database. This helps defend against dictionary attacks and known hash attacks.
-
-For example, if a user uses the same password on two different systems, if they used the same hashing algorithm, they could end up with the same hash value. However, if even one of the systems uses salt with its hashes, the values will be different.
-
-The encrypted passwords in `/etc/shadow` file are stored in the following format:
-
-```bash
-$ID$SALT$ENCRYPTED
-```
-
-The `$ID` indicates the type of encryption, the `$SALT` is a random string (up to 16 characters) and `$ENCRYPTED` is a password’s hash.
-
-</details>
 
 <details>
 <summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
@@ -3809,6 +3629,30 @@ To be completed.
 Useful resources:
 
 - [How to reduce number of sockets in TIME_WAIT?](https://serverfault.com/questions/212093/how-to-reduce-number-of-sockets-in-time-wait)
+
+</details>
+
+<details>
+<summary><b>In context of an Operating System, what are Protection Rings? ***</b></summary><br>
+
+- [What are Rings in Operating Systems?](https://www.baeldung.com/cs/os-rings)
+- [Protecting Ring](https://en.wikipedia.org/wiki/Protection_ring)
+
+</details>
+
+<details>
+<summary><b>Is it possible to have SSL certificate for IP address, not domain name?</b></summary><br>
+
+It is possible (but rarely used) as long as it is a public IP address.
+
+An SSL certificate is typically issued to a Fully Qualified Domain Name (FQDN) such as `https://www.domain.com`. However, some organizations need an SSL certificate issued to a public IP address. This option allows you to specify a public IP address as the Common Name in your Certificate Signing Request (CSR). The issued certificate can then be used to secure connections directly with the public IP address (e.g. `https://1.1.1.1`.).
+
+According to the CA Browser forum, there may be compatibility issues with certificates for IP addresses unless the IP address is in both the commonName and subjectAltName fields. This is due to legacy SSL implementations which are not aligned with RFC 5280, notably, Windows OS prior to Windows 10.
+
+Useful resources:
+
+- [Are SSL certificates bound to the servers ip address?](https://stackoverflow.com/questions/1095780/are-ssl-certificates-bound-to-the-servers-ip-address)
+- [SSL certificate for a public IP address?](https://serverfault.com/questions/193775/ssl-certificate-for-a-public-ip-address)
 
 </details>
 
