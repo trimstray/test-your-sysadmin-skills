@@ -125,41 +125,6 @@ A primary key is a combination of fields which uniquely specify a row. A Unique 
 </details>
 
 <details>
-<summary><b>What is a CLI? Name some common or well-known CLI tools, tips, and hacks.</b></summary><br>
-
-**CLI** is an acronym for Command Line Interface or Command Language Interpreter. The command line is one of the most powerful ways to control your system/computer. In Unix like systems, **CLI** is the interface by which a user can type commands for the system to execute. The **CLI** is very powerful, but is not very error-tolerant.
-
-The **CLI** allows you to do manipulations with your system’s internals and with code in a much more fine-tuned way. It offers greater flexibility and control than a GUI regardless of what OS is used. Many programs that you might want to use in your software that are hosted on say Github also require running some commands on the **CLI** in order to get them running.
-
-**Common/Well-known tools**
-
-- `screen` - free terminal multiplexer, I can start a session and My terminals will be saved even when you connection is lost, so you can resume later or from home
-- `ssh` - the most valuable over-all command to learn, I can use it to do some amazing things:
-  * mount a file system over the internet with `sshfs`
-  * forward commands: runs against a `rsync` server with no `rsync` deamon by starting one itself via ssh
-  * run in batch files: I can redirect the output from the remote command and use it within local batch file
-- `vi/vim` - is the most popular and powerful text editor, it's universal, it's work very fast, even on large files
-- `bash-completion` - contains a number of predefined completion rules for shell
-
-**Tips & Hacks**
-
-- searches the command history with `CTRL + R`
-- `popd/pushd` and other shell builtins which allow you manipulate the directory stack
-- editing keyboard shortcuts like a `CTRL + U`, `CTRL + E`
-- combinations will be auto-expanded:
-  * `!*` - all arguments of last command
-  * `!!` - the whole of last command
-  * `!ssh` - last command starting with ssh
-
-Useful resources:
-
-- [Command Line Interface Definition](http://www.linfo.org/command_line_interface.html)
-- [What is your single most favorite command-line trick using Bash?](https://stackoverflow.com/questions/68372/what-is-your-single-most-favorite-command-line-trick-using-bash/69716)
-- [What are your favorite command line features or tricks?](https://unix.stackexchange.com/questions/6/what-are-your-favorite-command-line-features-or-tricks)
-
-</details>
-
-<details>
 <summary><b>What is BASH? ***</b></summary><br>
 
 *Pending rewrite*
@@ -1015,6 +980,18 @@ To be completed.
 ### :diamond_shape_with_a_dot_inside: <a name="proficient-sysadmin">Proficient Sysadmin</a>
 
 ###### System Questions
+
+<details>
+<summary><b>Explain briefly how Linux allows most of it's software to be updated without needing to reboot? Is it possible to update the kernel without rebooting?</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [How does Linux update without a reboot? - Quora ](https://www.quora.com/How-does-Linux-update-without-a-reboot)
+- [Updating Linux Kernel Without Reboots](https://blog.kernelcare.com/updating-linux-kernel-without-reboots-live-patching-tools-overview)
+
+</details>
 
 <details>
 <summary><b>Difference between <code>nohup</code>, <code>disown</code>, and <code>&</code>. What happens when using all together?</b></summary><br>
@@ -2487,24 +2464,6 @@ For example:
 </details>
 
 <details>
-<summary><b>Analyse web server log and show only <code>5xx</code> http codes. What external tools do you use?</b></summary><br>
-
-```bash
-tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
-```
-
-Examples of http/https log management tools:
-
-- **goaccess** - is an open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser
-- **graylog** - is a free and open-source log management platform that supports in-depth log collection and analysis
-
-Useful resources:
-
-- [Best Log Management Tools: 51 Useful Tools for Log Management, Monitoring, Analytics, and More](https://stackify.com/best-log-management-tools/)
-
-</details>
-
-<details>
 <summary><b>Explain four types of responses from firewall when scanning with <code>nmap</code>.</b></summary><br>
 
 There might be four types of responses:
@@ -2722,7 +2681,36 @@ Abiding by a set of standards set by a government/Independent party/organisation
 
 ### :diamond_shape_with_a_dot_inside: <a name="senior-sysadmin">Senior Sysadmin</a>
 
+<details>
+<summary><b>In the context of computing, what is Split-Brain and why is it a problem?</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [What is Split brain and why do you need to worry about it?](https://www.45drives.com/community/articles/what-is-split-brain/)
+
+</details>
+
+<details>
+<summary><b>What is Split-horizon DNS and how do you implement it?</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [What is Split-Horizon DNS?](https://splitdns.net/)
+
+</details>
+
 ###### System Questions
+
+<details>
+<summary><b>What are some keep elements to keep in mind when writing good documentation?</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>How would you remotely provision a blank server in a datacenter to be a LAMP stack web server with predefined users and configurations? Assume all datacenter hardware has been setup and networking side of things is also ready (e.g. VLAN tag). ***</b></summary><br>
@@ -2843,25 +2831,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Explain each system calls used for process management in Linux.</b></summary><br>
-
-There are some system calls for process management. These are as follows:
-
-- `fork()`: it is used to create a new process
-- `exec()`: it is used to execute a new process
-- `wait()`: it is used to make the process to wait
-- `exit()`: it is used to exit or terminate the process
-- `getpid()`: it is used to find the unique process ID
-- `getppid()`: it is used to check the parent process ID
-- `nice()`: it is used to bias the currently running process property
-
-Useful resources:
-
-- [System Calls](http://faculty.salina.k-state.edu/tim/ossg/Introduction/sys_calls.html)
-
-</details>
-
-<details>
 <summary><b>What does it mean to mount the root file system? ***</b></summary><br>
 
 To be completed.
@@ -2882,13 +2851,6 @@ To be completed.
 
 <details>
 <summary><b>What considerations come into play when designing a highly available application, both at the architecture level and the application level? ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>How would you break into a system? How would you prevent these attacks?</b></summary><br>
 
 To be completed.
 
@@ -3083,11 +3045,11 @@ To be completed.
 </details>
 
 <details>
-<summary><b>Load averages are above 30 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How can this be debugged and fixed?</b></summary><br>
+<summary><b>Load averages are above 30.00 on a server with 24 cores but CPU shows around 70 percent idle. One of the common causes of this condition is? How can this be debugged and fixed?</b></summary><br>
 
 Requests which involve disk I/O can be slowed greatly if cpu(s) needs to wait on the disk to read or write data. I/O Wait, is the percentage of time the CPU has to wait on disk.
 
-Lets looks at how we can confirm if disk I/O is slowing down application performance by using a few terminal command line tools (`top`, `atop` and `iotop`).
+First, attempt to confirm if disk I/O is slowing down application performance by using a few terminal command line tools (`top`, `atop` and `iotop`).
 
 Example of debug:
 
@@ -3224,19 +3186,6 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do you do load testing and capacity planning for websites? ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [How do you do load testing and capacity planning for web sites? (original)](https://serverfault.com/questions/350454/how-do-you-do-load-testing-and-capacity-planning-for-web-sites)
-- [Can you help me with my capacity planning?](https://serverfault.com/questions/384686/can-you-help-me-with-my-capacity-planning)
-- [How do you do load testing and capacity planning for databases?](https://serverfault.com/questions/350458/how-do-you-do-load-testing-and-capacity-planning-for-databases)
-
-</details>
-
-<details>
 <summary><b>A client of the company you work at reports their server has stopped receiving data from your server. Go through the steps of troubleshooting the issue both on your end and your communications with them.</b></summary><br>
 
 To be completed.
@@ -3244,143 +3193,9 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How do I measure request and response times at once using <code>curl</code>?</b></summary><br>
-
-`curl` supports formatted output for the details of the request (see the `curl` manpage for details, under `-w| -write-out 'format'`). For our purposes we’ll focus just on the timing details that are provided.
-
-1. Create a new file, `curl-format.txt`, and paste in:
-
-```bash
-    time_namelookup:  %{time_namelookup}\n
-       time_connect:  %{time_connect}\n
-    time_appconnect:  %{time_appconnect}\n
-   time_pretransfer:  %{time_pretransfer}\n
-      time_redirect:  %{time_redirect}\n
- time_starttransfer:  %{time_starttransfer}\n
-                    ----------\n
-         time_total:  %{time_total}\n
-```
-
-2. Make a request:
-
-```bash
-curl -w "@curl-format.txt" -o /dev/null -s "http://example.com/"
-```
-
-What this does:
-
-- `-w "@curl-format.txt"` - tells cURL to use our format file
-- `-o /dev/null` - redirects the output of the request to /dev/null
-- `-s` - tells cURL not to show a progress meter
-`http://example.com/` is the URL we are requesting. Use quotes particularly if your URL has "&" query string parameters
-
-</details>
-
-<details>
-<summary><b>You need to move ext4 journal on another disk/partition. What are the reasons for this? ***</b></summary><br>
-
-To be completed.
-
-Useful resources:
-
-- [ext4: using external journal to optimize performance](https://raid6.com.au/posts/fs_ext4_external_journal/)
-- [How to move an ext4 journal](https://unix.stackexchange.com/questions/278998/how-to-move-an-ext4-journal)
-
-</details>
-
-<details>
-<summary><b>Does having Varnish in front of your website/app mean you don't need to care about load balancing or redundancy?</b></summary><br>
-
-It depends. Varnish is a cache server, so its purpose is to cache contents and to act as a reverse proxy, to speed up retrieval of data and to lessen the load on the webserver.
-Varnish can be also configured as a load-balancer for multiple web servers, but if we use just one Varnish server, this will become our single point of failure on our infrastructure.
-
-A better solution to ensure load-balancing or redundancy will be a cluster of at least two Varnish instances, in active-active mode or active-passive mode.
-
-</details>
-
-<details>
-<summary><b>What are hits, misses, and hit-for-pass in Varnish Cache?</b></summary><br>
-
-A **hit** is a request which is successfully served from the cache, a **miss** is a request that goes through the cache but finds an empty cache and therefore has to be fetched from the origin, the **hit-for-pass** comes in when Varnish Cache realizes that one of the objects it has requested is uncacheable and will result in a pass.
-
-Useful resources:
-
-- [VCL rules for hits](https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html#vcl-vcl-hit)
-- [VCL rules for hit-for-pass](https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html#hit-for-pass)
-- [Example of the use](https://book.varnish-software.com/4.0/chapters/VCL_Basics.html#vcl-backend-response)
-
-</details>
-
-<details>
-<summary><b>What is a reasonable TTL for cached content given the following parameters? ***</b></summary><br>
-
-To be completed.
-
-</details>
-
-<details>
-<summary><b>Developer says: <i><code>htaccess</code> is full of magic and it should be used</i>. What is your opinion about using <code>htaccess</code> files? How has this effect on the web app</b></summary><br>
-
-`.htaccess` files were born out of an era when shared hosting was common­place:
-
-- sysadmins needed a way to allow multiple clients to access their server under different accounts, with different configurations for their web­sites.
-
-The `.htaccess` file allowed them to modify how Apache works without having access to the entire server. These files can reside in any and every directory in the directory tree of the website and provide features to the directory and the files and folders inside it.
-
-**It’s horrible for performance**
-
-For `.htaccess` to work Apache needs to check EVERY directory in the requested path for the existence of a `.htaccess` file and if it exists it reads EVERY one of them and parses it. This happens for EVERY request. Remember that the second you change that file, it’s effective. This is because Apache reads it every time.
-
-Every single request the web­server handles - even for the lowliest `.png` or `.css` file - causes Apache to:
-
-- look for a `.htaccess` file in the directory of the current request
-- then look for a `.htaccess` file in every directory from there up to the server root
-- coalesce all of these `.htaccess` files together
-- reconfigure the web­server using the new settings
-- finally, deliver the file
-
-Every web­page can generate dozens of requests. This is over­head you don’t need, and what’s more, it’s completely unnecessary.
-
-**Security and permission loss**
-
-Allowing individual users to modify the configuration of a server using `.htaccess` can cause security concerns if not taken care properly. If you add any directive in the `.htaccess` file, it will be considered as they are added to Apache configuration file.
-
-This means it may be possible for non-admins to write these files and thus 'undo' all of your security. If you need to do something that is temporary, `.htaccess` is a good place to do it, if you need to do something more permanent, just put it in your `/etc/apache/sites-available/site.conf` (or `httpd.conf` or whatever your server calls).
-
-**Summary**
-
-You should avoid using `.htaccess` files completely if you have access to httpd main server config file. If it worked in `.htaccess`, it will work in your virtual host `.conf` file as well.
-
-If you cannot avoid using `.htaccess` files, you should follow these rules.
-
-- use only one `.htaccess` file or as few as possible
-- place the `.htaccess` file in the site root directory
-- keep your `.htaccess` file short and simple
-
-Useful resources:
-
-- [Like Apache: .htaccess](https://www.nginx.com/resources/wiki/start/topics/examples/likeapache-htaccess/)
-- [Don't Use .htaccess Unless You Must](https://www.danielmorell.com/guides/htaccess-seo/basics/dont-use-htaccess-unless-you-must)
-
-</details>
-
-<details>
 <summary><b>What is SNI SSL and in which cases it is useful?</b></summary><br>
 
 To be completed.
-
-</details>
-
-<details>
-<summary><b>How are cookies passed in the HTTP protocol?</b></summary><br>
-
-The server sends the following in its response header to set a cookie field:
-
-`Set-Cookie:name=value`
-
-If there is a cookie set, then the browser sends the following in its request header:
-
-`Cookie:name=value`
 
 </details>
 
@@ -3443,24 +3258,25 @@ To be completed.
 
 </details>
 
-<details>
-<summary><b>Some of the common use cases of LXC and LXD come from the following requirements... Explain.</b></summary><br>
+###### Cyber Security Questions
 
-- the need for an isolated development environment without polluting your host machine
-- isolation within production servers and the possibility to run more than one service in its own container
-- a need to test things with more than one version of the same software or different operating system environments
-- experimenting with different and new releases of GNU/Linux distributions without having to install them on a physical host machine
-- trying out a software or development stack that may or may not be used after some playing around
-- installing many types of software in your primary development machine or production server and maintaining them on a longer run
-- doing a dry run of any installation or maintenance task before actually executing it on production machines
-- better utilization and provisioning of server resources with multiple services running for different users or clients
-- high-density virtual private server (VPS) hosting, where isolation without the cost of full virtualization is needed
-- easy access to host hardware from a container, compared to complicated access methods from virtual machines
-- multiple build environments with different customizations in place
+<details>
+<summary><b>Explain briefly how the Spectre vulnerability works.</b></summary><br>
+
+To be completed.
+
+Useful resources:
+
+- [Spectre (security vulnerability)](https://en.wikipedia.org/wiki/Spectre_(security_vulnerability))
 
 </details>
 
-###### Cyber Security Questions
+<details>
+<summary><b>How would you break into a system? How would you prevent these attacks?</b></summary><br>
+
+To be completed.
+
+</details>
 
 <details>
 <summary><b>What is the difference between policies, processes and guidelines?</b></summary><br>
