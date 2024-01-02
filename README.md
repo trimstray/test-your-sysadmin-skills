@@ -2315,7 +2315,7 @@ To be completed.
 </details>
 
 <details>
-<summary><b>A project manager needs a new SQL Server. What do you ask her/his? ***</b></summary><br>
+<summary><b>A project manager needs a new SQL Server. What do you ask her/him? ***</b></summary><br>
 
 I want the DBA to ask questions like:
 
@@ -4644,7 +4644,9 @@ To be completed.
 <details>
 <summary><b>How to find a domain based on the IP address? What techniques/tools can you use? ***</b></summary><br>
 
-To be completed.
+In Linux, `dig` can be used to perform a reverse DNS lookup, with the `-x` option allowed speficiation of the IP address. E.g.: `dig -x 8.8.8.8`.
+
+In Powershell, the 'Resolve-DnsName' cmdlet can be used with the `-name` provided being the IP address of the server. E.g.: `Resolve-DNSName -name 8.8.8.8`
 
 </details>
 
