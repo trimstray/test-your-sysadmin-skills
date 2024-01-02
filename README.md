@@ -4642,15 +4642,6 @@ To be completed.
 </details>
 
 <details>
-<summary><b>How to find a domain based on the IP address? What techniques/tools can you use? ***</b></summary><br>
-
-In Linux, `dig` can be used to perform a reverse DNS lookup, with the `-x` option allowed speficiation of the IP address. E.g.: `dig -x 8.8.8.8`.
-
-In Powershell, the 'Resolve-DnsName' cmdlet can be used with the `-name` provided being the IP address of the server. E.g.: `Resolve-DNSName -name 8.8.8.8`
-
-</details>
-
-<details>
 <summary><b>Is it possible to have SSL certificate for IP address, not domain name?</b></summary><br>
 
 It is possible (but rarely used) as long as it is a public IP address.
