@@ -488,15 +488,13 @@ Useful resource:
 </details>
 
 <details>
-<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? ***</b></summary><br>
+<summary><b>You typing <code>CTRL + C</code> but your script still running. How do you stop it? </b></summary><br>
 
-To be completed.
+In most cases, you can stop a running script by using the `CTRL + C` keyboard combination. This sends an interrupt signal (SIGINT) to the script, which terminates its execution. If this does not work and the script is still running, you can try using the `CTRL + \` combination, which sends a quit signal (SIGQUIT) to the script, which may terminate it immediately.
 
-Useful resources:
+Alternatively, if you are using a terminal or command line interface, you can try using the `kill` command to send a signal to the script process. You can find the process ID (PID) of the script by using the `ps` or `top` command, and then use `kill` with the PID to stop the script.
 
-- [How to kill a script running in terminal, without closing terminal (Ctrl + C doesn't work)? (original)](https://askubuntu.com/questions/520107/how-to-kill-a-script-running-in-terminal-without-closing-terminal-ctrl-c-doe)
-- [What's the difference between ^C and ^D for Unix/Mac OS X terminal?](https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal)
-
+In some cases, you may need to use the `kill -9` command to force the script to stop, as the regular kill command may not work if the script is stuck or not responding. The `-9` option sends a SIGKILL signal, which forces the process to stop immediately.
 </details>
 
 <details>
