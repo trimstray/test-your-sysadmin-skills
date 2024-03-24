@@ -349,7 +349,13 @@ Useful resources:
 <details>
 <summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? ***</b></summary><br>
 
-To be completed.
+`ps`: Lists information about processes.
+`top`: Provides a real-time view of processes and system resource usage.
+`htop`: Interactive process viewer with a user-friendly interface.
+`pgrep`: Searches for processes based on criteria like name or user.
+`pidof`: Finds the PID of a process by name.
+`pstree`: Displays processes in a hierarchical tree format.
+- **System Monitoring Tools** : Includes `sar`, `vmstat`, and `iostat` for system-wide statistics.
 
 </details>
 
