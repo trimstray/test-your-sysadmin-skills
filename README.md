@@ -398,7 +398,6 @@ You'd use `top/htop` for both. Using `free` and `vmstat` command we can display 
 Useful resources:
 
 - [How do I Find Out Linux CPU Utilization?](https://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html)
-- [16 Linux server monitoring commands you really need to know](https://www.hpe.com/us/en/insights/articles/16-linux-server-monitoring-commands-you-really-need-to-know-1703.html)
 
 </details>
 
