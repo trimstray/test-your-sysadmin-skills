@@ -349,8 +349,24 @@ Useful resources:
 <details>
 <summary><b>Before you can manage processes, you must be able to identify them. Which tools will you use? ***</b></summary><br>
 
-To be completed.
-
+ps - (process statement) is a no-brainer, it provides a snapshot of currently running process, we get information like PIDs, CPU usage, memory usage and more.
+```bash
+ps aux  # Show all processes with detailed information
+ps -ef  # Another format to show all processes
+```
+pidof is used to get the process ID (PID) of a running program by specifying its name.
+```bash
+pidof apache2  # Finds the PID of the Apache web server process
+```
+top provides a real-time view of all running processes. It allows users to filter and sort inofrmation
+```bash
+top
+```
+lsof provides list of open files and the processes that opened them. Since everything in a Linux is a file(even network sockets) this will be seful in identifying the processes that are using specific files or ports.
+```bash
+lsof /var/log/syslog  # Find the process that has the syslog file open
+lsof -i :80  # Find the process using port 80
+```
 </details>
 
 <details>
