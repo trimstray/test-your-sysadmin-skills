@@ -230,7 +230,7 @@ In the order of output:
 
 File permissions is displayed as following:
 
-- first character is `-` or `l` or `d`, `d` indicates a directory, a `-` represents a file, `l` is a symlink (or soft link) - special type of file
+- first character is `-` or `l` or `d`. `d` indicates a directory, a `-` represents a file, `l` is a symlink (or soft link) - special type of file
 - three sets of characters, three times, indicating permissions for owner, group and other:
   - `r` = readable
   - `w` = writable
@@ -2051,7 +2051,8 @@ Example of output:
 
 Useful resources:
 
-- [Question marks showing in ls of directory. IO errors too.](https://serverfault.com/questions/65616/question-marks-showing-in-ls-of-directory-io-errors-too)
+- [Question marks showing in
+of directory. IO errors too.](https://serverfault.com/questions/65616/question-marks-showing-in-ls-of-directory-io-errors-too)
 
 </details>
 
