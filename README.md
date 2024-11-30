@@ -519,10 +519,6 @@ Useful resources:
 - `more`: used to display the text in the terminal window in pager form.
 - `less`: used to view the text in the backward direction and also provides single line movement.
 
-Useful resources:
-
-- [Viewing text files from the shell prompt](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-viewingtext-terminal.html)
-
 </details>
 
 <details>
@@ -638,7 +634,6 @@ chmod a+x /path/to/file
 - `w` - for write permission
 
 Useful resources:
-- [How to Set File Permissions Using chmod](https://www.washington.edu/computing/unix/permissions.html)
 - [What does "chmod +x your_file_name" do and how do I use it?](https://askubuntu.com/questions/443789/what-does-chmod-x-filename-do-and-how-do-i-use-it)
 
 </details>
@@ -1124,10 +1119,6 @@ Operating at the network layer and transport layer of the TCP/IP protocol stack,
 - **source port (TCP or UDP header, transport layer)** - each end of a TCP or UDP network connection is bound to a port. TCP ports are separate and distinct from UDP ports. Ports numbered below 1024 are reserved – they have a specifically defined use. Ports numbered above 1024 (inclusive) are known as ephemeral ports. They can be used however a vendor chooses. For a list of "well known" ports, refer to RFP1700. The source port is a pseudo-randomly assigned ephemeral port number. Thus it is often not very useful to filter on the source port.
 - **destination port (TCP or UDP header, transport layer)** - the destination port number indicates a port that the packet is sent to. Each service on the destination host listens to a port. Some well-known ports that might be filtered are 20/TCP and 21/TCP - ftp connection/data, 23/TCP - telnet, 80/TCP - http, and 53/TCP - DNS zone transfers.
 - **connection status (TCP header, transport layer)** - the connection status tells whether the packet is the first packet of the network session. The ACK bit in the TCP header is set to “false” or 0 if this is the first packet in the session. It is simple to disallow a host from establishing a connection by rejecting or discarding any packets which have the ACK bit set to "false" or 0.
-
-Useful resources:
-
-- [Building Internet Firewalls - Packet Filtering](http://web.deu.edu.tr/static/oreily/networking/firewall/ch06_01.htm)
 
 </details>
 
@@ -2963,6 +2954,7 @@ Examples of http/https log management tools:
 Useful resources:
 
 - [Best Log Management Tools: 51 Useful Tools for Log Management, Monitoring, Analytics, and More](https://stackify.com/best-log-management-tools/)
+- [Top Log Management Tools: 60 Tools for Log Management: Including Open Source & Free Solutions](https://logit.io/blog/post/log-management-tools)
 
 </details>
 
@@ -3234,10 +3226,6 @@ This is a combination of the above two, where the key idea is that Operating Sys
 
 This is used by Microsoft's NT kernels, all the way up to the latest Windows version.
 
-Useful resources:
-
-- [An Introduction to Kernels. The Heart of Computing Devices. (original)](https://keetmalin.wixsite.com/keetmalin/single-post/2017/08/24/An-Introduction-to-Kernels-The-Heart-of-Computing-Devices)
-
 </details>
 
 <details>
@@ -3255,7 +3243,7 @@ export LD_LIBRARY_PATH="/list/of/library/paths:/another/path" ./program
 
 Useful resources:
 
-- [How to correctly use LD_LIBRARY_PATH](http://wiredrevolution.com/system-administration/how-to-correctly-use-ld_library_path)
+- [How to correctly use LD_LIBRARY_PATH](https://titanwolf.org/Network/Articles/Article?AID=b8d988da-eded-46c7-bea0-67412ba3a1e1)
 
 </details>
 
@@ -3486,7 +3474,6 @@ The interrupt handler must run quickly, because it's preventing any other interr
 Useful resources:
 
 - [How is an Interrupt handled in Linux? (original)](https://unix.stackexchange.com/questions/5788/how-is-an-interrupt-handled-in-linux)
-- [Interrupts and Interrupt Handlers](https://notes.shichao.io/lkd/ch7/)
 
 </details>
 
@@ -4976,10 +4963,6 @@ or
 ```bash
 ip route add 192.168.200.0/24 via 127.0.0.1
 ```
-
-Useful resources:
-
-- [The difference between iptables DROP and null-routing.](https://www.tummy.com/blogs/2006/07/27/the-difference-between-iptables-drop-and-null-routing/)
 
 </details>
 
