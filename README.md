@@ -568,7 +568,48 @@ Useful resources:
 <details>
 <summary><b>How do I <code>grep</code> recursively? Explain on several examples. ***</b></summary>
 
-To be completed.
+Recursive grep allows searching for a pattern inside directories and subdirectories.
+
+Basic usage:
+
+`grep -r "pattern" /path/to/directory`
+
+Examples:
+
+Search for "error" in current directory:
+
+`grep -r "error" .`
+
+Case insensitive search:
+
+`grep -ri "error" .`
+
+Show line numbers:
+
+`grep -rn "error" .`
+
+Search only inside .log files:
+
+`grep -r --include="*.log" "error" .`
+
+Exclude node_modules directory:
+
+`grep -r --exclude-dir="node_modules" "error" .`
+
+Show only filenames containing matches:
+
+`grep -rl "error" .`
+
+Common flags:
+
+- `-r` recursive search
+- `-i` ignore case
+- `-n` show line numbers
+- `-l` show filenames only
+
+Modern alternative:
+
+`rg "error"` (ripgrep)
 
 </details>
 
