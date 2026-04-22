@@ -566,7 +566,7 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>How do I <code>grep</code> recursively? Explain on several examples. ***</b></summary>
+<summary><b>How do I <code>grep</code> recursively? Explain on several examples.</b></summary>
 
 Recursive grep allows searching for a pattern inside directories and subdirectories.
 
