@@ -1945,9 +1945,26 @@ Useful resources:
 </details>
 
 <details>
-<summary><b>Describe your data backup process. How often should you test your backups? ***</b></summary><br>
+<summary><b>Describe your data backup process. How often should you test your backups?</b></summary><br>
 
-To be completed.
+A backup process should begin with the recovery requirements, not the backup tool:
+
+- inventory the systems and data in scope, assign an owner, and define the recovery point objective (RPO) and recovery time objective (RTO)
+- choose backup types, schedules, retention, and destinations that can meet those objectives; keep multiple copies on independent media or services, with at least one copy isolated from ordinary administrative access
+- encrypt backup data in transit and at rest, restrict and monitor backup privileges, protect recovery credentials and keys, and document how they are recovered during an outage
+- monitor every job, investigate warnings and missed sources, reconcile protected assets against the inventory, and test alert and escalation paths
+- document the restore procedure, required dependencies, alternate locations, contacts, stop conditions, evidence, and cleanup steps
+- review capacity, retention, legal requirements, and costs as the protected environment changes
+
+Testing should be risk-based. Run a restore test after the backup design, credentials, encryption keys, storage destination, application, or recovery procedure changes, and on a recurring schedule based on workload criticality and agreed recovery objectives. Critical systems need more frequent testing than low-impact archives. Include representative file and application restores, isolated full-system recovery where relevant, and periodic end-to-end disaster-recovery exercises.
+
+A test is successful only when an authorized recovery point produces usable data in a safe destination; integrity, permissions, dependencies, recovery time, and recovery-point age are measured; production remains protected; test data is removed safely; and every exception has an owner and retest date. A green backup-job status alone does not prove recoverability.
+
+Useful resources:
+
+- [NIST SP 800-34 Rev. 1: Contingency Planning Guide for Federal Information Systems](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)
+- [CISA StopRansomware Guide](https://www.cisa.gov/stopransomware/ransomware-guide)
+- [Backup Restore Test Checklist for MSPs](https://izikipizi.github.io/nizlo-msp-operations-resources/msp-backup-restore-test-checklist.html) (vendor-neutral checklist maintained by Nizlo)
 
 </details>
 
